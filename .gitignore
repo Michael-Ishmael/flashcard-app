@@ -252,3 +252,6 @@ production/.idea/production.iml
 .DS_Store
 
 production/.idea/dataSources.local.xml
+
+media/
+production_ui/deploy/

@@ -1,7 +1,8 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from rest_framework import routers, serializers, viewsets
 
 from fc_prod_serv.models import MediaFile, MediaFileType, Config
+from fc_prod_serv.views import FolderView
 
 
 class MediaFileSerializer(serializers.HyperlinkedModelSerializer):
@@ -28,11 +29,16 @@ class ConfigViewSet(viewsets.ModelViewSet):
     queryset = Config.objects.all()
     serializer_class = ConfigSerializer
 
+
+
 router = routers.DefaultRouter()
 router.register(r'mediafiles', MediaFileViewSet)
 router.register(r'config', ConfigViewSet)
 
+
 urlpatterns = router.urls
+
+urlpatterns += [url(r'^folders', FolderView.as_view(), name='my_rest_view')]
 
 #     = [
 #     url(r'^$', include(router.urls)),

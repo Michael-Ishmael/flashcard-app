@@ -2,6 +2,7 @@ import os
 
 from fc_prod_serv.models import MediaFile
 
+
 class MediaFileWatcher:
 
     def load_files(self, sub_folder, ext, type_id, lst):

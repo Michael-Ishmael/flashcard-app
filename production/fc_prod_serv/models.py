@@ -10,6 +10,11 @@ from __future__ import unicode_literals
 from django.db import models
 
 
+class Config(models.Model):
+    settingKey = models.CharField(primary_key=True, max_length=20,blank=False)
+    settingValue = models.CharField(max_length=500, blank=False)
+
+
 class AspectRatio(models.Model):
     aspect_ratio_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=10)

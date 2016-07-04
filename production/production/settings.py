@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from os.path import expanduser
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -88,7 +89,7 @@ WSGI_APPLICATION = 'production.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join('/Users/scorpio/Dev/Projects/flashcard-app/xcode/flashcards/flashcards', 'flashcards.db'),
+        'NAME': os.path.join(expanduser('~'), 'Dev/Projects/flashcard-app/xcode/flashcards/flashcards', 'flashcards.db'),
     }
 }
 

@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from rest_framework import routers, serializers, viewsets
 
-from fc_prod_serv.models import MediaFile, MediaFileType
+from fc_prod_serv.models import MediaFile, MediaFileType, Config
 
 
 class MediaFileSerializer(serializers.HyperlinkedModelSerializer):
@@ -17,8 +17,20 @@ class MediaFileViewSet(viewsets.ModelViewSet):
     serializer_class = MediaFileSerializer
 
 
+class ConfigSerializer(serializers.BaseSerializer):
+
+    class Meta:
+        model = Config
+        fields = ('settingKey', 'settingValue')
+
+
+class ConfigViewSet(viewsets.ModelViewSet):
+    queryset = Config.objects.all()
+    serializer_class = ConfigSerializer
+
 router = routers.DefaultRouter()
 router.register(r'mediafiles', MediaFileViewSet)
+router.register(r'config', ConfigViewSet)
 
 urlpatterns = router.urls
 

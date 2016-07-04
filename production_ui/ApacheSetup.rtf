@@ -1,0 +1,66 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue233;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs28 \cf0 \expnd0\expndtw0\kerning0
+Setting up a virtual host in apache2 on Mac: \
+\
+\pard\pardeftab720
+{\field{\*\fldinst{HYPERLINK "http://jason.pureconcepts.net/2014/11/configure-apache-virtualhost-mac-os-x/"}}{\fldrslt \cf2 \expnd0\expndtw0\kerning0
+\ul \ulc2 http://jason.pureconcepts.net/2014/11/configure-apache-virtualhost-mac-os-x/}}\
+\
+<VirtualHost *:80> \
+\'a0 \'a0 \'a0 \'a0 DocumentRoot "/Users/scorpio/Dev/Projects/flashcard-app/production_ui/deploy/htdocs" \
+\'a0 \'a0 \'a0 \'a0 ServerName flashcards.66bytes.local \
+\'a0 \'a0 \'a0 \'a0 ErrorLog "/private/var/log/apache2/flashcards.66bytes.local-error_log" \
+\'a0 \'a0 \'a0 \'a0 CustomLog "/private/var/log/apache2/flashcards.66bytes.local-access_log" common \
+\
+\'a0 \'a0 \'a0 \'a0 <Directory "/Users/scorpio/Dev/Projects/flashcard-app/production_ui/deploy/htdocs"> \
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 AllowOverride All \
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 Require all granted \
+\'a0 \'a0 \'a0 \'a0 </Directory> \
+\
+</VirtualHost> \
+\
+Make sure permissions are set for www on directory \
+\
+\pard\pardeftab720
+
+\f1\fs22 \cf0 \expnd0\expndtw0\kerning0
+chmod 755 /Users/scorpio/Dev/Projects/flashcard-app/production_ui/htdocs
+\f0\fs28 \expnd0\expndtw0\kerning0
+\
+\
+Adding an alias \
+\
+inside virtual host *.conf file \
+\
+<VirtualHost *:80> \
+\'a0 \'a0 \'a0 \'a0 DocumentRoot "/Users/scorpio/Dev/Projects/flashcard-app/production_ui/deploy/htdocs" \
+\'a0 \'a0 \'a0 \'a0 ServerName flashcards.66bytes.local \
+\'a0 \'a0 \'a0 \'a0 ErrorLog "/private/var/log/apache2/flashcards.66bytes.local-error_log" \
+\'a0 \'a0 \'a0 \'a0 CustomLog "/private/var/log/apache2/flashcards.66bytes.local-access_log" common \
+\
+\'a0 \'a0 \'a0 \'a0 <Directory "/Users/scorpio/Dev/Projects/flashcard-app/production_ui/deploy/htdocs"> \
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 AllowOverride All \
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 Require all granted \
+\'a0 \'a0 \'a0 \'a0 </Directory> \
+\
+\'a0 \'a0 \'a0 \'a0 Alias /media /Users/scorpio/Dev/Projects/flashcard-app/media \
+\'a0 \'a0 \'a0 \'a0 <Directory /Users/scorpio/Dev/Projects/flashcard-app/media> \
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 AllowOverride All \
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 Require all granted \
+\'a0 \'a0 \'a0 \'a0 </Directory> \
+\
+</VirtualHost> \
+\
+\
+Then need to make sure perm \
+\
+
+\f1\fs22 \expnd0\expndtw0\kerning0
+chmod 755 /Users/scorpio/Dev/Projects/flashcard-app/media\
+}

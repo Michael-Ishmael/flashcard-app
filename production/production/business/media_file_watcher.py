@@ -1,28 +1,56 @@
 import os
 
-from fc_prod_serv.models import MediaFile
+from production.business.models import Folder, File
 
 
 class MediaFileWatcher:
+    def load_files(self, root_folder_path: str, exts: [str]):  # type:Folder
 
-    def load_files(self, sub_folder, ext, type_id, lst):
-        for dirPath, subFolder, files in os.walk(os.path.join(self.media_path, sub_folder)):
-            for item in files:
-                if item.endswith("." + ext):
-                    file_name_path = os.path.join(dirPath, item)
-                    sub_path = item
-                    item_name = os.path.basename(item)
-                    dir_path = os.path.dirname(file_name_path)
-                    dir_name = os.path.basename(dir_path)
-                    file_sub = dir_name
-                    while not dir_name == sub_folder:
-                        sub_path = os.path.join(dir_name, sub_path)
-                        dir_path = os.path.dirname(dir_path)
-                        dir_name = os.path.basename(dir_path)
+        if not os.path.exists(root_folder_path):
+            return None
 
-                        file = MediaFile()
-                        file.media_file_type_id = type_id
-                        file.name = item_name
-                        file.path = file_name_path
+        root_folder = None  # type:Folder
+        last_folder = None  # type:Folder
 
-                        lst.append(MediaFile(item_name, sub_path, file_name_path, file_sub))
+        for dir_path, sub_folders, files in os.walk(root_folder_path):
+            folder = self.get_folder_from_path(dir_path, last_folder)
+            print(dir_path)
+            if last_folder is None:
+                root_folder = folder
+            else:
+                last_folder.child_folders.append(folder)
+            for file in files:
+                if self.is_match(file, exts):
+                    mw = self.get_media_file(file, dir_path)
+                    if folder.files is None:
+                        folder.files = []
+                    folder.files.append(mw)
+            last_folder = folder
+
+        return self.clone_with_only_found_files(root_folder)
+
+    def clone_with_only_found_files(self, folder:Folder):
+        clone = Folder(folder.name, folder.parent)
+        for child_folder in folder.child_folders:
+            if folder.contains_files():
+                child = self.clone_with_only_found_files(child_folder)
+                clone.child_folders.append(child)
+        return clone
+
+
+
+    def is_match(self, file_name: str, exts: [str]):  # type:bool
+
+        for ext in exts:
+            if file_name.endswith("." + ext):
+                return True
+        return False
+
+    def get_folder_from_path(self, path: str, parent: Folder):  # type:Folder
+        item_name = os.path.basename(path)
+        return Folder(name=item_name, parent=parent)
+
+    def get_media_file(self, file_name: str, dir_path: str):
+        file_name_path = os.path.join(dir_path, file_name)
+
+        return File(file_name, file_name_path)

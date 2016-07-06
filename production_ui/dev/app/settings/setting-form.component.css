@@ -1,0 +1,8 @@
+.setting-line {
+    display: inline-block;
+    padding: 4px;
+}
+
+.setting-line.selected {
+    background-color: #add8e6;
+}

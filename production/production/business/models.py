@@ -7,7 +7,7 @@ class Folder(object):
         self.name = name
         self.parent = parent  # type:Folder
         self.child_folders = []  # type:[Folder]
-        self.files = None  # type:List[str]
+        self.files = None
 
     def contains_files(self):  # type:bool
         if self.files is not None and len(self.files) > 0:

@@ -1,3 +1,7 @@
+import os
+from os.path import expanduser
+from typing import Dict
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -8,11 +12,16 @@ from rest_framework import status, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.models import MediaFile
+from fc_prod_serv.models import MediaFile, MediaFileType
+from production.business.media_file_watcher import MediaFileWatcher
 from production.business.models import Folder
+
 
 @permission_classes((permissions.AllowAny, ))
 class FolderView(APIView):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.media_file_types = {}  # type:Dict[int, MediaFileType]
 
     def get(self, request, *args, **kw):
         # Process any get params that you may need
@@ -31,28 +40,36 @@ class FolderView(APIView):
         return self.get_folder_model()
 
     def get_folder_model(self):
-        parent = Folder("parent")
-        for i in range(1,5):
-            child_name = "child{0}".format(str(i))
-            child = Folder(child_name, parent)
-            parent.child_folders.append(child)
-            for j in range(1, 3):
-                grand_child_name = "grandChild{0}".format(str(j))
-                grand_child = Folder(grand_child_name, child)
-                child.child_folders.append(grand_child)
-                for k in range (1, 4):
-                    file_name = "file{0}".format(str(j * k))
-                    grand_child.files = []
-                    mf = MediaFile()
-                    mf.name = file_name
-                    grand_child.files.append(mf)
-        return parent
+        mfw = MediaFileWatcher()
+        root_folder_path = os.path.join(expanduser('~'), 'Dev/Projects/flashcard-app/media')
+        root_folder = mfw.load_files(root_folder_path, ["jpg"])
+        mfts = MediaFileType.objects.all()
+        for mft in mfts:
+            self.media_file_types[mft.media_file_type_id] = mft
+        self.replace_files(root_folder)
+        return root_folder
+
+    def replace_files(self, folder: Folder):
+        if folder.files is not None:
+            media_files = []
+            for file in folder.files:
+                mf = MediaFile()  # type:MediaFile
+                mf.name = file.name
+                mf.media_file_type = self.media_file_types[1]
+                mf.path = file.path
+                media_files.append(mf)
+            folder.files = media_files
+        for sub_folder in folder.child_folders:
+            self.replace_files(sub_folder)
+
+
+
 
 
 class MediaFileField(serializers.Field):
 
     def to_representation(self, value):
-        return value.name;
+        return value.name
 
     def to_internal_value(self, data):
         mf = MediaFile()

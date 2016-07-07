@@ -13,15 +13,17 @@ var setting_1 = require('./setting');
 var SettingFormComponent = (function () {
     function SettingFormComponent() {
         this.onUpdated = new core_1.EventEmitter();
-        this.onAdded = new core_1.EventEmitter();
+        this.onSettingAdded = new core_1.EventEmitter();
         this.submitted = false;
     }
     SettingFormComponent.prototype.onSubmit = function () {
         this.submitted = true;
-        if (this.isNew)
-            this.onAdded.emit(this.model);
-        else
+        if (this.isNew) {
+            this.onSettingAdded.emit(this.model);
+        }
+        else {
             this.onUpdated.emit(this.model);
+        }
     };
     SettingFormComponent.prototype.ngOnInit = function () {
         if (!this.model) {
@@ -43,12 +45,15 @@ var SettingFormComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', Object)
     ], SettingFormComponent.prototype, "onUpdated", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], SettingFormComponent.prototype, "onSettingAdded", void 0);
     SettingFormComponent = __decorate([
         core_1.Component({
             selector: 'setting-form',
             templateUrl: 'app/settings/setting-form.component.html',
-            styleUrls: ['app/settings/setting-form.component.css'],
-            outputs: ['onAdded']
+            styleUrls: ['app/settings/setting-form.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], SettingFormComponent);

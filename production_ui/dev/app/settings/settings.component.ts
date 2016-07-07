@@ -33,7 +33,7 @@ export class SettingsComponent implements OnInit {
         this.save(setting);
     }
     
-    onAdded(setting:Setting){
+    onSettingAdded(setting:Setting){
         this.save(setting, true)
     }
 

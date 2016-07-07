@@ -15,7 +15,7 @@ var Rx_1 = require("rxjs/Rx");
 var SettingService = (function () {
     function SettingService(http) {
         this.http = http;
-        this.settingsUrl = 'app/settings'; // URL to web api
+        this.settingsUrl = 'http://localhost:8000/prod/config/'; // URL to web api
     }
     SettingService.prototype.getSettings = function () {
         return this.http.get(this.settingsUrl)
@@ -50,7 +50,7 @@ var SettingService = (function () {
     };
     SettingService.prototype.extractData = function (res) {
         var body = res.json();
-        return body.data || {};
+        return body[0];
     };
     SettingService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure

@@ -26,7 +26,7 @@ var SettingsComponent = (function () {
     SettingsComponent.prototype.onUpdated = function (setting) {
         this.save(setting);
     };
-    SettingsComponent.prototype.onAdded = function (setting) {
+    SettingsComponent.prototype.onSettingAdded = function (setting) {
         this.save(setting, true);
     };
     SettingsComponent.prototype.save = function (setting, asNew) {

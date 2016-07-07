@@ -3,8 +3,8 @@
 <div class="list-heading-label">Value</div>
 <ul>
     <li *ngFor="let setting of settings">
-        <setting-form [model]="setting"  (onAdded)="onAdded($event)"></setting-form>
+        <setting-form [model]="setting"  (onUpdated)="onUpdated"></setting-form>
     </li>
 </ul>
 <button *ngIf="!showAddNew" type="button" class="btn btn-default" (click)="addNew()">New Hero</button>
-<setting-form *ngIf="showAddNew"></setting-form>
+<setting-form *ngIf="showAddNew" (onSettingAdded)="onSettingAdded($event)"></setting-form>

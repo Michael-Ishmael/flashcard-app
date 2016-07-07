@@ -5,23 +5,23 @@ import { Setting }    from './setting';
 @Component({
     selector: 'setting-form',
     templateUrl: 'app/settings/setting-form.component.html',
-    styleUrls: ['app/settings/setting-form.component.css'],
-    outputs: ['onAdded']
+    styleUrls: ['app/settings/setting-form.component.css']
 })
 export class SettingFormComponent implements OnInit {
     @Input() model:Setting;
     @Output() onUpdated = new EventEmitter<Setting>();
-    onAdded = new EventEmitter<Setting>();
+    @Output() onSettingAdded = new EventEmitter<Setting>();
     isNew:boolean;
 
     submitted = false;
 
     onSubmit() { 
         this.submitted = true;
-        if(this.isNew)
-            this.onAdded.emit(this.model);
-        else
+        if(this.isNew){
+            this.onSettingAdded.emit(this.model);
+        } else {
             this.onUpdated.emit(this.model);
+        }
     }
 
     ngOnInit():any {

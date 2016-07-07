@@ -7,7 +7,7 @@ import {Observable} from "rxjs/Rx";
 @Injectable()
 export class SettingService {
 
-    private settingsUrl = 'app/settings';  // URL to web api
+    private settingsUrl = 'http://localhost:8000/prod/config/';  // URL to web api
 
     constructor(private http: Http) { }
 
@@ -50,7 +50,7 @@ export class SettingService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body.data || { };
+        return body[0];
     }
 
     private handleError(error: any) {

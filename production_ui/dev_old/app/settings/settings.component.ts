@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Setting }                from './setting';
 import {SettingService} from "./setting.service";
 import {SettingFormComponent} from "./setting-form.component";
+import {iterableDiff} from "@angular/core/esm/src/change_detection/change_detection";
 @Component({
     selector: 'app-settings',
     templateUrl: 'app/settings/settings.component.html',
@@ -29,7 +30,7 @@ export class SettingsComponent implements OnInit {
         this.showAddNew = true;
     }
     
-    onUpdated(setting:Setting){
+    onSettingUpdated(setting:Setting){
         this.save(setting);
     }
     
@@ -37,11 +38,41 @@ export class SettingsComponent implements OnInit {
         this.save(setting, true)
     }
 
+    onSettingDeleted(setting:Setting){
+        this.settingService.delete(setting)
+            .subscribe(setting => this.removeSetting(setting));
+    }
+
+    private removeSetting(setting:Setting):void {
+
+        var indexToDelete = -1;
+        for (var i = 0; i < this.settings.length; i++) {
+            var loopSetting = this.setting[i];
+            if(loopSetting.settingKey == setting.settingKey){
+                indexToDelete = i;
+                break;
+            }
+        }
+        if(indexToDelete > -1){
+            this.settings.splice(indexToDelete, 1)
+        }
+
+    }
+
+
+    onAddSettingCancelled(setting:Setting){
+        this.showAddNew = false;
+    }
+
     private save(setting:Setting, asNew:boolean=false){
         if(asNew) this.showAddNew =false;
-        this.settingService.save(setting, asNew);
-        this.getSettings();
+        this.settingService.save(setting, asNew)
+            .subscribe(setting =>
+                this.settings.push(setting)
+            );
     }
+    
+    
 
     ngOnInit() {
         this.getSettings();

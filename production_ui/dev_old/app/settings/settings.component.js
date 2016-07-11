@@ -23,18 +23,42 @@ var SettingsComponent = (function () {
     SettingsComponent.prototype.addNew = function () {
         this.showAddNew = true;
     };
-    SettingsComponent.prototype.onUpdated = function (setting) {
+    SettingsComponent.prototype.onSettingUpdated = function (setting) {
         this.save(setting);
     };
     SettingsComponent.prototype.onSettingAdded = function (setting) {
         this.save(setting, true);
     };
+    SettingsComponent.prototype.onSettingDeleted = function (setting) {
+        var _this = this;
+        this.settingService.delete(setting)
+            .subscribe(function (setting) { return _this.removeSetting(setting); });
+    };
+    SettingsComponent.prototype.removeSetting = function (setting) {
+        var indexToDelete = -1;
+        for (var i = 0; i < this.settings.length; i++) {
+            var loopSetting = this.setting[i];
+            if (loopSetting.settingKey == setting.settingKey) {
+                indexToDelete = i;
+                break;
+            }
+        }
+        if (indexToDelete > -1) {
+            this.settings.splice(indexToDelete, 1);
+        }
+    };
+    SettingsComponent.prototype.onAddSettingCancelled = function (setting) {
+        this.showAddNew = false;
+    };
     SettingsComponent.prototype.save = function (setting, asNew) {
+        var _this = this;
         if (asNew === void 0) { asNew = false; }
         if (asNew)
             this.showAddNew = false;
-        this.settingService.save(setting, asNew);
-        this.getSettings();
+        this.settingService.save(setting, asNew)
+            .subscribe(function (setting) {
+            return _this.settings.push(setting);
+        });
     };
     SettingsComponent.prototype.ngOnInit = function () {
         this.getSettings();

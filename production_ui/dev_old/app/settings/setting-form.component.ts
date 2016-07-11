@@ -11,6 +11,8 @@ export class SettingFormComponent implements OnInit {
     @Input() model:Setting;
     @Output() onUpdated = new EventEmitter<Setting>();
     @Output() onSettingAdded = new EventEmitter<Setting>();
+    @Output() onDeleted = new EventEmitter<Setting>();
+    @Output() onCancelled = new EventEmitter<Setting>();
     isNew:boolean;
 
     submitted = false;
@@ -22,6 +24,15 @@ export class SettingFormComponent implements OnInit {
         } else {
             this.onUpdated.emit(this.model);
         }
+    }
+
+    onDelete() {
+        this.submitted = true;
+        this.onDeleted.emit(this.model)
+    }
+
+    onCancel() {
+        this.onCancelled.emit(this.model)
     }
 
     ngOnInit():any {

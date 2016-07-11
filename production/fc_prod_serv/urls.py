@@ -18,7 +18,7 @@ class MediaFileViewSet(viewsets.ModelViewSet):
     serializer_class = MediaFileSerializer
 
 
-class ConfigSerializer(serializers.BaseSerializer):
+class ConfigSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Config

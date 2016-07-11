@@ -14,6 +14,8 @@ var SettingFormComponent = (function () {
     function SettingFormComponent() {
         this.onUpdated = new core_1.EventEmitter();
         this.onSettingAdded = new core_1.EventEmitter();
+        this.onDeleted = new core_1.EventEmitter();
+        this.onCancelled = new core_1.EventEmitter();
         this.submitted = false;
     }
     SettingFormComponent.prototype.onSubmit = function () {
@@ -24,6 +26,13 @@ var SettingFormComponent = (function () {
         else {
             this.onUpdated.emit(this.model);
         }
+    };
+    SettingFormComponent.prototype.onDelete = function () {
+        this.submitted = true;
+        this.onDeleted.emit(this.model);
+    };
+    SettingFormComponent.prototype.onCancel = function () {
+        this.onCancelled.emit(this.model);
     };
     SettingFormComponent.prototype.ngOnInit = function () {
         if (!this.model) {
@@ -49,6 +58,14 @@ var SettingFormComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', Object)
     ], SettingFormComponent.prototype, "onSettingAdded", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], SettingFormComponent.prototype, "onDeleted", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], SettingFormComponent.prototype, "onCancelled", void 0);
     SettingFormComponent = __decorate([
         core_1.Component({
             selector: 'setting-form',

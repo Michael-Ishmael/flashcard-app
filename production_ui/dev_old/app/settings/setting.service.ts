@@ -24,10 +24,22 @@ export class SettingService {
         return this.put(hero);
     }
 
+    delete(setting: Setting): Observable<Setting> {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
+
+        return this.http
+            .delete(this.settingsUrl + setting.settingKey, {headers: headers})
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     // Add new Setting
     private post(hero: Setting): Observable<Setting> {
         let headers = new Headers({
-            'Content-Type': 'application/json'});
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
 
         return this.http
             .post(this.settingsUrl, JSON.stringify(hero), {headers: headers})
@@ -50,7 +62,7 @@ export class SettingService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body[0];
+        return body;
     }
 
     private handleError(error: any) {

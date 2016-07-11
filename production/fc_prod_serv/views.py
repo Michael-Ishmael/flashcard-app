@@ -12,7 +12,7 @@ from rest_framework import status, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.models import MediaFile, MediaFileType
+from fc_prod_serv.models import MediaFile, MediaFileType, Config
 from production.business.media_file_watcher import MediaFileWatcher
 from production.business.models import Folder
 
@@ -31,7 +31,13 @@ class FolderView(APIView):
         #get_arg2 = request.GET.get('arg2', None)
 
         # Any URL parameters get passed in **kw
-        root_folder = self.get_folder_model()
+        root_folder = Config.objects.filter(settingKey='media_folder')
+        if len(root_folder) == 0:
+            data = {"errorMessage": "No media folder setting found"}
+            response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return response
+
+        root_folder = self.get_folder_model(root_folder[0])
         serializer = FolderSerializer(root_folder)
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
@@ -39,9 +45,9 @@ class FolderView(APIView):
     def get_queryset(self):
         return self.get_folder_model()
 
-    def get_folder_model(self):
+    def get_folder_model(self, path):
         mfw = MediaFileWatcher()
-        root_folder_path = os.path.join(expanduser('~'), 'Dev/Projects/flashcard-app/media')
+        root_folder_path = os.path.join(expanduser('~'), path)
         root_folder = mfw.load_files(root_folder_path, ["jpg"])
         mfts = MediaFileType.objects.all()
         for mft in mfts:

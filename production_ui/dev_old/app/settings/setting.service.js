@@ -29,10 +29,20 @@ var SettingService = (function () {
         }
         return this.put(hero);
     };
+    SettingService.prototype.delete = function (setting) {
+        var headers = new http_1.Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM=' });
+        return this.http
+            .delete(this.settingsUrl + setting.settingKey, { headers: headers })
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     // Add new Setting
     SettingService.prototype.post = function (hero) {
         var headers = new http_1.Headers({
-            'Content-Type': 'application/json' });
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM=' });
         return this.http
             .post(this.settingsUrl, JSON.stringify(hero), { headers: headers })
             .map(this.extractData)
@@ -50,7 +60,7 @@ var SettingService = (function () {
     };
     SettingService.prototype.extractData = function (res) {
         var body = res.json();
-        return body[0];
+        return body;
     };
     SettingService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure

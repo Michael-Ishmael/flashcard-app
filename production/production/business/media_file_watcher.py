@@ -13,7 +13,7 @@ class MediaFileWatcher:
 
         root_folder = None
         start = root_folder_path.rfind(os.sep) + 1
-        #start = root_folder_path.rfind(os.sep, 0, start) +1
+        # start = root_folder_path.rfind(os.sep, 0, start) +1
 
         folder_lookup = {}  # type:Dict[str, Folder]
         for dir_path, sub_folders, files in os.walk(root_folder_path):

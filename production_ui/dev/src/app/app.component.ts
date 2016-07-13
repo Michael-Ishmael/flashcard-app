@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {SettingService} from "./settings/setting.service";
+import {FolderService} from "./assignment/folder-structure/folder.service";
 
 @Component({
   moduleId: module.id,
@@ -9,7 +10,8 @@ import {SettingService} from "./settings/setting.service";
   styleUrls: ['app.component.css'],
   directives: [ROUTER_DIRECTIVES],
   providers: [
-    SettingService
+    SettingService,
+		FolderService
   ]
 })
 export class AppComponent {

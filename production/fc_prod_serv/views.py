@@ -37,7 +37,7 @@ class FolderView(APIView):
             response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             return response
 
-        root_folder = self.get_folder_model(root_folder[0])
+        root_folder = self.get_folder_model(root_folder[0].settingValue)
         serializer = FolderSerializer(root_folder)
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
@@ -69,13 +69,10 @@ class FolderView(APIView):
             self.replace_files(sub_folder)
 
 
-
-
-
 class MediaFileField(serializers.Field):
 
     def to_representation(self, value):
-        return value.name
+        return {"name" : value.name, "path" : value.path}
 
     def to_internal_value(self, data):
         mf = MediaFile()
@@ -85,10 +82,10 @@ class MediaFileField(serializers.Field):
 
 class FolderSerializer(serializers.Serializer):
     name = serializers.CharField()
-    child_folders = serializers.ListField(child=RecursiveField())
+    childFolders = serializers.ListField(source="child_folders", child=RecursiveField())
     files = serializers.ListField(child=MediaFileField())
 
-    # class Meta:
-    #     model = Folder
-    #     fields = ('name', 'child_folders')
+    class Meta:
+        model = Folder
+        depth = 2
 

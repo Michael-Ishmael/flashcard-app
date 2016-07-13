@@ -41,6 +41,7 @@ class SetViewSet(viewsets.ModelViewSet):
     queryset = Set.objects.all()
     serializer_class = SetSerializer
 
+
 class DeckSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
@@ -63,7 +64,7 @@ router.register(r'decks', DeckViewSet)
 
 urlpatterns = router.urls
 
-urlpatterns += [url(r'^folders', FolderView.as_view(), name='my_rest_view')]
+urlpatterns += [url(r'^folders', FolderView.as_view(), name='folder_view')]
 
 #     = [
 #     url(r'^$', include(router.urls)),

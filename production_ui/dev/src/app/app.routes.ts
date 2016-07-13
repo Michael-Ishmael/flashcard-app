@@ -1,5 +1,6 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
 import {SettingsComponent} from "./settings/settings.component";
+import {AssignmentComponent} from "./assignment/assignment.component";
 
 
 const routes: RouterConfig = [
@@ -8,10 +9,10 @@ const routes: RouterConfig = [
         redirectTo: '/dashboard',
         terminal: true
     },
-    // {
-    //     path: 'heroes',
-    //     component: HeroesComponent
-    // },
+    {
+        path: 'assignment',
+        component: AssignmentComponent
+    },
     // {
     //     path: 'dashboard',
     //     component: DashboardComponent

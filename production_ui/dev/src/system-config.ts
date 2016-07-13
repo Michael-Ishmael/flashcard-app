@@ -36,6 +36,7 @@ const barrels: string[] = [
   'app/shared',
   'app/assignment',
   'app/assignment/folder-structure',
+  'app/assignment/folder-structure/fso-item',
   /** @cli-barrel */
 ];
 

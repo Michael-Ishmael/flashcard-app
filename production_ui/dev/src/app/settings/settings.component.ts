@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Setting }                from './setting';
 import {SettingService} from "./setting.service";
 import {SettingFormComponent} from "./setting-form.component";
-import {iterableDiff} from "@angular/core/esm/src/change_detection/change_detection";
+
 @Component({
     selector: 'app-settings',
     templateUrl: 'app/settings/settings.component.html',

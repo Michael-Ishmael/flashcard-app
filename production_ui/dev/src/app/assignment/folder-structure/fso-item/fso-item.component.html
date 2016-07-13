@@ -1,0 +1,25 @@
+
+<div *ngIf="model">
+  {{ model.name }}
+
+  <div *ngIf="isFolder" class="folder">
+    <i class="fa fa-folder"></i>
+    <div *ngFor="let folder of model.childFolders" >
+      <fso-item [model]="folder"></fso-item>
+    </div>
+
+    <div *ngFor="let file of model.files" >
+      <fso-item [model]="file"></fso-item>
+    </div>
+
+    <!--<fso-item *ngFor="let file of model.files" [model]="file"></fso-item>-->
+  </div>
+
+  <div *ngIf="isFile">
+    <span>File: </span><span style="font-weight: bold">{{ model.path }}</span>
+  </div>
+</div>
+
+
+
+

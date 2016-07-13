@@ -10,11 +10,11 @@ import {
   async, inject
 } from '@angular/core/testing';
 
-import { FolderStructureComponent } from './folder-structure.component';
+import { FsoItemComponent } from './fso-item.component';
 
-describe('Component: FolderStructure', () => {
+describe('Component: FsoItem', () => {
   it('should create an instance', () => {
-    let component = new FolderStructureComponent(null);
+    let component = new FsoItemComponent();
     expect(component).toBeTruthy();
   });
 });

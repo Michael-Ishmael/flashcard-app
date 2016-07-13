@@ -16,7 +16,9 @@ module.exports = function(defaults) {
       'reflect-metadata/**/*.+(ts|js|js.map)',
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
-        'bootstrap/dist/**/*.+(min.css|min.js)'
+      'bootstrap/dist/**/*.+(min.css|min.js)',
+      'font-awesome/css/font-awesome.min.css',
+      'font-awesome/fonts/**'
     ]
   });
 };

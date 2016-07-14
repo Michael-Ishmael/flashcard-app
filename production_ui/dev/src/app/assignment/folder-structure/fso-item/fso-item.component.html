@@ -1,24 +1,20 @@
+<span *ngIf="model && isFile" class="file fso" [class.selected]="model.selected" (click)="toggleSelected()">
+    <i class="fa fa-file" ></i>
+    <span >{{ model.name }}</span>
+</span>
+<div  *ngIf="model && isFolder" class="folder-title fso" (click)="toggleExpanded()"><i class="fa fa-folder" ></i>{{ model.name }}</div>
+<ul *ngIf="model && isFolder" class="folder" [class.collapsed]="!model.expanded">
 
-<div *ngIf="model">
-  {{ model.name }}
-
-  <div *ngIf="isFolder" class="folder">
-    <i class="fa fa-folder"></i>
-    <div *ngFor="let folder of model.childFolders" >
+    <li *ngFor="let folder of model.childFolders">
       <fso-item [model]="folder"></fso-item>
-    </div>
+    </li>
+     <li *ngFor="let file of model.files">
 
-    <div *ngFor="let file of model.files" >
       <fso-item [model]="file"></fso-item>
-    </div>
+    </li>
+</ul>
 
-    <!--<fso-item *ngFor="let file of model.files" [model]="file"></fso-item>-->
-  </div>
 
-  <div *ngIf="isFile">
-    <span>File: </span><span style="font-weight: bold">{{ model.path }}</span>
-  </div>
-</div>
 
 
 

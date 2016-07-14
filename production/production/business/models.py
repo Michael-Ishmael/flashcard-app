@@ -8,6 +8,7 @@ class Folder(object):
         self.parent = parent  # type:Folder
         self.child_folders = []  # type:[Folder]
         self.files = None
+        self.expanded = False  # type:bool
 
     def contains_files(self):  # type:bool
         if self.files is not None and len(self.files) > 0:

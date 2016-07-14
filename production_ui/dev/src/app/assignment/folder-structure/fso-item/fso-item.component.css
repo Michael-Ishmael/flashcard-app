@@ -1,4 +1,28 @@
 .folder{
-    margin-left: 20px;
-    border: solid 1px rebeccapurple;
+    margin: 4px 4px 4px 20px ;
+}
+
+ul.folder.collapsed {
+    display: none;
+}
+
+.fso{
+    cursor: pointer;
+}
+
+.fso:hover{
+    text-decoration: underline;
+}
+
+.folder-title {
+    cursor: pointer;
+}
+
+.fso i {
+    margin-right: 5px;
+}
+
+.file.selected {
+    color: #55a9ff;
+    font-weight: bold;
 }

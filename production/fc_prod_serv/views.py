@@ -65,6 +65,8 @@ class FolderView(APIView):
                 mf.path = file.path
                 media_files.append(mf)
             folder.files = media_files
+        else:
+            folder.expanded = True
         for sub_folder in folder.child_folders:
             self.replace_files(sub_folder)
 
@@ -84,6 +86,7 @@ class FolderSerializer(serializers.Serializer):
     name = serializers.CharField()
     childFolders = serializers.ListField(source="child_folders", child=RecursiveField())
     files = serializers.ListField(child=MediaFileField())
+    expanded = serializers.BooleanField()
 
     class Meta:
         model = Folder

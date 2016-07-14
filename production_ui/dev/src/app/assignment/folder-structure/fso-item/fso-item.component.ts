@@ -10,10 +10,24 @@ import {Fso} from "../fso";
 })
 export class FsoItemComponent implements OnInit {
   @Input() model:Fso;
-	@Output() onChecked = new EventEmitter<Fso>();
-	@Output() onUnchecked = new EventEmitter<Fso>();
+	@Output() onSelected = new EventEmitter<Fso>();
+	@Output() onUnSelected = new EventEmitter<Fso>();
 	isFolder:boolean;
 	isFile:boolean;
+
+	toggleExpanded(){
+		this.model.expanded = !this.model.expanded;
+	}
+
+	toggleSelected(){
+
+		this.model.selected = !this.model.selected;
+		if(this.model.selected){
+			this.onSelected.emit(this.model);
+		} else {
+			this.onUnSelected.emit(this.model);
+		}
+	}
 
   ngOnInit() {
   	if(this.model.childFolders || this.model.files){

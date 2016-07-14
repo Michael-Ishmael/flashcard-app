@@ -1,67 +1,78 @@
 import { Injectable } from '@angular/core';
-import { Setting } from './setting';
+import { DeckSet } from './deck-set';
 import {Http, Response, Headers} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs/Rx";
 
-@Injectable()
-export class SettingService {
+interface IApiSet{
+    set_id:number,
+    name:string,
+    icon:string,
+    display_order:number
+}
 
-    private settingsUrl = 'http://localhost:8000/prod/config/';  // URL to web api
+@Injectable()
+export class DeckSetService {
+
+    private deckSetsUrl = 'http://localhost:8000/prod/sets/';  // URL to web api
 
     constructor(private http: Http) { }
 
-    getSettings(): Observable<Setting[]> {
-        return this.http.get(this.settingsUrl)
+    getDeckSets(): Observable<DeckSet[]> {
+        return this.http.get(this.deckSetsUrl)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    save(setting: Setting, asNew:boolean = false): Observable<Setting>  {
+    save(deckSet: DeckSet, asNew:boolean = false): Observable<DeckSet>  {
         if (asNew) {
-            return this.post(setting);
+            return this.post(deckSet);
         }
-        return this.put(setting);
+        return this.put(deckSet);
     }
 
-    delete(setting: Setting): Observable<Setting> {
+    delete(deckSet: DeckSet): Observable<DeckSet> {
         let headers = new Headers({
             //'Content-Type': 'application/json',
             'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
 
         return this.http
-            .delete(this.settingsUrl + setting.settingKey + '/', {headers: headers})
+            .delete(this.deckSetsUrl + deckSet.id + '/', {headers: headers})
             .catch(this.handleError);
     }
 
-    // Add new Setting
-    private post(setting: Setting): Observable<Setting> {
+    // Add new DeckSet
+    private post(deckSet: DeckSet): Observable<DeckSet> {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
 
         return this.http
-            .post(this.settingsUrl, JSON.stringify(setting), {headers: headers})
+            .post(this.deckSetsUrl, JSON.stringify(deckSet), {headers: headers})
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    // Update existing Settings
-    private put(setting: Setting): Observable<Setting> {
+    // Update existing DeckSets
+    private put(deckSet: DeckSet): Observable<DeckSet> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        let url = `${this.settingsUrl}/${setting.settingKey}`;
+        let url = `${this.deckSetsUrl}/${deckSet.id}`;
 
         return this.http
-            .put(url, JSON.stringify(setting), {headers: headers})
-            .map(() => setting)
+            .put(url, JSON.stringify(deckSet), {headers: headers})
+            .map(() => deckSet)
             .catch(this.handleError);
     }
 
-    private extractData(res: Response) {
+    private extractData(res: Response):DeckSet[] {
         let body = res.json();
-        return body;
+        return body.map(DeckSetService.apiSetToDeckSet);
+    }
+
+    private static apiSetToDeckSet(r:IApiSet){
+        return new DeckSet(r.set_id, r.name, r.icon, r.display_order);
     }
 
     private handleError(error: any) {

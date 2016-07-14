@@ -4,6 +4,7 @@ export class Fso {
         public path:string,
         public childFolders:[Fso],
         public files:[Fso],
-        public selected:boolean
+        public selected:boolean,
+        public expanded:boolean
     ){}
 }

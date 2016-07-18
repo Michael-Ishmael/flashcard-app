@@ -5,16 +5,37 @@ from typing import Dict
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework import serializers
+from rest_framework import serializers, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.models import MediaFile, MediaFileType, Config
+from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set
+from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer
 from production.business.media_file_watcher import MediaFileWatcher
 from production.business.models import Folder
+
+
+class MediaFileViewSet(viewsets.ModelViewSet):
+    queryset = MediaFile.objects.all()
+    serializer_class = MediaFileSerializer
+
+
+class ConfigViewSet(viewsets.ModelViewSet):
+    queryset = Config.objects.all()
+    serializer_class = ConfigSerializer
+
+
+class SetViewSet(viewsets.ModelViewSet):
+    queryset = Set.objects.all()
+    serializer_class = SetSerializer
+
+
+class DeckViewSet(viewsets.ModelViewSet):
+    queryset = Deck.objects.all()
+    serializer_class = DeckSerializer
 
 
 @permission_classes((permissions.AllowAny, ))

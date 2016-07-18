@@ -2,6 +2,14 @@
   deck-sets works!
 </p>
 
+<div class="btn-group">
+  <label class="btn btn-primary" [(ngModel)]="radioModel"
+         btnRadio="Left">Left</label>
+  <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="Middle">Middle</label>
+  <label class="btn btn-primary" [(ngModel)]="radioModel"
+         btnRadio="Right">Right</label>
+</div>
+
 <ul *ngIf="deckSets">
   <li *ngFor="let deskSet of deckSets">
     {{ deskSet.name }}

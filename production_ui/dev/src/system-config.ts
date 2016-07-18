@@ -6,11 +6,15 @@
  * User Configuration.
  **********************************************************************************************/
 /** Map relative paths to URLs. */
-const map: any = {
-};
+const map: any = {};
 
 /** User packages configuration. */
 const packages: any = {
+  'ng2-bootstrap': {
+    format: 'cjs',
+    defaultExtension: 'js',
+    main: 'ng2-bootstrap.js'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,6 +34,7 @@ const barrels: string[] = [
 
   // Thirdparty barrels.
   'rxjs',
+  'ng2-bootstrap',
 
   // App specific barrels.
   'app',
@@ -54,6 +59,8 @@ System.config({
   map: {
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
+    'ng2-bootstrap': 'vendor/ng2-bootstrap',
+    'moment': 'vendor/moment/moment.js',
     'main': 'main.js'
   },
   packages: cliSystemConfigPackages

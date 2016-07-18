@@ -17,8 +17,13 @@ module.exports = function(defaults) {
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
       'bootstrap/dist/**/*.+(min.css|min.js)',
+      'ng2-bootstrap/dist/**/*.+(min.css|min.js)',
       'font-awesome/css/font-awesome.min.css',
-      'font-awesome/fonts/**'
+      'font-awesome/fonts/**',
+      'ng2-bootstrap/bundles/*.js',
+      'ng2-bootstrap/components/**/*.js',
+        'ng2-bootstrap/*.js',
+        'moment/moment.js'
     ]
   });
 };

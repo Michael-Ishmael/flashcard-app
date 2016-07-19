@@ -42,6 +42,28 @@ export class DeckSetsComponent implements OnInit {
     this.deckSets.push(this.selectedDeckSet);
   }
 
+  deleteDeckSet(deckSet:DeckSet){
+    this.deckSetService.delete(deckSet)
+      .subscribe(r => this.removeDeckSet(deckSet));
+
+  }
+
+  private removeDeckSet(deckSet:DeckSet):void {
+
+    var indexToDelete = -1;
+    for (var i = 0; i < this.deckSets.length; i++) {
+      var loopSetting = this.deckSets[i];
+      if(loopSetting.id == deckSet.id){
+        indexToDelete = i;
+        break;
+      }
+    }
+    if(indexToDelete > -1){
+      this.deckSets.splice(indexToDelete, 1)
+    }
+
+  }
+
   cancelCreate(){
     this.deckSets.pop();
     this.creating = false;

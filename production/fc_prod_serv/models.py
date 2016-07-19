@@ -123,7 +123,7 @@ class Orientation(models.Model):
 
 
 class Set(models.Model):
-    set_id = models.IntegerField(primary_key=True)
+    set_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20)
     icon = models.ForeignKey(MediaFile, models.DO_NOTHING, blank=True, null=True)
     display_order = models.IntegerField()

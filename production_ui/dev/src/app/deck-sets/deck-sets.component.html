@@ -15,12 +15,16 @@
       <span *ngIf="!(editing && deckSet == selectedDeckSet)">{{ deckSet.name }}</span>
       <span *ngIf="editing && deckSet == selectedDeckSet" >
         <input type="text" required [(ngModel)]="deckSet.name" name="deckSetName" ngControl="settingValue" title="{{ deckSet.name }}"> </span>
+
       <div class="pull-right">
         <span class="badge pull-right">{{ deckSet.id }}</span>
         <button *ngIf="!editing" type="button" class="btn btn-default btn-xs" (click)="editDeckSet(deckSet)">Edit</button>
         <button *ngIf="editing && deckSet == selectedDeckSet" type="button" class="btn btn-default btn-xs" (click)="saveDeckSet()">Save</button>
+
+        <button *ngIf="editing && !creating && deckSet == selectedDeckSet" type="button" class="btn btn-danger btn-xs" (click)="deleteDeckSet(deckSet)">Delete</button>
         <button *ngIf="creating && deckSet == selectedDeckSet" type="button" class="btn btn-default btn-xs" (click)="cancelCreate()">Cancel</button>
       </div>
+
     </li>
 
   </ul>

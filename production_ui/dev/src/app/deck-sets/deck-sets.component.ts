@@ -14,7 +14,9 @@ export class DeckSetsComponent implements OnInit {
   deckSets:DeckSet[];
   errorMessage:any;
 
-  public radioModel:string = "middle";
+  selectedDeckSet:DeckSet;
+  editing:boolean;
+  creating:boolean;
 
   constructor(
       private deckSetService:DeckSetService
@@ -26,6 +28,47 @@ export class DeckSetsComponent implements OnInit {
             sets => this.deckSets = sets,
             error => this.errorMessage = <any>error
         )
+  }
+
+  selectDeckSet(deckSet:DeckSet){
+    this.selectedDeckSet = deckSet;
+  }
+
+  addNewDeckSet(){
+
+    this.selectedDeckSet = new DeckSet(-1, '', '', this.deckSets.length);
+    this.creating = true;
+    this.editing =true;
+    this.deckSets.push(this.selectedDeckSet);
+  }
+
+  cancelCreate(){
+    this.deckSets.pop();
+    this.creating = false;
+    this.editing = false;
+    this.selectedDeckSet = null;
+  }
+
+  editDeckSet(deckSet:DeckSet){
+    if(this.selectedDeckSet !== deckSet){
+       this.selectDeckSet(deckSet)
+    }
+    this.editing = true;
+  }
+
+  saveDeckSet(){
+    if(this.selectedDeckSet){
+      this.deckSetService.save(this.selectedDeckSet, this.creating)
+          .subscribe(s => this.saveIfNew(s, this))
+    }
+  }
+
+  private saveIfNew(savedSet:DeckSet, comp:DeckSetsComponent){
+    if(comp.creating){
+      this.deckSets.push(savedSet);
+      comp.creating = false;
+    }
+    comp.editing = false;
   }
 
   ngOnInit() {

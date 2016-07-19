@@ -1,17 +1,27 @@
-<p>
-  deck-sets works!
-</p>
 
-<div class="btn-group">
-  <label class="btn btn-primary" [(ngModel)]="radioModel"
-         btnRadio="Left">Left</label>
-  <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="Middle">Middle</label>
-  <label class="btn btn-primary" [(ngModel)]="radioModel"
-         btnRadio="Right">Right</label>
+<!--<div class="btn-group">-->
+  <!--<label class="btn btn-primary" [(ngModel)]="radioModel"-->
+         <!--btnRadio="Left">Left</label>-->
+  <!--<label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="Middle">Middle</label>-->
+  <!--<label class="btn btn-primary" [(ngModel)]="radioModel"-->
+         <!--btnRadio="Right">Right</label>-->
+<!--</div>-->
+<div class="deck-set-list">
+  <button class="btn btn-success btn-xs pull-right" (click)="addNewDeckSet()">+</button>
+  <ul *ngIf="deckSets" class="list-group">
+
+    <li *ngFor="let deckSet of deckSets" class="list-group-item" [class.active]="deckSet == selectedDeckSet"
+        (click)="selectDeckSet(deckSet)"  >
+      <span *ngIf="!(editing && deckSet == selectedDeckSet)">{{ deckSet.name }}</span>
+      <span *ngIf="editing && deckSet == selectedDeckSet" >
+        <input type="text" required [(ngModel)]="deckSet.name" name="deckSetName" ngControl="settingValue" title="{{ deckSet.name }}"> </span>
+      <div class="pull-right">
+        <span class="badge pull-right">{{ deckSet.id }}</span>
+        <button *ngIf="!editing" type="button" class="btn btn-default btn-xs" (click)="editDeckSet(deckSet)">Edit</button>
+        <button *ngIf="editing && deckSet == selectedDeckSet" type="button" class="btn btn-default btn-xs" (click)="saveDeckSet()">Save</button>
+        <button *ngIf="creating && deckSet == selectedDeckSet" type="button" class="btn btn-default btn-xs" (click)="cancelCreate()">Cancel</button>
+      </div>
+    </li>
+
+  </ul>
 </div>
-
-<ul *ngIf="deckSets">
-  <li *ngFor="let deskSet of deckSets">
-    {{ deskSet.name }}
-  </li>
-</ul>

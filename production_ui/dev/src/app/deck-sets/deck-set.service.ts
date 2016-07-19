@@ -46,9 +46,9 @@ export class DeckSetService {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
-
+        var item = DeckSetService.deckSetToApiSet(deckSet);
         return this.http
-            .post(this.deckSetsUrl, JSON.stringify(deckSet), {headers: headers})
+            .post(this.deckSetsUrl, JSON.stringify(item), {headers: headers})
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -58,10 +58,10 @@ export class DeckSetService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        let url = `${this.deckSetsUrl}/${deckSet.id}`;
-
+        let url = `${this.deckSetsUrl}${deckSet.id}/`;
+        var item = DeckSetService.deckSetToApiSet(deckSet);
         return this.http
-            .put(url, JSON.stringify(deckSet), {headers: headers})
+            .put(url, JSON.stringify(item), {headers: headers})
             .map(() => deckSet)
             .catch(this.handleError);
     }
@@ -71,8 +71,12 @@ export class DeckSetService {
         return body.map(DeckSetService.apiSetToDeckSet);
     }
 
-    private static apiSetToDeckSet(r:IApiSet){
+    private static apiSetToDeckSet(r:IApiSet):DeckSet{
         return new DeckSet(r.set_id, r.name, r.icon, r.display_order);
+    }
+
+    private static deckSetToApiSet(d:DeckSet):IApiSet{
+        return {set_id: d.id, name:d.name, icon:d.icon, display_order:d.displayOrder};
     }
 
     private handleError(error: any) {

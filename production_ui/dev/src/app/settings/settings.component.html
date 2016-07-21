@@ -8,5 +8,5 @@
         ></setting-form>
     </li>
 </ul>
-<button *ngIf="!showAddNew" type="button" class="btn btn-default" (click)="addNew()">New Hero</button>
+<button *ngIf="!showAddNew" type="button" class="btn btn-default" (click)="addNew()">New Setting</button>
 <setting-form *ngIf="showAddNew" (onSettingAdded)="onSettingAdded($event)" (onCancelled)="onAddSettingCancelled($event)"></setting-form>

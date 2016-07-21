@@ -5,10 +5,11 @@
   <div id="fcHierarchy" class="col-md-4">
     <div id="sets">
       <h3>Sets</h3>
-      <app-deck-sets></app-deck-sets>
+      <app-deck-sets [filterId]="-1" (onItemSelected)="onSetSelected($event)"></app-deck-sets>
     </div>
     <div id="decks">
       <h3>Decks</h3>
+      <app-deck-sets [filterId]="selectedSetId"></app-deck-sets>
     </div>
   </div>
 

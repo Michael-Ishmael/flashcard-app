@@ -79,7 +79,7 @@ class CardTargetDevice(models.Model):
 
 
 class Deck(models.Model):
-    deck_id = models.IntegerField(primary_key=True)
+    deck_id = models.AutoField(primary_key=True)
     set = models.ForeignKey('Set', models.DO_NOTHING)
     name = models.CharField(max_length=20)
     icon = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True)

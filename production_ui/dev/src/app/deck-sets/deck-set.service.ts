@@ -14,12 +14,19 @@ interface IApiSet{
 @Injectable()
 export class DeckSetService {
 
-    private deckSetsUrl = 'http://localhost:8000/prod/sets/';  // URL to web api
+    private setsUrl = 'http://localhost:8000/prod/sets/';
+    private decksUrl = 'http://localhost:8000/prod/decks/';
 
     constructor(private http: Http) { }
 
-    getDeckSets(): Observable<DeckSet[]> {
-        return this.http.get(this.deckSetsUrl)
+    getDeckSets(setId:number = -1): Observable<DeckSet[]> {
+        var url:string;
+        if(setId > -1){
+            url = `${this.decksUrl}?set_id=${setId}`;
+        } else {
+            url = this.setsUrl;
+        }
+        return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -37,7 +44,7 @@ export class DeckSetService {
             'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
 
         return this.http
-            .delete(this.deckSetsUrl + deckSet.id + '/', {headers: headers})
+            .delete(this.setsUrl + deckSet.id + '/', {headers: headers})
             .catch(this.handleError);
     }
 
@@ -48,8 +55,11 @@ export class DeckSetService {
             'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
         var item = DeckSetService.deckSetToApiSet(deckSet);
         return this.http
-            .post(this.deckSetsUrl, JSON.stringify(item), {headers: headers})
-            .map(this.extractData)
+            .post(this.setsUrl, JSON.stringify(item), {headers: headers})
+            .map(function(res){
+                var item = res.json();
+                return DeckSetService.apiSetToDeckSet(item as IApiSet)
+            })
             .catch(this.handleError);
     }
 
@@ -58,7 +68,7 @@ export class DeckSetService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        let url = `${this.deckSetsUrl}${deckSet.id}/`;
+        let url = `${this.setsUrl}${deckSet.id}/`;
         var item = DeckSetService.deckSetToApiSet(deckSet);
         return this.http
             .put(url, JSON.stringify(item), {headers: headers})

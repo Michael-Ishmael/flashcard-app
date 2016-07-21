@@ -5,7 +5,7 @@ from typing import Dict
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework import serializers, viewsets
+from rest_framework import serializers, viewsets, filters
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
@@ -36,6 +36,26 @@ class SetViewSet(viewsets.ModelViewSet):
 class DeckViewSet(viewsets.ModelViewSet):
     queryset = Deck.objects.all()
     serializer_class = DeckSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('set_id',)
+
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.filter_queryset(self.get_queryset())
+    #
+    #     set_id_filter = request.query_params.get("set_id", "-1")
+    #     set_id_filter = int(set_id_filter)
+    #     if set_id_filter > -1:
+    #         queryset = queryset.filter(set_id = set_id_filter)
+    #
+    #     page = self.paginate_queryset(queryset)
+    #     if page is not None:
+    #         serializer = self.get_serializer(page, many=True)
+    #         return self.get_paginated_response(serializer.data)
+    #
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     return Response(serializer.data)
+
+
 
 
 @permission_classes((permissions.AllowAny, ))

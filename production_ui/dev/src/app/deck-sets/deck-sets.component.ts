@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, SimpleChange} from '@angular/core';
 import {DeckSetService} from "./deck-set.service";
 import {DeckSet} from "./deck-set";
 import {BUTTON_DIRECTIVES} from 'ng2-bootstrap';
@@ -11,6 +11,8 @@ import {BUTTON_DIRECTIVES} from 'ng2-bootstrap';
   directives: [BUTTON_DIRECTIVES]
 })
 export class DeckSetsComponent implements OnInit {
+  @Input() filterId:number = 0;
+  @Output() onItemSelected = new EventEmitter<DeckSet>();
   deckSets:DeckSet[];
   errorMessage:any;
 
@@ -18,12 +20,17 @@ export class DeckSetsComponent implements OnInit {
   editing:boolean;
   creating:boolean;
 
+
   constructor(
       private deckSetService:DeckSetService
   ) {}
 
   getDeckSets(){
-    this.deckSetService.getDeckSets()
+    if(this.filterId == 0){
+      this.deckSets = [];
+      return;
+    }
+    this.deckSetService.getDeckSets(this.filterId)
         .subscribe(
             sets => this.deckSets = sets,
             error => this.errorMessage = <any>error
@@ -32,6 +39,7 @@ export class DeckSetsComponent implements OnInit {
 
   selectDeckSet(deckSet:DeckSet){
     this.selectedDeckSet = deckSet;
+    this.onItemSelected.emit(deckSet);
   }
 
   addNewDeckSet(){
@@ -87,7 +95,9 @@ export class DeckSetsComponent implements OnInit {
 
   private saveIfNew(savedSet:DeckSet, comp:DeckSetsComponent){
     if(comp.creating){
+      this.removeDeckSet(comp.selectedDeckSet);
       this.deckSets.push(savedSet);
+      this.onItemSelected.emit(savedSet);
       comp.creating = false;
     }
     comp.editing = false;
@@ -97,5 +107,10 @@ export class DeckSetsComponent implements OnInit {
     this.getDeckSets()
   }
 
+  ngOnChanges(changes:{[propName:string]:SimpleChange}) {
+    if(changes.hasOwnProperty("filterId")){
+      this.getDeckSets()
+    }
+  }
 
 }

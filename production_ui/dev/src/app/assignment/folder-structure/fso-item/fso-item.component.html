@@ -1,21 +1,17 @@
 <span *ngIf="model && isFile" class="file fso" [class.selected]="model.selected" (click)="toggleSelected()">
     <i class="fa fa-file" ></i>
-    <span >{{ model.name }}</span>
+    <!--<i *ngIf="!showIcon" class="fa fa-file" ></i>-->
+    <!--<img *ngIf="showIcon" src="{{model.path}}" >-->
+    <span >{{ toRepresentation() }}</span>
 </span>
 <div  *ngIf="model && isFolder" class="folder-title fso" (click)="toggleExpanded()"><i class="fa fa-folder" ></i>{{ model.name }}</div>
 <ul *ngIf="model && isFolder" class="folder" [class.collapsed]="!model.expanded">
 
     <li *ngFor="let folder of model.childFolders">
-      <fso-item [model]="folder"></fso-item>
+      <fso-item [model]="folder" (onSelected)="childSelected($event)" [selectMultiple]="selectMultiple"></fso-item>
     </li>
      <li *ngFor="let file of model.files">
 
-      <fso-item [model]="file"></fso-item>
+      <fso-item [model]="file" (onSelected)="childSelected($event)" [selectMultiple]="selectMultiple"></fso-item>
     </li>
 </ul>
-
-
-
-
-
-

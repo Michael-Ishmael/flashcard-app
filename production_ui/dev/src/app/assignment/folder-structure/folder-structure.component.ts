@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { FolderService } from './folder.service'
 import {Fso} from "./fso";
 import {FsoItemComponent} from "./fso-item/fso-item.component";
@@ -12,7 +12,8 @@ import {FsoItemComponent} from "./fso-item/fso-item.component";
 })
 export class FolderStructureComponent implements OnInit {
 
-  test:string = "testy";
+  @Input() canSelectMultipleFiles:boolean;
+  @Output() onItemSelected:EventEmitter<Fso>;
   root:Fso;
 
   constructor(
@@ -28,8 +29,9 @@ export class FolderStructureComponent implements OnInit {
       .subscribe(root => this.root = root);
   }
 
-  getFiles(){
-    //this.root.name
+  itemSelected(fso:Fso){
+    this.onItemSelected.emit(fso);
   }
+
 
 }

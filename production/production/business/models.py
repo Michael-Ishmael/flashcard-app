@@ -22,6 +22,7 @@ class Folder(object):
 
 
 class File(object):
-    def __init__(self, name: str, path: str):
+    def __init__(self, name: str, path: str, size: int):
         self.name = name
         self.path = path
+        self.size = size

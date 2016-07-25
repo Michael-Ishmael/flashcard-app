@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {FolderStructureComponent} from "./folder-structure/folder-structure.component";
 import {DeckSetsComponent} from "../deck-sets/deck-sets.component";
 import {DeckSet} from "../deck-sets/deck-set";
+import {Fso} from "./folder-structure/fso";
+
+export enum AssignmentMode{
+  None,
+  Set,
+  Deck,
+  Card
+}
 
 @Component({
   moduleId: module.id,
@@ -12,7 +20,10 @@ import {DeckSet} from "../deck-sets/deck-set";
 })
 export class AssignmentComponent implements OnInit {
 
-  selectedSetId:Number = 0;
+  selectMultipleFiles:boolean = false;
+  selectedSetId:number = 0;
+  selectedDeckId:number = 0;
+  assignmentMode:AssignmentMode = AssignmentMode.None;
 
   constructor() {}
 
@@ -20,8 +31,23 @@ export class AssignmentComponent implements OnInit {
   }
 
   onSetSelected(selectedSet:DeckSet){
-    if(selectedSet)
+    if(selectedSet){
       this.selectedSetId = selectedSet.id;
+      this.assignmentMode = AssignmentMode.Set;
+      this.selectMultipleFiles = false;
+    }
+
   }
 
+  onDeckSelected(selectedDeck:DeckSet){
+    if(selectedDeck){
+      this.selectedDeckId = selectedDeck.id;
+      this.assignmentMode = AssignmentMode.Set;
+      this.selectMultipleFiles = true;
+    }
+  }
+
+  onImageSelected(imageFile:Fso){
+    console.log(imageFile.path)
+  }
 }

@@ -44,7 +44,7 @@ export class DeckSetsComponent implements OnInit {
 
   addNewDeckSet(){
 
-    this.selectedDeckSet = new DeckSet(-1, '', '', this.deckSets.length);
+    this.selectedDeckSet = new DeckSet(-1, this.filterId > 0 ? this.filterId : null, '', '', this.deckSets.length);
     this.creating = true;
     this.editing =true;
     this.deckSets.push(this.selectedDeckSet);

@@ -5,9 +5,10 @@ import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs/Rx";
 
 interface IApiSet{
+    deck_id:number,
     set_id:number,
     name:string,
-    icon:string,
+    icon?:string,
     display_order:number
 }
 
@@ -54,8 +55,9 @@ export class DeckSetService {
             'Content-Type': 'application/json',
             'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
         var item = DeckSetService.deckSetToApiSet(deckSet);
+				var url = deckSet.setId ? this.decksUrl : this.setsUrl;
         return this.http
-            .post(this.setsUrl, JSON.stringify(item), {headers: headers})
+            .post(url, JSON.stringify(item), {headers: headers})
             .map(function(res){
                 var item = res.json();
                 return DeckSetService.apiSetToDeckSet(item as IApiSet)
@@ -67,8 +69,8 @@ export class DeckSetService {
     private put(deckSet: DeckSet): Observable<DeckSet> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-
-        let url = `${this.setsUrl}${deckSet.id}/`;
+				var url = deckSet.setId ? this.decksUrl : this.setsUrl;
+        url = `${url}${deckSet.id}/`;
         var item = DeckSetService.deckSetToApiSet(deckSet);
         return this.http
             .put(url, JSON.stringify(item), {headers: headers})
@@ -82,11 +84,13 @@ export class DeckSetService {
     }
 
     private static apiSetToDeckSet(r:IApiSet):DeckSet{
-        return new DeckSet(r.set_id, r.name, r.icon, r.display_order);
+        return new DeckSet(r.deck_id ? r.deck_id : r.set_id,  r.deck_id ? r.set_id : null, r.name, r.icon, r.display_order);
     }
 
     private static deckSetToApiSet(d:DeckSet):IApiSet{
-        return {set_id: d.id, name:d.name, icon:d.icon, display_order:d.displayOrder};
+        var apiSet = {set_id: d.setId ? d.setId : d.id , name:d.name, display_order:d.displayOrder, deck_id: d.setId ? d.id : null} as IApiSet;
+        if(d.icon) apiSet.icon = d.icon;
+			return apiSet;
     }
 
     private handleError(error: any) {

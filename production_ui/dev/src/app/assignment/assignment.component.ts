@@ -12,7 +12,7 @@ import {DeckSet} from "../deck-sets/deck-set";
 })
 export class AssignmentComponent implements OnInit {
 
-  selectedSetId:Number = -1;
+  selectedSetId:Number = 0;
 
   constructor() {}
 

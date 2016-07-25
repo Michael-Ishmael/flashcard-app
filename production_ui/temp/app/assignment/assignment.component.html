@@ -1,0 +1,27 @@
+
+<div id="assignment">
+  <h2>Assignment</h2>
+  
+  <img src="media/seticons/lionIcon.gif">
+
+  <div id="fcHierarchy" class="col-md-4">
+    <div id="sets">
+      <h3>Sets</h3>
+      <app-deck-sets [filterId]="-1" (onItemSelected)="onSetSelected($event)"></app-deck-sets>
+    </div>
+    <div id="decks">
+      <h3>Decks</h3>
+      <app-deck-sets [filterId]="selectedSetId"></app-deck-sets>
+    </div>
+  </div>
+
+
+  <div id="cards" class="col-md-4">
+    <h3>Cards</h3>
+  </div>
+
+  <div id="files" class="col-md-4">
+    <folder-structure></folder-structure>
+  </div>
+
+</div>

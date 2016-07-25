@@ -1,0 +1,23 @@
+
+<form class="form-inline setting-line" (ngSubmit)="onSubmit()" [class.selected]="isNew">
+    <div class="form-group">
+        <input id="settingKey" type="text" class="form-control" required
+          [(ngModel)]="model.settingKey" name="settingKey" ngControl="settingKey" #settingKey="ngModel">
+        <div [hidden]="settingKey.valid || settingKey.pristine" class="alert alert-danger">
+            Key is required
+        </div>
+    </div>
+    <div class="form-group">
+        <input id="settingValue" type="text" class="form-control" required
+               [(ngModel)]="model.settingValue" name="settingValue" ngControl="settingValue" #settingValue="ngModel"
+               title="{{ model.settingValue }}">
+        <div [hidden]="settingValue.valid || settingValue.pristine" class="alert alert-danger">
+            Value is required
+        </div>
+    </div>
+    <button type="submit" class="btn btn-default">{{ isNew ? "Add" : "Edit" }}</button>
+    <button *ngIf="!isNew" type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+    <button *ngIf="isNew" type="button" class="btn btn-default" (click)="onCancel()" >Cancel</button>
+
+</form>
+

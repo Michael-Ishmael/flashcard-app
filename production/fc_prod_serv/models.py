@@ -82,7 +82,7 @@ class Deck(models.Model):
     deck_id = models.AutoField(primary_key=True)
     set = models.ForeignKey('Set', models.DO_NOTHING)
     name = models.CharField(max_length=20)
-    icon = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True)
+    icon = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True, default=1)
     display_order = models.IntegerField()
 
     class Meta:
@@ -95,6 +95,9 @@ class MediaFile(models.Model):
     media_file_type = models.ForeignKey('MediaFileType', models.DO_NOTHING, blank=True, null=False)
     name = models.CharField(unique=True, max_length=50)
     path = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         managed = False
@@ -127,6 +130,9 @@ class Set(models.Model):
     name = models.CharField(max_length=20)
     icon = models.ForeignKey(MediaFile, models.DO_NOTHING, blank=True, null=True)
     display_order = models.IntegerField()
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         managed = False

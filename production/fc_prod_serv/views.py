@@ -58,6 +58,7 @@ class DeckViewSet(viewsets.ModelViewSet):
 
 
 
+
 @permission_classes((permissions.AllowAny, ))
 class FolderView(APIView):
     def __init__(self, **kwargs):

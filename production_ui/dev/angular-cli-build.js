@@ -16,14 +16,15 @@ module.exports = function(defaults) {
       'reflect-metadata/**/*.+(ts|js|js.map)',
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
-      'bootstrap/dist/**/*.+(min.css|min.js)',
-      'ng2-bootstrap/dist/**/*.+(min.css|min.js)',
+      'bootstrap/dist/**/*.+(min.css|min.js|min.css.map)',
+      'ng2-bootstrap/dist/**/*.+(min.css|min.js|min.css.map)',
       'font-awesome/css/font-awesome.min.css',
       'font-awesome/fonts/**',
       'ng2-bootstrap/bundles/*.js',
       'ng2-bootstrap/components/**/*.js',
         'ng2-bootstrap/*.js',
-        'moment/moment.js'
+        'moment/moment.js',
+        'express/lib/**/*.js'
     ]
   });
 };

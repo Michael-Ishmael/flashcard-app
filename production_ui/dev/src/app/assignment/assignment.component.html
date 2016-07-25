@@ -9,7 +9,7 @@
     </div>
     <div id="decks">
       <h3>Decks</h3>
-      <app-deck-sets [filterId]="selectedSetId"></app-deck-sets>
+      <app-deck-sets [filterId]="selectedSetId" (onItemSelected)="onDeckSelected($event)"></app-deck-sets>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
   </div>
 
   <div id="files" class="col-md-4">
-    <folder-structure></folder-structure>
+    <folder-structure [canSelectMultipleFiles]="selectMultipleFiles" (onItemSelected)="onImageSelected($event)"></folder-structure>
   </div>
 
 </div>

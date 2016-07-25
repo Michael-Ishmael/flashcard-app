@@ -89,7 +89,7 @@ class FolderView(APIView):
     def get_folder_model(self, path):
         mfw = MediaFileWatcher()
         root_folder_path = os.path.join(expanduser('~'), path)
-        root_folder = mfw.load_files(root_folder_path, ["jpg"])
+        root_folder = mfw.load_files(root_folder_path, ["jpg", "png", "gif"])
         mfts = MediaFileType.objects.all()
         for mft in mfts:
             self.media_file_types[mft.media_file_type_id] = mft
@@ -104,6 +104,7 @@ class FolderView(APIView):
                 mf.name = file.name
                 mf.media_file_type = self.media_file_types[1]
                 mf.path = file.path
+                mf.size = file.size
                 media_files.append(mf)
             folder.files = media_files
         else:
@@ -115,7 +116,7 @@ class FolderView(APIView):
 class MediaFileField(serializers.Field):
 
     def to_representation(self, value):
-        return {"name" : value.name, "path" : value.path}
+        return {"name" : value.name, "path" : value.path, "size": value.size}
 
     def to_internal_value(self, data):
         mf = MediaFile()

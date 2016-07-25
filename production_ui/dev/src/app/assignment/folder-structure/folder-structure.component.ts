@@ -13,15 +13,18 @@ import {FsoItemComponent} from "./fso-item/fso-item.component";
 export class FolderStructureComponent implements OnInit {
 
   @Input() canSelectMultipleFiles:boolean;
-  @Output() onItemSelected:EventEmitter<Fso>;
+  @Output() onItemSelected = new EventEmitter<Fso>();
   root:Fso;
 
   constructor(
     private folderService:FolderService
-  ) {}
+  ) {
+
+
+  }
 
   ngOnInit() {
-    this.getRoot();
+    //this.getRoot();
   }
 
   getRoot() {

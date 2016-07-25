@@ -4,13 +4,6 @@ import {DeckSetsComponent} from "../deck-sets/deck-sets.component";
 import {DeckSet} from "../deck-sets/deck-set";
 import {Fso} from "./folder-structure/fso";
 
-export enum AssignmentMode{
-  None,
-  Set,
-  Deck,
-  Card
-}
-
 @Component({
   moduleId: module.id,
   selector: 'app-assignment',
@@ -50,4 +43,11 @@ export class AssignmentComponent implements OnInit {
   onImageSelected(imageFile:Fso){
     console.log(imageFile.path)
   }
+}
+
+ enum AssignmentMode{
+  None,
+  Set,
+  Deck,
+  Card
 }

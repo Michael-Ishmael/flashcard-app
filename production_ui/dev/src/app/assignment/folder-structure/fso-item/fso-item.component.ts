@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, forwardRef} from '@angular/core';
 import {Fso} from "../fso";
 
 @Component({
@@ -6,16 +6,18 @@ import {Fso} from "../fso";
   selector: 'fso-item',
   templateUrl: 'fso-item.component.html',
   styleUrls: ['fso-item.component.css'],
-	directives: [FsoItemComponent]
+	directives: [forwardRef(() => FsoItemComponent) ],
 })
 export class FsoItemComponent implements OnInit {
-  	@Input() model:Fso;
+	@Input() model:Fso;
 	@Input() selectMultiple:boolean;
 	@Output() onSelected = new EventEmitter<Fso>();
 	@Output() onUnSelected = new EventEmitter<Fso>();
 	isFolder:boolean;
 	isFile:boolean;
 	showIcon:boolean;
+
+	constructor(){}
 
 	toRepresentation(){
 		if(this.isFile){
@@ -53,7 +55,7 @@ export class FsoItemComponent implements OnInit {
 		}
 	}
 
-  ngOnInit() {
+   ngOnInit() {
   	if(this.model.childFolders || this.model.files){
   		this.isFolder = true;
 		} else {

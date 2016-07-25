@@ -3,6 +3,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 import {SettingService} from "./settings/setting.service";
 import {FolderService} from "./assignment/folder-structure/folder.service";
 import {DeckSetService} from "./deck-sets/deck-set.service";
+import {FsoItemComponent} from "./assignment/folder-structure/fso-item/fso-item.component";
 
 @Component({
   moduleId: module.id,

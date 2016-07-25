@@ -51,7 +51,7 @@ export class SettingService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        let url = `${this.settingsUrl}/${setting.settingKey}`;
+        let url = `${this.settingsUrl}${setting.settingKey}/`;
 
         return this.http
             .put(url, JSON.stringify(setting), {headers: headers})

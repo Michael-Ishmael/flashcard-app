@@ -2,7 +2,7 @@
 <div id="assignment">
   <h2>Assignment</h2>
 
-  <div id="fcHierarchy" class="col-md-4">
+ <div id="fcHierarchy" class="col-md-4">
     <div id="sets">
       <h3>Sets</h3>
       <app-deck-sets [filterId]="-1" (onItemSelected)="onSetSelected($event)"></app-deck-sets>
@@ -14,12 +14,16 @@
   </div>
 
 
-  <div id="cards" class="col-md-4">
-    <h3>Cards</h3>
-  </div>
+    <div id="cards" class="col-md-4">
+      <h3>Cards</h3>
+    </div>
 
-  <div id="files" class="col-md-4">
-    <folder-structure [canSelectMultipleFiles]="selectMultipleFiles" (onItemSelected)="onImageSelected($event)"></folder-structure>
-  </div>
+
+
+    <div id="files" class="col-md-4">
+      <folder-structure ></folder-structure>
+    </div>
+
+
 
 </div>

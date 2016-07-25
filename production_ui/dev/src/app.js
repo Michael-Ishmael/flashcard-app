@@ -10,8 +10,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(__dirname));
+
 app.use('/media', serveStatic('/Users/scorpio/Dev/Projects/flashcard-app/media/media'));
+app.use(express.static(__dirname));
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname,'index.html'));
 });
@@ -23,7 +24,7 @@ app.use(function(req, res, next) {
 });
 if (app.get('env')== 'development')
 {
-    app.listen(3000, function () {
+    app.listen(3001, function () {
         console.log('Example listening on port 3000!');
     });
 }

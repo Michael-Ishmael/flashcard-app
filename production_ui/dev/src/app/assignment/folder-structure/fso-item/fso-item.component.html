@@ -1,8 +1,7 @@
 
 <span *ngIf="model && isFile" class="file fso" [class.selected]="model.selected" (click)="toggleSelected()">
-    <i class="fa fa-file" ></i>
-    &lt;!&ndash;<i *ngIf="!showIcon" class="fa fa-file" ></i>&ndash;&gt;
-    &lt;!&ndash;<img *ngIf="showIcon" src="{{model.path}}" >&ndash;&gt;
+    <i *ngIf="!showIcon" class="fa fa-file" ></i>
+    <img *ngIf="showIcon" src="{{model.relativePath}}" width="30px" >
     <span >{{ toRepresentation() }}</span>
 </span>
 <div  *ngIf="model && isFolder" class="folder-title fso" (click)="toggleExpanded()"><i class="fa fa-folder" ></i>{{ model.name }}</div>

@@ -94,10 +94,10 @@ class FolderView(APIView):
         mfts = MediaFileType.objects.all()
         for mft in mfts:
             self.media_file_types[mft.media_file_type_id] = mft
-        self.replace_files(root_folder)
+        self.replace_files(root_folder, root_folder_path)
         return root_folder
 
-    def replace_files(self, folder: Folder):
+    def replace_files(self, folder: Folder, root_path:str):
         if folder.files is not None:
             media_files = []
             for file in folder.files:
@@ -106,18 +106,19 @@ class FolderView(APIView):
                 mf.media_file_type = self.media_file_types[1]
                 mf.path = file.path
                 mf.size = file.size
+                mf.relative_path = file.path.replace(root_path, 'media')
                 media_files.append(mf)
             folder.files = media_files
         else:
             folder.expanded = True
         for sub_folder in folder.child_folders:
-            self.replace_files(sub_folder)
+            self.replace_files(sub_folder, root_path)
 
 
 class MediaFileField(serializers.Field):
 
     def to_representation(self, value):
-        return {"name" : value.name, "path" : value.path, "size": value.size}
+        return {"name" : value.name, "path" : value.path, "size": value.size, 'relativePath': value.relative_path}
 
     def to_internal_value(self, data):
         mf = MediaFile()

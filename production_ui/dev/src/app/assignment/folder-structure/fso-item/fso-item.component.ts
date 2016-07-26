@@ -6,7 +6,7 @@ import {Fso} from "../fso";
   selector: 'fso-item',
   templateUrl: 'fso-item.component.html',
   styleUrls: ['fso-item.component.css'],
-	directives: [forwardRef(() => FsoItemComponent) ],
+	directives: [FsoItemComponent],
 })
 export class FsoItemComponent implements OnInit {
 	@Input() model:Fso;
@@ -14,8 +14,8 @@ export class FsoItemComponent implements OnInit {
 	@Output() onSelected = new EventEmitter<Fso>();
 	@Output() onUnSelected = new EventEmitter<Fso>();
 	isFolder:boolean;
-	isFile:boolean;
-	showIcon:boolean;
+	isFile:boolean = false;
+	showIcon:boolean = false;
 
 	constructor(){}
 

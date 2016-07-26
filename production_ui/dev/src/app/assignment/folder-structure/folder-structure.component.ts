@@ -24,7 +24,7 @@ export class FolderStructureComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.getRoot();
+    this.getRoot();
   }
 
   getRoot() {

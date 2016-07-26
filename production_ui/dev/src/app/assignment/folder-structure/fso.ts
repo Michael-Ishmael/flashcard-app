@@ -2,6 +2,7 @@ export class Fso {
     constructor(
         public name:string,
         public path:string,
+        public relative_path:string,
         public size:number,
         public childFolders:[Fso],
         public files:[Fso],

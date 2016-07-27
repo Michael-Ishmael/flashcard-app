@@ -1,28 +1,19 @@
+import os
+from os.path import expanduser
+
+import subprocess
+
+
 class PhotoshopScriptRunner(object):
 
-    def __init__(self, photoshop_root_dir):
-        self.photoshop_root_dir = photoshop_root_dir
-
-    def get_ascript(self):
-
-        ascript = '''
-        on run argv
-            tell application "Adobe Photoshop CC 2015"
-              set js to "#include ~/Dev/Projects/baby-flashcard-app/photoshop/singleImage.jsx" & return
-              set js to js & "main(arguments);" & return
-              do javascript js with arguments argv
-
-            end tell
-        end run
-        '''
-        return ascript
-
-    def as_run(self, ascript, line):
+    @staticmethod
+    def as_run(ascript, *args):
         "Run the given AppleScript and return the standard output and error."
         home = expanduser("~")
-        scpt_path = os.path.join(home, "Dev/Projects/baby-flashcard-app/photoshop/resize_cmd.scpt")
-        osa = subprocess.call(
-            ['osascript', scpt_path, line])
+        scpt_path = os.path.join(home, ascript)
+        call_arr = ['osascript', scpt_path]
+        call_arr.extend( [str(a) for a in args] )
+        osa = subprocess.call(call_arr)
 
         # .Popen(['osascript', line],
         #                    stdin=subprocess.PIPE,

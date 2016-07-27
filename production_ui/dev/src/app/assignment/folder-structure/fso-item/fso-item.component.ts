@@ -1,5 +1,6 @@
-import {Component, OnInit, Input, Output, EventEmitter, forwardRef} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Fso} from "../fso";
+import {FolderService} from "../folder.service";
 
 @Component({
   moduleId: module.id,
@@ -13,11 +14,17 @@ export class FsoItemComponent implements OnInit {
 	@Input() selectMultiple:boolean;
 	@Output() onSelected = new EventEmitter<Fso>();
 	@Output() onUnSelected = new EventEmitter<Fso>();
+
 	isFolder:boolean;
 	isFile:boolean = false;
-	showIcon:boolean = false;
+	notAvailable:boolean = false;
+  showIcon:boolean = false;
+  showUpload:boolean = false;
+  showLoading:boolean = false;
 
-	constructor(){}
+	constructor(
+	  private folderService:FolderService
+  ){}
 
 	toRepresentation(){
 		if(this.isFile){
@@ -35,7 +42,7 @@ export class FsoItemComponent implements OnInit {
 	}
 
 	toggleSelected(){
-
+    if(this.notAvailable) return;
 		this.model.selected = !this.model.selected;
 		if(this.model.selected){
 			this.onSelected.emit(this.model);
@@ -43,6 +50,43 @@ export class FsoItemComponent implements OnInit {
 			this.onUnSelected.emit(this.model);
 		}
 	}
+
+	uploadFile(){
+    var that = this;
+    this.showLoading = true;
+    this.folderService.postMediaFile(this.model)
+      .subscribe(f => that.updateUploadedFile(f),
+        e => this.showFileApiError(e));
+  }
+
+  private updateUploadedFile(returned:Fso){
+    this.model.id = returned.id;
+    this.model.media_file_type = returned.media_file_type;
+    this.showLoading = false;
+    this.setFileStatus();
+  }
+
+
+  downloadFile(){
+    var that = this;
+    this.showLoading = true;
+    this.folderService.postFileForPreview(this.model)
+      .subscribe(f => that.updateDownloadedFile(f),
+       e => this.showFileApiError(e));
+  }
+
+  private updateDownloadedFile(returned:Fso){
+    this.model.size = returned.size;
+    this.model.relativePath = returned.relativePath;
+    this.showLoading = false;
+    this.setFileStatus();
+  }
+
+  private showFileApiError(error:any){
+    alert(error);
+    this.showLoading = false;
+    this.setFileStatus();
+  }
 
 	childSelected(child:Fso){
 		this.onSelected.emit(child);
@@ -60,10 +104,26 @@ export class FsoItemComponent implements OnInit {
   		this.isFolder = true;
 		} else {
 			this.isFile = true;
-			if(this.model.size && this.model.size < 100000){
-				this.showIcon = true;
-			}
+			this.setFileStatus();
 		}
   }
+
+  private setFileStatus() {
+
+    if(this.model.size && this.model.size < 100000){
+      this.showIcon = true;
+      if(!this.model.id){
+        this.showUpload = true;
+        this.notAvailable = true;
+      } else {
+        this.showUpload = false;
+        this.notAvailable = false;
+      }
+    } else {
+      this.notAvailable = true;
+    }
+
+  }
+
 
 }

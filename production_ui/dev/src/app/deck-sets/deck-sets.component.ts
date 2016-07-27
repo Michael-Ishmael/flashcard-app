@@ -2,17 +2,20 @@ import {Component, OnInit, Input, Output, EventEmitter, SimpleChange} from '@ang
 import {DeckSetService} from "./deck-set.service";
 import {DeckSet} from "./deck-set";
 import {BUTTON_DIRECTIVES} from 'ng2-bootstrap';
+import {DeckSetFormComponent} from "./deck-set-form/deck-set-form.component";
+import {DeckSetDisplayComponent} from "./deck-set-display/deck-set-display.component";
 
 @Component({
   moduleId: module.id,
   selector: 'app-deck-sets',
   templateUrl: 'deck-sets.component.html',
   styleUrls: ['deck-sets.component.css'],
-  directives: [BUTTON_DIRECTIVES]
+  directives: [BUTTON_DIRECTIVES, DeckSetFormComponent, DeckSetDisplayComponent]
 })
 export class DeckSetsComponent implements OnInit {
   @Input() filterId:number = 0;
   @Output() onItemSelected = new EventEmitter<DeckSet>();
+  @Output() onItemEditing = new EventEmitter<DeckSet>();
   deckSets:DeckSet[];
   errorMessage:any;
 
@@ -43,11 +46,11 @@ export class DeckSetsComponent implements OnInit {
   }
 
   addNewDeckSet(){
-
-    this.selectedDeckSet = new DeckSet(-1, this.filterId > 0 ? this.filterId : null, '', '', this.deckSets.length);
+    if(this.creating) return;
+    this.selectedDeckSet = new DeckSet(-1, this.filterId > 0 ? this.filterId : null, '', '', this.deckSets.length + 1);
     this.creating = true;
     this.editing =true;
-    this.deckSets.push(this.selectedDeckSet);
+    this.deckSets.unshift(this.selectedDeckSet);
   }
 
   deleteDeckSet(deckSet:DeckSet){
@@ -72,11 +75,13 @@ export class DeckSetsComponent implements OnInit {
 
   }
 
-  cancelCreate(){
-    this.deckSets.pop();
-    this.creating = false;
+  cancelEdit(){
     this.editing = false;
-    this.selectedDeckSet = null;
+    if(this.creating){
+      this.deckSets.shift();
+      this.creating = false;
+      this.selectedDeckSet = null;
+    }
   }
 
   editDeckSet(deckSet:DeckSet){
@@ -84,10 +89,12 @@ export class DeckSetsComponent implements OnInit {
        this.selectDeckSet(deckSet)
     }
     this.editing = true;
+    this.deckSetService.announceDeckSetEdited(deckSet);
+    this.onItemEditing.emit(deckSet);
   }
 
-  saveDeckSet(){
-    if(this.selectedDeckSet){
+  saveDeckSet(deckSet:DeckSet){
+    if(deckSet){
       this.deckSetService.save(this.selectedDeckSet, this.creating)
           .subscribe(s => this.saveIfNew(s, this))
     }
@@ -104,7 +111,12 @@ export class DeckSetsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getDeckSets()
+    this.getDeckSets();
+    this.deckSetService.deckSetEdited$.subscribe(ds => {
+      if(this.editing && this.selectedDeckSet != ds){
+        this.cancelEdit();
+      }
+    });
   }
 
   ngOnChanges(changes:{[propName:string]:SimpleChange}) {

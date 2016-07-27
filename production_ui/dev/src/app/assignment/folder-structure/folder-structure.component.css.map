@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,kBAAmB;EACjB,QAAQ,EAAE,MAAM;EAChB,UAAU,EAAC,IAAI;EACf,KAAK,EAAC,KAAK;;AAGb,cAAe;EACb,QAAQ,EAAE,KAAK;EACf,GAAG,EAAC,IAAI;EACR,KAAK,EAAC,KAAK;;AAIb,YAAY;EACV,MAAM,EAAE,KAAK;EACb,UAAU,EAAE,IAAI;EAChB,gBAAgB,EAAE,OAAO;EACzB,MAAM,EAAE,cAAc;EACtB,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,GAAG",
+"sources": ["folder-structure.component.scss"],
+"names": [],
+"file": "folder-structure.component.css"
+}

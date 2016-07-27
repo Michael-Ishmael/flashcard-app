@@ -1,28 +1,41 @@
-.folder{
-    margin: 4px 4px 4px 20px ;
-}
+.folder {
+  margin: 4px 4px 4px 20px; }
 
 ul.folder.collapsed {
-    display: none;
-}
+  display: none; }
 
-.fso{
-    cursor: pointer;
-}
+.fso {
+  cursor: pointer; }
 
-.fso:hover{
-    text-decoration: underline;
-}
+.fso:hover {
+  text-decoration: underline; }
 
 .folder-title {
-    cursor: pointer;
-}
+  cursor: pointer; }
 
 .fso i {
-    margin-right: 5px;
-}
+  margin-right: 5px; }
 
+.file img {
+  width: 30px; }
+.file img.loader {
+  width: 16px;
+  -webkit-filter: none; }
 .file.selected {
-    color: #55a9ff;
-    font-weight: bold;
-}
+  color: #55a9ff;
+  font-weight: bold; }
+.file.disabled {
+  color: #a9a9a9;
+  cursor: default; }
+  .file.disabled:hover {
+    text-decoration: none; }
+  .file.disabled img {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%); }
+  .file.disabled i.fa-upload, .file.disabled i.fa-download {
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 16px;
+    cursor: pointer; }
+
+/*# sourceMappingURL=fso-item.component.css.map */

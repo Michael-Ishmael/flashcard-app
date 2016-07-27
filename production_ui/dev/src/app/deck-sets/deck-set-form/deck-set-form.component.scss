@@ -1,0 +1,43 @@
+.deck-set-icon{
+    background-color: #fff;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 5px 0 0 5px;
+    padding: 10px 10px 12px 10px;
+
+    img {
+      height: 40px;
+    }
+
+    span.label {
+      margin-right: 5px;
+    }
+
+    span.no-icon {
+      font-size: 10px;
+      font-style: italic;
+      display: inline-block;
+      height: 29px;
+    }
+}
+
+.deck-set-order {
+  background-color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 0 5px 5px 0;
+  padding: 8px;
+}
+
+.deck-set-form div[class*="col-sm"]{
+  padding: 2px;
+
+  &:first-child {
+    padding-left: 15px;
+  }
+
+  &:last-child {
+    padding-right: 15px;
+  }
+
+}

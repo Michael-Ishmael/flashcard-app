@@ -43,6 +43,8 @@ const barrels: string[] = [
   'app/assignment/folder-structure',
   'app/assignment/folder-structure/fso-item',
   'app/deck-sets',
+  'app/deck-sets/deck-set-form',
+  'app/deck-sets/deck-set-display',
   /** @cli-barrel */
 ];
 

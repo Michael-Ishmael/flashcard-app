@@ -1,0 +1,44 @@
+
+<form class="deck-set-form" (ngSubmit)="onSubmit()" >
+    <div class="form-group">
+        <div class="input-group">
+            <label for="deck-set-name" class="input-group-addon input-lg">Name</label>
+            <input required [(ngModel)]="model.name" type="text" id="deck-set-name" name="deck-set-name"
+                   class="form-control input-lg">
+        </div>
+        <div class="form-group deck-set-icon col-md-6">
+            <span class="label label-default">Icon</span>
+            <span *ngIf="!model.icon" class="no-icon">icon not set</span>
+            <img *ngIf="model.icon" src="{{ model.icon }}">
+        </div>
+
+        <div class="form-group deck-set-order col-md-6">
+
+            <div class="input-group">
+                <label for="deck-set-order" class="input-group-addon input-lg">Order</label>
+                <input required [(ngModel)]="model.displayOrder" id="deck-set-order" type="text" name="deck-set-order"
+                       class="form-control input-lg">
+        </div>
+            </div>
+
+
+        <div class="row">
+            <div [class.col-sm-4]="model.id > 0" [class.col-sm-6]="model.id <= 0">
+                <button type="submit" class="btn btn-success btn-block btn-lg" >
+                    Save
+                </button>
+            </div>
+            <div *ngIf="model.id > 0"  [class.col-sm-4]="model.id > 0">
+                <button class="btn btn-danger btn-lg btn-block" (click)="onDelete()">
+                    Delete
+                </button>
+            </div>
+            <div [class.col-sm-4]="model.id > 0" [class.col-sm-6]="model.id <= 0">
+                <button type="button" class="btn btn-info btn-lg btn-block" (click)="onCancel()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+    </div>
+</form>

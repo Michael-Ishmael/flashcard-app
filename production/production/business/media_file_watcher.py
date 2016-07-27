@@ -63,4 +63,4 @@ class MediaFileWatcher:
         file_name_path = os.path.join(dir_path, file_name)
         stats = os.stat(file_name_path)
 
-        return File(file_name, file_name_path, stats.st_size)
+        return File(file_name, file_name_path, stats.st_size, None)

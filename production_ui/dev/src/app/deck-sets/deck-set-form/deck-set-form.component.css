@@ -1,0 +1,31 @@
+.deck-set-icon {
+  background-color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 5px 0 0 5px;
+  padding: 10px 10px 12px 10px; }
+  .deck-set-icon img {
+    height: 40px; }
+  .deck-set-icon span.label {
+    margin-right: 5px; }
+  .deck-set-icon span.no-icon {
+    font-size: 10px;
+    font-style: italic;
+    display: inline-block;
+    height: 29px; }
+
+.deck-set-order {
+  background-color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 0 5px 5px 0;
+  padding: 8px; }
+
+.deck-set-form div[class*="col-sm"] {
+  padding: 2px; }
+  .deck-set-form div[class*="col-sm"]:first-child {
+    padding-left: 15px; }
+  .deck-set-form div[class*="col-sm"]:last-child {
+    padding-right: 15px; }
+
+/*# sourceMappingURL=deck-set-form.component.css.map */

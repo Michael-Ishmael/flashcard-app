@@ -1,0 +1,19 @@
+#sidebar.affix-top {
+  position: static;
+  margin-top: 30px;
+  width: 228px; }
+
+#sidebar.affix {
+  position: fixed;
+  top: 70px;
+  width: 228px; }
+
+.file-picker {
+  height: 300px;
+  overflow-y: auto;
+  background-color: #4c525a;
+  border: solid 1px #fff;
+  padding: 10px;
+  border-radius: 5px; }
+
+/*# sourceMappingURL=folder-structure.component.css.map */

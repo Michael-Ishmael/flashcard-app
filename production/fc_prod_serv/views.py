@@ -13,9 +13,11 @@ from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set
-from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer
+from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer, \
+    FolderSerializer, FileSerializer
 from production.business.media_file_watcher import MediaFileWatcher
-from production.business.models import Folder
+from production.business.models import Folder, File
+from production.business.photoshop_script_runner import PhotoshopScriptRunner
 
 
 class MediaFileViewSet(viewsets.ModelViewSet):
@@ -56,6 +58,47 @@ class DeckViewSet(viewsets.ModelViewSet):
     #     return Response(serializer.data)
 
 
+class FilePreviewView(APIView):
+
+    def get(self, request, format=None):
+        return Response("file")
+
+    def post(self, request, format=None):
+        serializer = FileSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        file_dict = serializer.data
+
+        script_path_setting = Config.objects.filter(settingKey='resize_script').first()  # type:Config
+        if script_path_setting is None:
+            data = {"errorMessage": "No script file setting found"}
+            response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return response
+
+        media_path_setting = Config.objects.filter(settingKey='media_folder').first()  # type:Config
+        if media_path_setting is None:
+            data = {"errorMessage": "No media folder setting found"}
+            response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return response
+
+        target = "/Users/scorpio/Dev/Projects/flashcard-app/media/media/img/" + file_dict["name"]
+
+        PhotoshopScriptRunner.as_run(script_path_setting.settingValue, file_dict["path"], target, 800, 600)
+
+        if not os.path.exists(target):
+            data = {"errorMessage": "File not created, not sure why"}
+            response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return response
+
+        stats = os.stat(target)
+        root_path = os.path.join(expanduser("~"), media_path_setting.settingValue)
+        rel_path = target.replace(root_path, "media")
+
+        return_file = File(name=file_dict["name"], path=file_dict["path"], size=stats.st_size, relative_path=rel_path)
+        return_serializer = FileSerializer(return_file)
+
+        return Response(return_serializer.data)
+
 
 
 
@@ -73,13 +116,19 @@ class FolderView(APIView):
         #get_arg2 = request.GET.get('arg2', None)
 
         # Any URL parameters get passed in **kw
-        root_folder = Config.objects.filter(settingKey='media_folder')
-        if len(root_folder) == 0:
+        root_folder = Config.objects.filter(settingKey='media_folder').first()
+        if root_folder is None:
             data = {"errorMessage": "No media folder setting found"}
             response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             return response
 
-        root_folder = self.get_folder_model(root_folder[0].settingValue)
+        preview_folder_setting = Config.objects.filter(settingKey='preview_img_folder').first()
+        if preview_folder_setting is None:
+            data = {"errorMessage": "No preview folder setting found"}
+            response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return response
+
+        root_folder = self.get_folder_model(root_folder.settingValue, preview_folder_setting.settingValue)
         serializer = FolderSerializer(root_folder)
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
@@ -87,52 +136,44 @@ class FolderView(APIView):
     def get_queryset(self):
         return self.get_folder_model()
 
-    def get_folder_model(self, path):
+    def get_folder_model(self, path, preview_path):
         mfw = MediaFileWatcher()
         root_folder_path = os.path.join(expanduser('~'), path)
+        preview_path = os.path.join(expanduser('~'), preview_path)
         root_folder = mfw.load_files(root_folder_path, ["jpg", "png", "gif"])
         mfts = MediaFileType.objects.all()
         for mft in mfts:
             self.media_file_types[mft.media_file_type_id] = mft
-        self.replace_files(root_folder, root_folder_path)
+        self.replace_files(root_folder, root_folder_path, preview_path)
         return root_folder
 
-    def replace_files(self, folder: Folder, root_path:str):
+    def replace_files(self, folder: Folder, root_path: str, preview_path: str):
         if folder.files is not None:
             media_files = []
             for file in folder.files:
-                mf = MediaFile()  # type:MediaFile
-                mf.name = file.name
-                mf.media_file_type = self.media_file_types[1]
-                mf.path = file.path
-                mf.size = file.size
-                mf.relative_path = file.path.replace(root_path, 'media')
+                mf = MediaFile.objects.filter(path=file.path).first()
+                if mf is None:
+                    mf = MediaFile()  # type:MediaFile
+                    mf.name = file.name
+                    mf.media_file_type = self.media_file_types[1]
+                    mf.path = file.path
+                    mf.size = file.size
+                if mf.relative_path is None or len(mf.relative_path) == 0:
+                    test_path = os.path.join(preview_path, file.name)
+                    if os.path.exists(test_path):
+                        mf.relative_path = test_path.replace(root_path, 'media')
+                        stats = os.stat(test_path)
+                        mf.size = stats.st_size
+                    else:
+                        mf.relative_path = file.path.replace(root_path, 'media')
                 media_files.append(mf)
             folder.files = media_files
         else:
             folder.expanded = True
         for sub_folder in folder.child_folders:
-            self.replace_files(sub_folder, root_path)
+            self.replace_files(sub_folder, root_path, preview_path)
 
 
-class MediaFileField(serializers.Field):
-
-    def to_representation(self, value):
-        return {"name" : value.name, "path" : value.path, "size": value.size, 'relativePath': value.relative_path}
-
-    def to_internal_value(self, data):
-        mf = MediaFile()
-        mf.name = data
-        return mf
 
 
-class FolderSerializer(serializers.Serializer):
-    name = serializers.CharField()
-    childFolders = serializers.ListField(source="child_folders", child=RecursiveField())
-    files = serializers.ListField(child=MediaFileField())
-    expanded = serializers.BooleanField()
-
-    class Meta:
-        model = Folder
-        depth = 2
 

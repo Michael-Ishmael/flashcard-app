@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { DeckSet } from './deck-set';
 import {Http, Response, Headers} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
-import {Observable} from "rxjs/Rx";
+import {Observable, Subject} from "rxjs/Rx";
+import {AppSettings} from "../app-settings";
 
 interface IApiSet{
     deck_id:number,
@@ -15,10 +16,16 @@ interface IApiSet{
 @Injectable()
 export class DeckSetService {
 
-    private setsUrl = 'http://localhost:8000/prod/sets/';
-    private decksUrl = 'http://localhost:8000/prod/decks/';
+    private setsUrl:string;
+    private decksUrl:string;
 
-    constructor(private http: Http) { }
+    private deckSetEditedSource = new Subject<DeckSet>();
+    deckSetEdited$ = this.deckSetEditedSource.asObservable();
+
+    constructor(private http: Http, private appSettings:AppSettings) {
+        this.setsUrl = appSettings.apiEndpoint + 'sets/';
+        this.decksUrl = appSettings.apiEndpoint + 'decks/';
+    }
 
     getDeckSets(setId:number = -1): Observable<DeckSet[]> {
         var url:string;
@@ -47,6 +54,10 @@ export class DeckSetService {
         return this.http
             .delete(this.setsUrl + deckSet.id + '/', {headers: headers})
             .catch(this.handleError);
+    }
+
+    announceDeckSetEdited(deckSet: DeckSet){
+      this.deckSetEditedSource.next(deckSet);
     }
 
     // Add new DeckSet

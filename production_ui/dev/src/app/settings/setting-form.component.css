@@ -6,3 +6,7 @@
 .setting-line.selected {
     background-color: #add8e6;
 }
+
+.setting-value {
+    width: 500px;
+}

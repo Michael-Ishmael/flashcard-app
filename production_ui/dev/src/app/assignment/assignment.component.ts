@@ -3,6 +3,7 @@ import {FolderStructureComponent} from "./folder-structure/folder-structure.comp
 import {DeckSetsComponent} from "../deck-sets/deck-sets.component";
 import {DeckSet} from "../deck-sets/deck-set";
 import {Fso} from "./folder-structure/fso";
+import {FolderStructure} from "./folder-structure/folder-structure";
 
 @Component({
   moduleId: module.id,
@@ -13,10 +14,11 @@ import {Fso} from "./folder-structure/fso";
 })
 export class AssignmentComponent implements OnInit {
 
-  selectMultipleFiles:boolean = false;
-  selectedSetId:number = 0;
-  selectedDeckId:number = 0;
+  selectedSet:DeckSet = null;
+  selectedDeck:DeckSet = null;
   assignmentMode:AssignmentMode = AssignmentMode.None;
+  folderStructure:FolderStructure = new FolderStructure(null, false, false);
+
 
   constructor() {}
 
@@ -25,23 +27,48 @@ export class AssignmentComponent implements OnInit {
 
   onSetSelected(selectedSet:DeckSet){
     if(selectedSet){
-      this.selectedSetId = selectedSet.id;
+      this.selectedSet = selectedSet;
       this.assignmentMode = AssignmentMode.Set;
-      this.selectMultipleFiles = false;
+
     }
 
+  }
+
+  onSetEditing(selectedSet:DeckSet){
+    if(selectedSet){
+      this.selectedSet = selectedSet;
+      this.assignmentMode = AssignmentMode.Set;
+      this.folderStructure.canSelectMultipleFiles = false;
+      this.folderStructure.enabled = true;
+      this.folderStructure.target = "Set Icon";
+    }
   }
 
   onDeckSelected(selectedDeck:DeckSet){
     if(selectedDeck){
-      this.selectedDeckId = selectedDeck.id;
-      this.assignmentMode = AssignmentMode.Set;
-      this.selectMultipleFiles = true;
+      this.selectedDeck = selectedDeck;
+      this.assignmentMode = AssignmentMode.Deck;
+    }
+  }
+
+  onDeckEditing(selectedDeck:DeckSet){
+    if(selectedDeck){
+      this.selectedDeck = selectedDeck;
+      this.assignmentMode = AssignmentMode.Deck;
+      this.folderStructure.canSelectMultipleFiles = false;
+      this.folderStructure.enabled = true;
+      this.folderStructure.target = "Deck Icon";
     }
   }
 
   onImageSelected(imageFile:Fso){
-    console.log(imageFile.path)
+    if(this.assignmentMode == AssignmentMode.Set && this.selectedSet != null){
+      this.selectedSet.icon = imageFile.relativePath;
+    }
+    if(this.assignmentMode == AssignmentMode.Deck && this.selectedDeck != null){
+      this.selectedDeck.icon = imageFile.relativePath;
+    }
+
   }
 }
 

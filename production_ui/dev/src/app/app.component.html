@@ -1,9 +1,7 @@
 <h1>Production</h1>
 <nav>
-  <a [routerLink]="['/backlog']" routerLinkActive="active">Backlog</a>
+  <a [routerLink]="['/dashboard']" routerLinkActive="active">Backlog</a>
   <a [routerLink]="['/assignment']" routerLinkActive="active">Assignment</a>
   <a [routerLink]="['/settings']" routerLinkActive="active">Settings</a>
 </nav>
-<div>
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

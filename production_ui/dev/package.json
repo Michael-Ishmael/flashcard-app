@@ -11,35 +11,30 @@
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
     "build-watch": "ng build -watch",
-    "serve-build": "ng build && node dist/app",
-    "serve-build-prod": "ng build -prod && node dist/app"
+    "run-express": "node dist/app"
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "2.0.0-rc.3",
-    "@angular/compiler": "2.0.0-rc.3",
-    "@angular/core": "2.0.0-rc.3",
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
     "@angular/forms": "0.2.0",
-    "@angular/http": "2.0.0-rc.3",
-    "@angular/platform-browser": "2.0.0-rc.3",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.3",
-    "@angular/router": "3.0.0-alpha.8",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.2",
     "body-parser": "^1.15.2",
-    "bootstrap": "^3.3.6",
     "cookie-parser": "^1.4.3",
     "es6-shim": "0.35.1",
-    "express": "4.13.4",
-    "moment": "^2.14.1",
     "morgan": "^1.7.0",
-    "ng2-bootstrap": "^1.0.23",
+    "ng2-scrollspy": "^0.2.14",
     "reflect-metadata": "0.1.3",
     "rxjs": "5.0.0-beta.6",
-    "serve-favicon": "^2.3.0",
     "systemjs": "0.19.26",
     "zone.js": "0.6.12"
   },
   "devDependencies": {
-    "angular-cli": "1.0.0-beta.9",
+    "angular-cli": "1.0.0-beta.10",
     "codelyzer": "0.0.20",
     "ember-cli-inject-live-reload": "1.4.0",
     "jasmine-core": "2.4.1",
@@ -51,6 +46,6 @@
     "ts-node": "0.5.5",
     "tslint": "3.11.0",
     "typescript": "1.8.10",
-    "typings": "0.8.1"
+    "typings": "1.3.1"
   }
 }

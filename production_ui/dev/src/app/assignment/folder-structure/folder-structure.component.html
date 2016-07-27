@@ -1,2 +1,12 @@
-<h3>Select files</h3>
-<fso-item *ngIf="root" [model]="root" ></fso-item>
+<div  *ngIf="model && model.enabled">
+    <h3>Select {{ model.target }}</h3>
+    <div class="file-picker">
+   <fso-item
+            *ngIf="root"
+            [model]="root"
+            [selectmultiple]="model.canSelectMultipleFiles"
+            (onSelected)="itemSelected($event)">
+
+    </fso-item>
+    </div>
+</div>

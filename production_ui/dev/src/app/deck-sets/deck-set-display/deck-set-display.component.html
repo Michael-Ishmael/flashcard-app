@@ -1,0 +1,13 @@
+
+<div class="deck-set-display">
+    <div *ngIf="!model.icon" class="icon-place-holder list-thumbnail">*</div>
+    <img *ngIf="model.icon" class="list-thumbnail" src="{{ model.icon }}">
+    <span class="list-title">{{ model.name }}</span>
+    <div class="pull-right">
+        <span class="badge pull-right ">{{ model.displayOrder }}</span>
+        <br><br>
+        <button type="button" class="btn btn-default btn-xs" (click)="editItem()">Edit</button>
+    </div>
+</div>
+    
+

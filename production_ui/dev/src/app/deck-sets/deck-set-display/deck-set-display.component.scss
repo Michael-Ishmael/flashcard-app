@@ -1,0 +1,23 @@
+.deck-set-display{
+
+  .list-thumbnail{
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  };
+
+  .icon-place-holder{
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 50px;
+    font-weight: bold;
+  }
+
+
+
+  .list-title {
+    font-size: 20px;
+  }
+
+}

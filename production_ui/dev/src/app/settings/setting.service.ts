@@ -3,13 +3,16 @@ import { Setting } from './setting';
 import {Http, Response, Headers} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs/Rx";
+import {AppSettings} from "../app-settings";
 
 @Injectable()
 export class SettingService {
 
-    private settingsUrl = 'http://localhost:8000/prod/config/';  // URL to web api
+    private settingsUrl:string;
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private appSettings:AppSettings) {
+        this.settingsUrl = appSettings.apiEndpoint + 'config/';
+    }
 
     getSettings(): Observable<Setting[]> {
         return this.http.get(this.settingsUrl)

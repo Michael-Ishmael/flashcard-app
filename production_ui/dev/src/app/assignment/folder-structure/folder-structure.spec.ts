@@ -5,6 +5,6 @@ import {FolderStructure} from './folder-structure';
 
 describe('FolderStructure', () => {
   it('should create an instance', () => {
-    expect(new FolderStructure()).toBeTruthy();
+    expect(new FolderStructure(null, false, false)).toBeTruthy();
   });
 });

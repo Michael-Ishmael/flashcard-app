@@ -14,7 +14,7 @@ import { FsoItemComponent } from './fso-item.component';
 
 describe('Component: FsoItem', () => {
   it('should create an instance', () => {
-    let component = new FsoItemComponent();
+    let component = new FsoItemComponent(null);
     expect(component).toBeTruthy();
   });
 });

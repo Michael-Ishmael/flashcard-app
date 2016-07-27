@@ -253,5 +253,5 @@ production/.idea/production.iml
 
 production/.idea/dataSources.local.xml
 
-media/
+media/media/images
 production_ui/deploy/

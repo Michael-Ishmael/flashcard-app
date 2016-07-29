@@ -1,11 +1,5 @@
 
-<span *ngIf="model && isFile" class="file fso" [class.selected]="model.selected" [class.disabled]="notAvailable">
-    <img *ngIf="showLoading" class="loader" src="img/ajax-loader.gif">
-    <i *ngIf="!(showIcon || showLoading)" class="fa fa-download" (click)="downloadFile()" ></i>
-    <img *ngIf="showIcon" src="{{model.relativePath}}" (click)="toggleSelected()"  >
-    <span (click)="toggleSelected()" >{{ toRepresentation() }}</span>
-    <i *ngIf="showUpload" class="fa fa-upload" (click)="uploadFile()"></i>
-</span>
+<fso-img-item *ngIf="model && isFile" [model]="model" ></fso-img-item>
 <div  *ngIf="model && isFolder" class="folder-title fso" (click)="toggleExpanded()"><i class="fa fa-folder" ></i>{{ model.name }}</div>
 <ul *ngIf="model && isFolder" class="folder" [class.collapsed]="!model.expanded">
 

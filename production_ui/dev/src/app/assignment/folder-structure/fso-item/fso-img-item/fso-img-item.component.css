@@ -1,0 +1,23 @@
+.file img {
+  width: 30px; }
+.file img.loader {
+  width: 16px;
+  -webkit-filter: none; }
+.file.selected {
+  color: #55a9ff;
+  font-weight: bold; }
+.file.disabled {
+  color: #a9a9a9;
+  cursor: default; }
+  .file.disabled:hover {
+    text-decoration: none; }
+  .file.disabled img {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%); }
+  .file.disabled i.fa-upload, .file.disabled i.fa-download {
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 16px;
+    cursor: pointer; }
+
+/*# sourceMappingURL=fso-img-item.component.css.map */

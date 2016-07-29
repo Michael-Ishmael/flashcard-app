@@ -1,13 +1,14 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Fso} from "../fso";
 import {FolderService} from "../folder.service";
+import {FsoImgItemComponent} from "./fso-img-item/fso-img-item.component";
 
 @Component({
   moduleId: module.id,
   selector: 'fso-item',
   templateUrl: 'fso-item.component.html',
   styleUrls: ['fso-item.component.css'],
-	directives: [FsoItemComponent],
+	directives: [FsoItemComponent, FsoImgItemComponent],
 })
 export class FsoItemComponent implements OnInit {
 	@Input() model:Fso;
@@ -23,19 +24,9 @@ export class FsoItemComponent implements OnInit {
   showLoading:boolean = false;
 
 	constructor(
-	  private folderService:FolderService
+	   private folderService:FolderService
   ){}
 
-	toRepresentation(){
-		if(this.isFile){
-			return `${this.model.name} (${this.formatFileSize(this.model.size)})`
-		}
-	}
-
-	formatFileSize(fileSize:number){
-		var kbSize:number = (fileSize > 0 ? Math.round(fileSize / 1000) : 0);
-		return `${kbSize}kb`
-	}
 
 	toggleExpanded(){
 		this.model.expanded = !this.model.expanded;
@@ -51,42 +42,6 @@ export class FsoItemComponent implements OnInit {
 		}
 	}
 
-	uploadFile(){
-    var that = this;
-    this.showLoading = true;
-    this.folderService.postMediaFile(this.model)
-      .subscribe(f => that.updateUploadedFile(f),
-        e => this.showFileApiError(e));
-  }
-
-  private updateUploadedFile(returned:Fso){
-    this.model.id = returned.id;
-    this.model.media_file_type = returned.media_file_type;
-    this.showLoading = false;
-    this.setFileStatus();
-  }
-
-
-  downloadFile(){
-    var that = this;
-    this.showLoading = true;
-    this.folderService.postFileForPreview(this.model)
-      .subscribe(f => that.updateDownloadedFile(f),
-       e => this.showFileApiError(e));
-  }
-
-  private updateDownloadedFile(returned:Fso){
-    this.model.size = returned.size;
-    this.model.relativePath = returned.relativePath;
-    this.showLoading = false;
-    this.setFileStatus();
-  }
-
-  private showFileApiError(error:any){
-    alert(error);
-    this.showLoading = false;
-    this.setFileStatus();
-  }
 
 	childSelected(child:Fso){
 		this.onSelected.emit(child);

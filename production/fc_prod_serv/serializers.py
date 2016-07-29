@@ -2,7 +2,7 @@ from django.db.models import Q
 from rest_framework import serializers
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.models import MediaFile, MediaFileType, Config, Set, Deck
+from fc_prod_serv.models import MediaFile, MediaFileType, Config, Set, Deck, Card
 from production.business.models import Folder, File
 
 
@@ -40,6 +40,16 @@ class DeckSerializer(serializers.HyperlinkedModelSerializer):
         model = Deck
         fields = ('deck_id', 'name', 'set_id', 'icon', 'display_order')
 
+
+class CardSerializer(serializers.HyperlinkedModelSerializer):
+    deck_id = serializers.PrimaryKeyRelatedField(many=False, queryset=Deck.objects.all(), source='deck')
+    image = serializers.SlugRelatedField(many=False, source="original_image",
+                                         queryset=MediaFile.objects.filter(media_file_type=1),
+                                         slug_field="relative_path")
+
+    class Meta:
+        model = Card
+        fields = ('card_id', 'name', 'deck_id', 'display_order', 'sound', 'image')
 
 class MediaFileField(serializers.Field):
 

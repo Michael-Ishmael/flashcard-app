@@ -1,0 +1,40 @@
+
+.file {
+
+  img {
+    width: 30px;
+  }
+
+  img.loader {
+    width: 16px;
+    -webkit-filter: none;
+  }
+
+  &.selected {
+    color: #55a9ff;
+    font-weight: bold;
+  }
+
+  &.disabled {
+
+    color: #a9a9a9;
+    cursor: default;
+
+    &:hover {
+      text-decoration: none;
+
+    }
+
+    img {
+      filter: grayscale(100%);
+      -webkit-filter: grayscale(100%);
+    }
+
+    i.fa-upload, i.fa-download{
+      display: inline-block;
+      margin-left: 2px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+}

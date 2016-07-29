@@ -30,7 +30,7 @@ class MediaFileWatcher:
                 root_folder = folder
             for file in files:
                 if self.is_match(file, exts):
-                    mw = self.get_media_file(file, dir_path)
+                    mw = self.get_media_file(file, dir_path, root_folder_path)
                     if folder.files is None:
                         folder.files = []
                     folder.files.append(mw)
@@ -59,8 +59,8 @@ class MediaFileWatcher:
         item_name = os.path.basename(path)
         return Folder(item_name)
 
-    def get_media_file(self, file_name: str, dir_path: str):
+    def get_media_file(self, file_name: str, dir_path: str, root_path: str):
         file_name_path = os.path.join(dir_path, file_name)
         stats = os.stat(file_name_path)
-
-        return File(file_name, file_name_path, stats.st_size, None)
+        trimmed_path = file_name_path.replace(root_path, "")
+        return File(file_name, trimmed_path, stats.st_size, None)

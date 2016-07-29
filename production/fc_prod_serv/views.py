@@ -12,9 +12,10 @@ from rest_framework import status, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set
+from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card
 from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer, \
-    FolderSerializer, FileSerializer
+    FolderSerializer, FileSerializer, CardSerializer
+from production.business.fc_util import join_paths
 from production.business.media_file_watcher import MediaFileWatcher
 from production.business.models import Folder, File
 from production.business.photoshop_script_runner import PhotoshopScriptRunner
@@ -23,6 +24,21 @@ from production.business.photoshop_script_runner import PhotoshopScriptRunner
 class MediaFileViewSet(viewsets.ModelViewSet):
     queryset = MediaFile.objects.all()
     serializer_class = MediaFileSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = MediaFileSerializer(data=request.data)
+
+        if serializer.is_valid():
+            name = serializer.validated_data["name"]
+            match = MediaFile.objects.filter(name=name).first()
+            if not match is None:
+                serializer = MediaFileSerializer(match, request.data)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ConfigViewSet(viewsets.ModelViewSet):
@@ -33,6 +49,11 @@ class ConfigViewSet(viewsets.ModelViewSet):
 class SetViewSet(viewsets.ModelViewSet):
     queryset = Set.objects.all()
     serializer_class = SetSerializer
+
+
+class CardViewSet(viewsets.ModelViewSet):
+    queryset = Card.objects.all()
+    serializer_class = CardSerializer
 
 
 class DeckViewSet(viewsets.ModelViewSet):
@@ -57,6 +78,9 @@ class DeckViewSet(viewsets.ModelViewSet):
     #     serializer = self.get_serializer(queryset, many=True)
     #     return Response(serializer.data)
 
+class SetViewSet(viewsets.ModelViewSet):
+    queryset = Set.objects.all()
+    serializer_class = SetSerializer
 
 class FilePreviewView(APIView):
 
@@ -81,9 +105,11 @@ class FilePreviewView(APIView):
             response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             return response
 
-        target = "/Users/scorpio/Dev/Projects/flashcard-app/media/media/img/" + file_dict["name"]
+        media_path = join_paths(expanduser('~'), media_path_setting.settingValue)
+        source = join_paths(media_path, file_dict["path"])
+        target = join_paths(media_path,"img", file_dict["name"])
 
-        PhotoshopScriptRunner.as_run(script_path_setting.settingValue, file_dict["path"], target, 800, 600)
+        PhotoshopScriptRunner.as_run(script_path_setting.settingValue, source, target, 800, 600)
 
         if not os.path.exists(target):
             data = {"errorMessage": "File not created, not sure why"}
@@ -91,15 +117,13 @@ class FilePreviewView(APIView):
             return response
 
         stats = os.stat(target)
-        root_path = os.path.join(expanduser("~"), media_path_setting.settingValue)
+        root_path = join_paths(expanduser("~"), media_path_setting.settingValue)
         rel_path = target.replace(root_path, "media")
 
         return_file = File(name=file_dict["name"], path=file_dict["path"], size=stats.st_size, relative_path=rel_path)
         return_serializer = FileSerializer(return_file)
 
         return Response(return_serializer.data)
-
-
 
 
 @permission_classes((permissions.AllowAny, ))
@@ -138,9 +162,9 @@ class FolderView(APIView):
 
     def get_folder_model(self, path, preview_path):
         mfw = MediaFileWatcher()
-        root_folder_path = os.path.join(expanduser('~'), path)
-        preview_path = os.path.join(expanduser('~'), preview_path)
-        root_folder = mfw.load_files(root_folder_path, ["jpg", "png", "gif"])
+        root_folder_path = join_paths(expanduser('~'), path)
+        preview_path = join_paths(expanduser('~'), preview_path)
+        root_folder = mfw.load_files(root_folder_path, ["jpg", "png", "gif", "mp3"])
         mfts = MediaFileType.objects.all()
         for mft in mfts:
             self.media_file_types[mft.media_file_type_id] = mft
@@ -159,13 +183,13 @@ class FolderView(APIView):
                     mf.path = file.path
                     mf.size = file.size
                 if mf.relative_path is None or len(mf.relative_path) == 0:
-                    test_path = os.path.join(preview_path, file.name)
+                    test_path = join_paths(preview_path, file.name)
                     if os.path.exists(test_path):
                         mf.relative_path = test_path.replace(root_path, 'media')
                         stats = os.stat(test_path)
                         mf.size = stats.st_size
                     else:
-                        mf.relative_path = file.path.replace(root_path, 'media')
+                        mf.relative_path = "media" + file.path  # .replace(root_path, 'media')
                 media_files.append(mf)
             folder.files = media_files
         else:

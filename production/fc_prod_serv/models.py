@@ -93,7 +93,7 @@ class Deck(models.Model):
 class MediaFile(models.Model):
     media_file_id = models.AutoField(primary_key=True)
     media_file_type = models.ForeignKey('MediaFileType', models.DO_NOTHING, blank=True, null=False)
-    name = models.CharField(unique=True, max_length=50)
+    name = models.CharField(max_length=50)
     path = models.CharField(max_length=500)
     size = models.IntegerField(default=0)
     relative_path = models.CharField(max_length=300)

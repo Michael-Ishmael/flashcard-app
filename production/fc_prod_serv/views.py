@@ -54,6 +54,8 @@ class SetViewSet(viewsets.ModelViewSet):
 class CardViewSet(viewsets.ModelViewSet):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('deck_id',)
 
 
 class DeckViewSet(viewsets.ModelViewSet):
@@ -182,6 +184,7 @@ class FolderView(APIView):
                     mf.media_file_type = self.media_file_types[1]
                     mf.path = file.path
                     mf.size = file.size
+                    mf.media_file_type_id = 3 if file.name.endswith(".mp3") else 1 if file.name.endswith(".jpg") else 2
                 if mf.relative_path is None or len(mf.relative_path) == 0:
                     test_path = join_paths(preview_path, file.name)
                     if os.path.exists(test_path):

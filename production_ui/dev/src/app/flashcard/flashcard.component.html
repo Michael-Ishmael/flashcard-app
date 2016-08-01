@@ -1,0 +1,17 @@
+
+<div class="deck-set-list">
+  <button class="btn btn-success btn-xs pull-right" (click)="addNewDeckSet()">+</button>
+  <ul *ngIf="flashcards" class="list-group">
+
+    <li *ngFor="let flashcard of flashcards" class="list-group-item" [class.active]="flashcard == selectedFlashcard"
+        (click)="selectedFlashcard(flashcard)"  >
+          {{ flashcard.name }}
+      <!--<deck-set-display *ngIf="!(deckSet == selectedDeckSet && editing)" [model]="deckSet" (onEdit)="editDeckSet(deckSet)"></deck-set-display>-->
+      <!--<deck-set-form *ngIf="deckSet == selectedDeckSet && editing" [model]="deckSet"-->
+                     <!--(onDecksetAdded)="saveDeckSet($event)" (onUpdated)="saveDeckSet($event)" (onCancelled)="cancelEdit()"-->
+      <!--&gt;</deck-set-form>-->
+
+    </li>
+
+  </ul>
+</div>

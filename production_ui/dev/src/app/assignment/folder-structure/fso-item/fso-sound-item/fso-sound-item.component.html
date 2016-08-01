@@ -1,0 +1,10 @@
+<span class="file fso" [class.selected]="model.selected" [class.disabled]="notAvailable">
+    <img *ngIf="showLoading" class="loader" src="img/ajax-loader.gif">
+    <i class="fa" [class.fa-play]="!playing" [class.fa-stop]="playing" (click)="togglePlaySound()"></i>
+      <!--<audio controls="" type="audio/mpeg" src="{{ model.relativePath }}">-->
+                          <!--Your browser does not support audio-->
+                      <!--</audio>-->
+    <span (click)="toggleSelected()" >{{ toRepresentation() }}</span>
+    <i *ngIf="showUpload" class="fa fa-upload" (click)="uploadFile()"></i>
+
+</span>

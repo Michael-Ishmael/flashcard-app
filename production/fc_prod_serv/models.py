@@ -28,7 +28,7 @@ class AspectRatio(models.Model):
 
 
 class Card(models.Model):
-    card_id = models.IntegerField(primary_key=True)
+    card_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20)
     deck = models.ForeignKey('Deck', models.DO_NOTHING)
     display_order = models.IntegerField()
@@ -84,6 +84,9 @@ class Deck(models.Model):
     name = models.CharField(max_length=20)
     icon = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True, default=1)
     display_order = models.IntegerField()
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         managed = False

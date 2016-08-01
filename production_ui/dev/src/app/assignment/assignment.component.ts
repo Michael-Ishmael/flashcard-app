@@ -4,13 +4,14 @@ import {DeckSetsComponent} from "../deck-sets/deck-sets.component";
 import {DeckSet} from "../deck-sets/deck-set";
 import {Fso} from "./folder-structure/fso";
 import {FolderStructure} from "./folder-structure/folder-structure";
+import {FlashcardComponent} from "../flashcard/flashcard.component";
 
 @Component({
   moduleId: module.id,
   selector: 'app-assignment',
   templateUrl: 'assignment.component.html',
   styleUrls: ['assignment.component.css'],
-  directives: [FolderStructureComponent, DeckSetsComponent]
+  directives: [FolderStructureComponent, DeckSetsComponent, FlashcardComponent]
 })
 export class AssignmentComponent implements OnInit {
 

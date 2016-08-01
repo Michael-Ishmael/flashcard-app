@@ -2,13 +2,14 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Fso} from "../fso";
 import {FolderService} from "../folder.service";
 import {FsoImgItemComponent} from "./fso-img-item/fso-img-item.component";
+import {FsoSoundItemComponent} from "./fso-sound-item/fso-sound-item.component";
 
 @Component({
   moduleId: module.id,
   selector: 'fso-item',
   templateUrl: 'fso-item.component.html',
   styleUrls: ['fso-item.component.css'],
-	directives: [FsoItemComponent, FsoImgItemComponent],
+	directives: [FsoItemComponent, FsoImgItemComponent, FsoSoundItemComponent],
 })
 export class FsoItemComponent implements OnInit {
 	@Input() model:Fso;

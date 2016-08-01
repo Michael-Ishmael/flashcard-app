@@ -42,19 +42,25 @@ class DeckSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
-    deck_id = serializers.PrimaryKeyRelatedField(many=False, queryset=Deck.objects.all(), source='deck')
+    id = serializers.PrimaryKeyRelatedField(many=False, queryset=Deck.objects.all(), source='card_id')
+    deckId = serializers.PrimaryKeyRelatedField(many=False, queryset=Deck.objects.all(), source='deck')
+    displayOrder = serializers.PrimaryKeyRelatedField(many=False, queryset=Deck.objects.all(), source='display_order')
     image = serializers.SlugRelatedField(many=False, source="original_image",
                                          queryset=MediaFile.objects.filter(media_file_type=1),
+                                         slug_field="relative_path")
+    sound = serializers.SlugRelatedField(many=False,
+                                         queryset=MediaFile.objects.filter(media_file_type=3),
                                          slug_field="relative_path")
 
     class Meta:
         model = Card
-        fields = ('card_id', 'name', 'deck_id', 'display_order', 'sound', 'image')
+        fields = ('id', 'name', 'deckId', 'displayOrder', 'sound', 'image')
 
 class MediaFileField(serializers.Field):
 
     def to_representation(self, value:MediaFile):
-        return {"id" : value.media_file_id, "name" : value.name, "path" : value.path, "size": value.size, 'relativePath': value.relative_path}
+        return {"id" : value.media_file_id, "name" : value.name, "path" : value.path,
+                "size": value.size, 'relativePath': value.relative_path, 'media_file_type': value.media_file_type_id}
 
     def to_internal_value(self, data):
         mf = MediaFile()

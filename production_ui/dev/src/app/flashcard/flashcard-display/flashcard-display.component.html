@@ -1,0 +1,15 @@
+
+<div class="flashcard-display">
+  <h3>{{ model.name }}</h3>
+  <div *ngIf="!model.image" class="icon-place-holder">*</div>
+  <div class="media-row">
+    <img *ngIf="model.image" src="{{ model.image }}">
+    <app-sound-control [src]="model.sound"></app-sound-control>
+  </div>
+
+  <div class="pull-right">
+    <span class="badge pull-right ">{{ model.displayOrder }}</span>
+    <br><br>
+    <button type="button" class="btn btn-default btn-xs" (click)="editItem()">Edit</button>
+  </div>
+</div>

@@ -1,45 +1,28 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FlashcardService} from "./flashcard.service";
 import {Flashcard} from "./flashcard";
+import {AssignableComponent} from "../shared/assignable-component";
+import {AssignableDisplayComponent} from "../assignables/assignable-display/assignable-display.component";
+import {AssignableFormComponent} from "../assignables/assignable-form/assignable-form.component";
+
 
 @Component({
   moduleId: module.id,
-  selector: 'app-flashcard',
-  templateUrl: 'flashcard.component.html',
-  styleUrls: ['flashcard.component.css']
+  selector: 'card-list',
+  templateUrl: '../assignables/assignable/assignable.component.html',
+  styleUrls: ['../assignables/assignable/assignable.component.css'],
+  directives: [AssignableDisplayComponent, AssignableFormComponent]
 })
-export class FlashcardComponent implements OnInit {
-
-  @Input() filterId:number = 1;
-  flashcards:Flashcard[];
-  errorMessage:any;
-
-  selectedFlashcard:Flashcard;
-  editing:boolean;
-  creating:boolean;
+export class FlashcardComponent extends AssignableComponent<Flashcard> implements OnInit {
 
   constructor(
       private flashcardService:FlashcardService
-  ) { }
+  ) {
+    super(flashcardService); }
 
-  getFlashCards(){
-    if(this.filterId == 0){
-      this.flashcards = [];
-      return;
-    }
-    this.flashcardService.getFlashcards(this.filterId)
-        .subscribe(
-            cards => this.flashcards = cards,
-            error => this.errorMessage = <any>error
-        )
+  createItem():Flashcard{
+    return new Flashcard(-1, this.filterId > 0 ? this.filterId : null, '', '', '', this.items.length + 1);
   }
 
-  selectFlashcard(flashcard:Flashcard){
-    this.selectedFlashcard = flashcard;
-  }
-
-  ngOnInit() {
-    this.getFlashCards();
-  }
 
 }

@@ -1,0 +1,18 @@
+
+<div class="assignable-list">
+  <button class="btn btn-success btn-xs pull-right" (click)="addNewItem()">+</button>
+  <ul *ngIf="items" class="list-group">
+
+    <li *ngFor="let item of items" class="list-group-item" [class.active]="item == selectedItem"
+        (click)="selectItem(item)"  >
+      <assignable-display *ngIf="!(item == selectedItem && editing)" [model]="item"
+                         (onEdit)="editItem($event)"
+      ></assignable-display>
+      <assignable-form *ngIf="item == selectedItem && editing" [model]="item"
+                      (onAdded)="saveItem($event)" (onUpdated)="saveItem($event)" (onCancelled)="cancelEdit()"
+      ></assignable-form>
+
+    </li>
+
+  </ul>
+</div>

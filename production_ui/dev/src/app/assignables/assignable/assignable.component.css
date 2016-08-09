@@ -1,0 +1,16 @@
+.assignable-list .list-group-item {
+  color: #595959;
+  cursor: pointer; }
+.assignable-list .btn-success {
+  margin-top: -34px; }
+.assignable-list .list-group-item.active {
+  color: #fff; }
+.assignable-list .list-group-item.active input {
+  color: #595959; }
+.assignable-list .btn-xs {
+  margin-right: 4px; }
+.assignable-list .badge {
+  display: inline-block;
+  margin-top: 2px; }
+
+/*# sourceMappingURL=assignable.component.css.map */

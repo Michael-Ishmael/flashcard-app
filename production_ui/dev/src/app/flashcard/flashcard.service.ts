@@ -1,19 +1,28 @@
 import { Injectable } from '@angular/core';
 import {AppSettings} from "../app-settings";
 import {Flashcard} from "./flashcard";
-import {Http, Response} from "@angular/http";
-import {Subject, Observable} from "rxjs/Rx";
+import {Http, Response, Headers} from "@angular/http";
+import {Observable} from "rxjs/Rx";
+import {AssignableService} from "../shared/assignable-service";
+import {AssignableType} from "../shared/assignable";
+
 
 @Injectable()
-export class FlashcardService {
+export class FlashcardService extends  AssignableService<Flashcard>{
 
   private flashcardsUrl:string;
 
-  private flashardEditedSource = new Subject<Flashcard>();
-  flashardEdited$ = this.flashardEditedSource.asObservable();
-
   constructor(private http: Http, private appSettings:AppSettings) {
+    super();
     this.flashcardsUrl = appSettings.apiEndpoint + 'cards/';
+  }
+
+  getItems(filterId:number = -1): Observable<Flashcard[]>{
+    var url:string;
+    url = `${this.flashcardsUrl}?deck_id=${filterId}`;
+    return this.http.get(url)
+        .map(this.extractData)
+        .catch(this.handleError);
   }
 
   getFlashcards(deckId:number = -1): Observable<Flashcard[]> {
@@ -25,8 +34,60 @@ export class FlashcardService {
   }
 
   private extractData(res: Response):Flashcard[] {
-    let body = res.json();
+    let body = res.json() as Flashcard[] ;
+    body.forEach(function (card:Flashcard) {
+      card.type = AssignableType.Flashcard;
+    });
     return body;
+  }
+
+
+  save(flashcard: Flashcard, asNew:boolean = false): Observable<Flashcard>  {
+    if (asNew) {
+      return this.post(flashcard);
+    }
+    return this.put(flashcard);
+  }
+
+  delete(flashcard: Flashcard): Observable<Flashcard> {
+    let headers = new Headers({
+      //'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
+
+    return this.http
+        .delete(this.flashcardsUrl + flashcard.id + '/', {headers: headers})
+        .catch(this.handleError);
+  }
+
+  announceItemEdited(flashcard: Flashcard){
+    this.itemEditedSource.next(flashcard);
+  }
+
+  // Add new Flashcard
+  private post(flashcard: Flashcard): Observable<Flashcard> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
+    var url = this.flashcardsUrl;
+    return this.http
+        .post(url, JSON.stringify(flashcard), {headers: headers})
+        .map(function(res){
+          var item = res.json();
+          return item;
+        })
+        .catch(this.handleError);
+  }
+
+  // Update existing Flashcards
+  private put(flashcard: Flashcard): Observable<Flashcard> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    var url = this.flashcardsUrl;
+    url = `${url}${flashcard.id}/`;
+    return this.http
+        .put(url, JSON.stringify(flashcard), {headers: headers})
+        .map(() => flashcard)
+        .catch(this.handleError);
   }
 
   private handleError(error:any){

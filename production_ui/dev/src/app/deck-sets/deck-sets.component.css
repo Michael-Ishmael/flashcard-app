@@ -1,26 +1,16 @@
-
-.deck-set-list .list-group-item{
-    color: #595959;
-    cursor: pointer;
-}
-
+.deck-set-list .list-group-item {
+  color: #595959;
+  cursor: pointer; }
 .deck-set-list .btn-success {
-    margin-top: -34px;
-}
-
-.deck-set-list .list-group-item.active{
-    color: #fff;
-}
-
-.deck-set-list .list-group-item.active input{
-    color: #595959;
-}
-
+  margin-top: -34px; }
+.deck-set-list .list-group-item.active {
+  color: #fff; }
+.deck-set-list .list-group-item.active input {
+  color: #595959; }
 .deck-set-list .btn-xs {
-    margin-right: 4px;
-}
-
+  margin-right: 4px; }
 .deck-set-list .badge {
-    display: inline-block;
-    margin-top: 2px;
-}
+  display: inline-block;
+  margin-top: 2px; }
+
+/*# sourceMappingURL=deck-sets.component.css.map */

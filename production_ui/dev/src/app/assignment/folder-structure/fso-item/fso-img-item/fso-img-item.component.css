@@ -1,5 +1,6 @@
 .file img {
-  width: 30px; }
+  width: 30px;
+  cursor: pointer; }
 .file img.loader {
   width: 16px;
   -webkit-filter: none; }

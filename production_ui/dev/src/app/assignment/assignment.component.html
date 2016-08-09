@@ -14,9 +14,9 @@
   </div>
 
 
-    <div id="cards" class="col-md-4">
+    <div id="cards" class="col-md-4" *ngIf="selectedDeck">
       <h3>Cards</h3>
-      <app-flashcard [filterid]="1"></app-flashcard>
+      <card-list [filterId]="selectedDeck.id" (onItemEditing)="onItemEditing($event)" (onItemSelected)="onCardSelected($event)"></card-list>
     </div>
 
 

@@ -1,0 +1,27 @@
+.assignable-list{
+  .list-group-item{
+    color: #595959;
+    cursor: pointer;
+  }
+
+  .btn-success {
+    margin-top: -34px;
+  }
+
+  .list-group-item.active{
+    color: #fff;
+  }
+
+  .list-group-item.active input{
+    color: #595959;
+  }
+
+  .btn-xs {
+    margin-right: 4px;
+  }
+
+  .badge {
+    display: inline-block;
+    margin-top: 2px;
+  }
+}

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,cAAe;EACX,OAAO,EAAE,YAAY",
+"sources": ["sound-control.component.scss"],
+"names": [],
+"file": "sound-control.component.css"
+}

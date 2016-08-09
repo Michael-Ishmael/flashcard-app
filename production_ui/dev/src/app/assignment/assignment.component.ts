@@ -5,6 +5,8 @@ import {DeckSet} from "../deck-sets/deck-set";
 import {Fso} from "./folder-structure/fso";
 import {FolderStructure} from "./folder-structure/folder-structure";
 import {FlashcardComponent} from "../flashcard/flashcard.component";
+import {Flashcard} from "../flashcard/flashcard";
+import {IAssignable, AssignableType} from "../shared/assignable";
 
 @Component({
   moduleId: module.id,
@@ -19,6 +21,8 @@ export class AssignmentComponent implements OnInit {
   selectedDeck:DeckSet = null;
   assignmentMode:AssignmentMode = AssignmentMode.None;
   folderStructure:FolderStructure = new FolderStructure(null, false, false);
+  selectedCard:Flashcard = null;
+  selectedItem:IAssignable;
 
 
   constructor() {}
@@ -59,6 +63,23 @@ export class AssignmentComponent implements OnInit {
       this.folderStructure.canSelectMultipleFiles = false;
       this.folderStructure.enabled = true;
       this.folderStructure.target = "Deck Icon";
+    }
+  }
+
+  onCardSelected(selectedCard:Flashcard){
+    if(selectedCard){
+      this.selectedCard = selectedCard;
+      this.assignmentMode = AssignmentMode.Card;
+    }
+  }
+
+  onItemEditing(item:IAssignable){
+    this.selectedItem = item;
+    if(item.type == AssignableType.Flashcard){
+      this.selectedCard = item as Flashcard;
+      this.assignmentMode = AssignmentMode.Card;
+      this.folderStructure.enabled = true;
+      this.folderStructure.target = "Flashcard Image and Sound"
     }
   }
 

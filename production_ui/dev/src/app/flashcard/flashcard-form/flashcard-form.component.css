@@ -1,0 +1,56 @@
+.flashcard-sound {
+  margin-top: 10px;
+  background-color: white;
+  display: inline-block;
+  height: 62px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  vertical-align: middle;
+  line-height: 62px;
+  font-size: 20px; }
+  .flashcard-sound span.label {
+    margin-right: 5px; }
+  .flashcard-sound span.no-sound {
+    font-size: 10px;
+    font-style: italic;
+    display: inline-block;
+    height: 29px; }
+
+:host app-sound-control {
+  padding: 10px 30px;
+  font-size: 30px; }
+  :host app-sound-control .sound-control {
+    vertical-align: middle;
+    color: #777; }
+
+.flashcard-image {
+  background-color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 5px 0 0 5px;
+  padding: 10px 10px 12px 10px; }
+  .flashcard-image img {
+    max-width: 310px; }
+  .flashcard-image span.label {
+    margin-right: 5px; }
+  .flashcard-image span.no-icon {
+    font-size: 10px;
+    font-style: italic;
+    display: inline-block;
+    height: 29px; }
+
+.flashcard-order {
+  background-color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 0 5px 5px 0;
+  padding: 8px; }
+
+.flashcard-form div[class*="col-sm"] {
+  padding: 2px; }
+  .flashcard-form div[class*="col-sm"]:first-child {
+    padding-left: 15px; }
+  .flashcard-form div[class*="col-sm"]:last-child {
+    padding-right: 15px; }
+
+/*# sourceMappingURL=flashcard-form.component.css.map */

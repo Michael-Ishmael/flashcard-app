@@ -48,6 +48,13 @@ const barrels: string[] = [
   'app/assignment/folder-structure/fso-item/fso-img-item',
   'app/assignment/folder-structure/fso-item/fso-sound-item',
   'app/flashcard',
+  'app/flashcard/flashcard-display',
+  'app/flashcard/flashcard-form',
+  'app/shared/sound-control',
+  'app/assignables/assignable',
+  'app/assignables/assignable-display',
+  'app/assignables/assignable/assignable-display',
+  'app/assignables/assignable/assignable-form',
   /** @cli-barrel */
 ];
 

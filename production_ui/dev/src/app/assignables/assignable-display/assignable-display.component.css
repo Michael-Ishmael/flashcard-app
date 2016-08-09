@@ -1,0 +1,30 @@
+.assignable-display {
+  color: #595959; }
+  .assignable-display .list-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: contain; }
+  .assignable-display .icon-place-holder {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 50px;
+    font-weight: bold; }
+  .assignable-display .media-row {
+    display: inline-block;
+    height: 100px; }
+    .assignable-display .media-row img {
+      height: 100px;
+      vertical-align: top; }
+  .assignable-display .list-title {
+    font-size: 20px; }
+
+:host app-sound-control {
+  padding: 10px 30px;
+  font-size: 40px;
+  line-height: 60px; }
+  :host app-sound-control .sound-control {
+    vertical-align: middle;
+    line-height: 60px; }
+
+/*# sourceMappingURL=assignable-display.component.css.map */

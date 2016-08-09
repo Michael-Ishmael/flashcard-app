@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,+BAAgB;EACd,KAAK,EAAE,OAAO;EACd,MAAM,EAAE,OAAO;AAGjB,2BAAa;EACX,UAAU,EAAE,KAAK;AAGnB,sCAAuB;EACrB,KAAK,EAAE,IAAI;AAGb,4CAA6B;EAC3B,KAAK,EAAE,OAAO;AAGhB,sBAAQ;EACN,YAAY,EAAE,GAAG;AAGnB,qBAAO;EACL,OAAO,EAAE,YAAY;EACrB,UAAU,EAAE,GAAG",
+"sources": ["flashcard.component.scss"],
+"names": [],
+"file": "flashcard.component.css"
+}

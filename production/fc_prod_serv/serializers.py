@@ -42,9 +42,9 @@ class DeckSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
-    id = serializers.PrimaryKeyRelatedField(many=False, queryset=Deck.objects.all(), source='card_id')
+    id = serializers.IntegerField(source='card_id')
     deckId = serializers.PrimaryKeyRelatedField(many=False, queryset=Deck.objects.all(), source='deck')
-    displayOrder = serializers.PrimaryKeyRelatedField(many=False, queryset=Deck.objects.all(), source='display_order')
+    displayOrder = serializers.IntegerField( source='display_order')
     image = serializers.SlugRelatedField(many=False, source="original_image",
                                          queryset=MediaFile.objects.filter(media_file_type=1),
                                          slug_field="relative_path")

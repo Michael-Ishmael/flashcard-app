@@ -11,6 +11,10 @@
     -webkit-filter: none;
   }
 
+  span.fso-label {
+    cursor: pointer;
+  }
+
   &.selected {
     color: #55a9ff;
     font-weight: bold;
@@ -24,6 +28,10 @@
     &:hover {
       text-decoration: none;
 
+    }
+
+    span.fso-label{
+      cursor: default;
     }
 
     img {

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FlashcardService} from "./flashcard.service";
+import {FlashcardService, CardStatus} from "./flashcard.service";
 import {Flashcard} from "./flashcard";
 import {AssignableComponent} from "../shared/assignable-component";
 import {AssignableDisplayComponent} from "../assignables/assignable-display/assignable-display.component";
@@ -21,7 +21,7 @@ export class FlashcardComponent extends AssignableComponent<Flashcard> implement
     super(flashcardService); }
 
   createItem():Flashcard{
-    return new Flashcard(-1, this.filterId > 0 ? this.filterId : null, '', '', '', this.items.length + 1);
+    return new Flashcard(-1, this.filterId > 0 ? this.filterId : null, '', '', '', this.items.length + 1, CardStatus.InComplete);
   }
 
 

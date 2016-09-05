@@ -7,6 +7,8 @@ export abstract class AssignableService<T extends IAssignable>  {
   protected itemEditedSource = new Subject<T>();
   itemEdited$ = this.itemEditedSource.asObservable();
 
+  abstract getItem(id:number): Observable<T>;
+
   abstract getItems(filterId:number): Observable<T[]>;
 
   abstract delete(item:T);

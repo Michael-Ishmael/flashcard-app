@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Flashcard} from "../flashcard";
 import {SoundControlComponent} from "../../shared/sound-control/sound-control.component";
+import {CardStatus} from "../flashcard.service";
 
 @Component({
   moduleId: module.id,
@@ -41,7 +42,7 @@ export class FlashcardFormComponent implements OnInit {
   ngOnInit():any {
     if(!this.model) {
       this.isNew = true;
-      this.model = new Flashcard(-1, 0, null, null, null, 0)
+      this.model = new Flashcard(-1, 0, null, null, null, 0, CardStatus.InComplete)
     }
   }
 

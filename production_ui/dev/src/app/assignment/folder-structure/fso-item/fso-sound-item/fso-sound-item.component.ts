@@ -60,6 +60,15 @@ export class FsoSoundItemComponent implements OnInit {
     }
   }
 
+  toggleSelected(){
+    if(this.notAvailable) return;
+    this.model.selected = !this.model.selected;
+    if(this.model.selected){
+      this.onSelected.emit(this.model);
+    } else {
+      this.onUnSelected.emit(this.model);
+    }
+  }
 
 
 

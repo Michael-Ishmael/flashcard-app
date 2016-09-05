@@ -1,0 +1,16 @@
+<p>
+  crop works!
+</p>
+
+<button (click)="loadImage()">Load Image</button>
+
+<div *ngIf="model">
+  <img-cropper [image]="model.image" [crop]="currentCrop" ></img-cropper>
+  <!--<img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">-->
+</div>
+
+<!--<p *ngIf="model">-->
+  <!--<img *ngIf="model.image" class="list-thumbnail" src="{{ model.image }}">-->
+
+  <!--{{ model.image }} </p>-->
+

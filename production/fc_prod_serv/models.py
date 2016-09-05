@@ -22,6 +22,9 @@ class AspectRatio(models.Model):
     width_units = models.IntegerField()
     height_units = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         managed = True
         db_table = 'aspect_ratio'
@@ -52,6 +55,10 @@ class Card(models.Model):
     ns_pt_w = models.FloatField(blank=True, null=True)  # This field type is a guess.
     ns_pt_y = models.FloatField(blank=True, null=True)  # This field type is a guess.
     ns_pt_h = models.FloatField(blank=True, null=True)  # This field type is a guess.
+    complete = models.BooleanField(null=False, default=False)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         managed = False
@@ -77,6 +84,20 @@ class CardTargetDevice(models.Model):
         managed = False
         db_table = 'card_target_device'
 
+
+class Crop(models.Model):
+    crop_id = models.AutoField(primary_key=True)
+    card = models.ForeignKey(Card, models.DO_NOTHING)
+    aspect_ratio = models.ForeignKey(AspectRatio, models.DO_NOTHING)
+    orientation = models.ForeignKey('Orientation', models.DO_NOTHING)
+    x = models.FloatField(blank=True, null=True)  # This field type is a guess.
+    y = models.FloatField(blank=True, null=True)  # This field type is a guess.
+    w = models.FloatField(blank=True, null=True)  # This field type is a guess.
+    h = models.FloatField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'crop'
 
 class Deck(models.Model):
     deck_id = models.AutoField(primary_key=True)
@@ -124,6 +145,9 @@ class MediaFileType(models.Model):
 class Orientation(models.Model):
     orientation_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         managed = False

@@ -1,0 +1,11 @@
+<div *ngIf="image">
+  <div id="imageContainer">
+    <img class="jCropper" [crop]="crop" (onSelect)="onCropSelected($event)" id="currentImage" src="{{ image }}"/>
+  </div>
+  <div id="maskContainer">
+    <!--<img id="mask" src="mask.png"/>-->
+  </div>
+  <div id="previewContainer">
+    <!--<img id="preview" ng-src="{{ getImagePath() }}"/>-->
+  </div>
+</div>

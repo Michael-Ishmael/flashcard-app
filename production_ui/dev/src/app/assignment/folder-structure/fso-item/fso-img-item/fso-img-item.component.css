@@ -4,6 +4,8 @@
 .file img.loader {
   width: 16px;
   -webkit-filter: none; }
+.file span.fso-label {
+  cursor: pointer; }
 .file.selected {
   color: #55a9ff;
   font-weight: bold; }
@@ -12,6 +14,8 @@
   cursor: default; }
   .file.disabled:hover {
     text-decoration: none; }
+  .file.disabled span.fso-label {
+    cursor: default; }
   .file.disabled img {
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%); }

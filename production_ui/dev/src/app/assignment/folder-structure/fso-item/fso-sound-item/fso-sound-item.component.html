@@ -2,7 +2,7 @@
     <img *ngIf="showLoading" class="loader" src="img/ajax-loader.gif">
     <i class="fa" [class.fa-play]="!playing" [class.fa-stop]="playing" (click)="togglePlaySound()"></i>
 
-    <span (click)="toggleSelected()" >{{ toRepresentation() }}</span>
+    <span class="fso-label" (click)="toggleSelected()" >{{ toRepresentation() }}</span>
     <i *ngIf="showUpload" class="fa fa-upload" (click)="uploadFile()"></i>
 
 </span>

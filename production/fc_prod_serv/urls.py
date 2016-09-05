@@ -1,14 +1,17 @@
 from django.conf.urls import url
 from rest_framework import routers, viewsets
 from fc_prod_serv.views import FolderView, MediaFileViewSet, ConfigViewSet, SetViewSet, DeckViewSet, FilePreviewView, \
-    CardViewSet
+    CardViewSet, CardDetailViewSet, CropViewSet
 
 router = routers.DefaultRouter()
 router.register(r'mediafiles', MediaFileViewSet)
 router.register(r'config', ConfigViewSet)
 router.register(r'sets', SetViewSet)
 router.register(r'decks', DeckViewSet)
+router.register(r'carddetails', CardDetailViewSet)
 router.register(r'cards', CardViewSet)
+router.register(r'crops', CropViewSet)
+
 
 urlpatterns = router.urls
 

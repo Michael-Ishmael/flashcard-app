@@ -36,6 +36,15 @@ export class FsoImgItemComponent implements OnInit {
     return `${kbSize}kb`
   }
 
+  toggleSelected(){
+    if(this.notAvailable) return;
+    this.model.selected = !this.model.selected;
+    if(this.model.selected){
+      this.onSelected.emit(this.model);
+    } else {
+      this.onUnSelected.emit(this.model);
+    }
+  }
 
   private setFileStatus() {
 

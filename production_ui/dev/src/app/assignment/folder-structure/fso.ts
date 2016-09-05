@@ -9,6 +9,12 @@ export class Fso {
         public files:[Fso],
         public selected:boolean,
         public expanded:boolean,
-        public media_file_type:number
+        public media_file_type:MediaFileType
     ){}
+}
+
+export enum MediaFileType{
+    Image = 1,
+    Icon = 2,
+    Sound = 3
 }

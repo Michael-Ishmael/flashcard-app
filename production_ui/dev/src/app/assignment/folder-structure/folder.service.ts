@@ -37,11 +37,12 @@ export class FolderService {
 
     postMediaFile(file:Fso): Observable<Fso> {
 
-      if(file.name.indexOf('.png') > -1 || file.name.indexOf('.gif') > -1){
-        file.media_file_type = 2;
-      } else {
-        file.media_file_type = 1;
-      }
+      // if(file.name.indexOf('.png') > -1 || file.name.indexOf('.gif') > -1){
+      //   file.media_file_type = 2;
+      //
+      // } else {
+      //   file.media_file_type = 1;
+      // }
 
       return this.http
         .post(this.mediaFilesUrl, JSON.stringify(file), {headers: this.headers})

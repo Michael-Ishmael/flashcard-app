@@ -1,6 +1,8 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
 import {SettingsComponent} from "./settings/settings.component";
 import {AssignmentComponent} from "./assignment/assignment.component";
+import {BacklogComponent} from "./backlog/backlog.component";
+import {CropComponent} from "./crop/crop.component";
 
 
 const routes: RouterConfig = [
@@ -13,14 +15,18 @@ const routes: RouterConfig = [
         path: 'assignment',
         component: AssignmentComponent
     },
+    {
+        path: 'backlog',
+        component: BacklogComponent
+    },
     // {
     //     path: 'dashboard',
     //     component: DashboardComponent
     // },
-    // {
-    //     path: 'detail/:id',
-    //     component: HeroDetailComponent
-    // },
+    {
+        path: 'crop/:id',
+        component: CropComponent
+    },
     {
         path: 'settings',
         component: SettingsComponent

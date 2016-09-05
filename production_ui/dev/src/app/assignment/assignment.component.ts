@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FolderStructureComponent} from "./folder-structure/folder-structure.component";
 import {DeckSetsComponent} from "../deck-sets/deck-sets.component";
 import {DeckSet} from "../deck-sets/deck-set";
-import {Fso} from "./folder-structure/fso";
+import {Fso, MediaFileType} from "./folder-structure/fso";
 import {FolderStructure} from "./folder-structure/folder-structure";
 import {FlashcardComponent} from "../flashcard/flashcard.component";
 import {Flashcard} from "../flashcard/flashcard";
@@ -26,6 +26,10 @@ export class AssignmentComponent implements OnInit {
 
 
   constructor() {}
+
+  debug(){
+    this.folderStructure.enabled = !this.folderStructure.enabled;
+  }
 
   ngOnInit() {
   }
@@ -83,14 +87,20 @@ export class AssignmentComponent implements OnInit {
     }
   }
 
-  onImageSelected(imageFile:Fso){
+  onImageSelected(file:Fso){
     if(this.assignmentMode == AssignmentMode.Set && this.selectedSet != null){
-      this.selectedSet.icon = imageFile.relativePath;
+      this.selectedSet.icon = file.relativePath;
     }
     if(this.assignmentMode == AssignmentMode.Deck && this.selectedDeck != null){
-      this.selectedDeck.icon = imageFile.relativePath;
+      this.selectedDeck.icon = file.relativePath;
     }
-
+    if(this.assignmentMode == AssignmentMode.Card && this.selectedCard != null){
+      if(file.media_file_type == MediaFileType.Sound ){
+        this.selectedCard.sound = file.relativePath;
+      } else {
+        this.selectedCard.image = file.relativePath;
+      }
+    }
   }
 }
 

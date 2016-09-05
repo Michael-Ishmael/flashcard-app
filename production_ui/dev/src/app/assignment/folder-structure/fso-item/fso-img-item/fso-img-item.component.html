@@ -2,7 +2,7 @@
     <img *ngIf="showLoading" class="loader" src="img/ajax-loader.gif">
     <i *ngIf="!(showIcon || showLoading)" class="fa fa-download" (click)="downloadFile()" ></i>
     <img *ngIf="showIcon" src="{{model.relativePath}}" (click)="toggleSelected()"  >
-    <span (click)="toggleSelected()" >{{ toRepresentation() }}</span>
+    <span class="fso-label" (click)="toggleSelected()" >{{ toRepresentation() }}</span>
     <i *ngIf="showUpload" class="fa fa-upload" (click)="uploadFile()"></i>
 
 <!--    <audio controls="" ng-src="../media/sounds/chicken/Chicken1.mp3" type="audio/mpeg" src="../media/sounds/chicken/Chicken1.mp3">

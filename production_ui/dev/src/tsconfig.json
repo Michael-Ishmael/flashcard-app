@@ -19,5 +19,6 @@
   "files": [
     "main.ts",
     "typings.d.ts"
+    , "node_modules/ng2-img-cropper/index.d.ts"
   ]
 }

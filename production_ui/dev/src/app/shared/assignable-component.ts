@@ -42,6 +42,7 @@ export abstract class AssignableComponent<T extends IAssignable> {
     this.creating = true;
     this.editing =true;
     this.items.unshift(this.selectedItem);
+    this.onItemEditing.emit(this.selectedItem)
   }
 
   abstract createItem():T

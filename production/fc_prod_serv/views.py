@@ -12,9 +12,9 @@ from rest_framework import status, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card
+from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card, Crop
 from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer, \
-    FolderSerializer, FileSerializer, CardSerializer
+    FolderSerializer, FileSerializer, CardSerializer, CardDetailSerializer, CropSerializer
 from production.business.fc_util import join_paths
 from production.business.media_file_watcher import MediaFileWatcher
 from production.business.models import Folder, File
@@ -55,7 +55,21 @@ class CardViewSet(viewsets.ModelViewSet):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = ('deck_id',)
+    filter_fields = ('deck_id', 'complete')
+
+
+class CardDetailViewSet(viewsets.ModelViewSet):
+    queryset = Card.objects.all()
+    serializer_class = CardDetailSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('deck_id', 'complete')
+
+
+class CropViewSet(viewsets.ModelViewSet):
+    queryset = Crop.objects.all()
+    serializer_class = CropSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('card_id', 'aspect_ratio_id')
 
 
 class DeckViewSet(viewsets.ModelViewSet):

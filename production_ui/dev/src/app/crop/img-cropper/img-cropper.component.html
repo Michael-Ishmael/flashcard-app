@@ -1,11 +1,10 @@
-<div *ngIf="image">
-  <div id="imageContainer">
-    <img class="jCropper" [crop]="crop" (onSelect)="onCropSelected($event)" id="currentImage" src="{{ image }}"/>
+<div class="crop-container" *ngIf="image">
+  <div id="imageContainer" [ngStyle]="{'display': showPreview ? 'none' : 'block' }"  >
+    <img #jCrpr class="jCropper" [model]="model" (onSelect)="onCropSelected($event)"
+         (onImageLoad)="onImageLoaded($event)"
+         id="currentImage" src="{{ image }}"/>
   </div>
-  <div id="maskContainer">
-    <!--<img id="mask" src="mask.png"/>-->
-  </div>
-  <div id="previewContainer">
-    <!--<img id="preview" ng-src="{{ getImagePath() }}"/>-->
+  <div id="preview-container" *ngIf="showPreview" [ngStyle]="getImagePreviewContainerStyle()" >
+    <img id="preview" src="{{ image }}" [ngStyle]="getImagePreviewStyle()" />
   </div>
 </div>

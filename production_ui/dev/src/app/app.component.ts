@@ -5,6 +5,7 @@ import {FolderService} from "./assignment/folder-structure/folder.service";
 import {DeckSetService} from "./deck-sets/deck-set.service";
 import {AppSettings} from "./app-settings";
 import {FlashcardService, FlashcardDetailService} from "./flashcard/flashcard.service";
+import {CropService} from "./crop/crop.service";
 
 @Component({
   moduleId: module.id,
@@ -18,7 +19,8 @@ import {FlashcardService, FlashcardDetailService} from "./flashcard/flashcard.se
     DeckSetService,
     AppSettings,
       FlashcardService,
-      FlashcardDetailService
+      FlashcardDetailService,
+    CropService
   ]
 })
 export class AppComponent {

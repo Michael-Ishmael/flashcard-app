@@ -1,42 +1,56 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs/Rx";
-import {FlashcardDetail, CropImage} from "../flashcard/flashcard";
-import {FlashcardDetailService} from "../flashcard/flashcard.service";
+import {Component, OnInit, ViewChild, Output, Input, EventEmitter, SimpleChange, OnChanges} from '@angular/core';
+import {Flashcard} from "../flashcard/flashcard";
 import {ImgCropperComponent} from "./img-cropper/img-cropper.component";
 import {Crop, Orientation, AspectRatio, CardCrop} from "./crop";
 import {CropService} from "./crop.service";
+import {isNumber} from "@angular/http/src/facade/lang";
 
 @Component({
   moduleId: module.id,
-  selector: 'app-crop',
+  selector: 'crop-component',
   templateUrl: 'crop.component.html',
   styleUrls: ['crop.component.css'],
   directives: [ImgCropperComponent]
 })
-export class CropComponent implements OnInit {
+export class CropComponent implements OnInit, OnChanges {
 
-  private sub:Subscription;
-  model:FlashcardDetail;
+  @Input() model:Flashcard;
+  @Output() onCroppingDone:EventEmitter<number> = new EventEmitter<number>();
+
   private errorMessage:any;
   currentCrop:CropModel;
   showPreview:boolean;
+  doneEnabled:boolean = false;
   private steps:CropStep[];
   private currentStepIndex:number = 0;
 
 
   constructor(
-      private route: ActivatedRoute,
-      private service: FlashcardDetailService,
       private cropService: CropService
-
   ) {
+    this.initSteps();
+  }
+
+  private initSteps(){
     this.steps = [
       new CropStep( new AspectRatio(1, 16, 12), Orientation.Landscape),
       new CropStep( new AspectRatio(1, 16, 12), Orientation.Portrait),
       new CropStep( new AspectRatio(2, 16, 9), Orientation.Landscape),
       new CropStep( new AspectRatio(2, 16, 9), Orientation.Portrait),
     ]
+  }
+
+  ngOnInit() {
+    if(this.model){
+      this.initSteps();
+      this.loadCropsForCard(this.model.id);
+    }
+  }
+
+  ngOnChanges(changes:{[propName:string]:SimpleChange}) {
+    if(changes.hasOwnProperty("model")){
+      this.ngOnInit()
+    }
   }
 
   private moveStep(dir){
@@ -56,6 +70,14 @@ export class CropComponent implements OnInit {
     this.currentCrop = new CropModel(step.getAspectRatioFraction(), step.getCrop(), cropFoil);
   }
 
+  croppingDone(){
+    if(!this.doneEnabled) {
+      this.onCroppingDone.emit(-1);
+    }
+    if(this.model)
+      this.onCroppingDone.emit(this.model.id)
+  }
+
   togglePreview(){
     this.showPreview = !this.showPreview;
   }
@@ -68,19 +90,8 @@ export class CropComponent implements OnInit {
     this.moveStep(-1);
   }
 
-  ngOnInit() {
-    var that = this;
-    this.sub = this.route.params.subscribe(params => {
-      let id = +params['id']; // (+) converts string 'id' to a number
-      this.service.getItem(id)
-          .subscribe(
-              item => {
-                that.model = item;
-                that.loadCropsForCard(item.id);
-              },
-              error => this.errorMessage = <any>error
-          )
-    });
+  allCropsSet():boolean{
+    return this.steps.every(s => s.cardCrop && s.cardCrop.id > -1)
   }
 
   loadCropsForCard(cardId:number){
@@ -112,7 +123,9 @@ export class CropComponent implements OnInit {
           step.cardCrop.id = savedCard.id;
         }
       );
+    this.doneEnabled = this.allCropsSet();
   }
+
 
 }
 

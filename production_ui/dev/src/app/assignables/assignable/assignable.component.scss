@@ -2,7 +2,20 @@
   .list-group-item{
     color: #595959;
     cursor: pointer;
+
+    .complete {
+      background-color: #9acfea;
+    }
+
+    .active {
+      background-color: #1c94c4;
+    }
+
+
+
   }
+
+
 
   .btn-success {
     margin-top: -34px;

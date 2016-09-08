@@ -22,33 +22,50 @@ export class InitializeJcrop implements OnInit, OnChanges {
   private height:number;
 
   private mask:any;
+  private jEl:any;
 
   constructor(
     private el: ElementRef
   ) {   }
 
   public ngOnInit() {
-    var jEl = $(this.el.nativeElement);
-    var that = this;
-    jEl.load(function() {
-      that.width = jEl.width();
-      that.height = jEl.height();
-      that.onImageLoad.emit(new ImageDimensions(that.width, that.height));
 
-      that.jCropApi = $.Jcrop(that.el.nativeElement);
-      var aspectRatio = that.model ? that.model.aspectRatioFraction : 1;
-
-      that.jCropApi.setOptions({
-        allowResize: true,
-        aspectRatio: aspectRatio,
-        onSelect : function(crop:any) {
-          that.onCropSelected(crop);
-        }
+    if(!this.jEl){
+      this.jEl = $(this.el.nativeElement);
+      var that = this;
+      this.jEl.load(function() {
+        that.imageLoad();
       });
-      if(that.model){
-        that.setCropOnJCrop(that.model.crop);
+    }
+
+  }
+
+  private imageLoad(){
+    this.onImageLoad.emit(new ImageDimensions(this.width, this.height));
+    if(this.jCropApi){
+      this.jCropApi.destroy();
+      this.jEl.attr('style', null)
+      if(this.mask) this.mask.attr('style', null);
+    }
+    this.width = this.jEl.width();
+    this.height = this.jEl.height();
+    this.initJCrop();
+  }
+
+  private initJCrop(){
+    this.jCropApi = $.Jcrop(this.el.nativeElement);
+    var aspectRatio = this.model ? this.model.aspectRatioFraction : 1;
+    var that = this;
+    this.jCropApi.setOptions({
+      allowResize: true,
+      aspectRatio: aspectRatio,
+      onSelect : function(crop:any) {
+        that.onCropSelected(crop);
       }
     });
+    if(this.model){
+      this.setCropOnJCrop(this.model.crop);
+    }
   }
 
   public ngOnDestroy() {
@@ -63,6 +80,9 @@ export class InitializeJcrop implements OnInit, OnChanges {
 
   public ngOnChanges(changes:{[propName:string]:SimpleChange}) {
     if(this.jCropApi){
+      // if(changes.hasOwnProperty("image")){
+      //   this.ngOnDestroy();
+      // }
       if(changes.hasOwnProperty("model")){
         var model:CropModel = changes["model"].currentValue;
         this.jCropApi.setOptions({ aspectRatio: model.aspectRatioFraction});
@@ -79,8 +99,8 @@ export class InitializeJcrop implements OnInit, OnChanges {
   }
 
   private setMask(maskCrop:Crop):void{
-    if(!maskCrop && this.mask){
-      this.mask.hide();
+    if(!maskCrop){
+      if(this.mask) this.mask.hide();
       return;
     }
     var adj = maskCrop.multiply(this.width, this.height);

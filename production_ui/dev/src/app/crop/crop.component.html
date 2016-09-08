@@ -1,19 +1,13 @@
-<p>
-  crop works!
-</p>
+
 
 <button (click)="previousCrop()">Previous Crop</button>
 <button (click)="nextCrop()">Next Crop</button>
 <button (click)="togglePreview()">{{ showPreview ? "Hide" : "Show" }} Preview</button>
+<button (click)="croppingDone()">{{ doneEnabled ? "Done" : "Cancel" }}</button>
 
 
-<div *ngIf="model">
+<div class="crop-wrapper" *ngIf="model">
   <img-cropper [image]="model.image" [model]="currentCrop" [showPreview]="showPreview" (onCropSelect)="onCropChanged($event)" ></img-cropper>
-  <!--<img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">-->
 </div>
 
-<!--<p *ngIf="model">-->
-  <!--<img *ngIf="model.image" class="list-thumbnail" src="{{ model.image }}">-->
-
-  <!--{{ model.image }} </p>-->
 

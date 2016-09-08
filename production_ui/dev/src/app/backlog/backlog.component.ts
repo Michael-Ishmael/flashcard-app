@@ -3,17 +3,19 @@ import {FlashcardService, CardStatus} from "../flashcard/flashcard.service";
 import {Flashcard} from "../flashcard/flashcard";
 import {AssignableDisplayComponent} from "../assignables/assignable-display/assignable-display.component";
 import {Router} from "@angular/router";
+import {CropComponent} from "../crop/crop.component";
 
 @Component({
   moduleId: module.id,
   selector: 'app-backlog',
   templateUrl: 'backlog.component.html',
   styleUrls: ['../assignables/assignable/assignable.component.css', 'backlog.component.css'],
-  directives: [AssignableDisplayComponent]
+  directives: [AssignableDisplayComponent, CropComponent]
 })
 export class BacklogComponent implements OnInit {
 
   items:Flashcard[];
+  selectedItem:Flashcard = null;
   errorMessage:any;
 
   constructor(
@@ -22,7 +24,16 @@ export class BacklogComponent implements OnInit {
   ) { }
 
   selectItem(item:Flashcard){
-    this.router.navigate(['/crop', item.id])
+    //this.router.navigate(['/crop', item.id])
+    this.selectedItem = item;
+  }
+
+  onCropComplete(itemId:number){
+    if(this.selectedItem && this.selectedItem.id == itemId){
+      this.selectedItem.complete = CardStatus.Complete;
+      this.flashcardService.save(this.selectedItem);
+    }
+    this.selectedItem = null;
   }
 
   getItems(){

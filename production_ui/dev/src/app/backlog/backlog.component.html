@@ -8,6 +8,7 @@
       <ul *ngIf="items" class="list-group">
 
         <li *ngFor="let item of items" class="list-group-item" [class.active]="item == selectedItem"
+            [class.complete]="item.complete == 2"
             (click)="selectItem(item)">
           <assignable-display [model]="item" (onEdit)="editItem($event)"
           ></assignable-display>
@@ -16,5 +17,11 @@
 
       </ul>
     </div>
+
   </div>
+
+  <div *ngIf="selectedItem" id="cropper" class="col-md-6">
+    <crop-component [model]="selectedItem" (onCroppingDone)="onCropComplete($event)"></crop-component>
+  </div>
+
 </div>

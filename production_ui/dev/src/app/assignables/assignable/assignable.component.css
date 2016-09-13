@@ -1,6 +1,12 @@
+.assignable-list :host .assignable-display {
+  font-size: 20px; }
 .assignable-list .list-group-item {
   color: #595959;
   cursor: pointer; }
+  .assignable-list .list-group-item .complete {
+    background-color: #9acfea; }
+  .assignable-list .list-group-item .active {
+    background-color: #1c94c4; }
 .assignable-list .btn-success {
   margin-top: -34px; }
 .assignable-list .list-group-item.active {

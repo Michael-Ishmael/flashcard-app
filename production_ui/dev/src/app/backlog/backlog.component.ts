@@ -15,8 +15,10 @@ import {CropComponent} from "../crop/crop.component";
 export class BacklogComponent implements OnInit {
 
   items:Flashcard[];
+  completedItems:Flashcard[];
   selectedItem:Flashcard = null;
   errorMessage:any;
+  collapseLists:boolean;
 
   constructor(
       private router:Router,
@@ -26,14 +28,19 @@ export class BacklogComponent implements OnInit {
   selectItem(item:Flashcard){
     //this.router.navigate(['/crop', item.id])
     this.selectedItem = item;
+    this.collapseLists = true;
   }
 
   onCropComplete(itemId:number){
     if(this.selectedItem && this.selectedItem.id == itemId){
-      this.selectedItem.complete = CardStatus.Complete;
-      this.flashcardService.save(this.selectedItem);
+      this.selectedItem.complete = true;
+      this.flashcardService.save(this.selectedItem)
+          .subscribe(
+              saved =>  {var x = 0; } //Do nothing
+          );
     }
     this.selectedItem = null;
+    this.collapseLists = false;
   }
 
   getItems(){
@@ -41,6 +48,12 @@ export class BacklogComponent implements OnInit {
     this.flashcardService.getItems(-1, CardStatus.InComplete)
         .subscribe(
             items => this.items = items,
+            error => this.errorMessage = <any>error
+        );
+
+    this.flashcardService.getItems(-1, CardStatus.Complete)
+        .subscribe(
+            items => this.completedItems = items,
             error => this.errorMessage = <any>error
         )
   };

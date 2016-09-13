@@ -21,7 +21,7 @@ export class FlashcardComponent extends AssignableComponent<Flashcard> implement
     super(flashcardService); }
 
   createItem():Flashcard{
-    return new Flashcard(-1, this.filterId > 0 ? this.filterId : null, '', '', '', this.items.length + 1, CardStatus.InComplete);
+    return new Flashcard(-1, this.filterId > 0 ? this.filterId : null, '', '', '', this.items.length + 1, false, CardStatus.InComplete);
   }
 
 

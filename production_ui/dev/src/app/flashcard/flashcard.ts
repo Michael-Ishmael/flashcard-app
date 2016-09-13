@@ -12,7 +12,8 @@ export class Flashcard implements IAssignable{
       public image:string,
       public sound:string,
       public displayOrder:number,
-      public complete:CardStatus
+      public complete:boolean,
+      public status:CardStatus
   ){
     this.type = AssignableType.Flashcard;
   }
@@ -46,9 +47,10 @@ export class FlashcardDetail extends Flashcard{
       public image:string,
       public sound:string,
       public displayOrder:number,
-      public complete:CardStatus
+      public complete:boolean,
+      public status:CardStatus
   ){
-    super(id, deckId, name, image, sound, displayOrder, complete)
+    super(id, deckId, name, image, sound, displayOrder, complete, status)
   }
 }
 

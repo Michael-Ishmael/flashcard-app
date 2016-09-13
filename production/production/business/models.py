@@ -27,3 +27,9 @@ class File(object):
         self.path = path
         self.size = size
         self.relative_path = relative_path
+
+
+class CardCropCollection(object):
+    def __init__(self):
+        self.name = "crops"
+        self.crops = []

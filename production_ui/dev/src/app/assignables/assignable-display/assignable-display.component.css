@@ -1,4 +1,4 @@
-.assignable-display {
+:host-context(.assignable-list) .assignable-display {
   color: #595959; }
   .assignable-display .list-thumbnail {
     width: 60px;
@@ -18,6 +18,9 @@
       vertical-align: top; }
   .assignable-display .list-title {
     font-size: 20px; }
+
+:host-context(.assignable-list-compact) .list-title {
+  font-size: 10px; }
 
 :host app-sound-control {
   padding: 10px 30px;

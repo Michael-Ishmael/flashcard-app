@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_framework_recursive.fields import RecursiveField
 
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Set, Deck, Card, Crop, AspectRatio, Orientation
-from production.business.models import Folder, File
+from production.business.models import Folder, File, CardCropCollection
 
 
 class MediaFileSerializer(serializers.HyperlinkedModelSerializer):
@@ -121,3 +121,13 @@ class FileSerializer(serializers.Serializer):
 
     class Meta:
         model = File
+
+
+class CardCropCollectionSerializer(serializers.Serializer):
+    name = serializers.CharField()
+    crops = CropSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = CardCropCollection
+        fields = ('name', 'crops')
+

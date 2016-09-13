@@ -15,6 +15,7 @@ class Config(models.Model):
     settingValue = models.CharField(max_length=500, blank=False)
 
 
+
 class AspectRatio(models.Model):
     aspect_ratio_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=10)

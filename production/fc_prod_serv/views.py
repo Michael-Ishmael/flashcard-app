@@ -2,6 +2,7 @@ import os
 from os.path import expanduser
 from typing import Dict
 
+from django.http import Http404
 from django.shortcuts import render
 
 # Create your views here.
@@ -14,10 +15,10 @@ from rest_framework_recursive.fields import RecursiveField
 
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card, Crop
 from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer, \
-    FolderSerializer, FileSerializer, CardSerializer, CardDetailSerializer, CropSerializer
+    FolderSerializer, FileSerializer, CardSerializer, CardDetailSerializer, CropSerializer, CardCropCollectionSerializer
 from production.business.fc_util import join_paths
 from production.business.media_file_watcher import MediaFileWatcher
-from production.business.models import Folder, File
+from production.business.models import Folder, File, CardCropCollection
 from production.business.photoshop_script_runner import PhotoshopScriptRunner
 
 
@@ -142,13 +143,46 @@ class FilePreviewView(APIView):
         return Response(return_serializer.data)
 
 
+class CardCropsView(APIView):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def get(self, request, *args, **kwargs):
+
+        cardCropCol = CardCropCollection()
+        serializer = CardCropCollectionSerializer(cardCropCol)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
+class CardCropCollectionView(APIView):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def get_object(self, pk):
+        try:
+            crop_set = Crop.objects.filter(card__card_id=pk)
+            collection = CardCropCollection()
+            for crop in crop_set:
+                collection.crops.append(crop)
+            return collection
+        except Crop.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, *args, **kwargs):
+
+        cardCropCol = self.get_object(pk)
+        serializer = CardCropCollectionSerializer(cardCropCol)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
+
 @permission_classes((permissions.AllowAny, ))
 class FolderView(APIView):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.media_file_types = {}  # type:Dict[int, MediaFileType]
 
-    def get(self, request, *args, **kw):
+    def get(self, request, *args, **kwargs):
         # Process any get params that you may need
         # If you don't need to process get params,
         # you can skip this part

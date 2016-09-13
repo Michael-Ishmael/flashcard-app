@@ -1,17 +1,18 @@
 <div id="backlog" class="row">
   <h2>Backlog</h2>
 
-  <div id="fcHierarchy" class="deck-set-col col-md-4">
+  <div id="backlog-list" class="deck-set-col" [class.col-md-4]="!collapseLists" [class.col-md-2]="collapseLists">
 
-    <div class="assignable-list">
+    <div  [class.assignable-list]="!collapseLists" [class.assignable-list-compact]="collapseLists">
       <button class="btn btn-success btn-xs pull-right" (click)="addNewItem()">+</button>
       <ul *ngIf="items" class="list-group">
 
         <li *ngFor="let item of items" class="list-group-item" [class.active]="item == selectedItem"
             [class.complete]="item.complete == 2"
             (click)="selectItem(item)">
-          <assignable-display [model]="item" (onEdit)="editItem($event)"
-          ></assignable-display>
+          <assignable-display [model]="item" (onEdit)="editItem($event)">
+
+          </assignable-display>
 
         </li>
 
@@ -20,8 +21,28 @@
 
   </div>
 
-  <div *ngIf="selectedItem" id="cropper" class="col-md-6">
+  <div *ngIf="selectedItem" id="cropper" class="col-md-4">
     <crop-component [model]="selectedItem" (onCroppingDone)="onCropComplete($event)"></crop-component>
+  </div>
+
+  <div id="completed" class="deck-set-col col-md-4">
+
+    <div class="assignable-list">
+      <button class="btn btn-success btn-xs pull-right" (click)="addNewItem()">+</button>
+      <ul *ngIf="completedItems" class="list-group">
+
+        <li *ngFor="let item of completedItems" class="list-group-item" [class.active]="item == selectedItem"
+            [class.complete]="item.complete == 2"
+            (click)="selectItem(item)">
+          <assignable-display [model]="item" (onEdit)="editItem($event)">
+
+          </assignable-display>
+
+        </li>
+
+      </ul>
+    </div>
+
   </div>
 
 </div>

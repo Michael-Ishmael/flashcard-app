@@ -1,7 +1,8 @@
 from django.conf.urls import url
 from rest_framework import routers, viewsets
 from fc_prod_serv.views import FolderView, MediaFileViewSet, ConfigViewSet, SetViewSet, DeckViewSet, FilePreviewView, \
-    CardViewSet, CardDetailViewSet, CropViewSet, CardCropsView, CardCropCollectionView
+    CardViewSet, CardDetailViewSet, CropViewSet, CardCropsView, CardCropCollectionView, AspectRatioViewSet, \
+    TargetDeviceViewSet, CardTargetDeviceViewSet
 
 router = routers.DefaultRouter()
 router.register(r'mediafiles', MediaFileViewSet)
@@ -11,6 +12,9 @@ router.register(r'decks', DeckViewSet)
 router.register(r'carddetails', CardDetailViewSet)
 router.register(r'cards', CardViewSet)
 router.register(r'crops', CropViewSet)
+router.register(r'aspectratios', AspectRatioViewSet)
+router.register(r'targetdevices', TargetDeviceViewSet)
+router.register(r'cardtargetdevices', CardTargetDeviceViewSet)
 
 
 urlpatterns = router.urls

@@ -15,7 +15,6 @@ class Config(models.Model):
     settingValue = models.CharField(max_length=500, blank=False)
 
 
-
 class AspectRatio(models.Model):
     aspect_ratio_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=10)
@@ -27,7 +26,7 @@ class AspectRatio(models.Model):
         return self.name
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'aspect_ratio'
 
 
@@ -67,7 +66,7 @@ class Card(models.Model):
 
 
 class CardTargetDevice(models.Model):
-    card_target_device_id = models.IntegerField(primary_key=True)
+    card_target_device_id = models.AutoField(primary_key=True)
     card = models.ForeignKey(Card, models.DO_NOTHING, blank=True, null=True)
     target_device = models.ForeignKey('TargetDevice', models.DO_NOTHING, blank=True, null=True)
     ls_xcasset_name = models.CharField(max_length=20)
@@ -86,6 +85,40 @@ class CardTargetDevice(models.Model):
         db_table = 'card_target_device'
 
 
+class CroppingInstruction(models.Model):
+    cropping_instruction_id = models.AutoField(primary_key=True)
+    card_target_device = models.ForeignKey(CardTargetDevice, models.DO_NOTHING)
+    original_path = models.CharField(max_length=200, blank=True, null=True)
+    target_path = models.CharField(max_length=200, blank=True, null=True)
+    crop_start_x_pc = models.FloatField()  # This field type is a guess.
+    crop_start_y_pc = models.FloatField()  # This field type is a guess.
+    crop_end_x_pc = models.FloatField()  # This field type is a guess.
+    crop_end_y_pc = models.FloatField()  # This field type is a guess.
+    target_width = models.FloatField()
+    target_height = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'cropping_instruction'
+
+
+class CardCropInstruction(models.Model):
+    cropping_instruction_id = models.AutoField(primary_key=True)
+    card = models.ForeignKey(Card, models.DO_NOTHING, blank=True, null=True)
+    original_path = models.CharField(max_length=200, blank=True, null=True)
+    target_path = models.CharField(max_length=200, blank=True, null=True)
+    crop_start_x_pc = models.FloatField()  # This field type is a guess.
+    crop_start_y_pc = models.FloatField()  # This field type is a guess.
+    crop_end_x_pc = models.FloatField()  # This field type is a guess.
+    crop_end_y_pc = models.FloatField()  # This field type is a guess.
+    target_width = models.FloatField()
+    target_height = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'card_crop_instructions'
+
+
 class Crop(models.Model):
     crop_id = models.AutoField(primary_key=True)
     card = models.ForeignKey(Card, models.DO_NOTHING)
@@ -99,6 +132,7 @@ class Crop(models.Model):
     class Meta:
         managed = False
         db_table = 'crop'
+
 
 class Deck(models.Model):
     deck_id = models.AutoField(primary_key=True)

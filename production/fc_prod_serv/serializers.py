@@ -2,7 +2,8 @@ from django.db.models import Q
 from rest_framework import serializers
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.models import MediaFile, MediaFileType, Config, Set, Deck, Card, Crop, AspectRatio, Orientation
+from fc_prod_serv.models import MediaFile, MediaFileType, Config, Set, Deck, Card, Crop, AspectRatio, Orientation, \
+    TargetDevice, CardCropInstruction, CardTargetDevice
 from production.business.models import Folder, File, CardCropCollection
 
 
@@ -39,6 +40,19 @@ class DeckSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Deck
         fields = ('deck_id', 'name', 'set_id', 'icon', 'display_order')
+
+
+class AspectRatioSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = AspectRatio
+
+
+class TargetDeviceSerializer(serializers.HyperlinkedModelSerializer):
+    aspect_ratio_id = serializers.PrimaryKeyRelatedField(many=False, queryset=AspectRatio.objects.all(), source='aspect_ratio')
+
+    class Meta:
+        model = TargetDevice
 
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
@@ -123,11 +137,25 @@ class FileSerializer(serializers.Serializer):
         model = File
 
 
+class CardCropInstructionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CardCropInstruction
+
+
+class CardTargetDeviceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CardTargetDevice
+
+
 class CardCropCollectionSerializer(serializers.Serializer):
     name = serializers.CharField()
-    crops = CropSerializer(many=True, read_only=True)
+    crops = CardTargetDeviceSerializer(many=True, read_only=True)
 
     class Meta:
         model = CardCropCollection
         fields = ('name', 'crops')
+
+
 

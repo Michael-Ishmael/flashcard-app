@@ -13,9 +13,12 @@ from rest_framework import status, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card, Crop
+from fc_prod_serv.apps import CropManager
+from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card, Crop, TargetDevice, AspectRatio, \
+    CardTargetDevice
 from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer, \
-    FolderSerializer, FileSerializer, CardSerializer, CardDetailSerializer, CropSerializer, CardCropCollectionSerializer
+    FolderSerializer, FileSerializer, CardSerializer, CardDetailSerializer, CropSerializer, CardCropCollectionSerializer, \
+    AspectRatioSerializer, TargetDeviceSerializer, CardTargetDeviceSerializer
 from production.business.fc_util import join_paths
 from production.business.media_file_watcher import MediaFileWatcher
 from production.business.models import Folder, File, CardCropCollection
@@ -66,6 +69,11 @@ class CardDetailViewSet(viewsets.ModelViewSet):
     filter_fields = ('deck_id', 'complete')
 
 
+class CardTargetDeviceViewSet(viewsets.ModelViewSet):
+    queryset = CardTargetDevice.objects.all()
+    serializer_class = CardTargetDeviceSerializer
+
+
 class CropViewSet(viewsets.ModelViewSet):
     queryset = Crop.objects.all()
     serializer_class = CropSerializer
@@ -98,6 +106,17 @@ class DeckViewSet(viewsets.ModelViewSet):
 class SetViewSet(viewsets.ModelViewSet):
     queryset = Set.objects.all()
     serializer_class = SetSerializer
+
+
+class AspectRatioViewSet(viewsets.ModelViewSet):
+    queryset = AspectRatio.objects.all()
+    serializer_class = AspectRatioSerializer
+
+
+class TargetDeviceViewSet(viewsets.ModelViewSet):
+    queryset = TargetDevice.objects.all()
+    serializer_class = TargetDeviceSerializer
+
 
 class FilePreviewView(APIView):
 
@@ -154,16 +173,16 @@ class CardCropsView(APIView):
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
 
+
 class CardCropCollectionView(APIView):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def get_object(self, pk):
         try:
-            crop_set = Crop.objects.filter(card__card_id=pk)
+            crops = CropManager.calculate_crop_requirements(pk)
             collection = CardCropCollection()
-            for crop in crop_set:
-                collection.crops.append(crop)
+            collection.crops = crops
             return collection
         except Crop.DoesNotExist:
             raise Http404

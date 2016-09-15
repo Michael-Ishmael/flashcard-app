@@ -2,6 +2,7 @@ from django.db.models import Q
 from rest_framework import serializers
 from rest_framework_recursive.fields import RecursiveField
 
+from fc_prod_serv.apps import CardTargetDeviceCreationResult
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Set, Deck, Card, Crop, AspectRatio, Orientation, \
     TargetDevice, CardCropInstruction, CardTargetDevice
 from production.business.models import Folder, File, CardCropCollection
@@ -144,9 +145,11 @@ class CardCropInstructionSerializer(serializers.ModelSerializer):
 
 
 class CardTargetDeviceSerializer(serializers.ModelSerializer):
+    card_id = serializers.PrimaryKeyRelatedField(many=False, queryset=Card.objects.all(), source='card')
 
     class Meta:
         model = CardTargetDevice
+        #fields = ('card_id')
 
 
 class CardCropCollectionSerializer(serializers.Serializer):
@@ -157,5 +160,20 @@ class CardCropCollectionSerializer(serializers.Serializer):
         model = CardCropCollection
         fields = ('name', 'crops')
 
+
+class CardTargetDeviceCreationResultSerializer(serializers.Serializer):
+    def create(self, validated_data):
+        pass
+
+    def update(self, instance, validated_data):
+        pass
+
+    status = serializers.CharField()
+    targetsExist = serializers.BooleanField(source="targets_exist")
+    cropsExist = serializers.BooleanField(source="crops_exist")
+
+    class Meta:
+        model = CardTargetDeviceCreationResult
+        fields = ('status', 'targetsExist', 'cropsExist')
 
 

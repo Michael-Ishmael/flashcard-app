@@ -13,12 +13,12 @@ from rest_framework import status, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.apps import CropManager
+from fc_prod_serv.apps import CropManager, CardTargetDeviceCreationResult
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card, Crop, TargetDevice, AspectRatio, \
     CardTargetDevice
 from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer, \
     FolderSerializer, FileSerializer, CardSerializer, CardDetailSerializer, CropSerializer, CardCropCollectionSerializer, \
-    AspectRatioSerializer, TargetDeviceSerializer, CardTargetDeviceSerializer
+    AspectRatioSerializer, TargetDeviceSerializer, CardTargetDeviceSerializer, CardTargetDeviceCreationResultSerializer
 from production.business.fc_util import join_paths
 from production.business.media_file_watcher import MediaFileWatcher
 from production.business.models import Folder, File, CardCropCollection
@@ -72,6 +72,8 @@ class CardDetailViewSet(viewsets.ModelViewSet):
 class CardTargetDeviceViewSet(viewsets.ModelViewSet):
     queryset = CardTargetDevice.objects.all()
     serializer_class = CardTargetDeviceSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('card_id', )
 
 
 class CropViewSet(viewsets.ModelViewSet):
@@ -116,6 +118,9 @@ class AspectRatioViewSet(viewsets.ModelViewSet):
 class TargetDeviceViewSet(viewsets.ModelViewSet):
     queryset = TargetDevice.objects.all()
     serializer_class = TargetDeviceSerializer
+
+    def get(self, request):
+        return Response("test")
 
 
 class FilePreviewView(APIView):
@@ -174,25 +179,73 @@ class CardCropsView(APIView):
         return response
 
 
-class CardCropCollectionView(APIView):
+class TargetDeviceCreationView(APIView):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def get_object(self, pk):
+    def get_object(self, card_id):
         try:
-            crops = CropManager.calculate_crop_requirements(pk)
+            crops = CropManager.calculate_crop_requirements(card_id)
             collection = CardCropCollection()
             collection.crops = crops
             return collection
         except Crop.DoesNotExist:
             raise Http404
 
-    def get(self, request, pk, *args, **kwargs):
-
-        cardCropCol = self.get_object(pk)
-        serializer = CardCropCollectionSerializer(cardCropCol)
+    def post(self, request, pk):
+        result = self.get_targets_status(pk)
+        if not result.crops_exist:
+            result.status = "No crops found for card id: " + str(pk) + ". Create crops first."
+        elif not result.targets_exist:
+            targets, message = CropManager.calculate_crop_requirements(pk)
+            result.targets_exist = len(targets) > 0
+            if len(message) > 0:
+                result.status = message
+            else:
+                result.status = str(len(targets)) + " targets created"
+        serializer = CardTargetDeviceCreationResultSerializer(result)
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
+
+    def put(self, request, pk):
+        result = self.get_targets_status(pk)
+        if not result.crops_exist:
+            result.status = "No crops found for card id: " + str(pk) + ". Create crops first."
+        else:
+            targets, message = CropManager.calculate_crop_requirements(pk)
+            result.targets_exist = len(targets) > 0
+            if len(message) > 0:
+                result.status = message
+            else:
+                result.status = str(len(targets)) + " targets updated"
+        serializer = CardTargetDeviceCreationResultSerializer(result)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
+    def get(self, request, pk, *args, **kwargs):
+        result = self.get_targets_status(pk)
+        serializer = CardTargetDeviceCreationResultSerializer(result)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
+    def get_targets_status(self, card_id):
+        result = CardTargetDeviceCreationResult()
+        crops = Crop.objects.filter(card__card_id=card_id)
+        if not crops.count() > 0:
+            result.status = "no crops found"
+            result.crops_exist = False
+            result.targets_exist = False
+        else:
+            targets = CardTargetDevice.objects.filter(card__card_id=card_id)
+            if not targets.count() > 0:
+                result.status = "no targets found"
+                result.crops_exist = True
+                result.targets_exist = False
+            else:
+                result.status = str(targets.count()) + " targets found"
+                result.crops_exist = True
+                result.targets_exist = True
+        return result
 
 
 @permission_classes((permissions.AllowAny, ))

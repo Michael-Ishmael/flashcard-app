@@ -7,6 +7,13 @@ class FcProdServConfig(AppConfig):
     name = 'fc_prod_serv'
 
 
+class CardTargetDeviceCreationResult:
+    def __init__(self):
+        self.status = "no status"
+        self.crops_exist = False
+        self.crops_invalid = False
+        self.targets_exist = False
+
 class CropManager(object):
 
     @staticmethod
@@ -14,11 +21,22 @@ class CropManager(object):
         """
 
         :param card_id:Integer:
-        :return:[CardTargetDevice]
+        :return:([CardTargetDevice], str)
         """
 
         card = Card.objects.get(card_id=card_id)
         crop_dict = CropManager.get_crop_dict_for_card(card)
+        crops_valid = True
+
+        for key in crop_dict:
+            obj = crop_dict[key]
+            if not obj is None:
+                if len(obj) < 2:
+                    crops_valid = False
+                    break
+
+        if not crops_valid:
+            return [], "Crops invalid"
 
         targets = TargetDevice.objects.all()
 
@@ -29,10 +47,11 @@ class CropManager(object):
         calcs = []
 
         for target in targets:
-            ctd = CropManager.get_ctd_for_target(target, card, crop_dict, original_image_path, xcasset_folder)
-            calcs.append(ctd)
+            if target.aspect_ratio.name in crop_dict:
+                ctd = CropManager.get_ctd_for_target(target, card, crop_dict, original_image_path, xcasset_folder)
+                calcs.append(ctd)
 
-        return calcs
+        return calcs, ""
 
     @staticmethod
     def get_crop_dict_for_card(card):

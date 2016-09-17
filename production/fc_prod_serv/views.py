@@ -3,6 +3,7 @@ from os.path import expanduser
 from typing import Dict
 
 from django.http import Http404
+from django.http import HttpResponseBadRequest
 from django.shortcuts import render
 
 # Create your views here.
@@ -193,12 +194,15 @@ class TargetDeviceCreationView(APIView):
             raise Http404
 
     def post(self, request):
-        pk = request.POST.get("cardid", "")
-        result = self.get_targets_status(pk)
+        card_id = request.POST.get("cardid", None)
+        if card_id is None:
+            response = Response("Missing cardid parameter")
+            return HttpResponseBadRequest(response)
+        result = self.get_targets_status(card_id)
         if not result.crops_exist:
-            result.status = "No crops found for card id: " + str(pk) + ". Create crops first."
+            result.status = "No crops found for card id: " + str(card_id) + ". Create crops first."
         elif not result.targets_exist:
-            targets, message = CropManager.calculate_crop_requirements(pk)
+            targets, message = CropManager.calculate_crop_requirements(card_id)
             result.targets_exist = len(targets) > 0
             if len(message) > 0:
                 result.status = message

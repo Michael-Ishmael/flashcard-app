@@ -16,13 +16,12 @@ router.register(r'aspectratios', AspectRatioViewSet)
 router.register(r'targetdevices', TargetDeviceViewSet)
 router.register(r'cardtargetdevices', CardTargetDeviceViewSet)
 
-
 urlpatterns = router.urls
 
 urlpatterns += [
     url(r'^folders', FolderView.as_view(), name='folder_view'),
-    #url(r'^cardcrops/$', CardCropsView.as_view(), name='card_crops_view'),
-    #url(r'^cardcrops/(?P<pk>[0-9]+)/$', CardCropCollectionView.as_view(), name='card_crop_col_view'),
+    # url(r'^cardcrops/$', CardCropsView.as_view(), name='card_crops_view'),
+    # url(r'^cardcrops/(?P<pk>[0-9]+)/$', CardCropCollectionView.as_view(), name='card_crop_col_view'),
     url(r'^files/previews', FilePreviewView.as_view(), name='file_view'),
     url(r'^cardtargetdevices/creation$', TargetDeviceCreationView.as_view(), name='target_device_creation_view'),
     url(r'^cardtargetdevices/creation/(?P<pk>[0-9]+)/$', TargetDeviceCreationView.as_view(), name='target_device_creation_detail_view')

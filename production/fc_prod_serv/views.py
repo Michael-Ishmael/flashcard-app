@@ -192,7 +192,8 @@ class TargetDeviceCreationView(APIView):
         except Crop.DoesNotExist:
             raise Http404
 
-    def post(self, request, pk):
+    def post(self, request):
+        pk = request.POST.get("cardid", "")
         result = self.get_targets_status(pk)
         if not result.crops_exist:
             result.status = "No crops found for card id: " + str(pk) + ". Create crops first."

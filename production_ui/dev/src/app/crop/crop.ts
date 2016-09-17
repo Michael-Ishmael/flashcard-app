@@ -25,6 +25,8 @@ export class AspectRatio {
 
 export class CardCrop{
 
+  private dirty:boolean;
+
   constructor(
     public id:number,
     public cardId:number,
@@ -32,6 +34,14 @@ export class CardCrop{
     public orientation:Orientation,
     public crop:Crop
   ){}
+
+  public setCrop(crop:Crop){
+
+  }
+
+  public isDirty():boolean{
+    return this.dirty;
+  }
 
 }
 
@@ -42,6 +52,18 @@ export class Crop {
       public w:number,
       public h:number
   ){}
+
+  equals(c:Crop){
+    return this.approxSame(this.x , c.x) && this.approxSame(this.y , c.y)
+        && this.approxSame(this.w , c.w) && this.approxSame(this.h , c.h)
+  }
+
+  private approxSame(a:number, b:number):boolean{
+    a = Math.round(a * 100) / 100;
+    b = Math.round(b * 100) / 100;
+    return a == b;
+  }
+
 
   multiply(w, h){
     return new Crop(

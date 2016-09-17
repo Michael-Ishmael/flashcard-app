@@ -41,7 +41,7 @@ export class InitializeJcrop implements OnInit, OnChanges {
   }
 
   private imageLoad(){
-    this.onImageLoad.emit(new ImageDimensions(this.width, this.height));
+
     if(this.jCropApi){
       this.jCropApi.destroy();
       this.jEl.attr('style', null)
@@ -49,6 +49,7 @@ export class InitializeJcrop implements OnInit, OnChanges {
     }
     this.width = this.jEl.width();
     this.height = this.jEl.height();
+    this.onImageLoad.emit(new ImageDimensions(this.width, this.height));
     this.initJCrop();
   }
 

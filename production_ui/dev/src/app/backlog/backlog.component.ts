@@ -38,6 +38,7 @@ export class BacklogComponent implements OnInit {
           .subscribe(
               saved =>  {var x = 0; } //Do nothing
           );
+      this.getItems();
     }
     this.selectedItem = null;
     this.collapseLists = false;

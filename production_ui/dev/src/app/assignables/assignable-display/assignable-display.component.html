@@ -4,7 +4,7 @@
   <div *ngIf="!model.image" class="icon-place-holder list-thumbnail">*</div>
   <img *ngIf="model.image" class="list-thumbnail" src="{{ model.image }}">
   <span class="list-title">{{ model.name }}</span>
-  <div class="pull-right">
+  <div class="controls pull-right">
     <app-sound-control [src]="model.sound"></app-sound-control>
     <span class="badge pull-right ">{{ model.displayOrder }}</span>
     <button type="button" class="btn btn-default btn-xs" (click)="editItem()">Edit</button>

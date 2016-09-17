@@ -1,7 +1,7 @@
 <div id="backlog" class="row">
   <h2>Backlog</h2>
 
-  <div id="backlog-list" class="deck-set-col" [class.col-md-4]="!collapseLists" [class.col-md-2]="collapseLists">
+  <div id="backlog-list" class="deck-set-col" [class.col-md-4]="!collapseLists" [class.col-md-1]="collapseLists">
 
     <div  [class.assignable-list]="!collapseLists" [class.assignable-list-compact]="collapseLists">
       <button class="btn btn-success btn-xs pull-right" (click)="addNewItem()">+</button>
@@ -21,13 +21,13 @@
 
   </div>
 
-  <div *ngIf="selectedItem" id="cropper" class="col-md-4">
+  <div *ngIf="selectedItem" id="cropper" [class.col-md-4]="!collapseLists" [class.col-md-10]="collapseLists">
     <crop-component [model]="selectedItem" (onCroppingDone)="onCropComplete($event)"></crop-component>
   </div>
 
-  <div id="completed" class="deck-set-col col-md-4">
+  <div id="completed" class="deck-set-col" [class.col-md-4]="!collapseLists" [class.col-md-1]="collapseLists">
 
-    <div class="assignable-list">
+    <div [class.assignable-list]="!collapseLists" [class.assignable-list-compact]="collapseLists">
       <button class="btn btn-success btn-xs pull-right" (click)="addNewItem()">+</button>
       <ul *ngIf="completedItems" class="list-group">
 

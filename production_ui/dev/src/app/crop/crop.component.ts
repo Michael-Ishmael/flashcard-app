@@ -23,7 +23,7 @@ export class CropComponent implements OnInit, OnChanges {
   doneEnabled:boolean = false;
   private steps:CropStep[];
   private currentStepIndex:number = 0;
-
+  private cropsLoaded:boolean = false;
 
   constructor(
       private cropService: CropService
@@ -96,6 +96,7 @@ export class CropComponent implements OnInit, OnChanges {
 
   loadCropsForCard(cardId:number){
     var that = this;
+    this.cropsLoaded = false;
     this.cropService.getItems(cardId)
       .subscribe(
         (cardCrops:CardCrop[]) => {
@@ -105,27 +106,39 @@ export class CropComponent implements OnInit, OnChanges {
             matchingStep.cardCrop = c;
           });
           that.currentStepIndex = 0;
+          that.cropsLoaded = true;
           that.loadCurrentStep();
         }
       );
   }
 
   onCropChanged(crop:Crop){
+    if(!this.cropsLoaded) return;
     var step = this.steps[this.currentStepIndex];
     if(step.cardCrop == null) {
       step.cardCrop = new CardCrop(-1, this.model.id, step.aspectRatio.id, step.orientation, null);
     }
-    var cardCrop = step.cardCrop;
-    cardCrop.crop = crop;
-    this.cropService.save(cardCrop, cardCrop.id == -1)
-      .subscribe(
-        (savedCard) => {
-          step.cardCrop.id = savedCard.id;
-        }
-      );
-    this.doneEnabled = this.allCropsSet();
+    if(step.cardCrop.crop == null || !step.cardCrop.crop.equals(crop)){
+      step.cardCrop.crop = crop;
+      this.saveCurrentCrop();
+    }
+
   }
 
+  saveCurrentCrop() {
+    var step = this.steps[this.currentStepIndex];
+    if(step.cardCrop != null){
+      var cardCrop = step.cardCrop;
+      this.cropService.save(cardCrop, cardCrop.id == -1)
+          .subscribe(
+              (savedCard) => {
+                step.cardCrop.id = savedCard.id;
+              }
+          );
+      this.doneEnabled = this.allCropsSet();
+      this.loadCurrentStep();
+    }
+  }
 
 }
 

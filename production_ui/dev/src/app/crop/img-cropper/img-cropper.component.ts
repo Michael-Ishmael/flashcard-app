@@ -36,13 +36,15 @@ export class ImgCropperComponent implements OnInit, AfterViewInit {
   getImagePreviewContainerStyle():any{
     if(!(this.model && this.model.crop && this.imageDimensions)) return null;
     var adj = this.model.crop.multiply(this.imageDimensions.width, this.imageDimensions.height);
-    return {'left': adj.x + 'px', 'top': (adj.y) + 'px', 'width': adj.w + 'px', 'height': adj.h + 'px' }
+    var obj = {'left': adj.x + 'px', 'top': (adj.y) + 'px', 'width': adj.w + 'px', 'height': adj.h + 'px' };
+    return obj;
   }
 
   getImagePreviewStyle():any{
     if(!(this.model && this.model.crop && this.imageDimensions)) return null;
     var adj = this.model.crop.multiply(this.imageDimensions.width, this.imageDimensions.height);
-    return {'margin-left': '-' + adj.x + 'px', 'margin-top': '-' + adj.y + 'px', 'width': this.imageDimensions.width + 'px', 'height': this.imageDimensions.height + 'px' }
+    var obj = {'margin-left': '-' + adj.x + 'px', 'margin-top': '-' + adj.y + 'px', 'width': this.imageDimensions.width + 'px', 'height': this.imageDimensions.height + 'px' }
+    return obj;
   }
 
   onImageLoaded(imageDims:ImageDimensions){

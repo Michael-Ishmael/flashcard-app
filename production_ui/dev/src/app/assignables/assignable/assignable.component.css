@@ -1,5 +1,3 @@
-.assignable-list :host .assignable-display {
-  font-size: 20px; }
 .assignable-list .list-group-item {
   color: #595959;
   cursor: pointer; }

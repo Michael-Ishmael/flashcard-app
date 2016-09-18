@@ -1,44 +1,16 @@
 import { Injectable } from '@angular/core';
-import {AppSettings} from "../app-settings";
+import {AppSettings} from "../../app-settings";
 import {Http, Response, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
-import {Crop, CardCrop, AspectRatio, Orientation} from "../shared/crop";
-
-
-interface ApiCrop {
-  id:number,
-  cardId:number,
-  aspectRatioId:number,
-  orientationId:number,
-  x:number,
-  y:number,
-  w:number,
-  h:number,
-}
-
-class AspectRatioProvider {
-
-  private static twelve16:AspectRatio = new AspectRatio(1, 16, 12);
-  private static nine16:AspectRatio = new AspectRatio(1, 16, 9);
-
-  static GetForId(aspectRatioId:number){
-    if(aspectRatioId == 1){
-      return AspectRatioProvider.twelve16;
-    }
-    else {
-      return AspectRatioProvider.nine16;
-    }
-  }
-
-}
+import {Crop, CardCrop, AspectRatio, Orientation} from "../../shared/crop";
 
 @Injectable()
-export class CropService {
+export class TargetDeviceService {
 
   protected cropsUrl:string
-  
+
   constructor(
-    private http: Http, 
+    private http: Http,
     private appSettings:AppSettings
   ) {
     this.cropsUrl = appSettings.apiEndpoint + 'crops/'
@@ -144,6 +116,7 @@ export class CropService {
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
   }
-  
-  
+
+
 }
+

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,gBAAgB;EACd,UAAU,EAAE,IAAI",
+"sources": ["card-preview.component.scss"],
+"names": [],
+"file": "card-preview.component.css"
+}

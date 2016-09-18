@@ -4,31 +4,43 @@ import {Flashcard} from "../flashcard/flashcard";
 import {AssignableDisplayComponent} from "../assignables/assignable-display/assignable-display.component";
 import {Router} from "@angular/router";
 import {CropComponent} from "../crop/crop.component";
+import {CardPreviewComponent} from "../card-preview/card-preview.component";
 
 @Component({
   moduleId: module.id,
   selector: 'app-backlog',
   templateUrl: 'backlog.component.html',
   styleUrls: ['../assignables/assignable/assignable.component.css', 'backlog.component.css'],
-  directives: [AssignableDisplayComponent, CropComponent]
+  directives: [AssignableDisplayComponent, CropComponent, CardPreviewComponent]
 })
 export class BacklogComponent implements OnInit {
 
   items:Flashcard[];
   completedItems:Flashcard[];
   selectedItem:Flashcard = null;
+
   errorMessage:any;
   collapseLists:boolean;
+  viewManager = new BacklogViewManager();
 
   constructor(
       private router:Router,
       private flashcardService:FlashcardService
   ) { }
 
-  selectItem(item:Flashcard){
+  selectBacklogItem(item:Flashcard){
     //this.router.navigate(['/crop', item.id])
     this.selectedItem = item;
-    this.collapseLists = true;
+    this.viewManager.setView(BacklogViewSetting.Cropping)
+  }
+
+  onCropModeSelected(){
+    this.viewManager.setView(BacklogViewSetting.Cropping)
+  }
+
+  selectCompletedItem(item:Flashcard){
+    this.selectedItem = item;
+    this.viewManager.setView(BacklogViewSetting.Preview)
   }
 
   onCropComplete(itemId:number){
@@ -41,7 +53,7 @@ export class BacklogComponent implements OnInit {
       this.getItems();
     }
     this.selectedItem = null;
-    this.collapseLists = false;
+    this.viewManager.setView(BacklogViewSetting.Default)
   }
 
   getItems(){
@@ -61,6 +73,26 @@ export class BacklogComponent implements OnInit {
 
   ngOnInit() {
     this.getItems();
+  }
+
+}
+
+enum BacklogViewSetting{
+  Default,
+  Cropping,
+  Preview
+}
+
+class BacklogViewManager {
+
+  listsCollapsed:boolean;
+  showCrops:boolean;
+  showPreview:boolean;
+
+  public setView(viewSetting:BacklogViewSetting):void{
+    this.listsCollapsed = viewSetting != BacklogViewSetting.Default;
+    this.showCrops = viewSetting == BacklogViewSetting.Cropping;
+    this.showPreview = viewSetting == BacklogViewSetting.Preview;
   }
 
 }

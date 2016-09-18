@@ -310,7 +310,13 @@ class FolderView(APIView):
                     mf.path = file.path
                     mf.size = file.size
                     mf.media_file_type_id = 3 if file.name.endswith(".mp3") else 1 if file.name.endswith(".jpg") else 2
-                if mf.relative_path is None or len(mf.relative_path) == 0:
+                has_rel_path = (mf.relative_path is not None) or (len(mf.relative_path) == 0)
+                if has_rel_path:
+                    has_rel_path = os.path.exists(join_paths(root_path, mf.relative_path.replace('media', '')))
+                    if not has_rel_path:
+                        mf.relative_path = None
+                        mf.size = file.size
+                if not has_rel_path:
                     test_path = join_paths(preview_path, file.name)
                     if os.path.exists(test_path):
                         mf.relative_path = test_path.replace(root_path, 'media')

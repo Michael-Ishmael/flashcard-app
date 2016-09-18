@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,cAAc;EACZ,MAAM,EAAE,IAAI;EACV,KAAK,EAAE,KAAK;EACZ,KAAK,EAAE,IAAI;EAEX,2BAAc;IACZ,KAAK,EAAE,IAAI;;AAKjB,kBAAmB;EACf,uBAAuB;EACvB,cAAc;EACd,YAAY;EACZ,kBAAkB;EAClB,QAAQ,EAAE,MAAM;EAChB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;;AAGhB,iBAAiB;EACb,SAAS,EAAE,KAAK",
+"sources": ["crops-preview.component.scss"],
+"names": [],
+"file": "crops-preview.component.css"
+}

@@ -4,7 +4,7 @@ from rest_framework_recursive.fields import RecursiveField
 
 from fc_prod_serv.apps import CardTargetDeviceCreationResult
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Set, Deck, Card, Crop, AspectRatio, Orientation, \
-    TargetDevice, CardCropInstruction, CardTargetDevice
+    TargetDevice, CardCropInstruction, CardTargetDevice, CroppingInstruction
 from production.business.models import Folder, File, CardCropCollection
 
 
@@ -54,6 +54,40 @@ class TargetDeviceSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = TargetDevice
+
+
+class CardCropInstructionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CardCropInstruction
+
+
+class CroppingInstructionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CroppingInstruction
+
+
+class CardTargetDeviceSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='card_target_device_id')
+    cardId = serializers.PrimaryKeyRelatedField(many=False, queryset=Card.objects.all(), source='card')
+    targetDeviceId = serializers.PrimaryKeyRelatedField(many=False, queryset=TargetDevice.objects.all(), source='target_device')
+    lsXcassetName = serializers.CharField(source='ls_xcasset_name')
+    ptXcassetName = serializers.CharField(source='pt_xcasset_name')
+    lsCropX = serializers.FloatField(source='ls_crop_x')
+    lsCropY = serializers.FloatField(source='ls_crop_y')
+    lsCropW = serializers.FloatField(source='ls_crop_w')
+    lsCropH = serializers.FloatField(source='ls_crop_h')
+    ptCropX = serializers.FloatField(source='pt_crop_x')
+    ptCropY = serializers.FloatField(source='pt_crop_y')
+    ptCropW = serializers.FloatField(source='pt_crop_w')
+    ptCropH = serializers.FloatField(source='pt_crop_h')
+    lines = CroppingInstructionSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = CardTargetDevice
+        fields = ('id', 'cardId', 'targetDeviceId', 'lsXcassetName', 'ptXcassetName',
+                  'lsCropX', 'lsCropY', 'lsCropW', 'lsCropH', 'ptCropX', 'ptCropY', 'ptCropW', 'ptCropH', 'lines')
 
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
@@ -136,20 +170,6 @@ class FileSerializer(serializers.Serializer):
 
     class Meta:
         model = File
-
-
-class CardCropInstructionSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = CardCropInstruction
-
-
-class CardTargetDeviceSerializer(serializers.ModelSerializer):
-    card_id = serializers.PrimaryKeyRelatedField(many=False, queryset=Card.objects.all(), source='card')
-
-    class Meta:
-        model = CardTargetDevice
-        #fields = ('card_id')
 
 
 class CardCropCollectionSerializer(serializers.Serializer):

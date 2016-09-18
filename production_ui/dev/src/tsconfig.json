@@ -18,7 +18,8 @@
 
   "files": [
     "main.ts",
-    "typings.d.ts"
-    , "node_modules/ng2-img-cropper/index.d.ts"
+    "typings.d.ts",
+    "node_modules/ng2-img-cropper/index.d.ts",
+    "../node_modules/typescript/lib/lib.es6.d.ts"
   ]
 }

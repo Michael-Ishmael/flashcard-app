@@ -58,6 +58,10 @@ const barrels:string[] = [
   'app/crop',
   'app/backlog',
   'app/crop/img-cropper',
+  'app/preview',
+  'app/card-preview',
+  'app/card-preview/crops-preview',
+  'app/card-preview/target-device-preview',
   /** @cli-barrel */
 ];
 

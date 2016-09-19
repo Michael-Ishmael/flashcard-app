@@ -1,3 +1,12 @@
 <p>
   target-device-preview works!
 </p>
+
+
+<div *ngIf="targetDevices">
+  <button *ngFor="let device of targetDevices" class="btn"
+          [class.btn-default]="deviced != selectedDevice"
+          [class.btn-success]="device == selectedDevice"
+           (click)="selectTargetDevice(device)" >
+    {{ device.name }}</button>
+</div>

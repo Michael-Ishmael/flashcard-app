@@ -2,7 +2,19 @@ import { Injectable } from '@angular/core';
 import {AppSettings} from "../../app-settings";
 import {Http, Response, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
-import {Crop, CardCrop, AspectRatio, Orientation} from "../../shared/crop";
+import {AspectRatio} from "../../shared/crop";
+import {TargetDevice} from "./target-device";
+
+class ApiTargetDevice{
+  constructor(public id:number,
+              public aspectRatioId:number,
+              public name:string,
+              public width:number,
+              public height:number,
+              public idiom:string,
+              public scale:string,
+              public subType:string) {}
+}
 
 @Injectable()
 export class TargetDeviceService {
@@ -13,21 +25,21 @@ export class TargetDeviceService {
     private http: Http,
     private appSettings:AppSettings
   ) {
-    this.cropsUrl = appSettings.apiEndpoint + 'crops/'
+    this.cropsUrl = appSettings.apiEndpoint + 'targetdevices/'
   }
 
 
-  getItem(id:number):Observable<CardCrop>{
+  getItem(id:number):Observable<TargetDevice>{
     var url = `${this.cropsUrl}${id}`;
     var that = this;
     return this.http.get(url)
       .map(function(res){
-        return CropService.mapApiCrop(res.json() as ApiCrop);
+        return TargetDeviceService.mapTargetDeviceFromApi(res.json() as ApiTargetDevice);
       })
       .catch(this.handleError);
   }
 
-  getItems(cardId:number = -1): Observable<CardCrop[]>{
+  getItems(cardId:number = -1): Observable<TargetDevice[]>{
     var url:string;
     url = this.cropsUrl;
     if(cardId > -1) url += `?card_id=${cardId}`;
@@ -36,38 +48,39 @@ export class TargetDeviceService {
       .catch(this.handleError);
   }
 
-  private extractData(res: Response):CardCrop[] {
-    let body = res.json() as ApiCrop[] ;
-    return body.map((c) => CropService.mapApiCrop(c));
+  private extractData(res: Response):TargetDevice[] {
+    let body = res.json() as ApiTargetDevice[] ;
+    return body.map((c) => TargetDeviceService.mapTargetDeviceFromApi(c as ApiTargetDevice));
   }
 
-  private static mapApiCrop(apiCrop:ApiCrop):CardCrop{
-    var orientation = apiCrop.orientationId as Orientation;
-    var crop = new Crop(apiCrop.x, apiCrop.y, apiCrop.w, apiCrop.h);
-    return new CardCrop(apiCrop.id, apiCrop.cardId, apiCrop.aspectRatioId, orientation, crop);
+  private static mapTargetDeviceFromApi(targetDevice:ApiTargetDevice):TargetDevice{
+    var aspectRatio = new AspectRatio(targetDevice.aspectRatioId, targetDevice.width, targetDevice.height);
+    return new TargetDevice(targetDevice.id, aspectRatio, targetDevice.name, targetDevice.width
+        , targetDevice.height, targetDevice.idiom, targetDevice.scale, targetDevice.subType)
+
   }
 
-  private static mapCardCrop(cardCrop:CardCrop):ApiCrop{
+  private static mapTargetDeviceToApi(targetDevice:TargetDevice):ApiTargetDevice{
     return {
-      id:cardCrop.id,
-      cardId:cardCrop.cardId,
-      aspectRatioId:cardCrop.aspectRatioId,
-      orientationId:cardCrop.orientation as number,
-      x:cardCrop.crop.x,
-      y:cardCrop.crop.y,
-      w:cardCrop.crop.w,
-      h:cardCrop.crop.h
+      id:targetDevice.id,
+      aspectRatioId:targetDevice.aspectRatio.id,
+      name:targetDevice.name,
+      width:targetDevice.width,
+      height:targetDevice.height,
+      idiom:targetDevice.idiom,
+      scale:targetDevice.scale,
+      subType:targetDevice.subType
     }
   }
 
-  save(cardCrop: CardCrop, asNew:boolean = false): Observable<CardCrop>  {
+  save(cardCrop: TargetDevice, asNew:boolean = false): Observable<TargetDevice>  {
     if (asNew) {
       return this.post(cardCrop);
     }
     return this.put(cardCrop);
   }
 
-  delete(cardCrop: CardCrop): Observable<CardCrop> {
+  delete(cardCrop: TargetDevice): Observable<TargetDevice> {
     let headers = new Headers({
       //'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
@@ -77,34 +90,34 @@ export class TargetDeviceService {
       .catch(this.handleError);
   }
 
-  // Add new CardCrop
-  private post(cardCrop: CardCrop): Observable<CardCrop> {
+  // Add new TargetDevice
+  private post(cardCrop: TargetDevice): Observable<TargetDevice> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
     var url = this.cropsUrl;
-    var apiCrop = CropService.mapCardCrop(cardCrop);
+    var targetDevice = TargetDeviceService.mapTargetDeviceToApi(cardCrop);
     var that = this;
     return this.http
-      .post(url, JSON.stringify(apiCrop), {headers: headers})
+      .post(url, JSON.stringify(targetDevice), {headers: headers})
       .map(function(res){
-        var item = res.json() as ApiCrop;
-        return CropService.mapApiCrop(item);
+        var item = res.json() as ApiTargetDevice;
+        return TargetDeviceService.mapTargetDeviceFromApi(item as ApiTargetDevice);
       })
       .catch(this.handleError);
   }
 
-  // Update existing CardCrops
-  private put(cardCrop: CardCrop): Observable<CardCrop> {
+  // Update existing TargetDevices
+  private put(cardCrop: TargetDevice): Observable<TargetDevice> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     var url = this.cropsUrl;
     url = `${url}${cardCrop.id}/`;
-    var apiCrop = CropService.mapCardCrop(cardCrop);
+    var targetDevice = TargetDeviceService.mapTargetDeviceToApi(cardCrop);
     var that = this;
     return this.http
-      .put(url, JSON.stringify(apiCrop), {headers: headers})
-      .map((res) => CropService.mapApiCrop(res.json() as ApiCrop))
+      .put(url, JSON.stringify(targetDevice), {headers: headers})
+      .map((res) => TargetDeviceService.mapTargetDeviceFromApi(res.json() as ApiTargetDevice))
       .catch(this.handleError);
   }
 

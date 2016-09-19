@@ -87,7 +87,7 @@ class CardTargetDevice(models.Model):
 
 class CroppingInstruction(models.Model):
     cropping_instruction_id = models.AutoField(primary_key=True)
-    card_target_device = models.ForeignKey(CardTargetDevice, models.DO_NOTHING)
+    card_target_device = models.ForeignKey(CardTargetDevice, models.DO_NOTHING, related_name="croppingInstructions")
     original_path = models.CharField(max_length=200, blank=True, null=True)
     target_path = models.CharField(max_length=200, blank=True, null=True)
     crop_start_x_pc = models.FloatField()  # This field type is a guess.
@@ -96,6 +96,7 @@ class CroppingInstruction(models.Model):
     crop_end_y_pc = models.FloatField()  # This field type is a guess.
     target_width = models.FloatField()
     target_height = models.FloatField()
+    orientation_id = models.IntegerField(null=True)
 
     class Meta:
         managed = False
@@ -212,6 +213,9 @@ class TargetDevice(models.Model):
     idiom = models.CharField(max_length=20)
     scale = models.CharField(max_length=2)
     sub_type = models.CharField(max_length=10, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         managed = False

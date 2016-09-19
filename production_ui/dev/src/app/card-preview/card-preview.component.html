@@ -1,13 +1,14 @@
 <div class="row">
     <div class="col-sm-6">
-        <button (click)="selectCropView()">Crops</button>
-        <button (click)="selectCropView()"><- Edit</button>
+        <button (click)="selectPreviewViewMode(1)">Crops</button>
+        <button (click)="selectPreviewViewMode(3)"><- Edit</button>
     </div>
     <div class="col-sm-6">
-        <button class="pull-right">Calcs</button>
+        <button class="pull-right" (click)="selectPreviewViewMode(2)">Calcs</button>
     </div>
 
 </div>
 <div *ngIf="model" class="preview-content">
-    <crops-preview [model]="model"></crops-preview>
+  <crops-preview *ngIf="previewViewMode==1" [model]="model"></crops-preview>
+  <target-device-preview *ngIf="previewViewMode==2"  [model]="model"></target-device-preview>
 </div>

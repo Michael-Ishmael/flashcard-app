@@ -44,34 +44,53 @@ class DeckSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class AspectRatioSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = AspectRatio
 
 
-class TargetDeviceSerializer(serializers.HyperlinkedModelSerializer):
-    aspect_ratio_id = serializers.PrimaryKeyRelatedField(many=False, queryset=AspectRatio.objects.all(), source='aspect_ratio')
+class TargetDeviceSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='target_device_id')
+    aspectRatioId = serializers.PrimaryKeyRelatedField(many=False, queryset=AspectRatio.objects.all(),
+                                                       source='aspect_ratio')
+    subType = serializers.CharField(source="sub_type")
 
     class Meta:
         model = TargetDevice
+        fields = ("id",
+                  "aspectRatioId",
+                  "name",
+                  "width",
+                  "height",
+                  "idiom",
+                  "scale",
+                  "subType"
+                  )
 
 
 class CardCropInstructionSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = CardCropInstruction
 
 
 class CroppingInstructionSerializer(serializers.ModelSerializer):
+    orientationId = serializers.IntegerField(source="orientation_id")
+    x = serializers.FloatField(source="crop_start_x_pc")
+    y = serializers.FloatField(source="crop_start_y_pc")
+    x2 = serializers.FloatField(source="crop_end_x_pc")
+    y2 = serializers.FloatField(source="crop_end_y_pc")
+    w = serializers.FloatField(source="target_width")
+    h = serializers.FloatField(source="target_height")
 
     class Meta:
         model = CroppingInstruction
+        fields = ('orientationId', 'x', 'y', 'x2', 'y2', 'w', 'h',)
 
 
 class CardTargetDeviceSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source='card_target_device_id')
     cardId = serializers.PrimaryKeyRelatedField(many=False, queryset=Card.objects.all(), source='card')
-    targetDeviceId = serializers.PrimaryKeyRelatedField(many=False, queryset=TargetDevice.objects.all(), source='target_device')
+    targetDeviceId = serializers.PrimaryKeyRelatedField(many=False, queryset=TargetDevice.objects.all(),
+                                                        source='target_device')
     lsXcassetName = serializers.CharField(source='ls_xcasset_name')
     ptXcassetName = serializers.CharField(source='pt_xcasset_name')
     lsCropX = serializers.FloatField(source='ls_crop_x')
@@ -82,12 +101,13 @@ class CardTargetDeviceSerializer(serializers.ModelSerializer):
     ptCropY = serializers.FloatField(source='pt_crop_y')
     ptCropW = serializers.FloatField(source='pt_crop_w')
     ptCropH = serializers.FloatField(source='pt_crop_h')
-    lines = CroppingInstructionSerializer(many=True, read_only=True)
+    croppingInstructions = CroppingInstructionSerializer(many=True, read_only=True)
 
     class Meta:
         model = CardTargetDevice
         fields = ('id', 'cardId', 'targetDeviceId', 'lsXcassetName', 'ptXcassetName',
-                  'lsCropX', 'lsCropY', 'lsCropW', 'lsCropH', 'ptCropX', 'ptCropY', 'ptCropW', 'ptCropH', 'lines')
+                  'lsCropX', 'lsCropY', 'lsCropW', 'lsCropH', 'ptCropX', 'ptCropY', 'ptCropW', 'ptCropH',
+                  'croppingInstructions')
 
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
@@ -195,5 +215,3 @@ class CardTargetDeviceCreationResultSerializer(serializers.Serializer):
     class Meta:
         model = CardTargetDeviceCreationResult
         fields = ('status', 'targetsExist', 'cropsExist')
-
-

@@ -1,19 +1,51 @@
+import {AspectRatio} from "../../shared/crop";
+
 export class TargetDevice {
 
+  constructor(public id:number,
+              public aspectRatio:AspectRatio,
+              public name:string,
+              public width:number,
+              public height:number,
+              public idiom:string,
+              public scale:string,
+              public subType:string) {
+  }
+}
 
-  card_target_device_id,
-  card_id,
-  ls_xcasset_name
-  pt_xcasset_name,
-  ls_crop_x,
-  ls_crop_w,
-  ls_crop_y,
-  ls_crop_h,
-  pt_crop_x,
-  pt_crop_w,
-  pt_crop_y,
-  pt_crop_h,
-  target_device: 1
+export class CropInstruction {
 
+  constructor(public orientationId:number,
+              public x:number,
+              public y:number,
+              public x2:number,
+              public y2:number,
+              public w:number,
+              public h:number) {
+  }
+
+}
+
+
+export class CardTargetDevice {
+
+  public croppingInstructions:CropInstruction[];
+
+  constructor(public id:number,
+              public cardId:number,
+              public targetDeviceId:number,
+              public lsXcassetName:string,
+              public ptXcassetName:string,
+              public lsCropX:number,
+              public lsCropY:number,
+              public lsCropW:number,
+              public lsCropH:number,
+              public ptCropX:number,
+              public ptCropY:number,
+              public ptCropW:number,
+              public ptCropH:number) {
+
+    this.croppingInstructions = [];
+  }
 
 }

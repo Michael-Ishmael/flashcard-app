@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {SettingService} from "./settings/setting.service";
 import {FolderService} from "./assignment/folder-structure/folder.service";
@@ -6,6 +6,7 @@ import {DeckSetService} from "./deck-sets/deck-set.service";
 import {AppSettings} from "./app-settings";
 import {FlashcardService, FlashcardDetailService} from "./flashcard/flashcard.service";
 import {CropService} from "./crop/crop.service";
+import {TargetDeviceService} from "./card-preview/target-device-preview/target-device.service";
 
 @Component({
   moduleId: module.id,
@@ -18,9 +19,10 @@ import {CropService} from "./crop/crop.service";
     FolderService,
     DeckSetService,
     AppSettings,
-      FlashcardService,
-      FlashcardDetailService,
-    CropService
+    FlashcardService,
+    FlashcardDetailService,
+    CropService,
+    TargetDeviceService
   ]
 })
 export class AppComponent {

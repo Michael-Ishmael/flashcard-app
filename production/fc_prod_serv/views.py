@@ -74,7 +74,7 @@ class CardTargetDeviceViewSet(viewsets.ModelViewSet):
     queryset = CardTargetDevice.objects.all()
     serializer_class = CardTargetDeviceSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = ('card_id', )
+    filter_fields = ('card_id', 'target_device' )
 
 
 class CropViewSet(viewsets.ModelViewSet):

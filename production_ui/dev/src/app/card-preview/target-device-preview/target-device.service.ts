@@ -19,7 +19,7 @@ class ApiTargetDevice{
 @Injectable()
 export class TargetDeviceService {
 
-  protected cropsUrl:string
+  protected cropsUrl:string;
 
   constructor(
     private http: Http,

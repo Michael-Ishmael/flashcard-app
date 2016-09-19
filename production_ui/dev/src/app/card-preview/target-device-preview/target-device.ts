@@ -26,8 +26,15 @@ export class CropInstruction {
 
 }
 
+export class CardTargetDeviceBase{
 
-export class CardTargetDevice {
+  constructor(public id:number,
+              public cardId:number,
+              public targetDeviceId:number){}
+
+}
+
+export class SplitCardTargetDevice {
 
   public croppingInstructions:CropInstruction[];
 
@@ -47,5 +54,9 @@ export class CardTargetDevice {
 
     this.croppingInstructions = [];
   }
+
+}
+
+export class CombinedCardTargetDevice{
 
 }

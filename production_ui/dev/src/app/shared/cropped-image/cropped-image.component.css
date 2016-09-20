@@ -1,0 +1,7 @@
+.preview-container {
+    overflow: hidden;
+}
+
+.init-preview-img{
+    max-width: 400px;
+}

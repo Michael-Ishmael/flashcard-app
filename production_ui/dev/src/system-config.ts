@@ -62,6 +62,9 @@ const barrels:string[] = [
   'app/card-preview',
   'app/card-preview/crops-preview',
   'app/card-preview/target-device-preview',
+  'app/card-preview/target-device-preview/combined-xcasset',
+  'app/card-preview/target-device-preview/split-xcasset',
+  'app/shared/cropped-image',
   /** @cli-barrel */
 ];
 

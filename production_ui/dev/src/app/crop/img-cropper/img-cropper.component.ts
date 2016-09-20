@@ -1,8 +1,8 @@
 import {Component, OnInit, Input, Optional, ViewChild, AfterViewInit, SimpleChange, Output, EventEmitter} from '@angular/core';
 import {InitializeJcrop} from "../initialize-jcrop.directive";
-import {Crop} from "../../shared/crop";
-import {CropModel, ImageDimensions} from "../crop.component";
+import {Crop, ImageDimensions} from "../../shared/crop";
 import {NgStyle} from "@angular/common";
+import {CropModel} from "../crop.component";
 
 @Component({
   moduleId: module.id,

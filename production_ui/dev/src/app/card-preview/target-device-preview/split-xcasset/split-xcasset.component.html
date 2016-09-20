@@ -1,0 +1,13 @@
+<div class="row" *ngIf="model">
+  <div class="col-md-6">
+      {{ model.lsXcassetName }}
+
+    <cropped-image [model]="lsCroppedImage"></cropped-image>
+  </div>
+  <div class="col-md-6">
+      {{ model.ptXcassetName }}
+
+    <cropped-image [model]="ptCroppedImage"></cropped-image>
+  </div>
+
+</div>

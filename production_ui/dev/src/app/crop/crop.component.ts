@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, Output, Input, EventEmitter, SimpleChange, OnChanges} from '@angular/core';
+import {Component, OnInit, Output, Input, EventEmitter, SimpleChange, OnChanges} from '@angular/core';
 import {Flashcard} from "../flashcard/flashcard";
 import {ImgCropperComponent} from "./img-cropper/img-cropper.component";
 import {Crop, Orientation, AspectRatio, CardCrop} from "../shared/crop";
@@ -196,14 +196,3 @@ export class CropModel{
 
 }
 
-export class ImageDimensions{
-
-  public id:Number = -1;
-
-  constructor(
-    public width:Number,
-    public height:Number
-  ){
-
-  }
-}

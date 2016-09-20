@@ -1,21 +1,21 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
-import {CardCrop, Crop} from "../../shared/crop";
+import {CardCrop, Crop, ImageDimensions, CroppedImage} from "../../shared/crop";
 import {CropService} from "../../crop/crop.service";
 import {Flashcard} from "../../flashcard/flashcard";
-import {ImageDimensions} from "../../crop/crop.component";
-import {InitPreviewImg} from "./init-preview-img.directive";
+import {CroppedImageComponent} from "../../shared/cropped-image/cropped-image.component";
 
 @Component({
   moduleId: module.id,
   selector: 'crops-preview',
   templateUrl: 'crops-preview.component.html',
   styleUrls: ['crops-preview.component.css'],
-  directives: [InitPreviewImg]
+  directives: [CroppedImageComponent]
 })
 export class CropsPreviewComponent implements OnInit {
 
   @Input() model:Flashcard;
   cardCrops:CardCrop[];
+  croppedImages:CroppedImage[];
   cropsLoaded:boolean = false;
 
   private imageDimensionLookup:{[id:number] : ImageDimensions};
@@ -39,6 +39,11 @@ export class CropsPreviewComponent implements OnInit {
       .subscribe(
         (cardCrops:CardCrop[]) => {
           that.cardCrops = cardCrops;
+          that.croppedImages = that.cardCrops.map(c => new CroppedImage(
+              this.model.image,
+              c.crop,
+              400
+                        ));
           that.cropsLoaded = true;
         }
       );

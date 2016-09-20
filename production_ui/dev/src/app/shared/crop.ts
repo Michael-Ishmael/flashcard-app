@@ -87,3 +87,27 @@ export class Crop {
     return [this.x, this.y, this.x + this.w, this.y + this.h];
   }
 }
+
+export class ImageDimensions{
+
+  public id:Number = -1;
+
+  constructor(
+      public width:Number,
+      public height:Number
+  ){
+
+  }
+}
+
+export class CroppedImage{
+
+  constructor(
+      public image:string,
+      public crop:Crop,
+      public maxWidth:number
+  ){
+
+  }
+
+}

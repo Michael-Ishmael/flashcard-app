@@ -1,12 +1,17 @@
-<p>
-  target-device-preview works!
-</p>
 
+<div *ngIf="targetDevices" class="btn-group">
 
-<div *ngIf="targetDevices">
+  <!--[class.btn-default]="deviced != selectedDevice"-->
+  <!--[class.btn-success]="device == selectedDevice"-->
+
   <button *ngFor="let device of targetDevices" class="btn"
-          [class.btn-default]="deviced != selectedDevice"
-          [class.btn-success]="device == selectedDevice"
            (click)="selectTargetDevice(device)" >
     {{ device.name }}</button>
+
+
+
+</div>
+<div class="xcasset-container" *ngIf="xCassetView != 0">
+  <combined-xcasset *ngIf="xCassetView==1"></combined-xcasset>
+  <split-xcasset [model]="splitModel" *ngIf="xCassetView==2"></split-xcasset>
 </div>

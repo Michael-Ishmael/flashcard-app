@@ -1,13 +1,10 @@
 <div *ngIf="!cardCrops">
     Loading...
 </div>
-<div *ngIf="cardCrops">
+<div *ngIf="croppedImages">
     <ul>
-        <li *ngFor="let cardCrop of cardCrops; let i = index" class="img-container" [class.last-in-line]="(i) % 2 == 0" >
-            <div class="preview-container" [ngStyle]="getImagePreviewContainerStyle(cardCrop)">
-                <img class="init-preview-img" [id]="cardCrop.id" (onImageLoad)="onImageLoaded($event)"
-                     src="{{ model.image }}" [ngStyle]="getImagePreviewStyle(cardCrop)"/>
-            </div>
+        <li *ngFor="let croppedImage of croppedImages; let i = index" class="img-container" [class.last-in-line]="(i) % 2 == 0" >
+            <cropped-image [model]="croppedImage"></cropped-image>
         </li>
 
     </ul>

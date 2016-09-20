@@ -1,19 +1,16 @@
-import {Directive, OnInit, EventEmitter, Output, ElementRef, Input} from '@angular/core';
-import {ImageDimensions} from "../../crop/crop.component";
-
-declare var $: any;
+import {Directive, ElementRef, Output, EventEmitter} from '@angular/core';
+import {ImageDimensions} from "../crop";
 
 @Directive({
-  selector: '.init-preview-img'
+  selector: '.cropped-image'
 })
-export class InitPreviewImg implements OnInit {
+export class InitCroppedImage {
 
-  @Input() id:number;
   @Output() onImageLoad = new EventEmitter<ImageDimensions>();
   jEl:any;
 
   constructor(
-    private el: ElementRef
+      private el: ElementRef
   ) { }
 
   public ngOnInit() {
@@ -33,9 +30,7 @@ export class InitPreviewImg implements OnInit {
     var width = this.jEl.width();
     var height = this.jEl.height();
     var dims = new ImageDimensions(width, height);
-    dims.id = this.id;
     this.onImageLoad.emit(dims);
   }
-
 
 }

@@ -1,8 +1,8 @@
 import {
   Directive, OnInit, ElementRef, Output, EventEmitter, SimpleChange, OnChanges, Input
 } from '@angular/core';
-import {Crop, AspectRatio} from "../shared/crop";
-import {CropModel, ImageDimensions} from "./crop.component";
+import {Crop, AspectRatio, ImageDimensions} from "../shared/crop";
+import {CropModel} from "./crop.component";
 
 declare var $: any;
 

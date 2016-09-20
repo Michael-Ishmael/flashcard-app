@@ -7,6 +7,7 @@ import {AppSettings} from "./app-settings";
 import {FlashcardService, FlashcardDetailService} from "./flashcard/flashcard.service";
 import {CropService} from "./crop/crop.service";
 import {TargetDeviceService} from "./card-preview/target-device-preview/target-device.service";
+import {CardTargetDeviceService} from "./card-preview/target-device-preview/card-target-device.service";
 
 @Component({
   moduleId: module.id,
@@ -22,7 +23,8 @@ import {TargetDeviceService} from "./card-preview/target-device-preview/target-d
     FlashcardService,
     FlashcardDetailService,
     CropService,
-    TargetDeviceService
+    TargetDeviceService,
+    CardTargetDeviceService
   ]
 })
 export class AppComponent {

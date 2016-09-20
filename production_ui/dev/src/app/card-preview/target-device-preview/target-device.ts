@@ -1,4 +1,4 @@
-import {AspectRatio} from "../../shared/crop";
+import {AspectRatio, Crop} from "../../shared/crop";
 
 export class TargetDevice {
 
@@ -15,6 +15,8 @@ export class TargetDevice {
 
 export class CropInstruction {
 
+  public crop:Crop;
+
   constructor(public orientationId:number,
               public x:number,
               public y:number,
@@ -22,27 +24,31 @@ export class CropInstruction {
               public y2:number,
               public w:number,
               public h:number) {
+    this.crop = new Crop(x, y, w, h);
+
   }
 
-}
 
-export class CardTargetDeviceBase{
-
-  constructor(public id:number,
-              public cardId:number,
-              public targetDeviceId:number){}
 
 }
 
-export class SplitCardTargetDevice {
-
-  public croppingInstructions:CropInstruction[];
+export class CardTargetDeviceBase {
 
   constructor(public id:number,
               public cardId:number,
               public targetDeviceId:number,
-              public lsXcassetName:string,
-              public ptXcassetName:string,
+              public typeId) {
+  }
+
+}
+
+export class CombinedCardTargetDevice extends CardTargetDeviceBase {
+
+  constructor(public id:number,
+              public cardId:number,
+              public targetDeviceId:number,
+              public xcassetName:string,
+              public cropInstruction:CropInstruction,
               public lsCropX:number,
               public lsCropY:number,
               public lsCropW:number,
@@ -51,12 +57,24 @@ export class SplitCardTargetDevice {
               public ptCropY:number,
               public ptCropW:number,
               public ptCropH:number) {
+    super(id, cardId, targetDeviceId, 1);
 
-    this.croppingInstructions = [];
   }
 
 }
 
-export class CombinedCardTargetDevice{
+
+export class SplitCardTargetDevice extends CardTargetDeviceBase {
+
+  constructor(public id:number,
+              public cardId:number,
+              public targetDeviceId:number,
+              public lsXcassetName:string,
+              public ptXcassetName:string,
+              public lsCropInstruction:CropInstruction,
+              public ptCropInstruction:CropInstruction) {
+    super(id, cardId, targetDeviceId, 2);
+  }
 
 }
+

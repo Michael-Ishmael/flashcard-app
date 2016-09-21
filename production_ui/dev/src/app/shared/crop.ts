@@ -65,7 +65,7 @@ export class Crop {
   }
 
 
-  multiply(w, h){
+  multiply(w:number, h:number):Crop{
     return new Crop(
     this.x * w,
     this.y * h,
@@ -74,7 +74,7 @@ export class Crop {
     );
   }
 
-  divide(w, h){
+  divide(w:number, h:number):Crop{
     return new Crop(
       Math.round(this.x / w * 100) / 100,
       Math.round(this.y / h * 100) / 100,
@@ -90,11 +90,11 @@ export class Crop {
 
 export class ImageDimensions{
 
-  public id:Number = -1;
+  public id:number = -1;
 
   constructor(
-      public width:Number,
-      public height:Number
+      public width:number,
+      public height:number
   ){
 
   }

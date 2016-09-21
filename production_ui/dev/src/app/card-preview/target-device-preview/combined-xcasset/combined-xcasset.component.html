@@ -1,3 +1,24 @@
-<p>
-  combined-xcasset works!
-</p>
+
+<h3>Combined XCasset</h3>
+
+<div class="row" *ngIf="model">
+    <div class="col-md-12">
+        {{ model.xcassetName }}
+
+        <cropped-image [model]="combinedCroppedImage"></cropped-image>
+    </div>
+
+</div>
+<div class="row" *ngIf="model">
+    <div class="col-md-6">
+        <h4>Landscape</h4>
+
+        <cropped-image [model]="lsCroppedImage"></cropped-image>
+    </div>
+    <div class="col-md-6">
+        <h4>Portrait</h4>
+
+        <cropped-image [model]="ptCroppedImage"></cropped-image>
+    </div>
+
+</div>

@@ -28,7 +28,7 @@ export class CroppedImageComponent implements OnInit {
     if(!(this.model && this.model.crop && this.imageDimensions)) return null;
     var crop = this.model.crop;
     var adj = crop.multiply(this.imageDimensions.width, this.imageDimensions.height);
-    var obj = {'left': adj.x + 'px', 'top': (adj.y + 10) + 'px', 'width': adj.w + 'px', 'height': adj.h + 'px' };
+    var obj = {'left': adj.x + 'px', 'top': (adj.y) + 'px', 'width': adj.w + 'px', 'height': adj.h + 'px' };
     return obj;
   }
 

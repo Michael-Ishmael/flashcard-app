@@ -130,6 +130,10 @@ class Crop(models.Model):
     w = models.FloatField(blank=True, null=True)  # This field type is a guess.
     h = models.FloatField(blank=True, null=True)  # This field type is a guess.
 
+    def __str__(self):
+        return "x:{0}, y:{1}, w:{2}, h:{3}, ar:{4}, o:{5}"\
+            .format(self.x, self.y, self.w, self.h, self.aspect_ratio.name, self.orientation.name)
+
     class Meta:
         managed = False
         db_table = 'crop'
@@ -157,6 +161,7 @@ class MediaFile(models.Model):
     path = models.CharField(max_length=500)
     size = models.IntegerField(default=0)
     relative_path = models.CharField(max_length=300)
+    width_to_height_ratio = models.FloatField(default=1)
 
     def __str__(self):
         return self.name

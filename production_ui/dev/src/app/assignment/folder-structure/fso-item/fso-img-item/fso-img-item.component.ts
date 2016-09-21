@@ -91,6 +91,7 @@ export class FsoImgItemComponent implements OnInit {
   private updateDownloadedFile(returned:Fso){
     this.model.size = returned.size;
     this.model.relativePath = returned.relativePath;
+    this.model.widthToHeightRatio = returned.widthToHeightRatio;
     this.showLoading = false;
     this.setFileStatus();
   }

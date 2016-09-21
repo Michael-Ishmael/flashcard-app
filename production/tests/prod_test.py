@@ -3,6 +3,7 @@ import django
 import unittest
 from os.path import expanduser
 from production.business.fc_util import join_paths
+from PIL import Image
 
 from production.business.crop_cruncher import Bounds, CropCruncher
 from production.business.media_file_watcher import MediaFileWatcher
@@ -28,6 +29,40 @@ class CropCruncherTest(unittest.TestCase):
         crops = CardCropInstruction.objects.filter(card__card_id=1)
 
         self.assertTrue(crops.count() > 0)
+
+    def calculate_width_to_height_ratios_test(self):
+        from fc_prod_serv.models import MediaFile, MediaFileType
+        file_type = MediaFileType.objects.filter(media_file_type_id=1)
+
+        media_files = MediaFile.objects.filter(media_file_type_id=1).filter(name__contains="jpg")
+        root_path = "/Users/scorpio/Dev/Projects/flashcard-app/media/"
+        for media_file in media_files:
+            if media_file.relative_path is not None:
+                test_path = join_paths(root_path, media_file.relative_path)
+                if os.path.exists(test_path):
+                    img = Image.open(test_path)
+                    w, h = img.size
+                    media_file.width_to_height_ratio = round(w / h, 4)
+                    media_file.save()
+
+        self.assertTrue(1 > 0)
+
+
+    def xcasset_builder_test(self):
+        from fc_prod_serv.apps import XcassetBuilder
+
+        builder = XcassetBuilder()
+        builder.create_xcassets(1)
+
+        self.assertTrue(1 > 0)
+
+    def image_cropper_test(self):
+        from fc_prod_serv.apps import ImageCropper
+
+        cropper = ImageCropper()
+        cropper.crop_and_create_images(1)
+
+        self.assertTrue(1 > 0)
 
     def can_split_it_test(self):
 

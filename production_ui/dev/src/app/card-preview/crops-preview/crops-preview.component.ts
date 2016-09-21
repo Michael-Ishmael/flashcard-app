@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output, OnChanges, SimpleChange} from '@angular/core';
 import {CardCrop, Crop, ImageDimensions, CroppedImage} from "../../shared/crop";
 import {CropService} from "../../crop/crop.service";
 import {Flashcard} from "../../flashcard/flashcard";
@@ -11,7 +11,7 @@ import {CroppedImageComponent} from "../../shared/cropped-image/cropped-image.co
   styleUrls: ['crops-preview.component.css'],
   directives: [CroppedImageComponent]
 })
-export class CropsPreviewComponent implements OnInit {
+export class CropsPreviewComponent implements OnInit, OnChanges {
 
   @Input() model:Flashcard;
   cardCrops:CardCrop[];
@@ -29,6 +29,12 @@ export class CropsPreviewComponent implements OnInit {
 
   ngOnInit() {
     this.loadCropsForCard(this.model.id)
+  }
+
+  public ngOnChanges(changes:{[propName:string]:SimpleChange}) {
+    if(changes.hasOwnProperty("model")){
+      this.loadCropsForCard(this.model.id)
+    }
   }
 
 

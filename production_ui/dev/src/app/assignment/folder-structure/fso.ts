@@ -9,7 +9,8 @@ export class Fso {
         public files:[Fso],
         public selected:boolean,
         public expanded:boolean,
-        public media_file_type:MediaFileType
+        public media_file_type:MediaFileType,
+        public widthToHeightRatio:number=1
     ){}
 }
 

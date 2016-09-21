@@ -13,6 +13,9 @@ class Bounds:
         self.w = w
         self.h = h
 
+    def __str__(self):
+        return "x:{0}, y:{1}, w:{2}, h:{3}".format(self.x, self.y, self.w, self.h)
+
     @staticmethod
     def load_from_dict(bounds_dict):
         x = bounds_dict.get("x", 0)
@@ -54,8 +57,8 @@ class Bounds:
     def to_bounds_pcs(self, container_width, container_height):
         bounds_pcs = Bounds(
             self.x / container_width,
-            self.w / container_width,
             self.y / container_height,
+            self.w / container_width,
             self.h / container_height)
         return bounds_pcs
 
@@ -71,26 +74,43 @@ class Bounds:
         y2 = max(self.y2(), other.y2())
 
         return Bounds(x, y, x2 - x, y2 - y)
-            
+
         # def to_json(self):
         #     return simplejson.dumps(self.__dict__)
 
 
 class CropCruncher(object):
+    @staticmethod
+    def can_be_combined_rect(ls_pcs: Bounds, pt_pcs: Bounds, width: int, height: int):
+        combined_rect_pcs = CropCruncher.get_combined_rect_pcs(ls_pcs, pt_pcs)
+
+        combined_area = combined_rect_pcs.w * width * combined_rect_pcs.h * height
+        individual_area = (ls_pcs.w * width * ls_pcs.h * height) + (pt_pcs.w * width * pt_pcs.h * height)
+        return combined_area < individual_area
 
     @staticmethod
-    def can_be_combined_rect(ls_pcs, pt_pcs, long_side, short_side):
-        combined_rect = CropCruncher.get_new_rect_bounds(ls_pcs, pt_pcs, long_side, short_side)
+    def get_combined_rect_pcs(ls_pcs: Bounds, pt_pcs: Bounds):
 
-        return (combined_rect.w * combined_rect.h) < (long_side * short_side * 2)
+        nx = min(ls_pcs.x, pt_pcs.x)
+        nx2 = max(ls_pcs.x2(), pt_pcs.x2())
+        ny = min(ls_pcs.y, pt_pcs.y)
+        ny2 = max(ls_pcs.y2(), pt_pcs.y2())
+
+        new_bounds_pcs = Bounds(nx, ny, nx2 - nx, ny2 - ny)
+        return new_bounds_pcs
+
+
 
     @staticmethod
     def get_new_rect_bounds(ls_pcs, pt_pcs, long_side, short_side):
 
-        landscape_crop = Bounds(long_side * ls_pcs.x, short_side * ls_pcs.y, long_side * ls_pcs.w,
-                                short_side * ls_pcs.h)
+        landscape_crop = Bounds(round(long_side * ls_pcs.x, 2), round(short_side * ls_pcs.y, 2),
+                                round(long_side * ls_pcs.w, 2),
+                                round(short_side * ls_pcs.h, 2))
 
-        portrait_crop = Bounds(short_side * pt_pcs.x, long_side * pt_pcs.y, short_side * pt_pcs.w, long_side * pt_pcs.h)
+        portrait_crop = Bounds(round(short_side * pt_pcs.x, 2), round(long_side * pt_pcs.y, 2),
+                               round(short_side * pt_pcs.w, 2),
+                               round(long_side * pt_pcs.h, 2))
 
         target_crop = landscape_crop if landscape_crop.w < portrait_crop.h else portrait_crop
         alt_crop = landscape_crop if landscape_crop.w > portrait_crop.h else portrait_crop
@@ -101,7 +121,7 @@ class CropCruncher(object):
         offset_y = max(target_crop.y - alt_crop.y, 0)
         extra_after_y = max(alt_crop.y2() - target_crop.y2(), 0)
 
-        target_orientation = Orientation.landscape if target_crop.w < target_crop.h \
+        target_orientation = Orientation.landscape if target_crop.w > target_crop.h \
             else Orientation.portrait
 
         width = 0
@@ -138,19 +158,19 @@ class CropCruncher(object):
         return Bounds(0, 0, width, height)
 
     @staticmethod
-    def get_combined_crops(ls_pcs, pt_pcs, long_side, short_side):
+    def get_combined_crops(ls_pcs, pt_pcs):
 
-        landscape_crop = Bounds(long_side * ls_pcs.x, short_side * ls_pcs.y, long_side * ls_pcs.w, short_side * ls_pcs.h)
-        portrait_crop = Bounds(short_side * pt_pcs.x, long_side * pt_pcs.y, short_side * pt_pcs.w, long_side * pt_pcs.h)
+        cb_pcs = CropCruncher.get_combined_rect_pcs(ls_pcs, pt_pcs)
+        landscape_crop = CropCruncher.get_item_bounds_as_relation_to_combined(ls_pcs, cb_pcs)
+        portrait_crop = CropCruncher.get_item_bounds_as_relation_to_combined(pt_pcs, cb_pcs)
 
-        if landscape_crop.x <= portrait_crop.x:
-            portrait_crop.x = portrait_crop.x - landscape_crop.x
-        else:
-            landscape_crop.x = landscape_crop.x - portrait_crop.x
+        return landscape_crop, portrait_crop
 
-        if landscape_crop.y <= portrait_crop.y:
-            portrait_crop.y = portrait_crop.y - landscape_crop.y
-        else:
-            landscape_crop.y = landscape_crop.y - portrait_crop.y
+    @staticmethod
+    def get_item_bounds_as_relation_to_combined(i_pcs:Bounds, c_pcs:Bounds):
+        x = round((i_pcs.x - c_pcs.x) / c_pcs.w, 2)
+        y = round((i_pcs.y - c_pcs.y) / c_pcs.h, 2)
+        w = round(i_pcs.w / c_pcs.w, 2)
+        h = round(i_pcs.h / c_pcs.h, 2)
 
-        return [landscape_crop.to_bounds_pcs(long_side, short_side), portrait_crop.to_bounds_pcs(short_side, long_side)]
+        return Bounds(x, y, w, h)

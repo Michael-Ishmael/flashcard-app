@@ -2,7 +2,7 @@
 <div class="assignable-display">
 
   <div *ngIf="!model.image" class="icon-place-holder list-thumbnail">*</div>
-  <img *ngIf="model.image" class="list-thumbnail" src="{{ model.image }}">
+  <img *ngIf="model.image" class="list-thumbnail" src="{{ model.image }}" title="{{ model.name }}">
   <span class="list-title">{{ model.name }}</span>
   <div class="controls pull-right">
     <app-sound-control [src]="model.sound"></app-sound-control>

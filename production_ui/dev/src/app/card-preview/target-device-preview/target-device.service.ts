@@ -5,6 +5,7 @@ import {Observable} from "rxjs/Rx";
 import {AspectRatio} from "../../shared/crop";
 import {TargetDevice} from "./target-device";
 
+
 class ApiTargetDevice{
   constructor(public id:number,
               public aspectRatioId:number,
@@ -39,11 +40,8 @@ export class TargetDeviceService {
       .catch(this.handleError);
   }
 
-  getItems(cardId:number = -1): Observable<TargetDevice[]>{
-    var url:string;
-    url = this.cropsUrl;
-    if(cardId > -1) url += `?card_id=${cardId}`;
-    return this.http.get(url)
+  getItems(): Observable<TargetDevice[]>{
+    return this.http.get(this.cropsUrl)
       .map(this.extractData)
       .catch(this.handleError);
   }

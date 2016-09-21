@@ -1,7 +1,15 @@
+import os
+from os.path import expanduser
+from typing import List
+
+import simplejson as simplejson
 from django.apps import AppConfig
-from fc_prod_serv.models import TargetDevice, CardTargetDevice, CroppingInstruction, Config, Card, Crop
+from fc_prod_serv.models import TargetDevice, CardTargetDevice, CroppingInstruction, Config, Card, Crop, \
+    CardCropInstruction
 from production.business.crop_cruncher import Bounds, CropCruncher
 from production.business.fc_util import join_paths
+from production.business.photoshop_script_runner import PhotoshopScriptRunner
+
 
 class FcProdServConfig(AppConfig):
     name = 'fc_prod_serv'
@@ -14,8 +22,17 @@ class CardTargetDeviceCreationResult:
         self.crops_invalid = False
         self.targets_exist = False
 
-class CropManager(object):
 
+def get_image_file_name_for_card(card:Card, device:TargetDevice, file_extension, orientation_suffix):
+    orientation_suffix = "_" + orientation_suffix if len(orientation_suffix) > 0 else orientation_suffix
+    xcasset_seed = card.name.lower().replace("_", "") + orientation_suffix
+    xcasset_name = xcasset_seed + '.imageset'
+    image_file_name = xcasset_name + "_" + device.name + '.' + file_extension
+
+    return image_file_name
+
+
+class CropManager(object):
     @staticmethod
     def calculate_crop_requirements(card_id):
         """
@@ -39,7 +56,6 @@ class CropManager(object):
             return [], "Crops invalid"
 
         targets = TargetDevice.objects.all()
-
 
         media_folder = Config.objects.get(settingKey="media_folder").settingValue
         original_image_path = join_paths(media_folder, card.original_image.path)
@@ -71,7 +87,7 @@ class CropManager(object):
         return crop_dict
 
     @staticmethod
-    def get_ctd_for_target(target, card, crop_dict, original_image_path, xcasset_folder):
+    def get_ctd_for_target(target, card: Card, crop_dict, original_image_path, xcasset_folder):
         """
 
         :param target:TargetDevice
@@ -87,50 +103,50 @@ class CropManager(object):
         pt_crop = or_dict.get('portrait')
         pt_pcs = Bounds(pt_crop.x, pt_crop.y, pt_crop.w, pt_crop.h)
 
-        combined = CropCruncher.can_be_combined_rect(ls_pcs, pt_pcs, target.width, target.height)
-
-        print(target.name + ' - combined:' + str(combined))
+        width_to_height_ratio = card.original_image.width_to_height_ratio
+        combined = CropCruncher.can_be_combined_rect(ls_pcs, pt_pcs, target.width,
+                                                     int(round(target.width * width_to_height_ratio)))
 
         if combined:
             xcasset_name = card.name.lower().replace("_", "")
 
-            combined_crops = CropCruncher.get_combined_crops(ls_pcs, pt_pcs, target.width, target.height)
-            ls_c_crop = combined_crops[0]
-            pt_c_crop = combined_crops[1]
+            ls_c_crop, pt_c_crop = CropCruncher.get_combined_crops(ls_pcs, pt_pcs)
             combined_ctd, created = CardTargetDevice.objects.get_or_create(
                 card=card,
                 target_device=target,
             )
-            combined_ctd.ls_xcasset_name = xcasset_name,
-            combined_ctd.ls_crop_x = ls_c_crop.x,
-            combined_ctd.ls_crop_y = ls_c_crop.y,
-            combined_ctd.ls_crop_w = ls_c_crop.w,
-            combined_ctd.ls_crop_h = ls_c_crop.h,
-            combined_ctd.pt_crop_x = pt_c_crop.x,
-            combined_ctd.pt_crop_y = pt_c_crop.y,
-            combined_ctd.pt_crop_w = pt_c_crop.w,
+            combined_ctd.ls_xcasset_name = xcasset_name
+            combined_ctd.ls_crop_x = ls_c_crop.x
+            combined_ctd.ls_crop_y = ls_c_crop.y
+            combined_ctd.ls_crop_w = ls_c_crop.w
+            combined_ctd.ls_crop_h = ls_c_crop.h
+            combined_ctd.pt_crop_x = pt_c_crop.x
+            combined_ctd.pt_crop_y = pt_c_crop.y
+            combined_ctd.pt_crop_w = pt_c_crop.w
             combined_ctd.pt_crop_h = pt_c_crop.h
 
             if not created:
+                combined_ctd.pt_xcasset_name = None
                 related_crop_ins = CroppingInstruction.objects.filter(card_target_device=combined_ctd)
                 for c in related_crop_ins:
                     c.delete(keep_parents=True)
 
             xcasset_path = join_paths(xcasset_folder, xcasset_name + '.imageset',
                                       xcasset_name + "_" + target.name + '.jpg')
-            target_bounds = CropCruncher.get_new_rect_bounds(ls_pcs, pt_pcs, target.width, target.height)
-            merged_bounds = ls_pcs.get_combined_bounds(pt_pcs)
+            merged_bounds = CropCruncher.get_combined_rect_pcs(ls_pcs, pt_pcs)
 
-            combined_ctd.croppinginstruction_set.create(
+            combined_ctd.croppingInstructions.create(
                 original_path=original_image_path,
                 target_path=xcasset_path,
                 crop_start_x_pc=merged_bounds.x,
                 crop_start_y_pc=merged_bounds.y,
                 crop_end_x_pc=merged_bounds.x2(),
                 crop_end_y_pc=merged_bounds.y2(),
-                target_width=target_bounds.w,
-                target_height=target_bounds.h
+                target_width=target.width * merged_bounds.w,
+                target_height=target.width * card.original_image.width_to_height_ratio * merged_bounds.h,
+                orientation_id=0
             )
+            combined_ctd.save()
             return combined_ctd
         else:
             ls_xcasset_name = card.name.lower().replace("_", "") + "_ls"
@@ -143,13 +159,22 @@ class CropManager(object):
             ctd.pt_xcasset_name = pt_xcasset_name
 
             if not created:
+                ctd.ls_crop_x = None
+                ctd.ls_crop_y = None
+                ctd.ls_crop_w = None
+                ctd.ls_crop_h = None
+                ctd.pt_crop_x = None
+                ctd.pt_crop_y = None
+                ctd.pt_crop_w = None
+                ctd.pt_crop_h = None
+
                 related_crop_ins = CroppingInstruction.objects.filter(card_target_device=ctd)
                 for c in related_crop_ins:
                     c.delete(keep_parents=True)
 
             ls_xcasset_path = join_paths(xcasset_folder, ls_xcasset_name + '.imageset',
                                          ls_xcasset_name + "_" + target.name + '.jpg')
-            ctd.croppinginstruction_set.create(
+            ctd.croppingInstructions.create(
                 original_path=original_image_path,
                 target_path=ls_xcasset_path,
                 crop_start_x_pc=ls_pcs.x,
@@ -157,11 +182,12 @@ class CropManager(object):
                 crop_end_x_pc=ls_pcs.x2(),
                 crop_end_y_pc=ls_pcs.y2(),
                 target_width=target.width,
-                target_height=target.height
+                target_height=target.height,
+                orientation_id=1
             )
             pt_xcasset_path = join_paths(xcasset_folder, pt_xcasset_name + '.imageset',
                                          pt_xcasset_name + "_" + target.name + '.jpg')
-            ctd.croppinginstruction_set.create(
+            ctd.croppingInstructions.create(
                 original_path=original_image_path,
                 target_path=pt_xcasset_path,
                 crop_start_x_pc=pt_pcs.x,
@@ -169,6 +195,104 @@ class CropManager(object):
                 crop_end_x_pc=pt_pcs.x2(),
                 crop_end_y_pc=pt_pcs.y2(),
                 target_width=target.width,
-                target_height=target.height
+                target_height=target.height,
+                orientation_id=2
             )
+            ctd.save()
             return ctd
+
+
+class XCassetItem:
+    def __init__(self, file_name, idiom, scale, sub_type):
+        self.xcasset_name = None
+        self.file_name = file_name
+        self.idiom = idiom
+        self.scale = scale
+        self.sub_type = sub_type
+
+    def to_json_dict(self):
+        dict = {
+            "filename": self.file_name,
+            "idiom": self.idiom,
+            "scale": self.scale
+        }
+        if not self.sub_type is None:
+            dict["subtype"] = self.sub_type
+
+        return dict
+
+
+class XcassetBuilder(object):
+    def __init__(self):
+        self.xcassets = {}
+
+    def create_xcassets(self, card_id:int):
+        xcasset_root = Config.objects.get(settingKey="xcasset_folder").settingValue
+        targets = CardTargetDevice.objects.filter(card__card_id=card_id)
+        items = self.collect_items(targets)
+        for item in items:
+            self.add_xcasset_image(item)
+        self.dump_files(xcasset_root)
+
+    def add_xcasset_image(self, xci: XCassetItem):
+        item = self.xcassets.get(xci.xcasset_name, None)
+        if item is None:
+            item = []
+            self.xcassets[xci.xcasset_name] = item
+        item.append(xci)
+
+    def dump_files(self, xcasset_root):
+        for key in self.xcassets:
+            dict_file = {
+                "images": [],
+                "info": {
+                    "version": 1,
+                    "author": "xcode"
+                }
+            }
+            for image in self.xcassets[key]:
+                dict_file["images"].append(image.to_json_dict())
+            path = join_paths(expanduser('~'), xcasset_root, key + ".imageset", "Contents.json")
+            if not os.path.exists(os.path.dirname(path)):
+                os.makedirs(os.path.dirname(path))
+            if os.path.exists(path):
+                os.remove(path)
+            with open(path, 'w') as json_file:
+                simplejson.dump(dict_file, json_file, indent=True)
+
+    def collect_items(self, targets: List[CardTargetDevice]) -> [XCassetItem]:
+
+        items = []
+        for target in targets:
+            if target.pt_xcasset_name is None:
+                xcasset_name = target.ls_xcasset_name
+                target_device = target.target_device
+                ci = target.croppingInstructions.first()
+                image_file_name = target.ls_xcasset_name + "_" + target.target_device.name + ".jpg"  # TODO: Fix this
+                xci = XCassetItem(image_file_name, target_device.idiom, target_device.scale, target_device.sub_type)
+                xci.xcasset_name = xcasset_name
+                items.append(xci)
+        return items
+
+
+class ImageCropper(object):
+
+    def crop_and_create_images(self, card_id:int):
+
+        crops = CardCropInstruction.objects.filter(card__card_id=card_id)
+        script_path_setting = Config.objects.filter(settingKey='cropping_script').first()  # type:Config
+
+        for crop in crops:
+            nl = self.convert_to_csv_line(crop)
+            PhotoshopScriptRunner.as_run(script_path_setting.settingValue, nl)
+
+    def convert_to_csv_line(self, crop_ins:CardCropInstruction):
+
+        home = expanduser('~')
+        original_path = join_paths(home, crop_ins.original_path)
+        target_path = join_paths(home, crop_ins.target_path)
+
+        return "{},{},{},{},{},{},{},{}".format(original_path, target_path, crop_ins.target_width,
+                                                crop_ins.target_height,
+                                                crop_ins.crop_start_x_pc, crop_ins.crop_start_y_pc, crop_ins.crop_end_x_pc,
+                                                crop_ins.crop_end_y_pc)

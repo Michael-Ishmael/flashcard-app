@@ -2,6 +2,7 @@ import os
 from os.path import expanduser
 from typing import Dict
 
+from PIL import Image
 from django.http import Http404
 from django.http import HttpResponseBadRequest
 from django.shortcuts import render
@@ -18,7 +19,8 @@ from fc_prod_serv.apps import CropManager, CardTargetDeviceCreationResult
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card, Crop, TargetDevice, AspectRatio, \
     CardTargetDevice
 from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer, \
-    FolderSerializer, FileSerializer, CardSerializer, CardDetailSerializer, CropSerializer, CardCropCollectionSerializer, \
+    FolderSerializer, FileSerializer, CardSerializer, CardDetailSerializer, CropSerializer, \
+    CardCropCollectionSerializer, \
     AspectRatioSerializer, TargetDeviceSerializer, CardTargetDeviceSerializer, CardTargetDeviceCreationResultSerializer
 from production.business.fc_util import join_paths
 from production.business.media_file_watcher import MediaFileWatcher
@@ -74,7 +76,7 @@ class CardTargetDeviceViewSet(viewsets.ModelViewSet):
     queryset = CardTargetDevice.objects.all()
     serializer_class = CardTargetDeviceSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = ('card_id', 'target_device' )
+    filter_fields = ('card_id', 'target_device')
 
 
 class CropViewSet(viewsets.ModelViewSet):
@@ -106,6 +108,7 @@ class DeckViewSet(viewsets.ModelViewSet):
     #     serializer = self.get_serializer(queryset, many=True)
     #     return Response(serializer.data)
 
+
 class SetViewSet(viewsets.ModelViewSet):
     queryset = Set.objects.all()
     serializer_class = SetSerializer
@@ -125,7 +128,6 @@ class TargetDeviceViewSet(viewsets.ModelViewSet):
 
 
 class FilePreviewView(APIView):
-
     def get(self, request, format=None):
         return Response("file")
 
@@ -136,6 +138,7 @@ class FilePreviewView(APIView):
         file_dict = serializer.data
 
         script_path_setting = Config.objects.filter(settingKey='resize_script').first()  # type:Config
+
         if script_path_setting is None:
             data = {"errorMessage": "No script file setting found"}
             response = Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -149,7 +152,7 @@ class FilePreviewView(APIView):
 
         media_path = join_paths(expanduser('~'), media_path_setting.settingValue)
         source = join_paths(media_path, file_dict["path"])
-        target = join_paths(media_path,"img", file_dict["name"])
+        target = join_paths(media_path, "img", file_dict["name"])
 
         PhotoshopScriptRunner.as_run(script_path_setting.settingValue, source, target, 800, 600)
 
@@ -159,10 +162,14 @@ class FilePreviewView(APIView):
             return response
 
         stats = os.stat(target)
+        img = Image.open(target)
+        w, h = img.size
+        width_to_height_ratio = round(w / h, 4)
         root_path = join_paths(expanduser("~"), media_path_setting.settingValue)
         rel_path = target.replace(root_path, "media")
 
-        return_file = File(name=file_dict["name"], path=file_dict["path"], size=stats.st_size, relative_path=rel_path)
+        return_file = File(name=file_dict["name"], path=file_dict["path"], size=stats.st_size, relative_path=rel_path,
+                           width_to_height_ratio=width_to_height_ratio)
         return_serializer = FileSerializer(return_file)
 
         return Response(return_serializer.data)
@@ -173,7 +180,6 @@ class CardCropsView(APIView):
         super().__init__(**kwargs)
 
     def get(self, request, *args, **kwargs):
-
         cardCropCol = CardCropCollection()
         serializer = CardCropCollectionSerializer(cardCropCol)
         response = Response(serializer.data, status=status.HTTP_200_OK)
@@ -194,20 +200,22 @@ class TargetDeviceCreationView(APIView):
             raise Http404
 
     def post(self, request):
-        card_id = request.POST.get("cardid", None)
+        card_id = request.data.get("cardid", None)
         if card_id is None:
-            response = Response("Missing cardid parameter")
-            return HttpResponseBadRequest(response)
+            card_id = request.POST.get("card_id", None)
+            if card_id is None:
+                return HttpResponseBadRequest("Missing cardid parameter")
         result = self.get_targets_status(card_id)
         if not result.crops_exist:
             result.status = "No crops found for card id: " + str(card_id) + ". Create crops first."
-        elif not result.targets_exist:
+        else:
+            verb = "updated" if result.targets_exist else "created"
             targets, message = CropManager.calculate_crop_requirements(card_id)
             result.targets_exist = len(targets) > 0
             if len(message) > 0:
                 result.status = message
             else:
-                result.status = str(len(targets)) + " targets created"
+                result.status = "{0} targets {1}".format(len(targets), verb)
         serializer = CardTargetDeviceCreationResultSerializer(result)
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
@@ -253,7 +261,7 @@ class TargetDeviceCreationView(APIView):
         return result
 
 
-@permission_classes((permissions.AllowAny, ))
+@permission_classes((permissions.AllowAny,))
 class FolderView(APIView):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -263,8 +271,8 @@ class FolderView(APIView):
         # Process any get params that you may need
         # If you don't need to process get params,
         # you can skip this part
-        #get_arg1 = request.GET.get('arg1', None)
-        #get_arg2 = request.GET.get('arg2', None)
+        # get_arg1 = request.GET.get('arg1', None)
+        # get_arg2 = request.GET.get('arg2', None)
 
         # Any URL parameters get passed in **kw
         root_folder = Config.objects.filter(settingKey='media_folder').first()
@@ -330,8 +338,3 @@ class FolderView(APIView):
             folder.expanded = True
         for sub_folder in folder.child_folders:
             self.replace_files(sub_folder, root_path, preview_path)
-
-
-
-
-

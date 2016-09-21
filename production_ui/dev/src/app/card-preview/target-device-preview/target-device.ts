@@ -24,12 +24,20 @@ export class CropInstruction {
               public y2:number,
               public w:number,
               public h:number) {
-    this.crop = new Crop(x, y, w, h);
+    this.crop = new Crop(x, y, x2-x, y2-y);
 
   }
 
 
 
+}
+
+export class CardTargetStatus {
+  constructor(
+    public cropsExist:boolean,
+    public targetsExist:boolean,
+    public status:string
+  ){}
 }
 
 export class CardTargetDeviceBase {

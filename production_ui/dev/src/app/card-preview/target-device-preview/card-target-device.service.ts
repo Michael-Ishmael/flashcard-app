@@ -1,8 +1,11 @@
 import {Injectable} from '@angular/core';
 import {AppSettings} from "../../app-settings";
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
-import {CardTargetDeviceBase, CombinedCardTargetDevice, SplitCardTargetDevice, CropInstruction} from "./target-device";
+import {
+  CardTargetDeviceBase, CombinedCardTargetDevice, SplitCardTargetDevice, CropInstruction,
+  CardTargetStatus
+} from "./target-device";
 
 interface ApiCropInstruction {
   orientationId: number;
@@ -35,11 +38,53 @@ interface ApiCardTargetDevice {
 export class CardTargetDeviceService {
 
   cardTargetUrl: string = "";
+  cartTargetCreationUrl: string = "";
 
   constructor(private http: Http,
               private appSettings: AppSettings) {
-    this.cardTargetUrl = appSettings.apiEndpoint + 'cardtargetdevices/'
+    this.cardTargetUrl = appSettings.apiEndpoint + 'cardtargetdevices/';
+    this.cartTargetCreationUrl = appSettings.apiEndpoint + 'cardtargetdevices/creation/';
   }
+
+
+  checkTargetStatus(cardId:number) : Observable<CardTargetStatus>{
+
+    var url = `${this.cartTargetCreationUrl}${cardId}/`;
+    return this.http.get(url)
+      .map(function (res) {
+        var obj = res.json() as CardTargetStatus;
+        return obj;
+      })
+      .catch(this.handleError);
+  }
+
+  createTargetCrops(cardId:number) : Observable<CardTargetStatus>{
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
+    var data = JSON.stringify({cardid: cardId});
+    return this.http.post(this.cartTargetCreationUrl.slice(0, -1), data , {headers: headers})
+      .map(function (res) {
+        var obj = res.json() as CardTargetStatus;
+        return obj;
+      })
+      .catch(this.handleError);
+  }
+
+  recalcTargetCrops(cardId:number) : Observable<CardTargetStatus>{
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
+    var url = `${this.cartTargetCreationUrl}${cardId}/`;
+    var data = JSON.stringify({cardid: cardId});
+    return this.http.put(url, data, {headers: headers})
+      .map(function (res) {
+        var obj = res.json() as CardTargetStatus;
+        return obj;
+      })
+      .catch(this.handleError);
+  }
+
 
   getItem(cardId: number = -1, deviceId: number = 1): Observable<CardTargetDeviceBase> {
     var url: string;
@@ -50,12 +95,12 @@ export class CardTargetDeviceService {
       url += `${prefix}target_device=${deviceId}`;
     }
     return this.http.get(url)
-        .map(function(res){
-          var arr = res.json() as ApiCardTargetDevice[];
-          if(arr == null || arr.length == 0) return null;
-          return CardTargetDeviceService.mapTargetDeviceFromApi(arr[0]);
-        })
-        .catch(this.handleError);
+      .map(function (res) {
+        var arr = res.json() as ApiCardTargetDevice[];
+        if (arr == null || arr.length == 0) return null;
+        return CardTargetDeviceService.mapTargetDeviceFromApi(arr[0]);
+      })
+      .catch(this.handleError);
   }
 
   getItems(cardId: number = -1, deviceId: number = 1): Observable<CardTargetDeviceBase[]> {
@@ -77,66 +122,66 @@ export class CardTargetDeviceService {
   }
 
   private static mapTargetDeviceFromApi(apiTarget: ApiCardTargetDevice): CardTargetDeviceBase {
-    if(apiTarget.ptXcassetName)
+    if (apiTarget.ptXcassetName)
       return CardTargetDeviceService.mapSplitFromApi(apiTarget);
     return CardTargetDeviceService.mapCombinedFromApi(apiTarget);
   }
 
-  private static mapCombinedFromApi(apiTarget: ApiCardTargetDevice):CombinedCardTargetDevice{
-    var ci:CropInstruction = apiTarget.croppingInstructions && apiTarget.croppingInstructions.length
-        ? CardTargetDeviceService.mapCropInsFromApi(apiTarget.croppingInstructions[0]) : null;
+  private static mapCombinedFromApi(apiTarget: ApiCardTargetDevice): CombinedCardTargetDevice {
+    var ci: CropInstruction = apiTarget.croppingInstructions && apiTarget.croppingInstructions.length
+      ? CardTargetDeviceService.mapCropInsFromApi(apiTarget.croppingInstructions[0]) : null;
 
     var comby = new CombinedCardTargetDevice(
-        apiTarget.id,
-        apiTarget.cardId,
-        apiTarget.targetDeviceId,
-        apiTarget.lsXcassetName,
-        ci,
-        apiTarget.lsCropX,
-        apiTarget.lsCropY,
-        apiTarget.lsCropW,
-        apiTarget.lsCropH,
-        apiTarget.ptCropX,
-        apiTarget.ptCropY,
-        apiTarget.ptCropW,
-        apiTarget.ptCropH
+      apiTarget.id,
+      apiTarget.cardId,
+      apiTarget.targetDeviceId,
+      apiTarget.lsXcassetName,
+      ci,
+      apiTarget.lsCropX,
+      apiTarget.lsCropY,
+      apiTarget.lsCropW,
+      apiTarget.lsCropH,
+      apiTarget.ptCropX,
+      apiTarget.ptCropY,
+      apiTarget.ptCropW,
+      apiTarget.ptCropH
     );
 
     return comby;
   }
 
-  private static mapCropInsFromApi(a: ApiCropInstruction):CropInstruction{
+  private static mapCropInsFromApi(a: ApiCropInstruction): CropInstruction {
     return new CropInstruction(
-        a.orientationId,
-        a.x,
-        a.y,
-        a.x2 - a.x,
-        a.y2 - a.y,
-        a.w,
-        a.h
+      a.orientationId,
+      a.x,
+      a.y,
+      a.x2,
+      a.y2,
+      a.w,
+      a.h
     );
   }
 
-  private static mapSplitFromApi(apiTarget: ApiCardTargetDevice):SplitCardTargetDevice{
-    var lsCi:CropInstruction=null, ptCi:CropInstruction=null;
-    if(apiTarget.croppingInstructions && apiTarget.croppingInstructions.length){
+  private static mapSplitFromApi(apiTarget: ApiCardTargetDevice): SplitCardTargetDevice {
+    var lsCi: CropInstruction = null, ptCi: CropInstruction = null;
+    if (apiTarget.croppingInstructions && apiTarget.croppingInstructions.length) {
       lsCi = apiTarget.croppingInstructions.some(ci => ci.orientationId == 1) ?
-          CardTargetDeviceService.mapCropInsFromApi(
-              apiTarget.croppingInstructions.filter(ci => ci.orientationId == 1)[0])
-          : null;
+        CardTargetDeviceService.mapCropInsFromApi(
+          apiTarget.croppingInstructions.filter(ci => ci.orientationId == 1)[0])
+        : null;
       ptCi = apiTarget.croppingInstructions.some(ci => ci.orientationId == 2) ?
-          CardTargetDeviceService.mapCropInsFromApi(
-            apiTarget.croppingInstructions.filter(ci => ci.orientationId == 2)[0])
-          : null;
+        CardTargetDeviceService.mapCropInsFromApi(
+          apiTarget.croppingInstructions.filter(ci => ci.orientationId == 2)[0])
+        : null;
     }
     var split = new SplitCardTargetDevice(
-        apiTarget.id,
-        apiTarget.cardId,
-        apiTarget.targetDeviceId,
-        apiTarget.lsXcassetName,
-        apiTarget.ptXcassetName,
-        lsCi,
-        ptCi
+      apiTarget.id,
+      apiTarget.cardId,
+      apiTarget.targetDeviceId,
+      apiTarget.lsXcassetName,
+      apiTarget.ptXcassetName,
+      lsCi,
+      ptCi
     );
     return split;
   }

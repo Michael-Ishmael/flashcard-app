@@ -31,7 +31,7 @@ export class SplitXcassetComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-
+    var i = 1;
   }
 
   ngOnChanges(changes:{[propName:string]:SimpleChange}) {

@@ -7,15 +7,87 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8109479B1D940DC500B49355 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947941D940DC500B49355 /* FlashCardViewController.swift */; };
+		8109479C1D940DC500B49355 /* DeckViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947951D940DC500B49355 /* DeckViewData.swift */; };
+		8109479D1D940DC500B49355 /* FlashCardSetTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947961D940DC500B49355 /* FlashCardSetTabViewController.swift */; };
+		8109479E1D940DC500B49355 /* DeckCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947971D940DC500B49355 /* DeckCollectionViewController.swift */; };
+		8109479F1D940DC500B49355 /* DeckViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947981D940DC500B49355 /* DeckViewCell.swift */; };
+		810947A01D940DC500B49355 /* JumbleFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947991D940DC500B49355 /* JumbleFlowLayout.swift */; };
+		810947A11D940DC500B49355 /* FlashCardViewControllerAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8109479A1D940DC500B49355 /* FlashCardViewControllerAnimatedTransitioning.swift */; };
+		810947AB1D940DD700B49355 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947A31D940DD700B49355 /* Decoder.swift */; };
+		810947AC1D940DD700B49355 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947A41D940DD700B49355 /* Encoder.swift */; };
+		810947AD1D940DD700B49355 /* ExtensionArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947A51D940DD700B49355 /* ExtensionArray.swift */; };
+		810947AE1D940DD700B49355 /* ExtensionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947A61D940DD700B49355 /* ExtensionDictionary.swift */; };
+		810947AF1D940DD700B49355 /* Gloss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947A81D940DD700B49355 /* Gloss.swift */; };
+		810947B01D940DD700B49355 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 810947A91D940DD700B49355 /* Info.plist */; };
+		810947B11D940DD700B49355 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810947AA1D940DD700B49355 /* Operators.swift */; };
+		819402801D94639100EE35A0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8194027F1D94639100EE35A0 /* DataManager.swift */; };
+		819402871D94682900EE35A0 /* appdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 819402821D94682900EE35A0 /* appdata.json */; };
+		819402881D94682900EE35A0 /* Chicken1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402851D94682900EE35A0 /* Chicken1.mp3 */; };
+		819402891D94682900EE35A0 /* Chicken5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402861D94682900EE35A0 /* Chicken5.mp3 */; };
+		8194029B1D94796200EE35A0 /* Chicken2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8194028B1D94796200EE35A0 /* Chicken2.mp3 */; };
+		8194029C1D94796200EE35A0 /* Chicken3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8194028C1D94796200EE35A0 /* Chicken3.mp3 */; };
+		8194029D1D94796200EE35A0 /* Chicken4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8194028D1D94796200EE35A0 /* Chicken4.mp3 */; };
+		8194029E1D94796200EE35A0 /* Chicken6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8194028E1D94796200EE35A0 /* Chicken6.mp3 */; };
+		8194029F1D94796200EE35A0 /* Cow1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8194028F1D94796200EE35A0 /* Cow1.mp3 */; };
+		819402A01D94796200EE35A0 /* Cow2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402901D94796200EE35A0 /* Cow2.mp3 */; };
+		819402A11D94796200EE35A0 /* Cow3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402911D94796200EE35A0 /* Cow3.mp3 */; };
+		819402A21D94796200EE35A0 /* Cow4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402921D94796200EE35A0 /* Cow4.mp3 */; };
+		819402A31D94796200EE35A0 /* Cow5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402931D94796200EE35A0 /* Cow5.mp3 */; };
+		819402A41D94796200EE35A0 /* Cow6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402941D94796200EE35A0 /* Cow6.mp3 */; };
+		819402A51D94796200EE35A0 /* Horse1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402951D94796200EE35A0 /* Horse1.mp3 */; };
+		819402A61D94796200EE35A0 /* Horse2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402961D94796200EE35A0 /* Horse2.mp3 */; };
+		819402A71D94796200EE35A0 /* Horse3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402971D94796200EE35A0 /* Horse3.mp3 */; };
+		819402A81D94796200EE35A0 /* Horse4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402981D94796200EE35A0 /* Horse4.mp3 */; };
+		819402A91D94796200EE35A0 /* Horse5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402991D94796200EE35A0 /* Horse5.mp3 */; };
+		819402AA1D94796200EE35A0 /* Horse6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8194029A1D94796200EE35A0 /* Horse6.mp3 */; };
 		984B0DDA1D1D5B4100533A06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984B0DD91D1D5B4100533A06 /* AppDelegate.swift */; };
 		984B0DDC1D1D5B4100533A06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984B0DDB1D1D5B4100533A06 /* ViewController.swift */; };
 		984B0DDF1D1D5B4100533A06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984B0DDD1D1D5B4100533A06 /* Main.storyboard */; };
 		984B0DE11D1D5B4100533A06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984B0DE01D1D5B4100533A06 /* Assets.xcassets */; };
 		984B0DE41D1D5B4100533A06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984B0DE21D1D5B4100533A06 /* LaunchScreen.storyboard */; };
 		984B0DEC1D1D5B6600533A06 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 984B0DEB1D1D5B6600533A06 /* libsqlite3.tbd */; };
+		EBD75DCDBE78B3E63535518E /* Pods_flashcards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B44740BBC16A5B5FCE9DBE /* Pods_flashcards.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E27B23AEEB17DE479EF3615 /* Pods-flashcards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flashcards.release.xcconfig"; path = "Pods/Target Support Files/Pods-flashcards/Pods-flashcards.release.xcconfig"; sourceTree = "<group>"; };
+		52B44740BBC16A5B5FCE9DBE /* Pods_flashcards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flashcards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		810947941D940DC500B49355 /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
+		810947951D940DC500B49355 /* DeckViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewData.swift; sourceTree = "<group>"; };
+		810947961D940DC500B49355 /* FlashCardSetTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardSetTabViewController.swift; sourceTree = "<group>"; };
+		810947971D940DC500B49355 /* DeckCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckCollectionViewController.swift; sourceTree = "<group>"; };
+		810947981D940DC500B49355 /* DeckViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckViewCell.swift; sourceTree = "<group>"; };
+		810947991D940DC500B49355 /* JumbleFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumbleFlowLayout.swift; sourceTree = "<group>"; };
+		8109479A1D940DC500B49355 /* FlashCardViewControllerAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewControllerAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		810947A31D940DD700B49355 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		810947A41D940DD700B49355 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		810947A51D940DD700B49355 /* ExtensionArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionArray.swift; sourceTree = "<group>"; };
+		810947A61D940DD700B49355 /* ExtensionDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDictionary.swift; sourceTree = "<group>"; };
+		810947A71D940DD700B49355 /* Gloss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gloss.h; sourceTree = "<group>"; };
+		810947A81D940DD700B49355 /* Gloss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gloss.swift; sourceTree = "<group>"; };
+		810947A91D940DD700B49355 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		810947AA1D940DD700B49355 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		8194027F1D94639100EE35A0 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		819402821D94682900EE35A0 /* appdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = appdata.json; sourceTree = "<group>"; };
+		819402851D94682900EE35A0 /* Chicken1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Chicken1.mp3; sourceTree = "<group>"; };
+		819402861D94682900EE35A0 /* Chicken5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Chicken5.mp3; sourceTree = "<group>"; };
+		8194028B1D94796200EE35A0 /* Chicken2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Chicken2.mp3; sourceTree = "<group>"; };
+		8194028C1D94796200EE35A0 /* Chicken3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Chicken3.mp3; sourceTree = "<group>"; };
+		8194028D1D94796200EE35A0 /* Chicken4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Chicken4.mp3; sourceTree = "<group>"; };
+		8194028E1D94796200EE35A0 /* Chicken6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Chicken6.mp3; sourceTree = "<group>"; };
+		8194028F1D94796200EE35A0 /* Cow1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cow1.mp3; sourceTree = "<group>"; };
+		819402901D94796200EE35A0 /* Cow2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cow2.mp3; sourceTree = "<group>"; };
+		819402911D94796200EE35A0 /* Cow3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cow3.mp3; sourceTree = "<group>"; };
+		819402921D94796200EE35A0 /* Cow4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cow4.mp3; sourceTree = "<group>"; };
+		819402931D94796200EE35A0 /* Cow5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cow5.mp3; sourceTree = "<group>"; };
+		819402941D94796200EE35A0 /* Cow6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cow6.mp3; sourceTree = "<group>"; };
+		819402951D94796200EE35A0 /* Horse1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse1.mp3; sourceTree = "<group>"; };
+		819402961D94796200EE35A0 /* Horse2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse2.mp3; sourceTree = "<group>"; };
+		819402971D94796200EE35A0 /* Horse3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse3.mp3; sourceTree = "<group>"; };
+		819402981D94796200EE35A0 /* Horse4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse4.mp3; sourceTree = "<group>"; };
+		819402991D94796200EE35A0 /* Horse5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse5.mp3; sourceTree = "<group>"; };
+		8194029A1D94796200EE35A0 /* Horse6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse6.mp3; sourceTree = "<group>"; };
 		984B0DD61D1D5B4100533A06 /* flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984B0DD91D1D5B4100533A06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		984B0DDB1D1D5B4100533A06 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +96,7 @@
 		984B0DE31D1D5B4100533A06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		984B0DE51D1D5B4100533A06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		984B0DEB1D1D5B6600533A06 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		B438DC29C64D77E17F8D5967 /* Pods-flashcards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flashcards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-flashcards/Pods-flashcards.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,18 +105,87 @@
 			buildActionMask = 2147483647;
 			files = (
 				984B0DEC1D1D5B6600533A06 /* libsqlite3.tbd in Frameworks */,
+				EBD75DCDBE78B3E63535518E /* Pods_flashcards.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48EA8785384CC63F18ADDD4C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B438DC29C64D77E17F8D5967 /* Pods-flashcards.debug.xcconfig */,
+				2E27B23AEEB17DE479EF3615 /* Pods-flashcards.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		810947A21D940DD700B49355 /* Gloss */ = {
+			isa = PBXGroup;
+			children = (
+				810947A31D940DD700B49355 /* Decoder.swift */,
+				810947A41D940DD700B49355 /* Encoder.swift */,
+				810947A51D940DD700B49355 /* ExtensionArray.swift */,
+				810947A61D940DD700B49355 /* ExtensionDictionary.swift */,
+				810947A71D940DD700B49355 /* Gloss.h */,
+				810947A81D940DD700B49355 /* Gloss.swift */,
+				810947A91D940DD700B49355 /* Info.plist */,
+				810947AA1D940DD700B49355 /* Operators.swift */,
+			);
+			path = Gloss;
+			sourceTree = "<group>";
+		};
+		819402811D94682900EE35A0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8194028B1D94796200EE35A0 /* Chicken2.mp3 */,
+				8194028C1D94796200EE35A0 /* Chicken3.mp3 */,
+				8194028D1D94796200EE35A0 /* Chicken4.mp3 */,
+				8194028E1D94796200EE35A0 /* Chicken6.mp3 */,
+				8194028F1D94796200EE35A0 /* Cow1.mp3 */,
+				819402901D94796200EE35A0 /* Cow2.mp3 */,
+				819402911D94796200EE35A0 /* Cow3.mp3 */,
+				819402921D94796200EE35A0 /* Cow4.mp3 */,
+				819402931D94796200EE35A0 /* Cow5.mp3 */,
+				819402941D94796200EE35A0 /* Cow6.mp3 */,
+				819402951D94796200EE35A0 /* Horse1.mp3 */,
+				819402961D94796200EE35A0 /* Horse2.mp3 */,
+				819402971D94796200EE35A0 /* Horse3.mp3 */,
+				819402981D94796200EE35A0 /* Horse4.mp3 */,
+				819402991D94796200EE35A0 /* Horse5.mp3 */,
+				8194029A1D94796200EE35A0 /* Horse6.mp3 */,
+				819402821D94682900EE35A0 /* appdata.json */,
+				819402831D94682900EE35A0 /* sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		819402831D94682900EE35A0 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				819402841D94682900EE35A0 /* chicken */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
+		819402841D94682900EE35A0 /* chicken */ = {
+			isa = PBXGroup;
+			children = (
+				819402851D94682900EE35A0 /* Chicken1.mp3 */,
+				819402861D94682900EE35A0 /* Chicken5.mp3 */,
+			);
+			path = chicken;
+			sourceTree = "<group>";
+		};
 		984B0DCD1D1D5B4100533A06 = {
 			isa = PBXGroup;
 			children = (
 				984B0DEB1D1D5B6600533A06 /* libsqlite3.tbd */,
 				984B0DD81D1D5B4100533A06 /* flashcards */,
 				984B0DD71D1D5B4100533A06 /* Products */,
+				48EA8785384CC63F18ADDD4C /* Pods */,
+				E6E39ECD0E08CAE125044A3A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +200,16 @@
 		984B0DD81D1D5B4100533A06 /* flashcards */ = {
 			isa = PBXGroup;
 			children = (
+				819402811D94682900EE35A0 /* Resources */,
+				8194027F1D94639100EE35A0 /* DataManager.swift */,
+				810947A21D940DD700B49355 /* Gloss */,
+				810947941D940DC500B49355 /* FlashCardViewController.swift */,
+				810947951D940DC500B49355 /* DeckViewData.swift */,
+				810947961D940DC500B49355 /* FlashCardSetTabViewController.swift */,
+				810947971D940DC500B49355 /* DeckCollectionViewController.swift */,
+				810947981D940DC500B49355 /* DeckViewCell.swift */,
+				810947991D940DC500B49355 /* JumbleFlowLayout.swift */,
+				8109479A1D940DC500B49355 /* FlashCardViewControllerAnimatedTransitioning.swift */,
 				984B0DD91D1D5B4100533A06 /* AppDelegate.swift */,
 				984B0DDB1D1D5B4100533A06 /* ViewController.swift */,
 				984B0DDD1D1D5B4100533A06 /* Main.storyboard */,
@@ -68,6 +220,14 @@
 			path = flashcards;
 			sourceTree = "<group>";
 		};
+		E6E39ECD0E08CAE125044A3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52B44740BBC16A5B5FCE9DBE /* Pods_flashcards.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -75,9 +235,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 984B0DE81D1D5B4100533A06 /* Build configuration list for PBXNativeTarget "flashcards" */;
 			buildPhases = (
+				0010A06FF2B0A9FB5519E669 /* [CP] Check Pods Manifest.lock */,
 				984B0DD21D1D5B4100533A06 /* Sources */,
 				984B0DD31D1D5B4100533A06 /* Frameworks */,
 				984B0DD41D1D5B4100533A06 /* Resources */,
+				47D8FBE1C4F4CFB10A29BBAA /* [CP] Embed Pods Frameworks */,
+				A3F144C51073C408F6F254CD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -100,6 +263,7 @@
 				TargetAttributes = {
 					984B0DD51D1D5B4100533A06 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -126,21 +290,103 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8194029F1D94796200EE35A0 /* Cow1.mp3 in Resources */,
+				810947B01D940DD700B49355 /* Info.plist in Resources */,
+				819402A81D94796200EE35A0 /* Horse4.mp3 in Resources */,
+				819402A51D94796200EE35A0 /* Horse1.mp3 in Resources */,
+				8194029B1D94796200EE35A0 /* Chicken2.mp3 in Resources */,
+				8194029E1D94796200EE35A0 /* Chicken6.mp3 in Resources */,
+				819402A31D94796200EE35A0 /* Cow5.mp3 in Resources */,
 				984B0DE41D1D5B4100533A06 /* LaunchScreen.storyboard in Resources */,
+				819402A91D94796200EE35A0 /* Horse5.mp3 in Resources */,
+				819402A41D94796200EE35A0 /* Cow6.mp3 in Resources */,
+				819402891D94682900EE35A0 /* Chicken5.mp3 in Resources */,
+				819402881D94682900EE35A0 /* Chicken1.mp3 in Resources */,
+				819402871D94682900EE35A0 /* appdata.json in Resources */,
+				819402A11D94796200EE35A0 /* Cow3.mp3 in Resources */,
+				819402A61D94796200EE35A0 /* Horse2.mp3 in Resources */,
 				984B0DE11D1D5B4100533A06 /* Assets.xcassets in Resources */,
+				819402A01D94796200EE35A0 /* Cow2.mp3 in Resources */,
 				984B0DDF1D1D5B4100533A06 /* Main.storyboard in Resources */,
+				819402A71D94796200EE35A0 /* Horse3.mp3 in Resources */,
+				819402A21D94796200EE35A0 /* Cow4.mp3 in Resources */,
+				8194029C1D94796200EE35A0 /* Chicken3.mp3 in Resources */,
+				8194029D1D94796200EE35A0 /* Chicken4.mp3 in Resources */,
+				819402AA1D94796200EE35A0 /* Horse6.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0010A06FF2B0A9FB5519E669 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		47D8FBE1C4F4CFB10A29BBAA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-flashcards/Pods-flashcards-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3F144C51073C408F6F254CD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-flashcards/Pods-flashcards-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		984B0DD21D1D5B4100533A06 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8109479F1D940DC500B49355 /* DeckViewCell.swift in Sources */,
+				819402801D94639100EE35A0 /* DataManager.swift in Sources */,
+				8109479B1D940DC500B49355 /* FlashCardViewController.swift in Sources */,
+				8109479E1D940DC500B49355 /* DeckCollectionViewController.swift in Sources */,
+				810947A11D940DC500B49355 /* FlashCardViewControllerAnimatedTransitioning.swift in Sources */,
+				8109479D1D940DC500B49355 /* FlashCardSetTabViewController.swift in Sources */,
+				810947AE1D940DD700B49355 /* ExtensionDictionary.swift in Sources */,
+				8109479C1D940DC500B49355 /* DeckViewData.swift in Sources */,
 				984B0DDC1D1D5B4100533A06 /* ViewController.swift in Sources */,
+				810947AF1D940DD700B49355 /* Gloss.swift in Sources */,
+				810947A01D940DC500B49355 /* JumbleFlowLayout.swift in Sources */,
+				810947AB1D940DD700B49355 /* Decoder.swift in Sources */,
+				810947B11D940DD700B49355 /* Operators.swift in Sources */,
+				810947AC1D940DD700B49355 /* Encoder.swift in Sources */,
 				984B0DDA1D1D5B4100533A06 /* AppDelegate.swift in Sources */,
+				810947AD1D940DD700B49355 /* ExtensionArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,23 +499,27 @@
 		};
 		984B0DE91D1D5B4100533A06 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B438DC29C64D77E17F8D5967 /* Pods-flashcards.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = flashcards/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-6Bytes.flashcards";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		984B0DEA1D1D5B4100533A06 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E27B23AEEB17DE479EF3615 /* Pods-flashcards.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = flashcards/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "-6Bytes.flashcards";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -292,6 +542,7 @@
 				984B0DEA1D1D5B4100533A06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

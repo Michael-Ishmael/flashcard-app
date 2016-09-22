@@ -1,0 +1,228 @@
+//
+//  DeckCollectionViewController.swift
+//  baby-flashcards
+//
+//  Created by Michael Ishmael on 16/05/2016.
+//  Copyright © 2016 66Bytes. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class DeckCollectionViewController : UICollectionViewController {
+    
+    let deckViewCellId:NSString = NSString.init(string: "DeckViewCell");
+    
+    fileprivate var _eventHandler:IApplicationEventHandler? = nil
+    fileprivate var _tiles:[DeckViewData] = [];
+    
+    init (layout:UICollectionViewLayout, cardSet:FlashCardSet, eventHandler:IApplicationEventHandler)
+    {
+        _eventHandler = eventHandler;
+        super.init(collectionViewLayout: layout)
+        
+        for deck in cardSet.decks{
+            _tiles.append(DeckViewData(deck: deck))
+        }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        //fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+    }
+    
+    var tiles:[DeckViewData] {
+        get {
+            return _tiles;
+        }
+    }
+    
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+    
+    override func viewDidLoad ()
+    {
+        super.viewDidLoad ();
+
+        super.collectionView?.register(DeckViewCell.self, forCellWithReuseIdentifier: deckViewCellId as String)
+        super.collectionView!.backgroundView = UIView.init(frame: self.collectionView!.bounds);
+        super.collectionView!.backgroundView!.backgroundColor = UIColor.white
+        UIMenuController.shared.menuItems = [
+                    UIMenuItem.init(title: "Custom", action: Selector.init("custom"))
+        ];
+        
+    }
+
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1;
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return _tiles.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.collectionView?.dequeueReusableCell(withReuseIdentifier: deckViewCellId as String, for: indexPath) as! DeckViewCell
+        
+        cell.layer.isHidden = false;
+        
+        let tile = _tiles[(indexPath as NSIndexPath).row]
+        
+        cell.setImagePath(tile.imageThumb)
+        
+        return cell;
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let item = _tiles[(indexPath as NSIndexPath).row]
+        let cell = self.collectionViewLayout.layoutAttributesForItem(at: indexPath)
+        _eventHandler?.deckSelected(item, frame: (cell?.frame)!)
+        
+    }
+   
+    
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return true;
+    }
+    
+    override var canBecomeFirstResponder : Bool {
+        return true;
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.becomeFirstResponder()
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent!) {
+        super.motionEnded(motion, with: event)
+        if(event.subtype == UIEventSubtype.motionShake) {
+            self.jumble()
+        }
+    }
+    
+    func jumble(){
+        self.collectionView?.performBatchUpdates({
+            self.shuffleTileArray()
+            self.collectionView?.reloadSections(IndexSet(integer: 0))
+            }, completion: {
+        _ in
+//                self.collectionView?.performBatchUpdates({
+//                    self.shuffleTileArray()
+//                    self.collectionView?.reloadSections(NSIndexSet(index: 0))
+//                    }, completion: nil)
+                
+        })
+    }
+    
+    //Fisher-Yates
+    func shuffleTileArray(){
+        let count = _tiles.count;
+        if count < 2 { return }
+        
+        for i in 0..<count - 1 {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i;
+            guard i != j else { continue }
+            //print("j=\(j), i=\(i) \(_tiles[i].imageThumb) -> \(_tiles[j].imageThumb)")
+            swap(&_tiles[i], &_tiles[j])
+        }
+
+        return
+    }
+
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        guard let flowLayout = collectionView?.collectionViewLayout as? JumbleFlowLayout else {
+//            return
+//        }
+//        
+//        if UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) {
+//            flowLayout.itemSize = CGSize(width: 170, height: 170)
+//        } else {
+//            flowLayout.itemSize = CGSize(width: 192, height: 192)
+//        }
+//        
+//        flowLayout.invalidateLayout()
+//    }
+//    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+//        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+//        
+//        guard let flowLayout = collectionView?.collectionViewLayout as? JumbleFlowLayout else {
+//                    return
+//        }
+//
+//    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: {
+                _ in
+            
+            let orientation = UIDevice.current.orientation;
+            //print("From orientation: \(interfaceOrientation.isLandscape ? "Landscape" : "Portrait")")
+            
+            guard let flowLayout = self.collectionView?.collectionViewLayout as? JumbleFlowLayout else {
+                return
+            }
+            
+            //let size = flowLayout.collectionViewContentSize()
+            
+            if orientation.isLandscape {
+                //print("Orientation: Landscape, Width: \(size.width), Height: \(size.height)")
+                
+                flowLayout.itemSize = CGSize(width: 100, height: 140)
+                
+            } else {
+                //print("Orientation: Portrait, Width: \(size.width), Height: \(size.height)")
+                flowLayout.itemSize = CGSize(width: 114, height: 140)
+            }
+            
+            //print("Current ItemSize: Width: \(flowLayout.itemSize.width), Height: \(flowLayout.itemSize.height)")
+            
+            
+            
+            }, completion: {
+            _ in
+            
+                guard let flowLayout = self.collectionView?.collectionViewLayout as? JumbleFlowLayout else {
+                    return
+                }
+                
+            flowLayout.doneRotation()
+            self.jumble()
+        })
+    }
+
+    
+}
+
+extension Array{
+   
+    mutating func shuffle(){
+        var n = self.count;
+        while(n > 2){
+            n -= 1;
+            var k = Int(arc4random_uniform(UInt32(n)) + 1)
+            while(k == n){
+                k = Int(arc4random_uniform(UInt32(n)) + 1)
+            }
+            let value = self[k];
+            self[k] = self[n];
+            self[n] = value;
+        }
+        return
+    }
+    
+}
+
+
+
+
+
+
+
+

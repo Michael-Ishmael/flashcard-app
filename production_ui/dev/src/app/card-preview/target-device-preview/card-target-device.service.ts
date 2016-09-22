@@ -58,6 +58,7 @@ export class CardTargetDeviceService {
       .catch(this.handleError);
   }
 
+
   createTargetCrops(cardId:number) : Observable<CardTargetStatus>{
     let headers = new Headers({
       'Content-Type': 'application/json',

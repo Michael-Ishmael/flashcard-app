@@ -6,15 +6,15 @@ class Folder(object):
     def __init__(self, name: str, parent=None):
         self.name = name
         self.parent = parent  # type:Folder
-        self.child_folders = []  # type:[Folder]
-        self.files = None
+        self.child_folders = []  # type:List[Folder]
+        self.files = None  # type:List[File]
         self.expanded = False  # type:bool
 
     def contains_files(self):  # type:bool
         if self.files is not None and len(self.files) > 0:
             return True
 
-        for folder in  self.child_folders:
+        for folder in self.child_folders:
             if folder.contains_files():
                 return True
 

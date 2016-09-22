@@ -1,3 +1,8 @@
 .xcasset-container{
     margin: 10px;
 }
+
+img.loader {
+    width: 16px;
+    -webkit-filter: none;
+}

@@ -9,6 +9,7 @@ import {CardTargetDeviceService} from "./card-target-device.service";
 import {CombinedXcassetComponent, CombinedXcassetModel} from "./combined-xcasset/combined-xcasset.component";
 import {SplitXcassetComponent, SplitXcassetModel} from "./split-xcasset/split-xcasset.component";
 import {Observable} from "rxjs";
+import {DeployCardService, DeploymentResult} from "./deploy-card.service";
 
 export enum XCassetPreviewView{
   None = 0,
@@ -33,10 +34,14 @@ export class TargetDevicePreviewComponent implements OnInit, OnChanges {
   splitModel:SplitXcassetModel;
   combinedModel:CombinedXcassetModel;
   statusMessage:string = "";
+  deployed:boolean = false;
+  deployLabel:string = "Deploy";
+  deploying:boolean = false;
 
   constructor(
       private deviceService:TargetDeviceService,
-      private targetService:CardTargetDeviceService
+      private targetService:CardTargetDeviceService,
+      private deploymentService:DeployCardService
   ) {
   }
 
@@ -70,6 +75,34 @@ export class TargetDevicePreviewComponent implements OnInit, OnChanges {
 
   }
 
+  deployCard(){
+    var obs:Observable<DeploymentResult> = null;
+    if(this.deployed){
+      if(confirm("Are you sure you want to re-deploy images for this card?")){
+        obs = this.deploymentService.reDeployCard(this.model.id)
+      }
+    } else {
+      obs = this.deploymentService.deployCard(this.model.id)
+    }
+    if(obs){
+      this.deploying = true;
+      obs.subscribe(
+        (result:DeploymentResult) => {
+          this.deployed = result.deployed;
+          this.deployLabel = result.deployed ? "Re-deploy" : "Deploy"
+          this.deploying = false;
+        },
+        (e => this.showDeployError(e))
+      );
+    }
+  }
+
+  private showDeployError(error:any){
+    alert(error);
+    this.deploying = false;
+    this.deployed = false;
+  }
+
   public ngOnChanges(changes:{[propName:string]:SimpleChange}) {
     if(changes.hasOwnProperty("model")){
       if(this.selectedDevice) this.reload()
@@ -86,6 +119,13 @@ export class TargetDevicePreviewComponent implements OnInit, OnChanges {
             this.xCassetView = XCassetPreviewView.None;
             this.statusMessage = result.status;
           }
+        }
+      );
+    this.deploymentService.getDeploymnetStatus(this.model.id)
+      .subscribe(
+        (result:DeploymentResult) => {
+          this.deployed = result.deployed;
+          this.deployLabel = result.deployed ? "Re-deploy" : "Deploy"
         }
       );
   }

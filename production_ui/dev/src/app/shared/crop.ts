@@ -67,10 +67,10 @@ export class Crop {
 
   multiply(w:number, h:number):Crop{
     return new Crop(
-    this.x * w,
-    this.y * h,
-    this.w * w,
-    this.h * h
+      Math.round(this.x * w * 100) / 100,
+      Math.round(this.y * h * 100) / 100,
+        Math.round(this.w * w * 100) / 100,
+          Math.round(this.h * h * 100) / 100
     );
   }
 
@@ -98,6 +98,12 @@ export class ImageDimensions{
   ){
 
   }
+
+  public factorSize(newWidth:number){
+    var ratio = this.height / this.width;
+    return new ImageDimensions(newWidth, Math.round(newWidth * ratio));
+  }
+
 }
 
 export class CroppedImage{

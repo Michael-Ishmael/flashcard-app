@@ -1,6 +1,6 @@
 
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
         <div *ngIf="targetDevices" class="btn-group">
 
             <!--[class.btn-default]="deviced != selectedDevice"-->
@@ -14,8 +14,11 @@
 
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
         <button class="btn btn-default" (click)="recalculateTargetCrops()">{{ xCassetView == 0 ? "Create" : "ReCalc" }}</button>
+        <button *ngIf="!deploying" class="btn" [class.btn-danger]="!deployed" [class.btn-warning]="deployed"
+                (click)="deployCard()">{{ deployLabel }}</button>
+        <img *ngIf="deploying" class="loader" src="img/ajax-loader.gif">
     </div>
 </div>
 

@@ -15,13 +15,15 @@ from rest_framework import status, permissions
 from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.apps import CropManager, CardTargetDeviceCreationResult
+from fc_prod_serv.apps import CropManager, CardTargetDeviceCreationResult, DeploymentResult, XcassetBuilder, \
+    ImageCropper
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card, Crop, TargetDevice, AspectRatio, \
     CardTargetDevice
 from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer, \
     FolderSerializer, FileSerializer, CardSerializer, CardDetailSerializer, CropSerializer, \
     CardCropCollectionSerializer, \
-    AspectRatioSerializer, TargetDeviceSerializer, CardTargetDeviceSerializer, CardTargetDeviceCreationResultSerializer
+    AspectRatioSerializer, TargetDeviceSerializer, CardTargetDeviceSerializer, CardTargetDeviceCreationResultSerializer, \
+    MediaFolderSerializer, DeploymentResultSerializer
 from production.business.fc_util import join_paths
 from production.business.media_file_watcher import MediaFileWatcher
 from production.business.models import Folder, File, CardCropCollection
@@ -202,10 +204,10 @@ class TargetDeviceCreationView(APIView):
     def post(self, request):
         card_id = request.data.get("cardid", None)
         if card_id is None:
-            card_id = request.POST.get("card_id", None)
+            card_id = request.data.get("card_id", None)
             if card_id is None:
                 return HttpResponseBadRequest("Missing cardid parameter")
-        result = self.get_targets_status(card_id)
+        result = get_targets_status(card_id)
         if not result.crops_exist:
             result.status = "No crops found for card id: " + str(card_id) + ". Create crops first."
         else:
@@ -221,7 +223,7 @@ class TargetDeviceCreationView(APIView):
         return response
 
     def put(self, request, pk):
-        result = self.get_targets_status(pk)
+        result = get_targets_status(pk)
         if not result.crops_exist:
             result.status = "No crops found for card id: " + str(pk) + ". Create crops first."
         else:
@@ -236,30 +238,100 @@ class TargetDeviceCreationView(APIView):
         return response
 
     def get(self, request, pk, *args, **kwargs):
-        result = self.get_targets_status(pk)
+        result = get_targets_status(pk)
         serializer = CardTargetDeviceCreationResultSerializer(result)
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
 
-    def get_targets_status(self, card_id):
-        result = CardTargetDeviceCreationResult()
-        crops = Crop.objects.filter(card__card_id=card_id)
-        if not crops.count() > 0:
-            result.status = "no crops found"
-            result.crops_exist = False
+def get_targets_status(card_id):
+    result = CardTargetDeviceCreationResult()
+    crops = Crop.objects.filter(card__card_id=card_id)
+    if not crops.count() > 0:
+        result.status = "no crops found"
+        result.crops_exist = False
+        result.targets_exist = False
+    else:
+        targets = CardTargetDevice.objects.filter(card__card_id=card_id)
+        if not targets.count() > 0:
+            result.status = "no targets found"
+            result.crops_exist = True
             result.targets_exist = False
         else:
-            targets = CardTargetDevice.objects.filter(card__card_id=card_id)
-            if not targets.count() > 0:
-                result.status = "no targets found"
-                result.crops_exist = True
-                result.targets_exist = False
+            result.status = str(targets.count()) + " targets found"
+            result.crops_exist = True
+            result.targets_exist = True
+    return result
+
+
+class ImageDeploymentView(APIView):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def get(self, request, pk):
+
+        result = self.get_deployment_result(pk)
+        serializer = DeploymentResultSerializer(result)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
+    def post(self, request):
+        card_id = request.data.get("cardid", None)
+        if card_id is None:
+            card_id = request.data.get("card_id", None)
+            if card_id is None:
+                return HttpResponseBadRequest("Missing cardid parameter")
+        result = self.get_deployment_result(card_id)
+        if result.deployed:
+            result.status = "Already deployed"
+        else:
+            target_result = get_targets_status(card_id)
+            if not target_result.crops_exist:
+                result.status = "No crops found for card id: " + str(card_id) + ". Create crops first."
+            elif not target_result.targets_exist:
+                result.status = "No targets found for card id: " + str(card_id) + ". Create targets first."
             else:
-                result.status = str(targets.count()) + " targets found"
-                result.crops_exist = True
-                result.targets_exist = True
+                self.deploy_for_card(card_id)
+                result = self.get_deployment_result(card_id)
+                if not result.deployed:
+                    result.status = "Not deployed. Reason unknown"
+
+        serializer = DeploymentResultSerializer(result)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
+    def get_deployment_result(self, card_id:int) -> DeploymentResult:
+        card = Card.objects.get(card_id=card_id)
+        path = Config.objects.get(settingKey='xcasset_folder').settingValue
+        mfw = MediaFileWatcher()
+        root_folder_path = join_paths(expanduser('~'), path)
+        root_folder = mfw.load_files(root_folder_path, ["jpg", "png", "json"])
+        xcasset_name = card.name.lower().replace("_", "")
+        new_root = Folder("xcassets")
+        for child_folder in root_folder.child_folders:
+            if child_folder.name.startswith(xcasset_name):
+                new_root.child_folders.append(child_folder)
+                for file in child_folder.files:
+                    file.path = join_paths(root_folder_path, file.path)
+
+        result = DeploymentResult()
+        result.deployed = len(new_root.child_folders) > 0 and any(f.name.endswith("jpg") or f.name.endswith("png") for f in new_root.child_folders[0].files)
+        if result.deployed:
+            message = "All combined" if len(new_root.child_folders) == 1 else "Split xcassets" if len(new_root.child_folders) == 2 \
+                else "Both split and combined xcassets" if len(new_root.child_folders) == 3 else "Warning: too many folders"
+        else:
+            message = "Not deployed"
+        result.status = message
+        result.xcasset_folder = new_root
+
         return result
 
+    def deploy_for_card(self, card_id:int):
+        builder = XcassetBuilder()
+        cropper = ImageCropper()
+
+        if builder.create_xcassets(card_id):
+            cropper.crop_and_create_images(card_id)
 
 @permission_classes((permissions.AllowAny,))
 class FolderView(APIView):
@@ -288,7 +360,7 @@ class FolderView(APIView):
             return response
 
         root_folder = self.get_folder_model(root_folder.settingValue, preview_folder_setting.settingValue)
-        serializer = FolderSerializer(root_folder)
+        serializer = MediaFolderSerializer(root_folder)
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
 

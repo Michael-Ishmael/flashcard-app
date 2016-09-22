@@ -2,7 +2,7 @@ from django.db.models import Q
 from rest_framework import serializers
 from rest_framework_recursive.fields import RecursiveField
 
-from fc_prod_serv.apps import CardTargetDeviceCreationResult
+from fc_prod_serv.apps import CardTargetDeviceCreationResult, DeploymentResult
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Set, Deck, Card, Crop, AspectRatio, Orientation, \
     TargetDevice, CardCropInstruction, CardTargetDevice, CroppingInstruction
 from production.business.models import Folder, File, CardCropCollection
@@ -172,10 +172,32 @@ class MediaFileField(serializers.Field):
         return mf
 
 
-class FolderSerializer(serializers.Serializer):
+class MediaFolderSerializer(serializers.Serializer):
     name = serializers.CharField()
     childFolders = serializers.ListField(source="child_folders", child=RecursiveField())
     files = serializers.ListField(child=MediaFileField())
+    expanded = serializers.BooleanField()
+
+    class Meta:
+        model = Folder
+        depth = 2
+
+
+class FileField(serializers.Field):
+    def to_representation(self, value: File):
+        return {"name": value.name, "path": value.path,
+                "size": value.size, "width_to_height_ratio": value.width_to_height_ratio}
+
+    def to_internal_value(self, data):
+        mf = MediaFile()
+        mf.name = data
+        return mf
+
+
+class FolderSerializer(serializers.Serializer):
+    name = serializers.CharField()
+    childFolders = serializers.ListField(source="child_folders", child=RecursiveField())
+    files = serializers.ListField(child=FileField())
     expanded = serializers.BooleanField()
 
     class Meta:
@@ -193,6 +215,15 @@ class FileSerializer(serializers.Serializer):
     class Meta:
         model = File
 
+
+class DeploymentResultSerializer(serializers.Serializer):
+    deployed = serializers.BooleanField()
+    status = serializers.CharField()
+    xcassetFolder = FolderSerializer(required=False, source="xcasset_folder")
+
+    class Meta:
+        model = DeploymentResult
+        fields = ("deployed", "status", "xcassetFolder")
 
 class CardCropCollectionSerializer(serializers.Serializer):
     name = serializers.CharField()

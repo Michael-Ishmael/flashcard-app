@@ -1,12 +1,13 @@
 import os
 from functools import reduce
 from typing import Dict
+from PIL import Image
 
 from production.business.models import Folder, File
 
 
 class MediaFileWatcher:
-    def load_files(self, root_folder_path: str, exts: [str]):  # type:Folder
+    def load_files(self, root_folder_path: str, exts: [str]) -> Folder:
 
         if not os.path.exists(root_folder_path):
             return None
@@ -63,4 +64,9 @@ class MediaFileWatcher:
         file_name_path = os.path.join(dir_path, file_name)
         stats = os.stat(file_name_path)
         trimmed_path = file_name_path.replace(root_path, "")
-        return File(file_name, trimmed_path, stats.st_size, None)
+        width_to_height_ratio = 1
+        if file_name.endswith("jpg") or file_name.endswith("png"):
+            img = Image.open(file_name_path)
+            w, h = img.size
+            width_to_height_ratio = round(w / h, 4)
+        return File(name=file_name, path=trimmed_path, size=stats.st_size, relative_path=None, width_to_height_ratio=width_to_height_ratio)

@@ -1,0 +1,28 @@
+{
+ "images": [
+  {
+   "idiom": "iphone",
+   "scale": "1x",
+   "filename": "goat1_iphone4.jpg"
+  },
+  {
+   "idiom": "iPad",
+   "scale": "1x",
+   "filename": "goat1_iPad.jpg"
+  },
+  {
+   "idiom": "iPad",
+   "scale": "2x",
+   "filename": "goat1_iPadRetina.jpg"
+  },
+  {
+   "idiom": "iPad",
+   "scale": "3x",
+   "filename": "goat1_iPadPro.jpg"
+  }
+ ],
+ "info": {
+  "version": 1,
+  "author": "xcode"
+ }
+}

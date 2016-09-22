@@ -1,4 +1,4 @@
 <div class="preview-container" [ngStyle]="getImagePreviewContainerStyle()">
-  <img *ngIf="model" [style.max-width]="model.maxWidth + 'px'" class="cropped-image" (onImageLoad)="onImageLoaded($event)"
-       src="{{ model.image }}" [ngStyle]="getImagePreviewStyle()"/>
+  <img *ngIf="model" class="cropped-image" (onImageLoad)="onImageLoaded($event)"
+       [model]="model"/>
 </div>

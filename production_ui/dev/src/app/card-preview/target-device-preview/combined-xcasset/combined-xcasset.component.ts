@@ -1,4 +1,4 @@
-import {Component, OnInit, SimpleChange, Input} from '@angular/core';
+import {Component, OnInit, SimpleChange, Input, NgZone} from '@angular/core';
 import {CombinedCardTargetDevice} from "../target-device";
 import {Flashcard} from "../../../flashcard/flashcard";
 import {CroppedImage, Crop} from "../../../shared/crop";
@@ -26,9 +26,8 @@ export class CombinedXcassetComponent implements OnInit {
   combinedCroppedImage:CroppedImage;
   lsCroppedImage:CroppedImage;
   ptCroppedImage:CroppedImage;
-  bindModel:CombinedXcassetModel = null;
 
-  constructor() { }
+  constructor(private ngZone: NgZone) { }
 
   ngOnInit() {
 
@@ -64,7 +63,6 @@ export class CombinedXcassetComponent implements OnInit {
         this.calculateAsCropOfOriginal(ptCrop, model.device.cropInstruction.crop),
         400
       );
-
     }
 
   }

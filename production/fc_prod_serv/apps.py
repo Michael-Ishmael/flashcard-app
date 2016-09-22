@@ -8,6 +8,7 @@ from fc_prod_serv.models import TargetDevice, CardTargetDevice, CroppingInstruct
     CardCropInstruction
 from production.business.crop_cruncher import Bounds, CropCruncher
 from production.business.fc_util import join_paths
+from production.business.models import Folder
 from production.business.photoshop_script_runner import PhotoshopScriptRunner
 
 
@@ -21,6 +22,13 @@ class CardTargetDeviceCreationResult:
         self.crops_exist = False
         self.crops_invalid = False
         self.targets_exist = False
+
+
+class DeploymentResult:
+    def __init__(self):
+        self.deployed = False  # type:bool
+        self.status = None  # type:str
+        self.xcasset_folder = None  # type:Folder
 
 
 def get_image_file_name_for_card(card:Card, device:TargetDevice, file_extension, orientation_suffix):
@@ -226,13 +234,15 @@ class XcassetBuilder(object):
     def __init__(self):
         self.xcassets = {}
 
-    def create_xcassets(self, card_id:int):
+    def create_xcassets(self, card_id:int) -> bool:
         xcasset_root = Config.objects.get(settingKey="xcasset_folder").settingValue
         targets = CardTargetDevice.objects.filter(card__card_id=card_id)
         items = self.collect_items(targets)
+        if len(items) == 0:
+            return False
         for item in items:
             self.add_xcasset_image(item)
-        self.dump_files(xcasset_root)
+        return self.dump_files(xcasset_root)
 
     def add_xcasset_image(self, xci: XCassetItem):
         item = self.xcassets.get(xci.xcasset_name, None)
@@ -241,7 +251,8 @@ class XcassetBuilder(object):
             self.xcassets[xci.xcasset_name] = item
         item.append(xci)
 
-    def dump_files(self, xcasset_root):
+    def dump_files(self, xcasset_root) -> bool:
+        dumped = False
         for key in self.xcassets:
             dict_file = {
                 "images": [],
@@ -259,6 +270,8 @@ class XcassetBuilder(object):
                 os.remove(path)
             with open(path, 'w') as json_file:
                 simplejson.dump(dict_file, json_file, indent=True)
+            dumped = True
+        return dumped
 
     def collect_items(self, targets: List[CardTargetDevice]) -> [XCassetItem]:
 

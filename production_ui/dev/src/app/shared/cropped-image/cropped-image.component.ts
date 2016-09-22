@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ImageDimensions, Crop, CroppedImage} from "../crop";
+import {ImageDimensions, CroppedImage} from "../crop";
 import {InitCroppedImage} from "./init-cropped-image.directive";
 
 @Component({
@@ -27,7 +27,8 @@ export class CroppedImageComponent implements OnInit {
   getImagePreviewContainerStyle():any{
     if(!(this.model && this.model.crop && this.imageDimensions)) return null;
     var crop = this.model.crop;
-    var adj = crop.multiply(this.imageDimensions.width, this.imageDimensions.height);
+    var factoredDims = this.imageDimensions.factorSize(this.model.maxWidth);
+    var adj = crop.multiply(factoredDims.width, factoredDims.height);
     var obj = {'left': adj.x + 'px', 'top': (adj.y) + 'px', 'width': adj.w + 'px', 'height': adj.h + 'px' };
     return obj;
   }
@@ -35,9 +36,12 @@ export class CroppedImageComponent implements OnInit {
   getImagePreviewStyle():any{
     if(!(this.model && this.model.crop && this.imageDimensions)) return null;
     var crop = this.model.crop;
-    var adj = crop.multiply(this.imageDimensions.width, this.imageDimensions.height);
-    var obj = { 'margin-left': '-' + adj.x + 'px', 'margin-top': '-' + adj.y + 'px', 'width':  + this.imageDimensions.width + 'px', 'height': + this.imageDimensions.height + 'px' }
+    var factoredDims = this.imageDimensions.factorSize(this.model.maxWidth);
+    var adj = crop.multiply(factoredDims.width, factoredDims.height);
+    var obj = { 'margin-left': '-' + adj.x + 'px', 'margin-top': '-' + adj.y + 'px', 'width':  + factoredDims.width + 'px', 'height': + factoredDims.height + 'px' }
     return obj;
   }
+
+
 
 }

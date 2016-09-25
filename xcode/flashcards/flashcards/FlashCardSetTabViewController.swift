@@ -27,40 +27,31 @@ class FlashCardSetTabViewController : UITabBarController, IApplicationEventHandl
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
+       
+        let dl = DataLoader()
         
-        do {
-            let dbPool = try DatabasePool(path: "/Users/scorpio/Dev/Projects/flashcard-app/xcode/flashcards/flashcards/flashcards.db")
-            
-            try dbPool.read({ db in
-                for row in Row.fetch(db, "SELECT * FROM card") {
-                    let name: String = row.value(named: "name")
-                    print(name)
-                }
-            })
-            
-        } catch let ex {
-            print(ex)
+        let appData = dl.getData()
+        
+        for cardSet in appData!.deckSets{
+            let layout = self.getFlowLayout()
+            let collectionController = DeckCollectionViewController(layout: layout, cardSet: cardSet, eventHandler: self as IApplicationEventHandler)
+            collectionController.collectionView?.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+            collectionController.tabBarItem = UITabBarItem();
+            let tbi = collectionController.tabBarItem;
+            tbi?.imageInsets = UIEdgeInsets.init(top: 6, left: 0, bottom: -6, right: 0)
+            tbi?.image = UIImage.init(named: cardSet.icon!)
+            self._collectionControllers.append(collectionController)
         }
         
+        self.viewControllers = self._collectionControllers;
+        
+        /*
         if let path = Bundle.main.path(forResource: "appdata", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.mappedIfSafe)
                 let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as? [String: [AnyObject]]
                 
-                let appData = AppData(json: json! as JSON)
-                
-                for cardSet in appData!.deckSets{
-                    let layout = self.getFlowLayout()
-                    let collectionController = DeckCollectionViewController(layout: layout, cardSet: cardSet, eventHandler: self as IApplicationEventHandler)
-                    collectionController.collectionView?.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
-                    collectionController.tabBarItem = UITabBarItem();
-                    let tbi = collectionController.tabBarItem;
-                    tbi?.imageInsets = UIEdgeInsets.init(top: 6, left: 0, bottom: -6, right: 0)
-                    tbi?.image = UIImage.init(named: cardSet.icon)
-                    self._collectionControllers.append(collectionController)
-                }
-                
-                self.viewControllers = self._collectionControllers;
+
                 
             } catch let error as NSError {
                 print(error.localizedDescription)
@@ -70,7 +61,7 @@ class FlashCardSetTabViewController : UITabBarController, IApplicationEventHandl
         } else {
             print("Invalid filename/path.")
         }
-        
+        */
         //super.init(nibName: nil, bundle: nil)
 
         

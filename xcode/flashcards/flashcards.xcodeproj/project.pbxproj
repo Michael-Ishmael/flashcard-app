@@ -47,6 +47,10 @@
 		984B0DE11D1D5B4100533A06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984B0DE01D1D5B4100533A06 /* Assets.xcassets */; };
 		984B0DE41D1D5B4100533A06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984B0DE21D1D5B4100533A06 /* LaunchScreen.storyboard */; };
 		984B0DEC1D1D5B6600533A06 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 984B0DEB1D1D5B6600533A06 /* libsqlite3.tbd */; };
+		9872094C1D9512D100F167E2 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872094B1D9512D100F167E2 /* Entities.swift */; };
+		987209501D95517600F167E2 /* Cat Meow 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9872094D1D95517600F167E2 /* Cat Meow 1.mp3 */; };
+		987209511D95517600F167E2 /* Cat Meow 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9872094E1D95517600F167E2 /* Cat Meow 2.mp3 */; };
+		987209521D95517600F167E2 /* Cat Meow 10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9872094F1D95517600F167E2 /* Cat Meow 10.mp3 */; };
 		EBD75DCDBE78B3E63535518E /* Pods_flashcards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B44740BBC16A5B5FCE9DBE /* Pods_flashcards.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +100,10 @@
 		984B0DE31D1D5B4100533A06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		984B0DE51D1D5B4100533A06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		984B0DEB1D1D5B6600533A06 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		9872094B1D9512D100F167E2 /* Entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		9872094D1D95517600F167E2 /* Cat Meow 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cat Meow 1.mp3"; sourceTree = "<group>"; };
+		9872094E1D95517600F167E2 /* Cat Meow 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cat Meow 2.mp3"; sourceTree = "<group>"; };
+		9872094F1D95517600F167E2 /* Cat Meow 10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cat Meow 10.mp3"; sourceTree = "<group>"; };
 		B438DC29C64D77E17F8D5967 /* Pods-flashcards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flashcards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-flashcards/Pods-flashcards.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +147,9 @@
 		819402811D94682900EE35A0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9872094D1D95517600F167E2 /* Cat Meow 1.mp3 */,
+				9872094E1D95517600F167E2 /* Cat Meow 2.mp3 */,
+				9872094F1D95517600F167E2 /* Cat Meow 10.mp3 */,
 				8194028B1D94796200EE35A0 /* Chicken2.mp3 */,
 				8194028C1D94796200EE35A0 /* Chicken3.mp3 */,
 				8194028D1D94796200EE35A0 /* Chicken4.mp3 */,
@@ -216,6 +227,7 @@
 				984B0DE01D1D5B4100533A06 /* Assets.xcassets */,
 				984B0DE21D1D5B4100533A06 /* LaunchScreen.storyboard */,
 				984B0DE51D1D5B4100533A06 /* Info.plist */,
+				9872094B1D9512D100F167E2 /* Entities.swift */,
 			);
 			path = flashcards;
 			sourceTree = "<group>";
@@ -308,11 +320,14 @@
 				984B0DE11D1D5B4100533A06 /* Assets.xcassets in Resources */,
 				819402A01D94796200EE35A0 /* Cow2.mp3 in Resources */,
 				984B0DDF1D1D5B4100533A06 /* Main.storyboard in Resources */,
+				987209521D95517600F167E2 /* Cat Meow 10.mp3 in Resources */,
 				819402A71D94796200EE35A0 /* Horse3.mp3 in Resources */,
 				819402A21D94796200EE35A0 /* Cow4.mp3 in Resources */,
 				8194029C1D94796200EE35A0 /* Chicken3.mp3 in Resources */,
+				987209501D95517600F167E2 /* Cat Meow 1.mp3 in Resources */,
 				8194029D1D94796200EE35A0 /* Chicken4.mp3 in Resources */,
 				819402AA1D94796200EE35A0 /* Horse6.mp3 in Resources */,
+				987209511D95517600F167E2 /* Cat Meow 2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +389,7 @@
 				8109479F1D940DC500B49355 /* DeckViewCell.swift in Sources */,
 				819402801D94639100EE35A0 /* DataManager.swift in Sources */,
 				8109479B1D940DC500B49355 /* FlashCardViewController.swift in Sources */,
+				9872094C1D9512D100F167E2 /* Entities.swift in Sources */,
 				8109479E1D940DC500B49355 /* DeckCollectionViewController.swift in Sources */,
 				810947A11D940DC500B49355 /* FlashCardViewControllerAnimatedTransitioning.swift in Sources */,
 				8109479D1D940DC500B49355 /* FlashCardSetTabViewController.swift in Sources */,

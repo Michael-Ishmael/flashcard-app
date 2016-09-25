@@ -94,7 +94,7 @@ class FlashCardViewController: UIViewController {
         if(crop != nil){
             let c = crop!
             _imageView!.layer.contentsRect = //CGRect(x: 0.1, y: 0.1, width: 0.6, height: 0.7)
-                CGRect(x: c.X1, y: c.Y1, width: c.X1 + c.Width, height: c.Y1 + c.Height)
+                CGRect(x: c.X1, y: c.Y1, width: c.Width, height: c.Height)
         } else {
             _imageView!.layer.contentsRect = CGRect(x: 0, y: 0, width: 1, height: 1)
         }

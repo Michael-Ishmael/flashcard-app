@@ -51,6 +51,12 @@
 		987209501D95517600F167E2 /* Cat Meow 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9872094D1D95517600F167E2 /* Cat Meow 1.mp3 */; };
 		987209511D95517600F167E2 /* Cat Meow 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9872094E1D95517600F167E2 /* Cat Meow 2.mp3 */; };
 		987209521D95517600F167E2 /* Cat Meow 10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9872094F1D95517600F167E2 /* Cat Meow 10.mp3 */; };
+		987209591D996F8F00F167E2 /* Cat Meow 3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 987209531D996F8F00F167E2 /* Cat Meow 3.mp3 */; };
+		9872095A1D996F8F00F167E2 /* Dachshund.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 987209541D996F8F00F167E2 /* Dachshund.mp3 */; };
+		9872095B1D996F8F00F167E2 /* Dog Howl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 987209551D996F8F00F167E2 /* Dog Howl.mp3 */; };
+		9872095C1D996F8F00F167E2 /* Dog Whine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 987209561D996F8F00F167E2 /* Dog Whine.mp3 */; };
+		9872095D1D996F8F00F167E2 /* Pomeranian.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 987209571D996F8F00F167E2 /* Pomeranian.mp3 */; };
+		9872095E1D996F8F00F167E2 /* Terrier.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 987209581D996F8F00F167E2 /* Terrier.mp3 */; };
 		EBD75DCDBE78B3E63535518E /* Pods_flashcards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B44740BBC16A5B5FCE9DBE /* Pods_flashcards.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +110,12 @@
 		9872094D1D95517600F167E2 /* Cat Meow 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cat Meow 1.mp3"; sourceTree = "<group>"; };
 		9872094E1D95517600F167E2 /* Cat Meow 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cat Meow 2.mp3"; sourceTree = "<group>"; };
 		9872094F1D95517600F167E2 /* Cat Meow 10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cat Meow 10.mp3"; sourceTree = "<group>"; };
+		987209531D996F8F00F167E2 /* Cat Meow 3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cat Meow 3.mp3"; sourceTree = "<group>"; };
+		987209541D996F8F00F167E2 /* Dachshund.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Dachshund.mp3; sourceTree = "<group>"; };
+		987209551D996F8F00F167E2 /* Dog Howl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dog Howl.mp3"; sourceTree = "<group>"; };
+		987209561D996F8F00F167E2 /* Dog Whine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dog Whine.mp3"; sourceTree = "<group>"; };
+		987209571D996F8F00F167E2 /* Pomeranian.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pomeranian.mp3; sourceTree = "<group>"; };
+		987209581D996F8F00F167E2 /* Terrier.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Terrier.mp3; sourceTree = "<group>"; };
 		B438DC29C64D77E17F8D5967 /* Pods-flashcards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flashcards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-flashcards/Pods-flashcards.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +159,12 @@
 		819402811D94682900EE35A0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				987209531D996F8F00F167E2 /* Cat Meow 3.mp3 */,
+				987209541D996F8F00F167E2 /* Dachshund.mp3 */,
+				987209551D996F8F00F167E2 /* Dog Howl.mp3 */,
+				987209561D996F8F00F167E2 /* Dog Whine.mp3 */,
+				987209571D996F8F00F167E2 /* Pomeranian.mp3 */,
+				987209581D996F8F00F167E2 /* Terrier.mp3 */,
 				9872094D1D95517600F167E2 /* Cat Meow 1.mp3 */,
 				9872094E1D95517600F167E2 /* Cat Meow 2.mp3 */,
 				9872094F1D95517600F167E2 /* Cat Meow 10.mp3 */,
@@ -308,13 +326,18 @@
 				819402A51D94796200EE35A0 /* Horse1.mp3 in Resources */,
 				8194029B1D94796200EE35A0 /* Chicken2.mp3 in Resources */,
 				8194029E1D94796200EE35A0 /* Chicken6.mp3 in Resources */,
+				9872095E1D996F8F00F167E2 /* Terrier.mp3 in Resources */,
 				819402A31D94796200EE35A0 /* Cow5.mp3 in Resources */,
+				987209591D996F8F00F167E2 /* Cat Meow 3.mp3 in Resources */,
 				984B0DE41D1D5B4100533A06 /* LaunchScreen.storyboard in Resources */,
+				9872095A1D996F8F00F167E2 /* Dachshund.mp3 in Resources */,
 				819402A91D94796200EE35A0 /* Horse5.mp3 in Resources */,
 				819402A41D94796200EE35A0 /* Cow6.mp3 in Resources */,
 				819402891D94682900EE35A0 /* Chicken5.mp3 in Resources */,
 				819402881D94682900EE35A0 /* Chicken1.mp3 in Resources */,
+				9872095C1D996F8F00F167E2 /* Dog Whine.mp3 in Resources */,
 				819402871D94682900EE35A0 /* appdata.json in Resources */,
+				9872095D1D996F8F00F167E2 /* Pomeranian.mp3 in Resources */,
 				819402A11D94796200EE35A0 /* Cow3.mp3 in Resources */,
 				819402A61D94796200EE35A0 /* Horse2.mp3 in Resources */,
 				984B0DE11D1D5B4100533A06 /* Assets.xcassets in Resources */,
@@ -328,6 +351,7 @@
 				8194029D1D94796200EE35A0 /* Chicken4.mp3 in Resources */,
 				819402AA1D94796200EE35A0 /* Horse6.mp3 in Resources */,
 				987209511D95517600F167E2 /* Cat Meow 2.mp3 in Resources */,
+				9872095B1D996F8F00F167E2 /* Dog Howl.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

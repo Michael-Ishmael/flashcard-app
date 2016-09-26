@@ -336,13 +336,22 @@ class ImageDeploymentView(APIView):
 
 class SoundDeploymentView(APIView):
 
+    def get(self, request, pk):
+        result = SoundDeployer.check_sound_deployed(pk)
+        serializer = DeploymentResultSerializer(result)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
     def post(self, request):
         card_id = request.data.get("cardid", None)
         if card_id is None:
             card_id = request.data.get("card_id", None)
             if card_id is None:
                 return HttpResponseBadRequest("Missing cardid parameter")
-        SoundDeployer.deploy_sound_for_card(card_id)
+        result =  SoundDeployer.deploy_sound_for_card(card_id)
+        serializer = DeploymentResultSerializer(result)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
         
 
 @permission_classes((permissions.AllowAny,))

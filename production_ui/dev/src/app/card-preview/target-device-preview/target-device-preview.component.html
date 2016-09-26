@@ -18,6 +18,9 @@
         <button class="btn btn-default" (click)="recalculateTargetCrops()">{{ xCassetView == 0 ? "Create" : "ReCalc" }}</button>
         <button *ngIf="!deploying" class="btn" [class.btn-danger]="!deployed" [class.btn-warning]="deployed"
                 (click)="deployCard()">{{ deployLabel }}</button>
+
+        <button *ngIf="!deploying" class="btn" [class.btn-info]="!soundDeployed" [class.btn-default]="soundDeployed"
+                (click)="deploySoundForCard()">{{ soundDeployLabel }}</button>
         <img *ngIf="deploying" class="loader" src="img/ajax-loader.gif">
     </div>
 </div>

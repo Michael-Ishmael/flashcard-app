@@ -19,10 +19,12 @@ export class DeploymentResult{
 export class DeployCardService {
 
   deploymentUrl: string = "";
+  soundDeploymentUrl: string = "";
 
   constructor(private http: Http,
               private appSettings: AppSettings) {
     this.deploymentUrl = appSettings.apiEndpoint + 'deployment';
+    this.soundDeploymentUrl = appSettings.apiEndpoint + 'deployment/sounds';
   }
 
 
@@ -64,6 +66,29 @@ export class DeployCardService {
       .catch(this.handleError);
   }
 
+  getSoundDeploymentStatus(cardId:number) : Observable<DeploymentResult>{
+
+    var url = `${this.soundDeploymentUrl}/${cardId}/`;
+    return this.http.get(url)
+        .map(function (res) {
+          var obj = res.json() as DeploymentResult;
+          return obj;
+        })
+        .catch(this.handleError);
+  }
+
+  deploySoundForCard(cardId:number) : Observable<DeploymentResult>{
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
+    var data = JSON.stringify({cardid: cardId});
+    return this.http.post(this.soundDeploymentUrl, data , {headers: headers})
+        .map(function (res) {
+          var obj = res.json() as DeploymentResult;
+          return obj;
+        })
+        .catch(this.handleError);
+  }
 
 
   private handleError(error: any) {

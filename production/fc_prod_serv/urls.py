@@ -2,7 +2,7 @@ from django.conf.urls import url
 from rest_framework import routers, viewsets
 from fc_prod_serv.views import FolderView, MediaFileViewSet, ConfigViewSet, SetViewSet, DeckViewSet, FilePreviewView, \
     CardViewSet, CardDetailViewSet, CropViewSet, CardCropsView, AspectRatioViewSet, \
-    TargetDeviceViewSet, CardTargetDeviceViewSet, TargetDeviceCreationView, ImageDeploymentView
+    TargetDeviceViewSet, CardTargetDeviceViewSet, TargetDeviceCreationView, ImageDeploymentView, SoundDeploymentView
 
 router = routers.DefaultRouter()
 router.register(r'mediafiles', MediaFileViewSet)
@@ -24,6 +24,8 @@ urlpatterns += [
     url(r'^cardtargetdevices/creation$', TargetDeviceCreationView.as_view(), name='target_device_creation_view'),
     url(r'^cardtargetdevices/creation/(?P<pk>[0-9]+)/$', TargetDeviceCreationView.as_view(),
         name='target_device_creation_detail_view'),
-    url(r'^deployment$', ImageDeploymentView.as_view(), name='target_device_creation_detail_view'),
-    url(r'^deployment/(?P<pk>[0-9]+)/$', ImageDeploymentView.as_view(), name='target_device_creation_detail_view')
+    url(r'^deployment$', ImageDeploymentView.as_view(), name='image_deployment_view'),
+    url(r'^deployment/(?P<pk>[0-9]+)/$', ImageDeploymentView.as_view(), name='image_deployment_detail_view'),
+    url(r'^deployment/sounds$', SoundDeploymentView.as_view(), name='sound_deployment_view'),
+    url(r'^deployment/sounds/(?P<pk>[0-9]+)/$', SoundDeploymentView.as_view(), name='sound_deployment_detail_view')
 ]

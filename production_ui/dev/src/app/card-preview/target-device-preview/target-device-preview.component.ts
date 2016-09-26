@@ -37,6 +37,8 @@ export class TargetDevicePreviewComponent implements OnInit, OnChanges {
   deployed:boolean = false;
   deployLabel:string = "Deploy";
   deploying:boolean = false;
+  soundDeployed:boolean = false;
+  soundDeployLabel:string = "Deploy Sound";
 
   constructor(
       private deviceService:TargetDeviceService,
@@ -97,10 +99,28 @@ export class TargetDevicePreviewComponent implements OnInit, OnChanges {
     }
   }
 
+  deploySoundForCard(){
+    this.deploying = true;
+    this.deploymentService.deploySoundForCard(this.model.id).subscribe(
+        (result:DeploymentResult) => {
+          this.deployed = result.deployed;
+          this.deployLabel = result.deployed ? "Re-deploy Sound" : "Deploy Sound";
+          this.deploying = false;
+        },
+        (e => this.showDeployError(e))
+    );
+  }
+
   private showDeployError(error:any){
     alert(error);
     this.deploying = false;
     this.deployed = false;
+  }
+
+  private showSoundDeployError(error:any){
+    alert(error);
+    this.deploying = false;
+    this.soundDeployed = false;
   }
 
   public ngOnChanges(changes:{[propName:string]:SimpleChange}) {
@@ -128,6 +148,13 @@ export class TargetDevicePreviewComponent implements OnInit, OnChanges {
           this.deployLabel = result.deployed ? "Re-deploy" : "Deploy"
         }
       );
+    this.deploymentService.getSoundDeploymentStatus(this.model.id)
+        .subscribe(
+            (result:DeploymentResult) => {
+              this.soundDeployed = result.deployed;
+              this.soundDeployLabel = result.deployed ? "Re-deploy Sound" : "Deploy Sound"
+            }
+        );
   }
 
   selectTargetDevice(device:TargetDevice){

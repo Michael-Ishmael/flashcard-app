@@ -321,16 +321,52 @@ class ImageCropper(object):
 class SoundDeployer(object):
 
     @staticmethod
-    def deploy_sound_for_card(card_id:int):
-
-        card = Card.objects.get(card_id=card_id)
+    def get_paths_for_card_sound(card_id:int):
+        try:
+            card = Card.objects.get(card_id=card_id)
+        except:
+            return None, None
         if card is not None:
             sound = card.sound
             if sound is not None:
                 media_folder = Config.objects.get(settingKey="media_folder").settingValue
                 sound_folder = Config.objects.get(settingKey="sound_folder").settingValue
 
-                sound_src_path = join_paths(expanduser("~"), media_folder, sound.relative_path)
+                sound_src_path = join_paths(expanduser("~"), media_folder, sound.path)
                 sound_tgt_path = join_paths(expanduser("~"), sound_folder, sound.name)
 
-                copyfile(sound_src_path, sound_tgt_path)
+                return sound_src_path, sound_tgt_path
+            else:
+                return None, None
+
+    @staticmethod
+    def deploy_sound_for_card(card_id:int):
+
+        sound_src_path, sound_tgt_path = SoundDeployer.get_paths_for_card_sound(card_id)
+        result = DeploymentResult()
+        if sound_src_path is None:
+            result.deployed = False
+            result.status = "Source sound for card id {0} not found".format(card_id)
+        else:
+            copyfile(sound_src_path, sound_tgt_path)
+            result.deployed = True
+            result.status = "Sound deployed"
+        return result
+
+    @staticmethod
+    def check_sound_deployed(card_id:int):
+
+        sound_src_path, sound_tgt_path = SoundDeployer.get_paths_for_card_sound(card_id)
+        result = DeploymentResult()
+        if sound_src_path is None:
+            result.deployed = False
+            result.status = "Source sound for card id {0} not found".format(card_id)
+        else:
+            if os.path.exists(sound_tgt_path):
+                result.deployed = True
+                result.status = "Sound has been deployed"
+            else:
+                result.deployed = False
+                result.status = "Sound not yet deployed"
+        return result
+

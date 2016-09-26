@@ -1,0 +1,44 @@
+{
+ "images": [
+  {
+   "filename": "dog3_iphone4.jpg",
+   "scale": "1x",
+   "idiom": "iphone"
+  },
+  {
+   "filename": "dog3_iPad.jpg",
+   "scale": "1x",
+   "idiom": "iPad"
+  },
+  {
+   "filename": "dog3_iPadRetina.jpg",
+   "scale": "2x",
+   "idiom": "iPad"
+  },
+  {
+   "filename": "dog3_iPadPro.jpg",
+   "scale": "3x",
+   "idiom": "iPad"
+  },
+  {
+   "subtype": "retina4",
+   "filename": "dog3_iPhone5.jpg",
+   "scale": "2x",
+   "idiom": "iPhone"
+  },
+  {
+   "filename": "dog3_iPhone6.jpg",
+   "scale": "2x",
+   "idiom": "iPhone"
+  },
+  {
+   "filename": "dog3_iPhone6Plus.jpg",
+   "scale": "3x",
+   "idiom": "iPhone"
+  }
+ ],
+ "info": {
+  "author": "xcode",
+  "version": 1
+ }
+}

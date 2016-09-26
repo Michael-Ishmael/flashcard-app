@@ -10,8 +10,8 @@ from production.business.models import Folder, File, CardCropCollection
 
 class MediaFileSerializer(serializers.HyperlinkedModelSerializer):
     media_file_type = serializers.PrimaryKeyRelatedField(many=False, queryset=MediaFileType.objects.all())
-    relativePath = serializers.CharField(source="relative_path")
-    widthToHeightRatio = serializers.FloatField(source="width_to_height_ratio")
+    relativePath = serializers.CharField(source="relative_path", required=False, allow_blank=True)
+    widthToHeightRatio = serializers.FloatField(source="width_to_height_ratio", required=False)
 
     class Meta:
         model = MediaFile

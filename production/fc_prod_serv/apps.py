@@ -4,6 +4,8 @@ from typing import List
 
 import simplejson as simplejson
 from django.apps import AppConfig
+from shutil import copyfile
+
 from fc_prod_serv.models import TargetDevice, CardTargetDevice, CroppingInstruction, Config, Card, Crop, \
     CardCropInstruction
 from production.business.crop_cruncher import Bounds, CropCruncher
@@ -242,7 +244,7 @@ class XcassetBuilder(object):
             return False
         for item in items:
             self.add_xcasset_image(item)
-        return self.dump_files(xcasset_root)
+        return self.dump_files(xcasset_root, card_id)
 
     def add_xcasset_image(self, xci: XCassetItem):
         item = self.xcassets.get(xci.xcasset_name, None)
@@ -251,7 +253,7 @@ class XcassetBuilder(object):
             self.xcassets[xci.xcasset_name] = item
         item.append(xci)
 
-    def dump_files(self, xcasset_root) -> bool:
+    def dump_files(self, xcasset_root, card_id) -> bool:
         dumped = False
         for key in self.xcassets:
             dict_file = {
@@ -270,6 +272,11 @@ class XcassetBuilder(object):
                 os.remove(path)
             with open(path, 'w') as json_file:
                 simplejson.dump(dict_file, json_file, indent=True)
+            db_xcasset_name = key if not "_" in key else key[:3]
+            card = Card.objects.get(card_id=card_id)
+            image = card.original_image
+            image.xcasset = db_xcasset_name
+            image.save()
             dumped = True
         return dumped
 
@@ -277,7 +284,7 @@ class XcassetBuilder(object):
 
         items = []
         for target in targets:
-            if target.pt_xcasset_name is None:
+            if target.pt_xcasset_name is None or len(target.pt_xcasset_name) == 0:
                 xcasset_name = target.ls_xcasset_name
                 target_device = target.target_device
                 ci = target.croppingInstructions.first()
@@ -309,3 +316,21 @@ class ImageCropper(object):
                                                 crop_ins.target_height,
                                                 crop_ins.crop_start_x_pc, crop_ins.crop_start_y_pc, crop_ins.crop_end_x_pc,
                                                 crop_ins.crop_end_y_pc)
+
+
+class SoundDeployer(object):
+
+    @staticmethod
+    def deploy_sound_for_card(card_id:int):
+
+        card = Card.objects.get(card_id=card_id)
+        if card is not None:
+            sound = card.sound
+            if sound is not None:
+                media_folder = Config.objects.get(settingKey="media_folder").settingValue
+                sound_folder = Config.objects.get(settingKey="sound_folder").settingValue
+
+                sound_src_path = join_paths(expanduser("~"), media_folder, sound.relative_path)
+                sound_tgt_path = join_paths(expanduser("~"), sound_folder, sound.name)
+
+                copyfile(sound_src_path, sound_tgt_path)

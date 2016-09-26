@@ -16,7 +16,7 @@ from rest_framework.decorators import permission_classes
 from rest_framework_recursive.fields import RecursiveField
 
 from fc_prod_serv.apps import CropManager, CardTargetDeviceCreationResult, DeploymentResult, XcassetBuilder, \
-    ImageCropper
+    ImageCropper, SoundDeployer
 from fc_prod_serv.models import MediaFile, MediaFileType, Config, Deck, Set, Card, Crop, TargetDevice, AspectRatio, \
     CardTargetDevice
 from fc_prod_serv.serializers import MediaFileSerializer, ConfigSerializer, SetSerializer, DeckSerializer, \
@@ -333,6 +333,18 @@ class ImageDeploymentView(APIView):
         if builder.create_xcassets(card_id):
             cropper.crop_and_create_images(card_id)
 
+
+class SoundDeploymentView(APIView):
+
+    def post(self, request):
+        card_id = request.data.get("cardid", None)
+        if card_id is None:
+            card_id = request.data.get("card_id", None)
+            if card_id is None:
+                return HttpResponseBadRequest("Missing cardid parameter")
+        SoundDeployer.deploy_sound_for_card(card_id)
+        
+
 @permission_classes((permissions.AllowAny,))
 class FolderView(APIView):
     def __init__(self, **kwargs):
@@ -390,7 +402,7 @@ class FolderView(APIView):
                     mf.path = file.path
                     mf.size = file.size
                     mf.media_file_type_id = 3 if file.name.endswith(".mp3") else 1 if file.name.endswith(".jpg") else 2
-                has_rel_path = (mf.relative_path is not None) or (len(mf.relative_path) == 0)
+                has_rel_path = mf.relative_path is not None and len(mf.relative_path) != 0
                 if has_rel_path:
                     has_rel_path = os.path.exists(join_paths(root_path, mf.relative_path.replace('media', '')))
                     if not has_rel_path:

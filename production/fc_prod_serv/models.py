@@ -160,8 +160,9 @@ class MediaFile(models.Model):
     name = models.CharField(max_length=50)
     path = models.CharField(max_length=500)
     size = models.IntegerField(default=0)
-    relative_path = models.CharField(max_length=300)
-    width_to_height_ratio = models.FloatField(default=1)
+    relative_path = models.CharField(max_length=300, null=True, blank=True)
+    width_to_height_ratio = models.FloatField(default=1, blank=True)
+    xcasset = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.name

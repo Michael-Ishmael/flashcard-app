@@ -155,9 +155,9 @@ export class CropStep{
   private calculateDefaultCrop(){
     var r = this.aspectRatio.shortSide / this.aspectRatio.longSide;
     if(this.orientation == Orientation.Landscape){
-      return new Crop(.25, .25 * r, .5, .5 * r);
+      return new Crop(0, 0, 1, 1);
     } else {
-      return new Crop(.25 * r, .25, .5 * r, .5)
+      return new Crop(0, 0, 1, 1)
     }
   }
 

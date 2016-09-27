@@ -1,44 +1,54 @@
 {
- "images": [
-  {
-   "idiom": "iphone",
-   "scale": "1x",
-   "filename": "dog2_iphone4.jpg"
-  },
-  {
-   "idiom": "iPad",
-   "scale": "1x",
-   "filename": "dog2_iPad.jpg"
-  },
-  {
-   "idiom": "iPad",
-   "scale": "2x",
-   "filename": "dog2_iPadRetina.jpg"
-  },
-  {
-   "idiom": "iPad",
-   "scale": "3x",
-   "filename": "dog2_iPadPro.jpg"
-  },
-  {
-   "idiom": "iPhone",
-   "scale": "2x",
-   "filename": "dog2_iPhone5.jpg",
-   "subtype": "retina4"
-  },
-  {
-   "idiom": "iPhone",
-   "scale": "2x",
-   "filename": "dog2_iPhone6.jpg"
-  },
-  {
-   "idiom": "iPhone",
-   "scale": "3x",
-   "filename": "dog2_iPhone6Plus.jpg"
+  "images" : [
+    {
+      "idiom" : "iphone",
+      "filename" : "dog2_iphone4.jpg",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "subtype" : "retina4",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "dog2_iPhone6.jpg",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "dog2_iPhone5.jpg",
+      "subtype" : "retina4",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "dog2_iPhone6Plus.jpg",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "subtype" : "retina4",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "filename" : "dog2_iPad.jpg",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "filename" : "dog2_iPadRetina.jpg",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "ipad",
+      "filename" : "dog2_iPadPro.jpg",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
   }
- ],
- "info": {
-  "version": 1,
-  "author": "xcode"
- }
 }

@@ -91,12 +91,24 @@ export class TargetDevicePreviewComponent implements OnInit, OnChanges {
       obs.subscribe(
         (result:DeploymentResult) => {
           this.deployed = result.deployed;
-          this.deployLabel = result.deployed ? "Re-deploy" : "Deploy"
+          this.deployLabel = result.deployed ? "Re-deploy" : "Deploy";
           this.deploying = false;
         },
         (e => this.showDeployError(e))
       );
     }
+  }
+
+  reDeployXcasset(){
+    this.deploying = true;
+    this.deploymentService.reDeployXcasset(this.model.id).subscribe(
+        (result:DeploymentResult) => {
+          this.deployed = result.deployed;
+          this.deployLabel = result.deployed ? "Re-deploy" : "Deploy";
+          this.deploying = false;
+        },
+        (e => this.showDeployError(e))
+    );
   }
 
   deploySoundForCard(){

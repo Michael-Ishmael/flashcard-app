@@ -57,6 +57,7 @@
 		9872095C1D996F8F00F167E2 /* Dog Whine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 987209561D996F8F00F167E2 /* Dog Whine.mp3 */; };
 		9872095D1D996F8F00F167E2 /* Pomeranian.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 987209571D996F8F00F167E2 /* Pomeranian.mp3 */; };
 		9872095E1D996F8F00F167E2 /* Terrier.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 987209581D996F8F00F167E2 /* Terrier.mp3 */; };
+		987209601D9AD97100F167E2 /* CircleGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9872095F1D9AD97100F167E2 /* CircleGestureRecognizer.swift */; };
 		EBD75DCDBE78B3E63535518E /* Pods_flashcards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B44740BBC16A5B5FCE9DBE /* Pods_flashcards.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		987209561D996F8F00F167E2 /* Dog Whine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dog Whine.mp3"; sourceTree = "<group>"; };
 		987209571D996F8F00F167E2 /* Pomeranian.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pomeranian.mp3; sourceTree = "<group>"; };
 		987209581D996F8F00F167E2 /* Terrier.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Terrier.mp3; sourceTree = "<group>"; };
+		9872095F1D9AD97100F167E2 /* CircleGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleGestureRecognizer.swift; sourceTree = "<group>"; };
 		B438DC29C64D77E17F8D5967 /* Pods-flashcards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flashcards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-flashcards/Pods-flashcards.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +248,7 @@
 				984B0DE21D1D5B4100533A06 /* LaunchScreen.storyboard */,
 				984B0DE51D1D5B4100533A06 /* Info.plist */,
 				9872094B1D9512D100F167E2 /* Entities.swift */,
+				9872095F1D9AD97100F167E2 /* CircleGestureRecognizer.swift */,
 			);
 			path = flashcards;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				8109479F1D940DC500B49355 /* DeckViewCell.swift in Sources */,
 				819402801D94639100EE35A0 /* DataManager.swift in Sources */,
 				8109479B1D940DC500B49355 /* FlashCardViewController.swift in Sources */,
+				987209601D9AD97100F167E2 /* CircleGestureRecognizer.swift in Sources */,
 				9872094C1D9512D100F167E2 /* Entities.swift in Sources */,
 				8109479E1D940DC500B49355 /* DeckCollectionViewController.swift in Sources */,
 				810947A11D940DC500B49355 /* FlashCardViewControllerAnimatedTransitioning.swift in Sources */,

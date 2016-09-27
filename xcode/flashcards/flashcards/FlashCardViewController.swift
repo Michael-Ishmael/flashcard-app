@@ -53,16 +53,18 @@ class FlashCardViewController: UIViewController {
        
         //_itemSound = AVPlayer.init(URL: <#T##NSURL#>) //.init(contentsOfURL: <#T##NSURL#>, fileTypeHint: <#T##String?#>)
         do{
-            let path = Bundle.main.path(forResource: _flashCard!.sound, ofType:nil)
-            let songURL = URL(fileURLWithPath: path!)
-            _itemSound = try AVAudioPlayer.init(contentsOf: songURL, fileTypeHint: AVFileTypeMPEGLayer3)
-            _itemSound!.volume = 7;
-            //			_itemSound.FinishedPlaying += delegate {
-            //				// backgroundMusic.Dispose();
-            //				_itemSound = null;
-            //			};
-            _itemSound!.numberOfLoops=0;
-            _itemSound!.play();
+            if let path = Bundle.main.path(forResource: _flashCard!.sound, ofType:nil){
+                let songURL = URL(fileURLWithPath: path)
+                _itemSound = try AVAudioPlayer.init(contentsOf: songURL, fileTypeHint: AVFileTypeMPEGLayer3)
+                _itemSound!.volume = 7;
+                //			_itemSound.FinishedPlaying += delegate {
+                //				// backgroundMusic.Dispose();
+                //				_itemSound = null;
+                //			};
+                _itemSound!.numberOfLoops=0;
+                _itemSound!.play();
+            }
+
         } catch{
             
         }
@@ -122,29 +124,4 @@ class FlashCardViewController: UIViewController {
         _itemSound?.play()
     }
 
-
-    
-    /*
-    
-    public override void ViewDidAppear (bool animated)
-    {
-    //_imageView.SetImage(UIImage.FromBundle(_picPath), UIControlState.Normal);
-    _itemSound.Play ();
-    }
-    
-    public FlashCardViewController (FlashCard flashCard, CGRect sourceFrame, IApplicationEventHandler eventHandler)
-    {
-    _flashCard = flashCard;
-    _eventHandler = eventHandler;
-    _sourceFrame = sourceFrame;
-    }
-    
-    public CGRect SourceFrame{
-    get {
-				return _sourceFrame;
-    }
-    }
-    
-    */
-    
 }

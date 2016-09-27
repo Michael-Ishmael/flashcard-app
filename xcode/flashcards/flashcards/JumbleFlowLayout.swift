@@ -26,7 +26,7 @@ class JumbleFlowLayout : UICollectionViewFlowLayout {
     
     fileprivate func calculatePositions(){
         if let cellCount =  collectionView?.numberOfItems(inSection: 0) {
-            for i in 0...(cellCount) {
+            for i in 0...(cellCount - 1) {
                 let itemIndexPath = IndexPath(item: i, section: 0)
                 let item = (collectionView?.dataSource as! DeckCollectionViewController!).tiles[(itemIndexPath as NSIndexPath).row]
                 let attributes = self.layoutAttributesForItem(at: itemIndexPath)

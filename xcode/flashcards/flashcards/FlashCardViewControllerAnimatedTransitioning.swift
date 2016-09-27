@@ -34,7 +34,7 @@ open class FlashCardViewControllerAnimatedTransitioning : NSObject, UIViewContro
     
     
     @objc open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return 1
     }
     
     
@@ -57,7 +57,7 @@ open class FlashCardViewControllerAnimatedTransitioning : NSObject, UIViewContro
         let circleRect = CGRect(x: originRect.midX, y: originRect.midY, width: 10, height: 10);
 
         let circleMaskPathInitial = UIBezierPath.init(ovalIn: circleRect); //(ovalInRect: button.frame);
-        let extremePoint = CGPoint(x: circleRect.minX - toViewController!.view.bounds.width, y:circleRect.minY - toViewController!.view.bounds.height ); //CGRect.GetHeight (toViewController.view.bounds));
+        let extremePoint = CGPoint(x: circleRect.minX - toViewController!.view.bounds.width * 2, y:circleRect.minY - toViewController!.view.bounds.height * 2 ); //CGRect.GetHeight (toViewController.view.bounds));
         let radius = Float(sqrt((extremePoint.x * extremePoint.x) + (extremePoint.y * extremePoint.y)));
         let largeCircleRect = circleRect.insetBy(dx: CGFloat(-radius), dy: CGFloat(-radius))
         let circleMaskPathFinal = UIBezierPath.init(ovalIn: largeCircleRect)

@@ -300,6 +300,26 @@ class ImageDeploymentView(APIView):
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
 
+
+    def put(self, request, pk):
+        card_id = pk
+        result = DeploymentResult()
+        target_result = get_targets_status(card_id)
+        if not target_result.crops_exist:
+            result.status = "No crops found for card id: " + str(card_id) + ". Create crops first."
+        elif not target_result.targets_exist:
+            result.status = "No targets found for card id: " + str(card_id) + ". Create targets first."
+        else:
+            xcasset_only = request.data.get("xcassetOnly", None)
+            self.deploy_for_card(card_id, xcasset_only)
+            result = self.get_deployment_result(card_id)
+            if not result.deployed:
+                result.status = "Not deployed. Reason unknown"
+
+        serializer = DeploymentResultSerializer(result)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
     def get_deployment_result(self, card_id:int) -> DeploymentResult:
         card = Card.objects.get(card_id=card_id)
         path = Config.objects.get(settingKey='xcasset_folder').settingValue
@@ -326,11 +346,13 @@ class ImageDeploymentView(APIView):
 
         return result
 
-    def deploy_for_card(self, card_id:int):
+    def deploy_for_card(self, card_id: int, xcasset_only: bool = False):
+        if xcasset_only is None:
+            xcasset_only = False
         builder = XcassetBuilder()
         cropper = ImageCropper()
 
-        if builder.create_xcassets(card_id):
+        if builder.create_xcassets(card_id) and not xcasset_only:
             cropper.crop_and_create_images(card_id)
 
 

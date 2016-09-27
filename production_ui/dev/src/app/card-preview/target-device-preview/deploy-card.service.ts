@@ -57,13 +57,26 @@ export class DeployCardService {
       'Content-Type': 'application/json',
       'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
     var url = `${this.deploymentUrl}/${cardId}/`;
-    var data = JSON.stringify({cardid: cardId});
-    return this.http.put(url, data, {headers: headers})
+    return this.http.put(url, {headers: headers})
       .map(function (res) {
         var obj = res.json() as DeploymentResult;
         return obj;
       })
       .catch(this.handleError);
+  }
+
+  reDeployXcasset(cardId:number) : Observable<DeploymentResult>{
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='});
+    var url = `${this.deploymentUrl}/${cardId}/`;
+    var data = JSON.stringify({xcassetOnly: true});
+    return this.http.put(url, data, {headers: headers})
+        .map(function (res) {
+          var obj = res.json() as DeploymentResult;
+          return obj;
+        })
+        .catch(this.handleError);
   }
 
   getSoundDeploymentStatus(cardId:number) : Observable<DeploymentResult>{

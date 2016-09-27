@@ -52,8 +52,17 @@ class DeckCollectionViewController : UICollectionViewController {
                     UIMenuItem.init(title: "Custom", action: Selector.init("custom"))
         ];
         
+        circleRecognizer = CircleGestureRecognizer(target: self, action: self.circled)
+        view.addGestureRecognizer(circleRecognizer)
+        
     }
 
+    func circled(c: CircleGestureRecognizer) {
+        if c.state == .ended {
+            let center = c.location(in: view)
+            findCircledView(center)
+        }
+    }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;

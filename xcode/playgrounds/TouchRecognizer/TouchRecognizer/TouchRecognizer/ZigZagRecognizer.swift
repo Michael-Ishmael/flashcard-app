@@ -27,12 +27,19 @@ class ZigZagRecognizer: UIGestureRecognizer {
         state = .began
     }
     
+    override func reset() {
+        super.reset()
+        touchedPoints.removeAll(keepingCapacity: true)
+        path = CGMutablePath()
+        state = .possible
+    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesEnded(touches, with: event)
         
-        print(touchedPoints)
+        let match = touchesFormSGlyph(touches: touchedPoints)
+        state = match ? .ended : .failed
         
-        state = .failed
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {

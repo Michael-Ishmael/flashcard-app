@@ -13,6 +13,9 @@
 		81A46A0F1D9BD484008CD086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81A46A0E1D9BD484008CD086 /* Assets.xcassets */; };
 		81A46A121D9BD484008CD086 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81A46A101D9BD484008CD086 /* LaunchScreen.storyboard */; };
 		81A46ADF1D9BD4EE008CD086 /* ZigZagRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46ADE1D9BD4EE008CD086 /* ZigZagRecognizer.swift */; };
+		81A46AE31D9C5163008CD086 /* PathDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AE21D9C5163008CD086 /* PathDrawer.swift */; };
+		81A46AE51D9C62DE008CD086 /* MatchSGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AE41D9C62DE008CD086 /* MatchSGlyph.swift */; };
+		81A46AE71D9C808B008CD086 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AE61D9C808B008CD086 /* HelpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		81A46A111D9BD484008CD086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81A46A131D9BD484008CD086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81A46ADE1D9BD4EE008CD086 /* ZigZagRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZigZagRecognizer.swift; sourceTree = "<group>"; };
+		81A46AE21D9C5163008CD086 /* PathDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathDrawer.swift; sourceTree = "<group>"; };
+		81A46AE41D9C62DE008CD086 /* MatchSGlyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchSGlyph.swift; sourceTree = "<group>"; };
+		81A46AE61D9C808B008CD086 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				81A46A0E1D9BD484008CD086 /* Assets.xcassets */,
 				81A46A101D9BD484008CD086 /* LaunchScreen.storyboard */,
 				81A46A131D9BD484008CD086 /* Info.plist */,
+				81A46AE21D9C5163008CD086 /* PathDrawer.swift */,
+				81A46AE41D9C62DE008CD086 /* MatchSGlyph.swift */,
+				81A46AE61D9C808B008CD086 /* HelpViewController.swift */,
 			);
 			path = TouchRecognizer;
 			sourceTree = "<group>";
@@ -139,7 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A46AE51D9C62DE008CD086 /* MatchSGlyph.swift in Sources */,
+				81A46AE71D9C808B008CD086 /* HelpViewController.swift in Sources */,
 				81A46A0A1D9BD484008CD086 /* ViewController.swift in Sources */,
+				81A46AE31D9C5163008CD086 /* PathDrawer.swift in Sources */,
 				81A46A081D9BD484008CD086 /* AppDelegate.swift in Sources */,
 				81A46ADF1D9BD4EE008CD086 /* ZigZagRecognizer.swift in Sources */,
 			);

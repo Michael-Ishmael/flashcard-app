@@ -1,0 +1,6 @@
+framework module Pods_SQLiteExperiment {
+  umbrella header "Pods-SQLiteExperiment-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -11,9 +11,6 @@ import UIKit.UIGestureRecognizerSubclass
 
 class CircleGestureRecognizer: UIGestureRecognizer {
     
-    func test(){
-        self.touchesBegan(touches: <#T##Set<NSObject>!#>, withEvent: <#T##UIEvent!#>)
-    }
     
     @objc open func touchesBegan(touches: Set<NSObject>!, withEvent event: UIEvent!) {
         super.touchesBegan(touches as! Set<UITouch>, with: event)

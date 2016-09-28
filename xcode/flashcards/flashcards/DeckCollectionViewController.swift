@@ -49,21 +49,14 @@ class DeckCollectionViewController : UICollectionViewController {
         super.collectionView!.backgroundView = UIView.init(frame: self.collectionView!.bounds);
         super.collectionView!.backgroundView!.backgroundColor = UIColor.white
         UIMenuController.shared.menuItems = [
-                    UIMenuItem.init(title: "Custom", action: Selector.init("custom"))
+         UIMenuItem.init(title: "Custom", action: Selector.init("custom"))
         ];
         
-        circleRecognizer = CircleGestureRecognizer(target: self, action: self.circled)
-        view.addGestureRecognizer(circleRecognizer)
+
         
     }
 
-    func circled(c: CircleGestureRecognizer) {
-        if c.state == .ended {
-            let center = c.location(in: view)
-            findCircledView(center)
-        }
-    }
-    
+
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
     }

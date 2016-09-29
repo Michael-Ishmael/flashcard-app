@@ -5,10 +5,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cffb02ee-a971-45d7-95fa-58bf559b3d42" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../production/production/business/GestureTesting.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer/CircleDrawView.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/MatchSGlyph.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/PathDrawer.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/SettingsTableViewController.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/ZigZagRecognizer.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer/HelpTableViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPad.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPad.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPadPro.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPadPro.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPadRetina.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPadRetina.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPhone5.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPhone5.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPhone6.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPhone6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPhone6Plus.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iPhone6Plus.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iphone4.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat1.imageset/cat1_iphone4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPad.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPad.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPadPro.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPadPro.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPadRetina.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPadRetina.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPhone5.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPhone5.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPhone6.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPhone6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPhone6Plus.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iPhone6Plus.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iphone4.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat4.imageset/cat4_iphone4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPad.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPad.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPadPro.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPadPro.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPadRetina.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPadRetina.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPhone5.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPhone5.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPhone6.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPhone6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPhone6Plus.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iPhone6Plus.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iphone4.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog1.imageset/dog1_iphone4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPad.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPad.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPadPro.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPadPro.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPadRetina.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPadRetina.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPhone5.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPhone5.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPhone6.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPhone6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPhone6Plus.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iPhone6Plus.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iphone4.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/dog2.imageset/dog2_iphone4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPad.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPad.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPadPro.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPadPro.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPadRetina.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPadRetina.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPhone5.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPhone5.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPhone6.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPhone6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPhone6Plus.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iPhone6Plus.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iphone4.jpg" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/goat1.imageset/goat1_iphone4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-shm" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-shm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-wal" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-wal" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer.xcodeproj/project.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer.xcodeproj/project.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/backlog/backlog.component.html" afterPath="$PROJECT_DIR$/src/app/backlog/backlog.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/backlog/backlog.component.ts" afterPath="$PROJECT_DIR$/src/app/backlog/backlog.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/deck-sets/deck-set.service.ts" afterPath="$PROJECT_DIR$/src/app/deck-sets/deck-set.service.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/deck-sets/deck-set.ts" afterPath="$PROJECT_DIR$/src/app/deck-sets/deck-set.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/index.ts" afterPath="$PROJECT_DIR$/src/app/shared/index.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/system-config.ts" afterPath="$PROJECT_DIR$/src/system-config.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcodeproj/xcuserdata/scorpio.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcodeproj/xcuserdata/scorpio.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cow1.imageset/Contents.json" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cow1.imageset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Base.lproj/LaunchScreen.storyboard" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Base.lproj/LaunchScreen.storyboard" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Base.lproj/Main.storyboard" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckCollectionViewController.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckCollectionViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckViewCell.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckViewCell.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckViewData.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckViewData.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/FlashCardSetTabViewController.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/FlashCardSetTabViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/FlashCardViewController.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/FlashCardViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer.xcodeproj/xcuserdata/scorpio.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer.xcodeproj/xcuserdata/scorpio.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer/Base.lproj/Main.storyboard" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer/MatchSGlyph.swift" afterPath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer/MatchSGlyph.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer/ViewController.swift" afterPath="$PROJECT_DIR$/../../xcode/playgrounds/TouchRecognizer/TouchRecognizer/TouchRecognizer/ViewController.swift" />
     </list>
     <ignored path="dev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,56 +94,114 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app.js">
+      <file leaf-file-name="card-accordian.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fso-img-item.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/assignment/folder-structure/fso-item/fso-img-item/fso-img-item.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
               <folding>
-                <element signature="e#0#77#0" expanded="true" />
+                <element signature="e#0#55#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="target-device-preview.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="card-accordian.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deck-set.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-set.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="flashcard.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/flashcard/flashcard.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="assignable.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/shared/assignable.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="backlog.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
+              <folding>
+                <element signature="e#141#2100#0" expanded="false" />
+                <marker date="1475181289000" expanded="false" signature="1037:1322" ph="..." />
+                <marker date="1475181289000" expanded="false" signature="1460:2095" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deck-set.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-set.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <marker date="1475179562000" expanded="true" signature="1829:3234" ph="..." />
+                <marker date="1475179562000" expanded="true" signature="1970:3234" ph="..." />
+                <marker date="1475179562000" expanded="true" signature="2406:3234" ph="..." />
+                <marker date="1475179562000" expanded="true" signature="3072:3234" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="target-device-preview.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device-preview.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="108" column="10" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+            <state relative-caret-position="308">
+              <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="121" selection-end-column="38" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="target-device-preview.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device-preview.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="40" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deploy-card.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/card-preview/target-device-preview/deploy-card.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -100,12 +224,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/main.ts" />
-        <option value="$PROJECT_DIR$/src/app/flashcard/flashcard.service.ts" />
-        <option value="$PROJECT_DIR$/src/tsconfig.json" />
         <option value="$PROJECT_DIR$/dist/vendor/ng2-img-cropper/src/exif.js" />
-        <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/angular-cli-build.js" />
         <option value="$PROJECT_DIR$/src/system-config.ts" />
         <option value="$PROJECT_DIR$/src/app/crop/img-cropper/img-cropper.component.html" />
@@ -121,9 +240,7 @@
         <option value="$PROJECT_DIR$/src/app/assignables/assignable/assignable.component.scss" />
         <option value="$PROJECT_DIR$/src/app/assignables/assignable-display/assignable-display.component.html" />
         <option value="$PROJECT_DIR$/src/app/assignables/assignable-display/assignable-display.component.scss" />
-        <option value="$PROJECT_DIR$/src/app/backlog/backlog.component.html" />
         <option value="$PROJECT_DIR$/src/app/crop/crop.ts" />
-        <option value="$PROJECT_DIR$/src/app/backlog/backlog.component.ts" />
         <option value="$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device.service.ts" />
         <option value="$PROJECT_DIR$/src/app/card-preview/card-preview.component.html" />
         <option value="$PROJECT_DIR$/src/app/card-preview/card-preview.component.ts" />
@@ -145,12 +262,19 @@
         <option value="$PROJECT_DIR$/src/app/card-preview/target-device-preview/split-xcasset/split-xcasset.component.html" />
         <option value="$PROJECT_DIR$/src/app/card-preview/target-device-preview/split-xcasset/split-xcasset.component.ts" />
         <option value="$PROJECT_DIR$/src/app/crop/crop.component.ts" />
-        <option value="$PROJECT_DIR$/src/app.js" />
         <option value="$PROJECT_DIR$/src/app/assignment/folder-structure/fso-item/fso-img-item/fso-img-item.component.ts" />
         <option value="$PROJECT_DIR$/src/app/assignment/folder-structure/fso-item/fso-sound-item/fso-sound-item.component.ts" />
         <option value="$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device-preview.component.html" />
         <option value="$PROJECT_DIR$/src/app/card-preview/target-device-preview/deploy-card.service.ts" />
         <option value="$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device-preview.component.ts" />
+        <option value="$PROJECT_DIR$/src/app.js" />
+        <option value="$PROJECT_DIR$/src/app/backlog/backlog.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/deck-sets/deck-set.ts" />
+        <option value="$PROJECT_DIR$/src/app/deck-sets/deck-set.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/backlog/backlog.component.html" />
+        <option value="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html" />
+        <option value="$PROJECT_DIR$/src/index.html" />
       </list>
     </option>
   </component>
@@ -278,15 +402,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="card-preview" />
+              <option name="myItemId" value="dist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -304,19 +420,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="dist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="card-preview" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target-device-preview" />
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -479,12 +587,12 @@
       <workItem from="1474652226334" duration="181000" />
       <workItem from="1474818057989" duration="1877000" />
       <workItem from="1474876551154" duration="2602000" />
-      <workItem from="1475055608979" duration="179000" />
+      <workItem from="1475055608979" duration="9770000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202644000" />
+    <option name="totallyTimeSpent" value="212235000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -497,27 +605,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23748212" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23748212" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32386363" sideWeight="0.503231" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31716418" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32386363" sideWeight="0.49676898" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3955224" sideWeight="0.49676898" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39772728" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23863636" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24147727" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2471591" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39772728" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -548,90 +656,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/crop/crop.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/crop/img-cropper/img-cropper.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/flashcard/flashcard.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="61" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/flashcard/flashcard.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/flashcard/flashcard-form/flashcard-form.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/flashcard/flashcard.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog-service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/assignables/assignable-display/assignable-display.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/assignables/assignable-form/assignable-form.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/assignables/assignable/assignable.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/assignables/assignable-display/assignable-display.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -665,20 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="99" column="31" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="25" column="69" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -762,13 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/card-preview/card-preview.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/shared/cropped-image/cropped-image.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -837,7 +840,7 @@
         <state relative-caret-position="330">
           <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
           <folding>
-            <element signature="e#0#80#0" expanded="true" />
+            <element signature="e#0#80#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -866,18 +869,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/assignment/folder-structure/fso-item/fso-sound-item/fso-sound-item.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#77#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -886,7 +884,7 @@
         <state relative-caret-position="690">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
-            <element signature="e#0#77#0" expanded="true" />
+            <element signature="e#0#77#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -904,15 +902,157 @@
         <state relative-caret-position="960">
           <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/assignment/assignment.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-sets.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#91#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device-preview.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="108" column="10" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+        <state relative-caret-position="308">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="121" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/card-preview/card-preview.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog-service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-157">
+          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/assignables/assignable/assignable.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/assignable.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/flashcard/flashcard.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-set.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-set.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="47" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <marker date="1475179562000" expanded="true" signature="1829:3234" ph="..." />
+            <marker date="1475179562000" expanded="true" signature="1970:3234" ph="..." />
+            <marker date="1475179562000" expanded="true" signature="2406:3234" ph="..." />
+            <marker date="1475179562000" expanded="true" signature="3072:3234" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
+          <folding>
+            <element signature="e#141#2100#0" expanded="false" />
+            <marker date="1475181289000" expanded="false" signature="1037:1322" ph="..." />
+            <marker date="1475181289000" expanded="false" signature="1460:2095" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding />
         </state>
       </provider>

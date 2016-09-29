@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ZigZagRecognizer.touchesEnded(Set&lt;UITouch&gt;, with : UIEvent) -&gt; ():ZigZagRecognizer.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DeckCollectionViewController.gestureRecognizer(UIGestureRecognizer, shouldReceive : UITouch) -&gt; Bool:DeckCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "touch.view.superview as DeckViewCell">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "touchesFormSGlyph(touches : [CGPoint]) -&gt; Bool:MatchSGlyph.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DeckCollectionViewController.cellTapped(c : UITapGestureRecognizer) -&gt; ():DeckCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "c.view.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DataLoader.getData() -&gt; AppData?:DeckViewData.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

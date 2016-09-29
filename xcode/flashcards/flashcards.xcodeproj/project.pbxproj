@@ -41,6 +41,11 @@
 		819402A81D94796200EE35A0 /* Horse4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402981D94796200EE35A0 /* Horse4.mp3 */; };
 		819402A91D94796200EE35A0 /* Horse5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 819402991D94796200EE35A0 /* Horse5.mp3 */; };
 		819402AA1D94796200EE35A0 /* Horse6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8194029A1D94796200EE35A0 /* Horse6.mp3 */; };
+		81A46AEB1D9D326F008CD086 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AEA1D9D326F008CD086 /* SettingsTableViewController.swift */; };
+		81A46AED1D9D3BA2008CD086 /* flashcards.db in Resources */ = {isa = PBXBuildFile; fileRef = 81A46AEC1D9D3BA2008CD086 /* flashcards.db */; };
+		81A46AF11D9D4CCD008CD086 /* MatchSGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AEE1D9D4CCD008CD086 /* MatchSGlyph.swift */; };
+		81A46AF21D9D4CCD008CD086 /* PathDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AEF1D9D4CCD008CD086 /* PathDrawer.swift */; };
+		81A46AF31D9D4CCD008CD086 /* ZigZagRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AF01D9D4CCD008CD086 /* ZigZagRecognizer.swift */; };
 		984B0DDA1D1D5B4100533A06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984B0DD91D1D5B4100533A06 /* AppDelegate.swift */; };
 		984B0DDC1D1D5B4100533A06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984B0DDB1D1D5B4100533A06 /* ViewController.swift */; };
 		984B0DDF1D1D5B4100533A06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984B0DDD1D1D5B4100533A06 /* Main.storyboard */; };
@@ -99,6 +104,11 @@
 		819402981D94796200EE35A0 /* Horse4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse4.mp3; sourceTree = "<group>"; };
 		819402991D94796200EE35A0 /* Horse5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse5.mp3; sourceTree = "<group>"; };
 		8194029A1D94796200EE35A0 /* Horse6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse6.mp3; sourceTree = "<group>"; };
+		81A46AEA1D9D326F008CD086 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		81A46AEC1D9D3BA2008CD086 /* flashcards.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = flashcards.db; path = flashcards/flashcards.db; sourceTree = SOURCE_ROOT; };
+		81A46AEE1D9D4CCD008CD086 /* MatchSGlyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchSGlyph.swift; sourceTree = "<group>"; };
+		81A46AEF1D9D4CCD008CD086 /* PathDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathDrawer.swift; sourceTree = "<group>"; };
+		81A46AF01D9D4CCD008CD086 /* ZigZagRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZigZagRecognizer.swift; sourceTree = "<group>"; };
 		984B0DD61D1D5B4100533A06 /* flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		984B0DD91D1D5B4100533A06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		984B0DDB1D1D5B4100533A06 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +241,10 @@
 		984B0DD81D1D5B4100533A06 /* flashcards */ = {
 			isa = PBXGroup;
 			children = (
+				81A46AEE1D9D4CCD008CD086 /* MatchSGlyph.swift */,
+				81A46AEF1D9D4CCD008CD086 /* PathDrawer.swift */,
+				81A46AF01D9D4CCD008CD086 /* ZigZagRecognizer.swift */,
+				81A46AEC1D9D3BA2008CD086 /* flashcards.db */,
 				819402811D94682900EE35A0 /* Resources */,
 				8194027F1D94639100EE35A0 /* DataManager.swift */,
 				810947A21D940DD700B49355 /* Gloss */,
@@ -249,6 +263,7 @@
 				984B0DE51D1D5B4100533A06 /* Info.plist */,
 				9872094B1D9512D100F167E2 /* Entities.swift */,
 				9872095F1D9AD97100F167E2 /* CircleGestureRecognizer.swift */,
+				81A46AEA1D9D326F008CD086 /* SettingsTableViewController.swift */,
 			);
 			path = flashcards;
 			sourceTree = "<group>";
@@ -336,6 +351,7 @@
 				9872095A1D996F8F00F167E2 /* Dachshund.mp3 in Resources */,
 				819402A91D94796200EE35A0 /* Horse5.mp3 in Resources */,
 				819402A41D94796200EE35A0 /* Cow6.mp3 in Resources */,
+				81A46AED1D9D3BA2008CD086 /* flashcards.db in Resources */,
 				819402891D94682900EE35A0 /* Chicken5.mp3 in Resources */,
 				819402881D94682900EE35A0 /* Chicken1.mp3 in Resources */,
 				9872095C1D996F8F00F167E2 /* Dog Whine.mp3 in Resources */,
@@ -413,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A46AF11D9D4CCD008CD086 /* MatchSGlyph.swift in Sources */,
 				8109479F1D940DC500B49355 /* DeckViewCell.swift in Sources */,
 				819402801D94639100EE35A0 /* DataManager.swift in Sources */,
 				8109479B1D940DC500B49355 /* FlashCardViewController.swift in Sources */,
@@ -429,8 +446,11 @@
 				810947AB1D940DD700B49355 /* Decoder.swift in Sources */,
 				810947B11D940DD700B49355 /* Operators.swift in Sources */,
 				810947AC1D940DD700B49355 /* Encoder.swift in Sources */,
+				81A46AF21D9D4CCD008CD086 /* PathDrawer.swift in Sources */,
+				81A46AEB1D9D326F008CD086 /* SettingsTableViewController.swift in Sources */,
 				984B0DDA1D1D5B4100533A06 /* AppDelegate.swift in Sources */,
 				810947AD1D940DD700B49355 /* ExtensionArray.swift in Sources */,
+				81A46AF31D9D4CCD008CD086 /* ZigZagRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,7 +53,7 @@ class FlashCardViewController: UIViewController {
        
         //_itemSound = AVPlayer.init(URL: <#T##NSURL#>) //.init(contentsOfURL: <#T##NSURL#>, fileTypeHint: <#T##String?#>)
         do{
-            if let path = Bundle.main.path(forResource: _flashCard!.sound, ofType:nil){
+            if let path = Bundle.main.path(forResource: _flashCard?.sound, ofType:nil){
                 let songURL = URL(fileURLWithPath: path)
                 _itemSound = try AVAudioPlayer.init(contentsOf: songURL, fileTypeHint: AVFileTypeMPEGLayer3)
                 _itemSound!.volume = 7;
@@ -79,29 +79,31 @@ class FlashCardViewController: UIViewController {
     
     func setImageFromOrientation(){
         let orientation = UIDevice.current.orientation
-        let crop:FlashCardImageCrop?;
-        let xCassetName:String;
+        let crop:FlashCardImageCrop?
+        let xCassetName:String?
         
         //  if(_flashCard?.imageDef[].)
         
         if(orientation == UIDeviceOrientation.portrait){
-            crop = (_flashCard?.imageDef[AspectRatio.Nine16]!.portrait.crop)
-            xCassetName = (_flashCard?.imageDef[AspectRatio.Nine16]!.portrait.xCasset)!
+            crop = (_flashCard?.imageDef[AspectRatio.Nine16]?.portrait.crop)
+            xCassetName = _flashCard?.imageDef[AspectRatio.Nine16]?.portrait.xCasset
         } else {
             crop = (_flashCard?.imageDef[AspectRatio.Nine16]!.landscape.crop)
             xCassetName = (_flashCard?.imageDef[AspectRatio.Nine16]!.landscape.xCasset)!
         }
 
-        _imageView!.frame = self.view.bounds;
-        if(crop != nil){
-            let c = crop!
-            _imageView!.layer.contentsRect = //CGRect(x: 0.1, y: 0.1, width: 0.6, height: 0.7)
-                CGRect(x: c.X1, y: c.Y1, width: c.Width, height: c.Height)
-        } else {
-            _imageView!.layer.contentsRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        if(xCassetName != nil){
+            _imageView!.frame = self.view.bounds;
+            if(crop != nil){
+                let c = crop!
+                _imageView!.layer.contentsRect = //CGRect(x: 0.1, y: 0.1, width: 0.6, height: 0.7)
+                    CGRect(x: c.X1, y: c.Y1, width: c.Width, height: c.Height)
+            } else {
+                _imageView!.layer.contentsRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+            }
+            _imageView!.image = UIImage.init(named: xCassetName!)
         }
 
-        _imageView!.image = UIImage.init(named: xCassetName)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

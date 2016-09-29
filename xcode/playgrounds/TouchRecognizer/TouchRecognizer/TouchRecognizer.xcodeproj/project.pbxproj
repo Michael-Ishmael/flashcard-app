@@ -16,6 +16,7 @@
 		81A46AE31D9C5163008CD086 /* PathDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AE21D9C5163008CD086 /* PathDrawer.swift */; };
 		81A46AE51D9C62DE008CD086 /* MatchSGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AE41D9C62DE008CD086 /* MatchSGlyph.swift */; };
 		81A46AE71D9C808B008CD086 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AE61D9C808B008CD086 /* HelpViewController.swift */; };
+		81A46AE91D9D06B6008CD086 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AE81D9D06B6008CD086 /* HelpTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		81A46AE21D9C5163008CD086 /* PathDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathDrawer.swift; sourceTree = "<group>"; };
 		81A46AE41D9C62DE008CD086 /* MatchSGlyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchSGlyph.swift; sourceTree = "<group>"; };
 		81A46AE61D9C808B008CD086 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		81A46AE81D9D06B6008CD086 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				81A46AE21D9C5163008CD086 /* PathDrawer.swift */,
 				81A46AE41D9C62DE008CD086 /* MatchSGlyph.swift */,
 				81A46AE61D9C808B008CD086 /* HelpViewController.swift */,
+				81A46AE81D9D06B6008CD086 /* HelpTableViewController.swift */,
 			);
 			path = TouchRecognizer;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81A46AE51D9C62DE008CD086 /* MatchSGlyph.swift in Sources */,
+				81A46AE91D9D06B6008CD086 /* HelpTableViewController.swift in Sources */,
 				81A46AE71D9C808B008CD086 /* HelpViewController.swift in Sources */,
 				81A46A0A1D9BD484008CD086 /* ViewController.swift in Sources */,
 				81A46AE31D9C5163008CD086 /* PathDrawer.swift in Sources */,

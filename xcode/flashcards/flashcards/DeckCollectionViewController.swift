@@ -12,6 +12,8 @@ import UIKit
 class DeckCollectionViewController : UICollectionViewController {
     
     let deckViewCellId:NSString = NSString.init(string: "DeckViewCell");
+    var zigzagRecognizer: ZigZagRecognizer!
+    var tapRecognizer: UITapGestureRecognizer!
     
     fileprivate var _eventHandler:IApplicationEventHandler? = nil
     fileprivate var _tiles:[DeckViewData] = [];
@@ -49,13 +51,29 @@ class DeckCollectionViewController : UICollectionViewController {
         super.collectionView!.backgroundView = UIView.init(frame: self.collectionView!.bounds);
         super.collectionView!.backgroundView!.backgroundColor = UIColor.white
         UIMenuController.shared.menuItems = [
-         UIMenuItem.init(title: "Custom", action: Selector.init("custom"))
+         UIMenuItem.init(title: "Custom", action: Selector.init(("custom")))
         ];
         
-
+        tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.cellTapped(c:)))
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        tapRecognizer.delegate = self
+        view.addGestureRecognizer(tapRecognizer)
+        zigzagRecognizer = ZigZagRecognizer(target: self, action: #selector(self.zigZagDrawn(c:)))
+        zigzagRecognizer.delegate = self
+        view.addGestureRecognizer(zigzagRecognizer)
         
     }
 
+    func cellTapped(c: UITapGestureRecognizer)  {
+        print(c)
+        let pointInCollectionView: CGPoint = c.location(in: collectionView)
+        if let selectedIndexPath: IndexPath =  (self.collectionView?.indexPathForItem(at: pointInCollectionView)){
+            let item = _tiles[(selectedIndexPath as IndexPath).row]
+            let cell = self.collectionViewLayout.layoutAttributesForItem(at: selectedIndexPath)
+            _eventHandler?.deckSelected(item, frame: (cell?.frame)!)
+        }
+    }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
@@ -74,17 +92,19 @@ class DeckCollectionViewController : UICollectionViewController {
         let tile = _tiles[(indexPath as NSIndexPath).row]
         
         cell.setImagePath(tile.imageThumb)
+        cell.tag = tile.thumbId
+        
         
         return cell;
     }
 
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let item = _tiles[(indexPath as NSIndexPath).row]
-        let cell = self.collectionViewLayout.layoutAttributesForItem(at: indexPath)
-        _eventHandler?.deckSelected(item, frame: (cell?.frame)!)
-        
-    }
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        
+//        let item = _tiles[(indexPath as NSIndexPath).row]
+//        let cell = self.collectionViewLayout.layoutAttributesForItem(at: indexPath)
+//        _eventHandler?.deckSelected(item, frame: (cell?.frame)!)
+//        
+//    }
    
     
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
@@ -99,6 +119,21 @@ class DeckCollectionViewController : UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
+    }
+    
+    func zigZagDrawn(c: ZigZagRecognizer) {
+        if c.state == .began {
+            //pathDrawer.clear()
+        }
+        else if c.state == .changed {
+            //pathDrawer.updatePath(p: c.path)
+        } else if c.state == .ended {
+            //statusLabel.text = "MATCH!"
+            self.parent?.performSegue(withIdentifier: "showSettings", sender: self)
+            //            present(vc, animated: true, completion: nil)
+        } else {
+            //statusLabel.text = "Fail :-("
+        }
     }
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent!) {
@@ -137,28 +172,6 @@ class DeckCollectionViewController : UICollectionViewController {
         return
     }
 
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        guard let flowLayout = collectionView?.collectionViewLayout as? JumbleFlowLayout else {
-//            return
-//        }
-//        
-//        if UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) {
-//            flowLayout.itemSize = CGSize(width: 170, height: 170)
-//        } else {
-//            flowLayout.itemSize = CGSize(width: 192, height: 192)
-//        }
-//        
-//        flowLayout.invalidateLayout()
-//    }
-//    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-//        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-//        
-//        guard let flowLayout = collectionView?.collectionViewLayout as? JumbleFlowLayout else {
-//                    return
-//        }
-//
-//    }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: {
@@ -201,6 +214,19 @@ class DeckCollectionViewController : UICollectionViewController {
 
     
 }
+
+extension DeckCollectionViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return true; // !(touch.view?.superview is DeckViewCell)
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+}
+
 
 extension Array{
    

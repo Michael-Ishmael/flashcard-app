@@ -5,13 +5,14 @@ import {AssignableDisplayComponent} from "../assignables/assignable-display/assi
 import {Router} from "@angular/router";
 import {CropComponent} from "../crop/crop.component";
 import {CardPreviewComponent} from "../card-preview/card-preview.component";
+import {CardAccordianComponent} from "../shared/card-accordian/card-accordian.component";
 
 @Component({
   moduleId: module.id,
   selector: 'app-backlog',
   templateUrl: 'backlog.component.html',
   styleUrls: ['../assignables/assignable/assignable.component.css', 'backlog.component.css'],
-  directives: [AssignableDisplayComponent, CropComponent, CardPreviewComponent]
+  directives: [AssignableDisplayComponent, CropComponent, CardPreviewComponent, CardAccordianComponent]
 })
 export class BacklogComponent implements OnInit {
 

@@ -1,6 +1,10 @@
 <div id="backlog" class="row">
   <h2>Backlog</h2>
 
+   <card-accordian *ngIf="completedItems" [cardList]="completedItems"></card-accordian>
+
+
+<!--
   <div id="backlog-list" class="deck-set-col" [class.col-md-4]="!viewManager.listsCollapsed" [class.col-md-1]="viewManager.listsCollapsed">
 
     <div  [class.assignable-list]="!viewManager.listsCollapsed" [class.assignable-list-compact]="viewManager.listsCollapsed">
@@ -45,5 +49,6 @@
     </div>
 
   </div>
+-->
 
 </div>

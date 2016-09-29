@@ -56,19 +56,4 @@ class DeckViewCell : UICollectionViewCell {
         
     }
     
-//    public override CALayer Layer {
-//    get {
-//				base.Layer.Speed = 0.4f;
-//				return base.Layer;
-//    }
-//    }
-//    
-//    public String ImagePath {
-//    set {
-//				_imageView.Image = UIImage.FromBundle (value);;
-//    }
-//    }
-    
-    
-    
 }

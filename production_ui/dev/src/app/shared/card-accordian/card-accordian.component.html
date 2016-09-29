@@ -1,0 +1,55 @@
+<p>
+  card-accordian works!
+</p>
+
+<div *ngIf="model">
+    <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Link with href
+        </a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-target
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+    </div>
+</div>
+
+
+<ul *ngIf="model">
+    <li *ngFor="let set of model.children" >
+
+        <b>{{ set.item.name }} ({{ set.children.length}})</b>
+        <br>
+        <br>
+        <ul>
+
+            <li *ngFor="let deck of set.children" >
+
+                <em>{{ deck.item.name }} ({{ deck.children.length}}) </em>
+                <br>
+                <br>
+                <ul>
+
+                    <li *ngFor="let card of deck.children" >
+
+                        {{ card.item.name }}
+
+                    </li>
+
+                </ul>
+                <br>
+
+            </li>
+
+        </ul>
+        <br>
+
+    </li>
+
+</ul>
+
+

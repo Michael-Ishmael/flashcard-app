@@ -14,6 +14,7 @@ protocol IApplicationEventHandler
 {
     func deckSelected(_ tile:DeckViewData, frame:CGRect);
     func flashCardDismissed();
+    func settingsChanged(settings :AppSettings)
 }
 
 
@@ -44,40 +45,9 @@ class FlashCardSetTabViewController : UITabBarController, IApplicationEventHandl
         }
         
         self.viewControllers = self._collectionControllers;
-        
-        /*
-        if let path = Bundle.main.path(forResource: "appdata", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.mappedIfSafe)
-                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions()) as? [String: [AnyObject]]
-                
-
-                
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            } catch {
-                
-            }
-        } else {
-            print("Invalid filename/path.")
-        }
-        */
-        //super.init(nibName: nil, bundle: nil)
-
-        
-
-    
-    /*
-    var secondTab = new UIViewController ();
-    secondTab.View.BackgroundColor = UIColor.Gray;
-    secondTab.TabBarItem = new UITabBarItem ();
-    secondTab.TabBarItem.ImageInsets = new UIEdgeInsets(6, 0, -6, 0);
-    secondTab.TabBarItem.Image = UIImage.FromBundle ("lionIcon.png");
-    */
-        
+       
     
     }
-
     
     func getFlowLayout() -> JumbleFlowLayout{
     
@@ -98,16 +68,23 @@ class FlashCardSetTabViewController : UITabBarController, IApplicationEventHandl
     }
     
     func deckSelected(_ tile:DeckViewData, frame:CGRect){
+        
+        //performSegue(withIdentifier: "showSettings", sender: self)
         _pictureController = FlashCardViewController(flashCard: tile.getNextFlashCard(), sourceFrame: frame, eventHandler: self as IApplicationEventHandler)
         let tr = FlashCardViewTransitioningDelegate();
         _pictureController!.transitioningDelegate = tr;
         
         self.present(_pictureController!, animated: true, completion: nil);
-        _clickCount+=1;
+        _clickCount+=1
+        
     }
     
     func flashCardDismissed() {
         dismiss(animated: true, completion: checkAndJumble)
+    }
+    
+    func settingsChanged(settings: AppSettings) {
+        print("Save settings!")
     }
     
     func checkAndJumble(){
@@ -117,8 +94,6 @@ class FlashCardSetTabViewController : UITabBarController, IApplicationEventHandl
         }
     }
 
-    
-    //_pictureController.RemoveFromParentViewController();
     }
     
 

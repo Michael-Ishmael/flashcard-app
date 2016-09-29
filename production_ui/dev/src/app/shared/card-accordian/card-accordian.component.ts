@@ -1,0 +1,123 @@
+import {Component, OnInit, Input} from '@angular/core';
+import {Flashcard} from "../../flashcard/flashcard";
+import {DeckSetService} from "../../deck-sets/deck-set.service";
+import {DeckSet} from "../../deck-sets/deck-set";
+import {Observable} from "rxjs/Rx";
+import {IAssignable, AssignableType} from "../assignable";
+
+
+export class AccordianNode {
+
+  type:AssignableType;
+  children:AccordianNode[];
+
+  constructor(
+    public item:IAssignable
+  ){
+    this.type = item.type;
+    this.children = [];
+  }
+
+}
+
+export class CardAccordian {
+  expanded:boolean;
+  children:AccordianNode[];
+
+  constructor(){
+    this.children = [];
+  }
+}
+
+@Component({
+  moduleId: module.id,
+  selector: 'card-accordian',
+  templateUrl: 'card-accordian.component.html',
+  styleUrls: ['card-accordian.component.css']
+})
+export class CardAccordianComponent implements OnInit {
+
+  @Input() cardList:Flashcard[];
+
+  model:CardAccordian;
+
+  constructor(
+    private deckSetService:DeckSetService
+  ) { }
+
+  ngOnInit() {
+
+    var sets:DeckSet[];
+    var decks:DeckSet[];
+
+    if(this.cardList){
+      this.getParentAssignables(AssignableType.Flashcard, this.cardList, (rDecks) => {
+
+          decks = rDecks;
+          this.getParentAssignables(AssignableType.Deck, decks, (rSets) => {
+            sets = rSets;
+            this.makeTree(sets, decks, this.cardList)
+          })
+
+      })
+    }
+
+  }
+
+  private makeTree(sets:DeckSet[], decks:DeckSet[], cards:Flashcard[]){
+    this.model = new CardAccordian();
+    this.model.children = sets.map(s =>
+      this.createAccordianNode(s,
+        decks.filter(d => d.setId == s.id)
+          .map(d => this.createAccordianNode(d, cards.filter(c => c.deckId == d.id).map(
+            c => this.createAccordianNode(c, null)
+          )))   ));
+  }
+
+  private createAccordianNode(assignable:IAssignable, childNodes:AccordianNode[]):AccordianNode{
+    var node = new AccordianNode(assignable);
+    node.children = childNodes;
+    return node;
+  }
+
+  private getParentAssignables(type:AssignableType, children:IAssignable[], doneCallback:(parents:DeckSet[]) => void):void{
+
+    var parentIdKey = type == AssignableType.Flashcard ? "deckId" : "setId";
+    var serviceGetMethod = type == AssignableType.Flashcard ? "getDeck" : "getSet";
+    var arrProp = type == AssignableType.Flashcard ? "decks" : "sets";
+    var parentIds = this.getUnique(children.map(c => c[parentIdKey]));
+    var deckObservables = [];
+
+    for (var i = 0; i < parentIds.length; i++) {
+      var deckId = parentIds[i];
+      deckObservables.push(this.deckSetService[serviceGetMethod](deckId));
+    }
+
+    Observable.forkJoin(deckObservables)
+      .subscribe((pArr:any) => {
+
+          doneCallback(pArr);
+
+        }
+      );
+
+  }
+
+  private showDataError(e){
+    alert(e.toString())
+  }
+
+  private getUnique(arr){
+    var u = {}, a = [];
+    for(var i = 0, l = arr.length; i < l; ++i){
+      if(u.hasOwnProperty(arr[i])) {
+        continue;
+      }
+      a.push(arr[i]);
+      u[arr[i]] = 1;
+    }
+    return a;
+  }
+
+
+}

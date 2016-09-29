@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TouchRecognizer/ViewController.swift"
-            timestampString = "496792365.288565"
+            timestampString = "496836048.499295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "zigZagDrawn(c:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TouchRecognizer/MatchSGlyph.swift"
-            timestampString = "496790167.899052"
+            timestampString = "496835856.392906"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "touchesFormSGlyph(touches:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TouchRecognizer/ViewController.swift"
-            timestampString = "496796517.759282"
+            timestampString = "496836048.499295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "zigZagDrawn(c:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TouchRecognizer/ViewController.swift"
-            timestampString = "496791289.612901"
+            timestampString = "496836048.499295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "zigZagDrawn(c:)"
             landmarkType = "7">
          </BreakpointContent>

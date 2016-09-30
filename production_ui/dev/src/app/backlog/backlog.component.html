@@ -1,54 +1,63 @@
 <div id="backlog" class="row">
   <h2>Backlog</h2>
 
-   <card-accordian *ngIf="completedItems" [cardList]="completedItems"></card-accordian>
+  <div id="backlog-list" class="deck-set-col" [class.col-md-4]="!viewManager.listsCollapsed"
+       [class.col-md-1]="viewManager.listsCollapsed">
 
+    <div [class.assignable-list]="!viewManager.listsCollapsed"
+         [class.assignable-list-compact]="viewManager.listsCollapsed">
 
-<!--
-  <div id="backlog-list" class="deck-set-col" [class.col-md-4]="!viewManager.listsCollapsed" [class.col-md-1]="viewManager.listsCollapsed">
-
-    <div  [class.assignable-list]="!viewManager.listsCollapsed" [class.assignable-list-compact]="viewManager.listsCollapsed">
-      <button class="btn btn-success btn-xs pull-right" (click)="addNewItem()">+</button>
-      <ul *ngIf="items" class="list-group">
-
-        <li *ngFor="let item of items" class="list-group-item" [class.active]="item == selectedItem"
-            [class.complete]="item.complete == 2"
-            (click)="selectBacklogItem(item)">
-          <assignable-display [model]="item" (onEdit)="editItem($event)">
-
-          </assignable-display>
-
-        </li>
-
-      </ul>
+      <card-accordian *ngIf="completedItems" [cardList]="completedItems"></card-accordian>
     </div>
 
+
   </div>
 
-  <div *ngIf="selectedItem" id="cropper" [class.col-md-4]="!viewManager.listsCollapsed" [class.col-md-10]="viewManager.listsCollapsed">
-    <crop-component *ngIf="viewManager.showCrops" [model]="selectedItem" (onCroppingDone)="onCropComplete($event)"></crop-component>
-      <card-preview *ngIf="viewManager.showPreview" [model]="selectedItem" (onCropViewSelected)="onCropModeSelected($event)" > </card-preview>
-  </div>
+  <!--
+    <div id="backlog-list" class="deck-set-col" [class.col-md-4]="!viewManager.listsCollapsed" [class.col-md-1]="viewManager.listsCollapsed">
 
-  <div id="completed" class="deck-set-col" [class.col-md-4]="!viewManager.listsCollapsed" [class.col-md-1]="viewManager.listsCollapsed">
+      <div  [class.assignable-list]="!viewManager.listsCollapsed" [class.assignable-list-compact]="viewManager.listsCollapsed">
+        <button class="btn btn-success btn-xs pull-right" (click)="addNewItem()">+</button>
+        <ul *ngIf="items" class="list-group">
 
-    <div [class.assignable-list]="!viewManager.listsCollapsed" [class.assignable-list-compact]="viewManager.listsCollapsed">
-      <button class="btn btn-success btn-xs pull-right" (click)="addNewItem()">+</button>
-      <ul *ngIf="completedItems" class="list-group">
+          <li *ngFor="let item of items" class="list-group-item" [class.active]="item == selectedItem"
+              [class.complete]="item.complete == 2"
+              (click)="selectBacklogItem(item)">
+            <assignable-display [model]="item" (onEdit)="editItem($event)">
 
-        <li *ngFor="let item of completedItems" class="list-group-item" [class.active]="item == selectedItem"
-            [class.complete]="item.complete == 2"
-            (click)="selectCompletedItem(item)">
-          <assignable-display [model]="item" (onEdit)="editItem($event)">
+            </assignable-display>
 
-          </assignable-display>
+          </li>
 
-        </li>
+        </ul>
+      </div>
 
-      </ul>
     </div>
 
-  </div>
--->
+    <div *ngIf="selectedItem" id="cropper" [class.col-md-4]="!viewManager.listsCollapsed" [class.col-md-10]="viewManager.listsCollapsed">
+      <crop-component *ngIf="viewManager.showCrops" [model]="selectedItem" (onCroppingDone)="onCropComplete($event)"></crop-component>
+        <card-preview *ngIf="viewManager.showPreview" [model]="selectedItem" (onCropViewSelected)="onCropModeSelected($event)" > </card-preview>
+    </div>
+
+    <div id="completed" class="deck-set-col" [class.col-md-4]="!viewManager.listsCollapsed" [class.col-md-1]="viewManager.listsCollapsed">
+
+      <div [class.assignable-list]="!viewManager.listsCollapsed" [class.assignable-list-compact]="viewManager.listsCollapsed">
+        <button class="btn btn-success btn-xs pull-right" (click)="addNewItem()">+</button>
+        <ul *ngIf="completedItems" class="list-group">
+
+          <li *ngFor="let item of completedItems" class="list-group-item" [class.active]="item == selectedItem"
+              [class.complete]="item.complete == 2"
+              (click)="selectCompletedItem(item)">
+            <assignable-display [model]="item" (onEdit)="editItem($event)">
+
+            </assignable-display>
+
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  -->
 
 </div>

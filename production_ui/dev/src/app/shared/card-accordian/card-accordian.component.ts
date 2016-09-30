@@ -4,36 +4,16 @@ import {DeckSetService} from "../../deck-sets/deck-set.service";
 import {DeckSet} from "../../deck-sets/deck-set";
 import {Observable} from "rxjs/Rx";
 import {IAssignable, AssignableType} from "../assignable";
+import {AccordianNodeComponent} from "./accordian-node/accordian-node.component";
+import {AccordianNode, CardAccordian} from "./card-accordian";
 
-
-export class AccordianNode {
-
-  type:AssignableType;
-  children:AccordianNode[];
-
-  constructor(
-    public item:IAssignable
-  ){
-    this.type = item.type;
-    this.children = [];
-  }
-
-}
-
-export class CardAccordian {
-  expanded:boolean;
-  children:AccordianNode[];
-
-  constructor(){
-    this.children = [];
-  }
-}
 
 @Component({
   moduleId: module.id,
   selector: 'card-accordian',
   templateUrl: 'card-accordian.component.html',
-  styleUrls: ['card-accordian.component.css']
+  styleUrls: ['card-accordian.component.css'],
+  directives: [AccordianNodeComponent]
 })
 export class CardAccordianComponent implements OnInit {
 
@@ -44,6 +24,7 @@ export class CardAccordianComponent implements OnInit {
   constructor(
     private deckSetService:DeckSetService
   ) { }
+
 
   ngOnInit() {
 

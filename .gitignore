@@ -255,5 +255,6 @@ production/.idea/dataSources.local.xml
 
 media/media/images
 production_ui/deploy/
+production_ui/dev/src/app.js
 
 /.idea

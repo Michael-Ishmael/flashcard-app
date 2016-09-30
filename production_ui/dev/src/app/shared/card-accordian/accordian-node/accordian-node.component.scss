@@ -1,4 +1,4 @@
-.deck-set-display{
+.node-display{
 
   .list-thumbnail{
     width: 60px;
@@ -18,15 +18,7 @@
 
   .list-title {
     font-size: 20px;
-  }
-
-}
-
-:host-context(.deck-set-list) {
-
-  .list-title {
     color: #2f2f2f;
-  };
-
+  }
 
 }

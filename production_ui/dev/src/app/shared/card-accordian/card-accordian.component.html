@@ -1,54 +1,32 @@
-<p>
-  card-accordian works!
-</p>
+<ul *ngIf="model" class="list-group deck-set-list">
+  <li *ngFor="let set of model.children" class="list-group-item">
 
-<div *ngIf="model">
-    <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Link with href
-        </a>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Button with data-target
-        </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-        <div class="card card-block">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-    </div>
-</div>
+    <accordian-node [model]="set"></accordian-node>
 
 
-<ul *ngIf="model">
-    <li *ngFor="let set of model.children" >
+    <ul id="{{set.toggleId}}" class="collapse list-group">
 
-        <b>{{ set.item.name }} ({{ set.children.length}})</b>
-        <br>
-        <br>
-        <ul>
+      <li *ngFor="let deck of set.children" class="list-group-item" >
 
-            <li *ngFor="let deck of set.children" >
+        <accordian-node [model]="deck"></accordian-node>
 
-                <em>{{ deck.item.name }} ({{ deck.children.length}}) </em>
-                <br>
-                <br>
-                <ul>
+        <ul id="{{deck.toggleId}}" class="collapse">
 
-                    <li *ngFor="let card of deck.children" >
+          <li *ngFor="let card of deck.children">
 
-                        {{ card.item.name }}
+            <accordian-node [model]="card" ></accordian-node>
 
-                    </li>
-
-                </ul>
-                <br>
-
-            </li>
+          </li>
 
         </ul>
         <br>
 
-    </li>
+      </li>
+
+    </ul>
+    <br>
+
+  </li>
 
 </ul>
 

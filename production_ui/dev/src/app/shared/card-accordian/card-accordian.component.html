@@ -1,18 +1,18 @@
-<ul *ngIf="model" class="list-group deck-set-list">
-  <li *ngFor="let set of model.children" class="list-group-item">
+<ul *ngIf="model" class=" deck-set-list">
+  <li *ngFor="let set of model.children" class="">
 
     <accordian-node [model]="set"></accordian-node>
 
 
-    <ul id="{{set.toggleId}}" class="collapse list-group">
+    <ul id="{{set.toggleId}}" class="collapse ">
 
-      <li *ngFor="let deck of set.children" class="list-group-item" >
+      <li *ngFor="let deck of set.children" class="node-child" >
 
         <accordian-node [model]="deck"></accordian-node>
 
         <ul id="{{deck.toggleId}}" class="collapse">
 
-          <li *ngFor="let card of deck.children">
+          <li *ngFor="let card of deck.children" class="node-leaf" (click)="selectCard(card)">
 
             <accordian-node [model]="card" ></accordian-node>
 

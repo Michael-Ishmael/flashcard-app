@@ -1,14 +1,18 @@
 
-<div class="node-display">
-  <div *ngIf="!model.item.image" class="icon-place-holder list-thumbnail">*</div>
-  <img *ngIf="model.item.image" class="list-thumbnail" src="{{ model.item.image }}">
-  <span class="list-title">{{ model.item.name }}</span>
-  <div class="pull-right">
-    <span class="badge pull-right ">{{ model.children ? model.children.length.toString() : "" }}</span>
-    <br><br>
-    <button *ngIf="model.toggleId" type="button" class="btn btn-default btn-xs" data-toggle="collapse"
-            [attr.data-target]="'#' + model.toggleId">Expand</button>
+<div class="node-display" data-toggle="collapse"
+     [attr.data-target]="'#' + model.toggleId">
 
-  </div>
+    <div *ngIf="!model.item.image" class="icon-place-holder list-thumbnail">*</div>
+    <img *ngIf="model.item.image" class="list-thumbnail" src="{{ model.item.image }}">
+    <span class="list-title">{{ model.item.name }}</span>
+    <div class="pull-right info-box">
+      <span class="badge ">{{ model.children ? model.children.length.toString() : "" }}</span>
+
+      <!--<i *ngIf="model.children" class="fa fa-chevron-circle-down" data-toggle="collapse"-->
+      <!--[attr.data-target]="'#' + model.toggleId"></i>-->
+
+    </div>
+
+
 </div>
 

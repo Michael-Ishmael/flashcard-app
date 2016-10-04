@@ -1,0 +1,9 @@
+select *
+from card c
+    join 
+(select cr.card_id, count(cr.crop_id) crop_count
+from crop cr
+group by cr.card_id) CC
+    on c.card_id = CC.card_id
+where CC.crop_count < 4
+

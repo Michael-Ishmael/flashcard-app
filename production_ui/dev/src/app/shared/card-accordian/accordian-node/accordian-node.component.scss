@@ -1,10 +1,19 @@
 .node-display{
 
+  background-color: #50575f;
+  margin-top: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+
   .list-thumbnail{
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
   };
+
+  .info-box {
+    padding: 4px;
+  }
 
   .icon-place-holder{
     display: inline-block;
@@ -20,5 +29,37 @@
     font-size: 20px;
     color: #2f2f2f;
   }
+
+  span.badge{
+    margin-right: 7px;
+  }
+
+  i {
+    font-size: 22px;
+    vertical-align: middle;
+    line-height: 1;
+
+  }
+
+}
+
+:host-context(.node-child) .node-display{
+  margin-left: 10px;
+
+}
+
+:host-context(.node-leaf) .node-display{
+
+  margin-left: 30px;
+  background-color: white;
+  border-radius: 5px;
+
+
+  .list-thumbnail{
+    margin: 5px;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  };
 
 }

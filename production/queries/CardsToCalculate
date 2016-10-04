@@ -1,0 +1,17 @@
+select c.card_id, c.name, c.deck_id
+from card c
+    join 
+(
+    select ctd.card_id, count(ctd.card_target_device_id) CalcCont, 
+count(case when ctd.pt_xcasset_name is null then 0 else 1 end) as SplitCount
+    , count(ci.cropping_instruction_id) as CropCount
+from card_target_device ctd
+    join cropping_instruction ci on ctd.card_target_device_id = ci.card_target_device_id
+    
+where (ctd.pt_xcasset_name is null and ctd.pt_crop_w is not null) or (ctd.pt_xcasset_name is not null and ctd.pt_crop_w is null )
+group by ctd.card_id
+) CC
+    on c.card_id = CC.card_id
+where cc.calccont < 7 or cc.CropCount < cc.CalcCont + cc.SplitCount
+
+

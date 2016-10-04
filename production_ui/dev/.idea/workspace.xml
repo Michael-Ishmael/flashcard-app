@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cffb02ee-a971-45d7-95fa-58bf559b3d42" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.ts" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/assignables/assignable-display/assignable-display.component.spec.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/shared/sound-control/sound-control.component.spec.ts" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/michaelishmael.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/michaelishmael.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/flashcard/flashcard.service.spec.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/backlog/backlog.component.html" afterPath="$PROJECT_DIR$/src/app/backlog/backlog.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.css" afterPath="$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.css.map" afterPath="$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.scss" afterPath="$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.css" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.css" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.css.map" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.html" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.scss" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/index.ts" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/index.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/index.ts" afterPath="$PROJECT_DIR$/src/app/shared/index.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/system-config.ts" afterPath="$PROJECT_DIR$/src/system-config.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/michaelishmael.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/michaelishmael.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.ts" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.ts" />
     </list>
     <ignored path="dev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,32 +37,10 @@
       <file leaf-file-name="card-accordian.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+            <state relative-caret-position="750">
+              <caret line="50" column="3" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
               <folding>
-                <element signature="e#0#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="card-accordian.component.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="accordian-node.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#55#0" expanded="true" />
+                <element signature="e#0#77#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,28 +49,30 @@
       <file leaf-file-name="card-accordian.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="accordian-node.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.html">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <caret line="14" column="80" selection-start-line="14" selection-start-column="80" selection-end-line="14" selection-end-column="80" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deck-set-display.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.html">
+      <file leaf-file-name="crop.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/crop/crop.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#102#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crop.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/crop/crop.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -109,28 +81,28 @@
       <file leaf-file-name="card-accordian.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+            <state relative-caret-position="240">
+              <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deck-set-display.component.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.scss">
+      <file leaf-file-name="backlog.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="accordian-node.component.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.scss">
+      <file leaf-file-name="backlog.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+            <state relative-caret-position="375">
+              <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -193,18 +165,18 @@
         <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/dist/app.js" />
         <option value="$PROJECT_DIR$/src/app.js" />
-        <option value="$PROJECT_DIR$/src/app/backlog/backlog.component.html" />
         <option value="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.css" />
         <option value="$PROJECT_DIR$/src/app/assignables/assignable-display/assignable-display.component.scss" />
         <option value="$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.scss" />
         <option value="$PROJECT_DIR$/src/app/shared/card-accordian/index.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node.ts" />
-        <option value="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.ts" />
-        <option value="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.scss" />
         <option value="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html" />
         <option value="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.html" />
+        <option value="$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.scss" />
+        <option value="$PROJECT_DIR$/src/app/backlog/backlog.component.html" />
+        <option value="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts" />
       </list>
     </option>
   </component>
@@ -341,71 +313,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="card-accordian" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="card-accordian" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="accordian-node" />
+              <option name="myItemId" value="crop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -568,12 +476,12 @@
       <workItem from="1474818057989" duration="1877000" />
       <workItem from="1474876551154" duration="2602000" />
       <workItem from="1475055608979" duration="9770000" />
-      <workItem from="1475220391400" duration="5098000" />
+      <workItem from="1475220391400" duration="8610000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217333000" />
+    <option name="totallyTimeSpent" value="220845000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -637,67 +545,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/card-preview/target-device-preview/split-xcasset/split-xcasset.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/card-preview/target-device-preview/split-xcasset/split-xcasset.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#80#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/crop.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/crop/img-cropper/img-cropper.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/crop/crop.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/assignment/folder-structure/fso-item/fso-sound-item/fso-sound-item.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#77#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/assignment/folder-structure/fso-item/fso-img-item/fso-img-item.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#77#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device-preview.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -735,14 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,22 +658,6 @@
           <folding>
             <element signature="e#0#77#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/sound-control/sound-control.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -950,16 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#77#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1000,24 +813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1026,37 +821,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.scss">
+    <entry file="file://$PROJECT_DIR$/src/app/shared/sound-control/sound-control.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        <state relative-caret-position="15">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/shared/cropped-image/cropped-image.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/flashcard/flashcard.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/flashcard/flashcard.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/deck-sets/deck-set-display/deck-set-display.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/assignment/assignment.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/assignables/assignable-form/assignable-form.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-342">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/backlog/backlog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/accordian-node/accordian-node.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="270">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="80" selection-start-line="14" selection-start-column="80" selection-end-line="14" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="50" column="3" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/crop/crop.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/crop/crop.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#102#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

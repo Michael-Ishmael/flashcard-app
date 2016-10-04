@@ -14,7 +14,7 @@ export class AccordianNode {
     this.type = item.type;
     this.children = [];
     if(item.type != AssignableType.Flashcard){
-      this.toggleId = item.type ==AssignableType.Set ? "setToggle" : "deckToggle"
+      this.toggleId = item.type ==AssignableType.Set ? "setToggle" : "deckToggle";
       this.toggleId += item.id
     }
 

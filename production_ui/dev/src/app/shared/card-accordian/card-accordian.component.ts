@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Flashcard} from "../../flashcard/flashcard";
 import {DeckSetService} from "../../deck-sets/deck-set.service";
 import {DeckSet} from "../../deck-sets/deck-set";
@@ -18,6 +18,7 @@ import {AccordianNode, CardAccordian} from "./card-accordian";
 export class CardAccordianComponent implements OnInit {
 
   @Input() cardList:Flashcard[];
+  @Output() cardSelected = new EventEmitter<Flashcard>();
 
   model:CardAccordian;
 
@@ -43,6 +44,10 @@ export class CardAccordianComponent implements OnInit {
       })
     }
 
+  }
+
+  selectCard(cardNode:AccordianNode):void{
+    this.cardSelected.emit(cardNode.item as Flashcard);
   }
 
   private makeTree(sets:DeckSet[], decks:DeckSet[], cards:Flashcard[]){

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange} from '@angular/core';
 import {Flashcard} from "../../flashcard/flashcard";
 import {DeckSetService} from "../../deck-sets/deck-set.service";
 import {DeckSet} from "../../deck-sets/deck-set";
@@ -15,7 +15,7 @@ import {AccordianNode, CardAccordian} from "./card-accordian";
   styleUrls: ['card-accordian.component.css'],
   directives: [AccordianNodeComponent]
 })
-export class CardAccordianComponent implements OnInit {
+export class CardAccordianComponent implements OnInit, OnChanges {
 
   @Input() cardList:Flashcard[];
   @Output() cardSelected = new EventEmitter<Flashcard>();
@@ -28,22 +28,31 @@ export class CardAccordianComponent implements OnInit {
 
 
   ngOnInit() {
+    this.reload();
+  }
 
+  reload(){
     var sets:DeckSet[];
     var decks:DeckSet[];
 
     if(this.cardList){
       this.getParentAssignables(AssignableType.Flashcard, this.cardList, (rDecks) => {
 
-          decks = rDecks;
-          this.getParentAssignables(AssignableType.Deck, decks, (rSets) => {
-            sets = rSets;
-            this.makeTree(sets, decks, this.cardList)
-          })
+        decks = rDecks;
+        this.getParentAssignables(AssignableType.Deck, decks, (rSets) => {
+          sets = rSets;
+          this.makeTree(sets, decks, this.cardList)
+        })
 
       })
     }
+  }
 
+
+  ngOnChanges(changes:{[propName:string]:SimpleChange}) {
+    if(changes.hasOwnProperty("cardList")){
+      this.reload();
+    }
   }
 
   selectCard(cardNode:AccordianNode):void{

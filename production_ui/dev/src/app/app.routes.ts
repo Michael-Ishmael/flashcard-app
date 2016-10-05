@@ -3,12 +3,14 @@ import {SettingsComponent} from "./settings/settings.component";
 import {AssignmentComponent} from "./assignment/assignment.component";
 import {BacklogComponent} from "./backlog/backlog.component";
 import {CropComponent} from "./crop/crop.component";
+import {DeploymentComponent} from "./deployment/deployment.component";
+import {DoneListComponent} from "./done-list/done-list.component";
 
 
 const routes: RouterConfig = [
     {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: '/assignment',
         terminal: true
     },
     {
@@ -19,10 +21,14 @@ const routes: RouterConfig = [
         path: 'backlog',
         component: BacklogComponent
     },
-    // {
-    //     path: 'dashboard',
-    //     component: DashboardComponent
-    // },
+    {
+        path: 'deployment',
+        component: DeploymentComponent
+    },
+    {
+        path: 'completed',
+        component: DoneListComponent
+    },
     {
         path: 'crop/:id',
         component: CropComponent

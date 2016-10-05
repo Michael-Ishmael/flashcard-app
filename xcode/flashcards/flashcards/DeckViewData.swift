@@ -47,8 +47,8 @@ class DataLoader{
                         
                         for card in cards {
                             
-                            var fcCard = FlashCard(dbCard: card)
-                            
+                            var fcCard = FlashCard(dbCard: card, parent: fcDeck)
+                            fcCard.textLabel = fcDeck.name
                             let format_query = "select ctd.card_id, td.aspect_ratio_id, (pt_xcasset_name is null or trim(pt_xcasset_name) = '' ) as combined, " +
                                 "ctd.ls_xcasset_name, ctd.pt_xcasset_name, ctd.ls_crop_x as l_x, ctd.ls_crop_y as l_y, " +
                                 "ctd.ls_crop_w as l_w, ctd.ls_crop_h as l_h, ctd.pt_crop_x as p_x, " +
@@ -85,13 +85,6 @@ class DataLoader{
         
     }
     
-}
-
-
-public struct AppSettings{
-    var SoundsOn:Bool
-    var SpeechOn:Bool
-    var TextOn:Bool
 }
 
 
@@ -186,12 +179,15 @@ public struct FlashCard
     var index:Int = 0
     var sound:String? = nil
     var imageDef:[AspectRatio: ImageFormatDef] = [:]
+    var textLabel:String? = nil
+    var parentDeck:FlashCardDeck? = nil
     
-    public init(dbCard: DbFcCard) {
+    public init(dbCard: DbFcCard, parent:FlashCardDeck) {
         
         self.id = dbCard.id
         self.index = dbCard.displayOrder
         self.sound = dbCard.sound
+        self.parentDeck = parent
     }
 }
 

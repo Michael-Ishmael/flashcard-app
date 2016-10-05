@@ -14,33 +14,21 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var soundSwitch: UISwitch!
     @IBOutlet weak var speechSwitch: UISwitch!
     @IBOutlet weak var textSwitch: UISwitch!
-    
-    
-    public var settings:AppSettings?
+   
+
     public var eventHandler:IApplicationEventHandler?
     
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        setupView()
+    }
 
-        /*
-        if let settings = settings {
-            soundSwitch.isOn = settings.SoundsOn
-            speechSwitch.isOn = settings.SpeechOn
-            textSwitch.isOn = settings.TextOn
-        } else {
-            soundSwitch.isOn = true
-            speechSwitch.isOn = true
-            textSwitch.isOn = false
-        }
-        */
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
+   private func setupView(){
+        let settings = AppSettings.sharedInstance
+        soundSwitch.isOn = settings.playSound
+        speechSwitch.isOn = settings.playSpeech
+        textSwitch.isOn = settings.showText
     }
     
     @IBAction func dismissSettings(_ sender: AnyObject) {
@@ -49,27 +37,20 @@ class SettingsTableViewController: UITableViewController {
 
     @IBAction func settingSwitched(_ sender: UISwitch) {
 
-        if var settings = settings {
-            if sender == soundSwitch {
-                settings.SoundsOn = sender.isOn
-            }
-            if sender == speechSwitch {
-                settings.SpeechOn = sender.isOn
-            }
-            if sender == textSwitch {
-                settings.TextOn = sender.isOn
-            }
+        let settings = AppSettings.sharedInstance
+        if sender == soundSwitch {
+            settings.playSound = sender.isOn
         }
-        notifySettingsChanged()
+        if sender == speechSwitch {
+            settings.playSpeech = sender.isOn
+        }
+        if sender == textSwitch {
+            settings.showText = sender.isOn
+        }
         
     }
     
 
-    internal func notifySettingsChanged(){
-        if let eventHandler = eventHandler, let settings = settings {
-            eventHandler.settingsChanged(settings: settings)
-        }
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -1,15 +1,15 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
-import {TargetDeviceService} from "./target-device.service";
+import {TargetDeviceService} from "../target-device.service";
 import {
   TargetDevice, CardTargetDeviceBase, SplitCardTargetDevice, CombinedCardTargetDevice,
   CardTargetStatus
 } from "./target-device";
 import {Flashcard} from "../../flashcard/flashcard";
-import {CardTargetDeviceService} from "./card-target-device.service";
+import {CardTargetDeviceService} from "../card-target-device.service";
 import {CombinedXcassetComponent, CombinedXcassetModel} from "./combined-xcasset/combined-xcasset.component";
 import {SplitXcassetComponent, SplitXcassetModel} from "./split-xcasset/split-xcasset.component";
 import {Observable} from "rxjs";
-import {DeployCardService, DeploymentResult} from "./deploy-card.service";
+import {DeployCardService, DeploymentResult} from "../deploy-card.service";
 
 export enum XCassetPreviewView{
   None = 0,
@@ -153,7 +153,7 @@ export class TargetDevicePreviewComponent implements OnInit, OnChanges {
           }
         }
       );
-    this.deploymentService.getDeploymnetStatus(this.model.id)
+    this.deploymentService.getDeploymentStatus(this.model.id)
       .subscribe(
         (result:DeploymentResult) => {
           this.deployed = result.deployed;

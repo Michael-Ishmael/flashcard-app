@@ -39,23 +39,7 @@ class Card(models.Model):
                                        related_name="original_image_id")
     sound = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True,
                               related_name="sound_id")
-    ts_ls_x = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ts_ls_w = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ts_ls_y = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ts_ls_h = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ts_pt_x = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ts_pt_w = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ts_pt_y = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ts_pt_h = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ns_ls_x = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ns_ls_w = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ns_ls_y = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ns_ls_h = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ns_pt_x = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ns_pt_w = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ns_pt_y = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    ns_pt_h = models.FloatField(blank=True, null=True)  # This field type is a guess.
-    complete = models.BooleanField(null=False, default=False)
+    status = models.IntegerField(null=False, default=False)
 
     def __str__(self):
         return self.name

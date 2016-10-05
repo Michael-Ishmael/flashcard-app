@@ -5,15 +5,14 @@
 
 
 
-      <card-accordian *ngIf="completedItems" [cardList]="completedItems" (cardSelected)="selectBacklogItem($event)"></card-accordian>
+      <card-accordian *ngIf="items" [cardList]="items" (cardSelected)="selectBacklogItem($event)"></card-accordian>
 
 
 
   </div>
 
-  <div *ngIf="selectedItem" id="cropper" class="col-md-7">
-    <crop-component *ngIf="viewManager.showCrops" [model]="selectedItem" (onCroppingDone)="onCropComplete($event)"></crop-component>
-    <card-preview *ngIf="viewManager.showPreview" [model]="selectedItem" (onCropViewSelected)="onCropModeSelected($event)" > </card-preview>
+  <div *ngIf="selectedItem" id="cropper" class="col-md-9">
+    <crop-component [model]="selectedItem" (onCroppingDone)="onCropComplete($event)"></crop-component>
   </div>
 
   <!--

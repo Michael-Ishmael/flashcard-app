@@ -14,7 +14,7 @@ protocol IApplicationEventHandler
 {
     func deckSelected(_ tile:DeckViewData, frame:CGRect);
     func flashCardDismissed();
-    func settingsChanged(settings :AppSettings)
+    func settingsRequested()
 }
 
 
@@ -69,7 +69,7 @@ class FlashCardSetTabViewController : UITabBarController, IApplicationEventHandl
     
     func deckSelected(_ tile:DeckViewData, frame:CGRect){
         
-        //performSegue(withIdentifier: "showSettings", sender: self)
+        
         _pictureController = FlashCardViewController(flashCard: tile.getNextFlashCard(), sourceFrame: frame, eventHandler: self as IApplicationEventHandler)
         let tr = FlashCardViewTransitioningDelegate();
         _pictureController!.transitioningDelegate = tr;
@@ -83,8 +83,12 @@ class FlashCardSetTabViewController : UITabBarController, IApplicationEventHandl
         dismiss(animated: true, completion: checkAndJumble)
     }
     
-    func settingsChanged(settings: AppSettings) {
-        print("Save settings!")
+    func settingsRequested() {
+        let this = self
+        dismiss(animated: false, completion: {() -> Void in
+                    this.performSegue(withIdentifier: "showSettings", sender: this)
+            })
+
     }
     
     func checkAndJumble(){

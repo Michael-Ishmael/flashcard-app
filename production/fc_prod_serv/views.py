@@ -4,6 +4,7 @@ from typing import Dict
 
 from PIL import Image
 from django.http import Http404
+from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from django.shortcuts import render
 
@@ -64,7 +65,7 @@ class CardViewSet(viewsets.ModelViewSet):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = ('deck_id', 'complete')
+    filter_fields = ('deck_id', 'status')
 
 
 class CardDetailViewSet(viewsets.ModelViewSet):
@@ -243,6 +244,7 @@ class TargetDeviceCreationView(APIView):
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
 
+
 def get_targets_status(card_id):
     result = CardTargetDeviceCreationResult()
     crops = Crop.objects.filter(card__card_id=card_id)
@@ -374,7 +376,83 @@ class SoundDeploymentView(APIView):
         serializer = DeploymentResultSerializer(result)
         response = Response(serializer.data, status=status.HTTP_200_OK)
         return response
-        
+
+
+class FullCardDeploymentView(APIView):
+
+    def get(self, request, pk):
+        result = self.get_deployment_result(pk)
+        serializer = DeploymentResultSerializer(result)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
+    def post(self, request):
+        card_id = request.data.get("cardid", None)
+        if card_id is None:
+            card_id = request.data.get("card_id", None)
+            if card_id is None:
+                return HttpResponseBadRequest("Missing cardid parameter")
+        result = get_targets_status(card_id)
+        if not result.crops_exist:
+            return HttpResponseBadRequest("No crops found for card id: " + str(card_id) + ". Create crops first.")
+        else:
+            targets, message = CropManager.calculate_crop_requirements(card_id)
+            result.targets_exist = len(targets) > 0
+            if len(message) > 0:
+                 return HttpResponseBadRequest(message)
+            else:
+                self.deploy_for_card(card_id)
+                result = self.get_deployment_result(card_id)
+                if not result.deployed:
+                    return HttpResponse(status=500, message="Not deployed. Reason unknown")
+                else:
+                    SoundDeployer.deploy_sound_for_card(card_id)
+
+        serializer = DeploymentResultSerializer(result)
+        response = Response(serializer.data, status=status.HTTP_200_OK)
+        return response
+
+    def deploy_for_card(self, card_id: int, xcasset_only: bool = False):
+        if xcasset_only is None:
+            xcasset_only = False
+        builder = XcassetBuilder()
+        cropper = ImageCropper()
+
+        if builder.create_xcassets(card_id) and not xcasset_only:
+            cropper.crop_and_create_images(card_id)
+
+    def get_deployment_result(self, card_id: int) -> DeploymentResult:
+        card = Card.objects.get(card_id=card_id)
+        path = Config.objects.get(settingKey='xcasset_folder').settingValue
+        mfw = MediaFileWatcher()
+        root_folder_path = join_paths(expanduser('~'), path)
+        root_folder = mfw.load_files(root_folder_path, ["jpg", "png", "json"])
+        xcasset_name = card.name.lower().replace("_", "")
+        new_root = Folder("xcassets")
+        for child_folder in root_folder.child_folders:
+            if child_folder.name.startswith(xcasset_name):
+                new_root.child_folders.append(child_folder)
+                for file in child_folder.files:
+                    file.path = join_paths(root_folder_path, file.path)
+
+        result = DeploymentResult()
+        result.deployed = len(new_root.child_folders) > 0 and any(
+            f.name.endswith("jpg") or f.name.endswith("png") for f in new_root.child_folders[0].files)
+        if result.deployed:
+            message = "All combined" if len(new_root.child_folders) == 1 else "Split xcassets" if len(
+                new_root.child_folders) == 2 \
+                else "Both split and combined xcassets" if len(
+                new_root.child_folders) == 3 else "Warning: too many folders"
+        else:
+            message = "Not deployed"
+        result.status = message
+        result.xcasset_folder = new_root
+
+        return result
+
+
+
+
 
 @permission_classes((permissions.AllowAny,))
 class FolderView(APIView):

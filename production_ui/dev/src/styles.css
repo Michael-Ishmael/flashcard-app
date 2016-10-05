@@ -186,3 +186,7 @@ li {
 /*.flashcard-display div, .flashcard-display img {*/
     /*border: 1px solid red;*/
 /*}*/
+
+body  div.row > h2 {
+    margin-left: 15px;
+}

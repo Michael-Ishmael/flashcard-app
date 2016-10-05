@@ -3,7 +3,40 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ZigZagRecognizer.touchesEnded(Set&lt;UITouch&gt;, with : UIEvent) -&gt; ():ZigZagRecognizer.swift">
+         contextName = "DeckCollectionViewController.cellTapped(c : UITapGestureRecognizer) -&gt; ():DeckCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "c.view.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DataLoader.getData() -&gt; AppData?:DeckViewData.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FlashCardViewController.setImageFromOrientation() -&gt; ():FlashCardViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DataLoader.(getData() -&gt; AppData?).(closure #1):DeckViewData.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FlashCardViewController.zigZagDrawn(c : ZigZagRecognizer) -&gt; ():FlashCardViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.parent">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "UIColor.init(hexString : String) -&gt; UIColor?:AppSettings.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FlashCardViewController.viewDidLoad() -&gt; ():FlashCardViewController.swift">
       </ContextState>
       <ContextState
          contextName = "DeckCollectionViewController.gestureRecognizer(UIGestureRecognizer, shouldReceive : UITouch) -&gt; Bool:DeckCollectionViewController.swift">
@@ -17,15 +50,7 @@
          contextName = "touchesFormSGlyph(touches : [CGPoint]) -&gt; Bool:MatchSGlyph.swift">
       </ContextState>
       <ContextState
-         contextName = "DeckCollectionViewController.cellTapped(c : UITapGestureRecognizer) -&gt; ():DeckCollectionViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "c.view.tag">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DataLoader.getData() -&gt; AppData?:DeckViewData.swift">
+         contextName = "ZigZagRecognizer.touchesEnded(Set&lt;UITouch&gt;, with : UIEvent) -&gt; ():ZigZagRecognizer.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

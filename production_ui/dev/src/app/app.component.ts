@@ -4,11 +4,11 @@ import {SettingService} from "./settings/setting.service";
 import {FolderService} from "./assignment/folder-structure/folder.service";
 import {DeckSetService} from "./deck-sets/deck-set.service";
 import {AppSettings} from "./app-settings";
-import {FlashcardService, FlashcardDetailService} from "./flashcard/flashcard.service";
+import {FlashcardService} from "./flashcard/flashcard.service";
 import {CropService} from "./crop/crop.service";
-import {TargetDeviceService} from "./card-preview/target-device-preview/target-device.service";
-import {CardTargetDeviceService} from "./card-preview/target-device-preview/card-target-device.service";
-import {DeployCardService} from "./card-preview/target-device-preview/deploy-card.service";
+import {TargetDeviceService} from "./card-preview/target-device.service";
+import {CardTargetDeviceService} from "./card-preview/card-target-device.service";
+import {DeployCardService} from "./card-preview/deploy-card.service";
 
 @Component({
   moduleId: module.id,
@@ -22,7 +22,6 @@ import {DeployCardService} from "./card-preview/target-device-preview/deploy-car
     DeckSetService,
     AppSettings,
     FlashcardService,
-    FlashcardDetailService,
     CropService,
     TargetDeviceService,
     CardTargetDeviceService,

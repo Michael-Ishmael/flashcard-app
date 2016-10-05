@@ -3,6 +3,7 @@ import {Flashcard} from "../flashcard/flashcard";
 import {ImgCropperComponent} from "./img-cropper/img-cropper.component";
 import {Crop, Orientation, AspectRatio, CardCrop} from "../shared/crop";
 import {CropService} from "./crop.service";
+import {FlashcardService} from "../flashcard/flashcard.service";
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,7 @@ import {CropService} from "./crop.service";
 export class CropComponent implements OnInit, OnChanges {
 
   @Input() model:Flashcard;
-  @Output() onCroppingDone:EventEmitter<number> = new EventEmitter<number>();
+  @Output() onCroppingDone:EventEmitter<Flashcard> = new EventEmitter<Flashcard>();
 
   private errorMessage:any;
   currentCrop:CropModel;
@@ -25,7 +26,8 @@ export class CropComponent implements OnInit, OnChanges {
   private cropsLoaded:boolean = false;
 
   constructor(
-      private cropService: CropService
+      private cropService: CropService,
+      private cardService: FlashcardService
   ) {
     this.initSteps();
   }
@@ -71,10 +73,10 @@ export class CropComponent implements OnInit, OnChanges {
 
   croppingDone(){
     if(!this.doneEnabled) {
-      this.onCroppingDone.emit(-1);
+      this.onCroppingDone.emit(null);
     }
     if(this.model)
-      this.onCroppingDone.emit(this.model.id)
+      this.onCroppingDone.emit(this.model)
   }
 
   togglePreview(){

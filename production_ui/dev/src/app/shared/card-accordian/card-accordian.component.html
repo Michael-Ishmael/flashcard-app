@@ -4,13 +4,13 @@
     <accordian-node [model]="set"></accordian-node>
 
 
-    <ul id="{{set.toggleId}}" class="collapse ">
+    <ul id="{{set.toggleId}}" class="collapse in">
 
       <li *ngFor="let deck of set.children" class="node-child" >
 
         <accordian-node [model]="deck"></accordian-node>
 
-        <ul id="{{deck.toggleId}}" class="collapse">
+        <ul id="{{deck.toggleId}}" class="collapse in" >
 
           <li *ngFor="let card of deck.children" class="node-leaf" (click)="selectCard(card)">
 

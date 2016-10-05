@@ -67,6 +67,8 @@ const barrels:string[] = [
   'app/shared/cropped-image',
   'app/shared/card-accordian',
   'app/shared/card-accordian/accordian-node',
+  'app/deployment',
+  'app/done-list',
   /** @cli-barrel */
 ];
 

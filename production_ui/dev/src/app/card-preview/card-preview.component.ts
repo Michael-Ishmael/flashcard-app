@@ -2,6 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Flashcard} from "../flashcard/flashcard";
 import {CropsPreviewComponent} from "./crops-preview/crops-preview.component";
 import {TargetDevicePreviewComponent} from "./target-device-preview/target-device-preview.component";
+import {DeployCardService, DeploymentResult} from "./deploy-card.service";
 
 export enum PreviewViewMode{
   Crop=1,
@@ -20,10 +21,13 @@ export class CardPreviewComponent implements OnInit {
 
   @Input() model:Flashcard;
   @Output() public onCropViewSelected = new EventEmitter<boolean>();
+  deploying:boolean = false;
 
   previewViewMode:PreviewViewMode;
 
-  constructor() { }
+  constructor(
+    private deploymentService:DeployCardService
+  ) { }
 
   ngOnInit() {
     this.previewViewMode = PreviewViewMode.Crop;
@@ -34,6 +38,18 @@ export class CardPreviewComponent implements OnInit {
     if(mode == PreviewViewMode.CropEdit)
       this.onCropViewSelected.emit(true);
   }
+
+  hardDeployCard(){
+    if(this.model){
+      this.deploying = true;
+      this.deploymentService.hardDeployCard(this.model.id)
+        .subscribe((m:any) => this.deploying = false, e => {
+          this.deploying = false;
+          alert(e);
+      });
+    }
+  }
+
 
 
 }

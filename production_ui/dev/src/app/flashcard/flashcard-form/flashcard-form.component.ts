@@ -42,7 +42,7 @@ export class FlashcardFormComponent implements OnInit {
   ngOnInit():any {
     if(!this.model) {
       this.isNew = true;
-      this.model = new Flashcard(-1, 0, null, null, null, 0, false, CardStatus.InComplete)
+      this.model = new Flashcard(-1, 0, null, null, null, 0,  CardStatus.UnAssigned)
     }
   }
 

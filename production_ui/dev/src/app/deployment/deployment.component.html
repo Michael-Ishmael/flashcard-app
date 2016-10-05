@@ -1,0 +1,14 @@
+<div id="backlog" class="row">
+
+    <h2>Deployment</h2>
+
+    <div id="backlog-list" class="deck-set-col col-md-3">
+        <card-accordian *ngIf="items" [cardList]="items" (cardSelected)="selectItem($event)"></card-accordian>
+    </div>
+
+    <div *ngIf="selectedItem" id="cropper" class="col-md-9">
+        <crop-component *ngIf="viewManager.showCrops" [model]="selectedItem" (onCroppingDone)="onCropComplete($event)"></crop-component>
+        <card-preview *ngIf="viewManager.showPreview" [model]="selectedItem" (onCropViewSelected)="onCropModeSelected($event)" > </card-preview>
+    </div>
+
+</div>

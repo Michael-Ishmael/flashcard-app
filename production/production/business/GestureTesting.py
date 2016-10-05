@@ -1,4 +1,9 @@
 import numpy
+import os
+import os.path
+
+from production.business.fc_util import join_paths
+
 
 class IndexedCoord:
 
@@ -53,4 +58,18 @@ path = [(86.5, 338.0), (81.5, 328.0), (75.0, 315.5), (64.0, 295.0), (55.5, 276.0
 
 
 
-test_path()
+
+def rename_voice_files():
+
+    dir = "/Users/scorpio/Dev/Projects/flashcard-app/media/media/voices/US/domestic"
+    for ds, ss, fs in os.walk(dir):
+        for f in fs:
+            last_underscore = f.rfind("_")
+            if last_underscore > 0:
+                new_name = f[last_underscore+1:]
+                new_full_name = join_paths(dir, new_name)
+                old_full_name = join_paths(dir, f)
+                os.rename(old_full_name, new_full_name)
+
+
+rename_voice_files()

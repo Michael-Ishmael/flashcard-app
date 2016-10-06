@@ -5,256 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cffb02ee-a971-45d7-95fa-58bf559b3d42" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Bleat-SoundBible.com-893851569.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cat Meow 1.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cat Meow 10.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cat Meow 2.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cat Meow 3.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cat Meow 5.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Chicken1.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Chicken2.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Chicken3.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Chicken4.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Chicken6.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cottontail call.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cow1.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cow2.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cow3.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cow4.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cow5.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Cow6.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Dachshund.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Dog Howl.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Dog Whine.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Donkey Bray 1 (1).mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Horse1.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Horse2.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Horse3.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Horse4.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Horse5.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Horse6.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Mallard Duck 2-SoundBible.com-209095714.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Pig grunt.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Pomeranian.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Sheep Baa Bleat.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/Terrier.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/sounds/barn owl 1.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/cat.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/chicken.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/cow.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/dog.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/donkey.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/duck.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/goat.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/horse.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/owl.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/pig.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/rabbit.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/voices/domestic/sheep.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/card-preview/card-deployment-status.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/AppSettings.swift" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/cat5.imageset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/chicken1.imageset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/donkey1.imageset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/duck1.imageset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/horse1.imageset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/owl1.imageset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/pig1.imageset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/rabbit1.imageset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Assets.xcassets/sheep1.imageset/Contents.json" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 10.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 4.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 5.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 6.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 7.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 8.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Cat Meow 9.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cat/Kitten Meow 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/chicken/Chicken1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/chicken/Chicken2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/chicken/Chicken3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/chicken/Chicken4.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/chicken/Chicken5.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/chicken/Chicken6.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cow/Cow1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cow/Cow2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cow/Cow3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cow/Cow4.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cow/Cow5.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/cow/Cow6.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/dog/Dachshund.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/dog/Dog Howl.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/dog/Dog Whine-SoundBible.com-260290547.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/dog/Dog Whine.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/dog/Labrador barking.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/dog/Pomeranian.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/dog/Terrier.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Donkey Bray 1 (1).mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Donkey Bray 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Donkey Bray 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Donkey Sound 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Donkey Sound 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Donkey Sound 3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Donkey Sound Clip 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Donkey Sound Clip 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Donkey Whinny.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Good Donkey Bray.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Horse Donkey.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/donkey/Upset Donkey.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/duck/Ducks Landing In Water-SoundBible.com-323642944.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/duck/Mallard Duck 2-SoundBible.com-209095714.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/duck/Mallard Duck Call-SoundBible.com-433679284.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/duck/Mallard Duck Quacks-SoundBible.com-289141159.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/duck/Quack Quack-SoundBible.com-620056916.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/duck/mallard_duck-Mike_Koenig-667013646.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/duck/mallard_duck_quacking-Mike_Koenig-1781775990.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/duck/pissed_off_duck-Mike_Koenig-1752213564.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/goat/Billy Goat Bleat-SoundBible.com-498372940.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/goat/Bleat-SoundBible.com-893851569.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/goat/Goat Bah-SoundBible.com-959734934.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/goat/Goat Howl  longer.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/goat/Goat Howl.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/goat/Goat-SoundBible.com-1072941249.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/goat/Irish Goat.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/goat/baby goat.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/horse/Horse1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/horse/Horse2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/horse/Horse3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/horse/Horse4.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/horse/Horse5.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/horse/Horse6.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/horse/moo...2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/barn owl 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/barn owl 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/little owl.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/longeared owl 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/longeared owl 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/owl 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/owl 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/owl 3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/owl 4.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/shorteared owl 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/shorteared owl 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/tawny owl 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/tawny owl 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/owl/tawny owl 3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Javelina.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Peccary.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Pig big.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Pig grunt.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Pig let.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Pig pen.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Pig snort.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Pig sound.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Pig.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/pig/Warthogs audio.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Black rabbit making sounds.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Bunny honking 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Bunny honking 3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Bunny honking.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Bunny oinking.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Bunny snoring.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Chut.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Cottontail call.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Futter.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Growling Rabbit 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Growling Rabbit.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Honking Rabbit.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Jackrabbit.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Purring.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Rabbit Distressed.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Rabbit crying.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Screaming.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/Wheeking.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/jackrabbit distress call.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/rabbit/rabbit distressed (1).mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Lamb sound 3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Lots of sheep.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep Baa Bleat.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep Sound 7.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep some Lambs Baa.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep sound 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep sound 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep sound 3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep sound 4.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep sound 5.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep sound 6.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheep sound 8.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/sheep/Sheepseveral.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/assignment/assignment.component.spec.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/flashcard/flashcard.component.spec.ts" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Bleat-SoundBible.com-893851569.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cat Meow 1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cat Meow 10.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cat Meow 2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cat Meow 3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Chicken2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Chicken3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Chicken4.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Chicken6.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cow1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cow2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cow3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cow4.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cow5.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Cow6.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Dachshund.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Dog Howl.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Dog Whine.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Horse1.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Horse2.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Horse3.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Horse4.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Horse5.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Horse6.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Pomeranian.mp3" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Resources/Terrier.mp3" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/card-preview/target-device-preview/card-target-device.service.ts" afterPath="$PROJECT_DIR$/src/app/card-preview/card-target-device.service.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/card-preview/target-device-preview/deploy-card.service.ts" afterPath="$PROJECT_DIR$/src/app/card-preview/deploy-card.service.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device.service.ts" afterPath="$PROJECT_DIR$/src/app/card-preview/target-device.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-shm" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-shm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-wal" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-wal" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../production/fc_prod_serv/models.py" afterPath="$PROJECT_DIR$/../../production/fc_prod_serv/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../production/fc_prod_serv/serializers.py" afterPath="$PROJECT_DIR$/../../production/fc_prod_serv/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../production/fc_prod_serv/urls.py" afterPath="$PROJECT_DIR$/../../production/fc_prod_serv/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../production/fc_prod_serv/views.py" afterPath="$PROJECT_DIR$/../../production/fc_prod_serv/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../production/production/business/GestureTesting.py" afterPath="$PROJECT_DIR$/../../production/production/business/GestureTesting.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../photoshop/Icons/cheetah-icon.psd" afterPath="$PROJECT_DIR$/../../photoshop/Icons/cheetah-icon.psd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/app.component.html" afterPath="$PROJECT_DIR$/src/app/app.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/app.component.ts" afterPath="$PROJECT_DIR$/src/app/app.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/app.routes.ts" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/assignment/assignment.component.ts" afterPath="$PROJECT_DIR$/src/app/assignment/assignment.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/backlog/backlog.component.html" afterPath="$PROJECT_DIR$/src/app/backlog/backlog.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/backlog/backlog.component.ts" afterPath="$PROJECT_DIR$/src/app/backlog/backlog.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/card-preview/card-preview.component.css" afterPath="$PROJECT_DIR$/src/app/card-preview/card-preview.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/card-preview/card-preview.component.html" afterPath="$PROJECT_DIR$/src/app/card-preview/card-preview.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/card-preview/card-preview.component.ts" afterPath="$PROJECT_DIR$/src/app/card-preview/card-preview.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device-preview.component.ts" afterPath="$PROJECT_DIR$/src/app/card-preview/target-device-preview/target-device-preview.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/crop/crop.component.ts" afterPath="$PROJECT_DIR$/src/app/crop/crop.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/flashcard/flashcard-form/flashcard-form.component.ts" afterPath="$PROJECT_DIR$/src/app/flashcard/flashcard-form/flashcard-form.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/flashcard/flashcard.component.ts" afterPath="$PROJECT_DIR$/src/app/flashcard/flashcard.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/flashcard/flashcard.service.ts" afterPath="$PROJECT_DIR$/src/app/flashcard/flashcard.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/flashcard/flashcard.ts" afterPath="$PROJECT_DIR$/src/app/flashcard/flashcard.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts" afterPath="$PROJECT_DIR$/src/app/shared/card-accordian/card-accordian.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styles.css" afterPath="$PROJECT_DIR$/src/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/system-config.ts" afterPath="$PROJECT_DIR$/src/system-config.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/xcdebugger/Expressions.xcexplist" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/xcdebugger/Expressions.xcexplist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Base.lproj/LaunchScreen.storyboard" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/Base.lproj/LaunchScreen.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckCollectionViewController.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckCollectionViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckViewData.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/DeckViewData.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/FlashCardSetTabViewController.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/FlashCardSetTabViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/FlashCardViewController.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/FlashCardViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/SettingsTableViewController.swift" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/SettingsTableViewController.swift" />
     </list>
     <ignored path="dev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -762,12 +514,12 @@
       <workItem from="1474876551154" duration="2602000" />
       <workItem from="1475055608979" duration="9770000" />
       <workItem from="1475220391400" duration="8610000" />
-      <workItem from="1475593625941" duration="12125000" />
+      <workItem from="1475593625941" duration="12324000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232970000" />
+    <option name="totallyTimeSpent" value="233169000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -780,7 +532,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26680973" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -788,7 +540,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32386363" sideWeight="0.503231" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24695122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26865673" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26865673" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.49676898" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />

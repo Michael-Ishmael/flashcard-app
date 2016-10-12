@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cffb02ee-a971-45d7-95fa-58bf559b3d42" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../photoshop/Icons/Rhino.psd" afterPath="$PROJECT_DIR$/../../photoshop/Icons/Rhino.psd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../photoshop/Icons/cheetah-icon.psd" afterPath="$PROJECT_DIR$/../../photoshop/Icons/cheetah-icon.psd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../photoshop/Icons/hyena-icon.psd" afterPath="$PROJECT_DIR$/../../photoshop/Icons/hyena-icon.psd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../photoshop/Icons/Badger.psd" afterPath="$PROJECT_DIR$/../../photoshop/Icons/Badger.psd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../photoshop/Icons/Safari/Cheetah.png" afterPath="$PROJECT_DIR$/../../photoshop/Icons/Safari/Cheetah.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../photoshop/Icons/Safari/SafariIcons.psd" afterPath="$PROJECT_DIR$/../../photoshop/Icons/Safari/SafariIcons.psd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../photoshop/Icons/Safari/cheetah-icon.psd" afterPath="$PROJECT_DIR$/../../photoshop/Icons/Safari/cheetah-icon.psd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="dev.iws" />
@@ -84,8 +84,8 @@
       <file leaf-file-name="deployment.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/deployment/deployment.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
+            <state relative-caret-position="525">
+              <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -229,8 +229,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -257,6 +257,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -358,7 +359,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -518,12 +518,13 @@
       <workItem from="1475055608979" duration="9770000" />
       <workItem from="1475220391400" duration="8610000" />
       <workItem from="1475593625941" duration="12324000" />
-      <workItem from="1476044594195" duration="790000" />
+      <workItem from="1476044594195" duration="947000" />
+      <workItem from="1476271275888" duration="1020000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233959000" />
+    <option name="totallyTimeSpent" value="235136000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -535,11 +536,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20127796" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36695278" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32386363" sideWeight="0.503231" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -922,8 +923,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/deployment/deployment.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
+        <state relative-caret-position="525">
+          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
           <folding />
         </state>
       </provider>

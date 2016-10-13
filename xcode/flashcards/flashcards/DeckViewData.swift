@@ -17,7 +17,7 @@ class DataLoader{
         
         do {
             //let dbPath = Bundle.main.url(forResource: "flashcards", withExtension: "db")
-            let dbQueue = try DatabaseQueue(path: "/Users/scorpio/Dev/Projects/flashcard-app/xcode/flashcards/flashcards/flashcards.db" ) //  (dbPath?.absoluteString)!) //"/Users/michaelishmael/Dev/Projects/flashcard-app/xcode/flashcards/flashcards/flashcards.db")
+            let dbQueue = try DatabaseQueue(path: "/Users/michaelishmael/Dev/Projects/flashcard-app/xcode/flashcards/flashcards/flashcards.db" ) //  (dbPath?.absoluteString)!) //"/Users/michaelishmael/Dev/Projects/flashcard-app/xcode/flashcards/flashcards/flashcards.db")
             
             dbQueue.inDatabase {db in
                 let sets = DbFcSet.fetchAll(db, "Select s.set_id, s.name, mf.xcasset as icon, s.display_order " +
@@ -38,7 +38,7 @@ class DataLoader{
                         
                         var fcDeck = FlashCardDeck(dbDeck: deck)
                         
-                        let card_query = "select  c.card_id, c.deck_id, c.name, mf.name as sound, c.display_order " +
+                        let card_query = "select  c.card_id, c.deck_id, c.name, mf.name as sound, c.display_order, c.label, c.label_colour " +
                             "from card c " +
                              "join media_file mf on c.sound_id = mf.media_file_id " +
                             "where c.deck_id = " + String(deck.id)
@@ -48,7 +48,7 @@ class DataLoader{
                         for card in cards {
                             
                             var fcCard = FlashCard(dbCard: card, parent: fcDeck)
-                            fcCard.textLabel = fcDeck.name
+                            //fcCard.textLabel = fcDeck.name
                             let format_query = "select ctd.card_id, td.aspect_ratio_id, (pt_xcasset_name is null or trim(pt_xcasset_name) = '' ) as combined, " +
                                 "ctd.ls_xcasset_name, ctd.pt_xcasset_name, ctd.ls_crop_x as l_x, ctd.ls_crop_y as l_y, " +
                                 "ctd.ls_crop_w as l_w, ctd.ls_crop_h as l_h, ctd.pt_crop_x as p_x, " +
@@ -180,6 +180,7 @@ public struct FlashCard
     var sound:String? = nil
     var imageDef:[AspectRatio: ImageFormatDef] = [:]
     var textLabel:String? = nil
+    var textLabelColour:String? = nil
     var parentDeck:FlashCardDeck? = nil
     
     public init(dbCard: DbFcCard, parent:FlashCardDeck) {
@@ -187,6 +188,8 @@ public struct FlashCard
         self.id = dbCard.id
         self.index = dbCard.displayOrder
         self.sound = dbCard.sound
+        self.textLabel = dbCard.label
+        self.textLabelColour = dbCard.labelColour
         self.parentDeck = parent
     }
 }

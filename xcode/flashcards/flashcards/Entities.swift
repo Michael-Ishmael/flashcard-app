@@ -73,7 +73,8 @@ public struct DbFcCard : RowConvertible {
     public var name:String = ""
     public var sound:String? = ""
     public var displayOrder:Int = 0
-    //public var decks:[FlashCardDeck] = []
+    public var label:String = ""
+    public var labelColour:String = ""
     
     public init(row: Row) {
         
@@ -82,6 +83,9 @@ public struct DbFcCard : RowConvertible {
         self.name = row.value(named: "name")
         self.sound = row.value(named: "sound")
         self.displayOrder = row.value(named: "display_order")
+        self.label = row.value(named: "label")
+        self.labelColour = row.value(named: "label_colour")
+
     }
     
 }

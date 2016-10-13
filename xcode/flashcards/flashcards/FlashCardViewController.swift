@@ -100,11 +100,15 @@ class FlashCardViewController: UIViewController, AVAudioPlayerDelegate {
     
     func addLabel(){
         
+        var textColour:String = "000000"
+        if let testColour = _flashCard?.textLabelColour {
+            textColour = testColour
+        }
         if let text = _flashCard?.textLabel {
             
             let label = UITextView()
             label.font = UIFont(name: "ChalkboardSE-Bold", size: 50)
-            label.textColor = UIColor(hexString: "#b4dcdc")
+            label.textColor = UIColor(hexString: "#" + textColour)
             label.textAlignment = .center
             label.text = text
             label.sizeToFit()

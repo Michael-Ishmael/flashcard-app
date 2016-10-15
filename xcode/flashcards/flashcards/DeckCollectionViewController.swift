@@ -180,15 +180,20 @@ class DeckCollectionViewController : UICollectionViewController {
             }
             
             //let size = flowLayout.collectionViewContentSize()
-            
+            let screenSize = UIScreen.main.bounds
+
             if orientation.isLandscape {
                 //print("Orientation: Landscape, Width: \(size.width), Height: \(size.height)")
-                
-                flowLayout.itemSize = CGSize(width: 100, height: 140)
+                let width = (screenSize.width - 40) / 6
+                let height = (screenSize.height - 95 ) / 2
+
+                flowLayout.itemSize = CGSize(width: width, height: height)
                 
             } else {
+                let width = (screenSize.width - 30) / 3
+                let height = (screenSize.height - 104 ) / 4
                 //print("Orientation: Portrait, Width: \(size.width), Height: \(size.height)")
-                flowLayout.itemSize = CGSize(width: 114, height: 140)
+                flowLayout.itemSize = CGSize(width: width, height: height)
             }
             
             //print("Current ItemSize: Width: \(flowLayout.itemSize.width), Height: \(flowLayout.itemSize.height)")

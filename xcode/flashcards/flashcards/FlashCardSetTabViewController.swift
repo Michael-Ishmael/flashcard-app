@@ -58,7 +58,10 @@ class FlashCardSetTabViewController : UITabBarController, IApplicationEventHandl
         flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical;
         flowLayout.minimumInteritemSpacing = 4; // minimum spacing between cells
         flowLayout.minimumLineSpacing = 4 // minimum spacing between rows if ScrollDirection is Vertical or between columns if Horizontal
-        flowLayout.itemSize = CGSize(width: 114, height: 140)
+        let screenSize = UIScreen.main.bounds
+        let width = (screenSize.width - 30) / 3
+        let height = (screenSize.height - 104 ) / 4
+        flowLayout.itemSize = CGSize(width: width, height: height)
     
         return flowLayout;
     }

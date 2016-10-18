@@ -125,7 +125,7 @@ export class CropComponent implements OnInit, OnChanges {
     }
   }
 
-  
+
   saveCurrentCrop() {
     var step = this.steps[this.currentStepIndex];
     if(step.cardCrop != null){

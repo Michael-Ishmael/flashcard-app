@@ -27,11 +27,10 @@ class DeckThumbXcassetTest(unittest.TestCase):
         from fc_prod_serv.apps import XcassetBuilder
 
         decks = Deck.objects.all()
-        builder = XcassetBuilder()
+
         for deck in decks:
+            builder = XcassetBuilder()
             builder.create_deck_xcasset(deck.deck_id)
-
-
 
 
 class CropCruncherTest(unittest.TestCase):

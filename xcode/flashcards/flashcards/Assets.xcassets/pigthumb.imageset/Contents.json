@@ -1,22 +1,23 @@
 {
-  "images" : [
-    {
-      "idiom" : "universal",
-      "filename" : "pigthumb.png",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "pigthumb-1.png",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
-    }
-  ],
-  "info" : {
-    "version" : 1,
-    "author" : "xcode"
+ "info": {
+  "version": 1,
+  "author": "xcode"
+ },
+ "images": [
+  {
+   "idiom": "universal",
+   "scale": "1x",
+   "filename": "Pig.png"
+  },
+  {
+   "idiom": "universal",
+   "scale": "2x",
+   "filename": "Pig.png"
+  },
+  {
+   "idiom": "universal",
+   "scale": "3x",
+   "filename": "Pig.png"
   }
+ ]
 }

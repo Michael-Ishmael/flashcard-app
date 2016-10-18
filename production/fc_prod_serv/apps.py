@@ -7,7 +7,7 @@ from django.apps import AppConfig
 from shutil import copyfile
 
 from fc_prod_serv.models import TargetDevice, CardTargetDevice, CroppingInstruction, Config, Card, Crop, \
-    CardCropInstruction, Deck
+    CardCropInstruction, Deck, MediaFile
 from production.business.crop_cruncher import Bounds, CropCruncher
 from production.business.fc_util import join_paths
 from production.business.models import Folder
@@ -254,8 +254,7 @@ class XcassetBuilder(object):
             return False
         for item in items:
             self.add_xcasset_image(item)
-        return self.dump_files(xcasset_root, deck_id)
-        return True
+        return self.dump_files(xcasset_root, deck_id, True)
 
     def add_xcasset_image(self, xci: XCassetItem):
         item = self.xcassets.get(xci.xcasset_name, None)
@@ -276,7 +275,8 @@ class XcassetBuilder(object):
             }
             for image in self.xcassets[key]:
                 dict_file["images"].append(image.to_json_dict())
-            path = join_paths(expanduser('~'), xcasset_root, key + ".imageset", "Contents.json")
+            dest_path = join_paths(expanduser('~'), xcasset_root, key + ".imageset")
+            path = join_paths(dest_path, "Contents.json")
             if not os.path.exists(os.path.dirname(path)):
                 os.makedirs(os.path.dirname(path))
             if os.path.exists(path):
@@ -287,6 +287,7 @@ class XcassetBuilder(object):
             if is_deck:
                 deck = Deck.objects.get(deck_id=item_id)
                 image = deck.icon
+                self.copy_deck_thumb(image, dest_path)
             else:
                 card = Card.objects.get(card_id=item_id)
                 image = card.original_image
@@ -294,6 +295,17 @@ class XcassetBuilder(object):
             image.save()
             dumped = True
         return dumped
+
+    def copy_deck_thumb(self, thumb: MediaFile, dest_path: str):
+        media_folder = Config.objects.get(settingKey="media_folder").settingValue
+        src_path = join_paths(expanduser("~"), media_folder, thumb.path)
+        for root, dirs, files in os.walk(dest_path):
+            for f in files:
+                if f.endswith("png"):
+                    ex_file_path = join_paths(dest_path, f)
+                    os.remove(ex_file_path)
+        dest_file_path = join_paths(dest_path, thumb.name)
+        copyfile(src_path, dest_file_path)
 
     def collect_items(self, targets: List[CardTargetDevice]) -> [XCassetItem]:
 

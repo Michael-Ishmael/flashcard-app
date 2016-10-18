@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/media', serveStatic('/Users/michaelishmael/Dev/Projects/flashcard-app/media/media'));
+app.use('/media', serveStatic('/Users/scorpio/Dev/Projects/flashcard-app/media/media'));
 app.use(express.static(__dirname));
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname,'index.html'));

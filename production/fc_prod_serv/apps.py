@@ -7,7 +7,7 @@ from django.apps import AppConfig
 from shutil import copyfile
 
 from fc_prod_serv.models import TargetDevice, CardTargetDevice, CroppingInstruction, Config, Card, Crop, \
-    CardCropInstruction
+    CardCropInstruction, Deck
 from production.business.crop_cruncher import Bounds, CropCruncher
 from production.business.fc_util import join_paths
 from production.business.models import Folder
@@ -213,8 +213,8 @@ class CropManager(object):
 
 
 class XCassetItem:
-    def __init__(self, file_name, idiom, scale, sub_type):
-        self.xcasset_name = None
+    def __init__(self, file_name, idiom, scale, sub_type, xcasset_name=None):
+        self.xcasset_name = xcasset_name
         self.file_name = file_name
         self.idiom = idiom
         self.scale = scale
@@ -246,6 +246,17 @@ class XcassetBuilder(object):
             self.add_xcasset_image(item)
         return self.dump_files(xcasset_root, card_id)
 
+    def create_deck_xcasset(self, deck_id:int) -> bool:
+        xcasset_root = Config.objects.get(settingKey="xcasset_folder").settingValue
+        deck = Deck.objects.get(deck_id=deck_id)
+        items = self.convert_deck_to_items(deck)
+        if len(items) == 0:
+            return False
+        for item in items:
+            self.add_xcasset_image(item)
+        return self.dump_files(xcasset_root, deck_id)
+        return True
+
     def add_xcasset_image(self, xci: XCassetItem):
         item = self.xcassets.get(xci.xcasset_name, None)
         if item is None:
@@ -253,7 +264,7 @@ class XcassetBuilder(object):
             self.xcassets[xci.xcasset_name] = item
         item.append(xci)
 
-    def dump_files(self, xcasset_root, card_id) -> bool:
+    def dump_files(self, xcasset_root:str, item_id:int, is_deck:bool = False) -> bool:
         dumped = False
         for key in self.xcassets:
             dict_file = {
@@ -273,8 +284,12 @@ class XcassetBuilder(object):
             with open(path, 'w') as json_file:
                 simplejson.dump(dict_file, json_file, indent=True)
             db_xcasset_name = key if not "_" in key else key[:3]
-            card = Card.objects.get(card_id=card_id)
-            image = card.original_image
+            if is_deck:
+                deck = Deck.objects.get(deck_id=item_id)
+                image = deck.icon
+            else:
+                card = Card.objects.get(card_id=item_id)
+                image = card.original_image
             image.xcasset = db_xcasset_name
             image.save()
             dumped = True
@@ -293,6 +308,18 @@ class XcassetBuilder(object):
                 xci.xcasset_name = xcasset_name
                 items.append(xci)
         return items
+
+    def convert_deck_to_items(self, deck:Deck):
+        items = []
+        xcasset_name = "{0}thumb".format(deck.name.lower())
+        xci1 = XCassetItem(deck.icon.name, "universal", "1x", None, xcasset_name)
+        xci2 = XCassetItem(deck.icon.name, "universal", "2x", None, xcasset_name)
+        xci3 = XCassetItem(deck.icon.name, "universal", "3x", None, xcasset_name)
+        items.append(xci1)
+        items.append(xci2)
+        items.append(xci3)
+        return items
+
 
 
 class ImageCropper(object):

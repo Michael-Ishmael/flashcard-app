@@ -17,6 +17,22 @@ class MediaFileWatcherTest(unittest.TestCase):
 
         self.assertTrue(not root_folder is None)
 
+class DeckThumbXcassetTest(unittest.TestCase):
+    def setUp(self):
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "production.settings")
+        django.setup()
+
+    def can_build_deck_xcasset_test(self):
+        from fc_prod_serv.models import Deck
+        from fc_prod_serv.apps import XcassetBuilder
+
+        decks = Deck.objects.all()
+        builder = XcassetBuilder()
+        for deck in decks:
+            builder.create_deck_xcasset(deck.deck_id)
+
+
+
 
 class CropCruncherTest(unittest.TestCase):
     def setUp(self):

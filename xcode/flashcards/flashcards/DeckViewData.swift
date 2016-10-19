@@ -31,7 +31,8 @@ class DataLoader{
                     let deck_query = "select d.deck_id, d.set_id, d.name, mf.xcasset as icon, d.display_order " +
                         "from deck d " +
                         "join media_file mf on d.icon_id = mf.media_file_id " +
-                        "where d.set_id = " + String(set.id)
+                        "where d.set_id = " + String(set.id) + " " +
+                        "order by d.display_order ASC"
                     
                     let decks = DbFcDeck.fetchAll(db, deck_query)
                     for deck in decks {

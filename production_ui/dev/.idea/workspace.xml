@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cffb02ee-a971-45d7-95fa-58bf559b3d42" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-shm" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards/flashcards.db-shm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/crop/crop.component.ts" afterPath="$PROJECT_DIR$/src/app/crop/crop.component.ts" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/safari/wildebeest/Wildebeest Zebras.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/safari/wildebeest/Wildebeest death cry.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/safari/wildebeest/Wildebeest herd grunts.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/safari/wildebeest/Wildebeest herd moans.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../media/media/sounds/safari/wildebeest/Wildebeest panic river.mp3" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../../xcode/flashcards/flashcards.xcworkspace/xcuserdata/scorpio.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="dev.iws" />
     <ignored path=".idea/workspace.xml" />

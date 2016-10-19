@@ -1,23 +1,23 @@
 {
+ "images": [
+  {
+   "filename": "Goat.png",
+   "idiom": "universal",
+   "scale": "1x"
+  },
+  {
+   "filename": "Goat.png",
+   "idiom": "universal",
+   "scale": "2x"
+  },
+  {
+   "filename": "Goat.png",
+   "idiom": "universal",
+   "scale": "3x"
+  }
+ ],
  "info": {
   "version": 1,
   "author": "xcode"
- },
- "images": [
-  {
-   "idiom": "universal",
-   "scale": "1x",
-   "filename": "Goat.png"
-  },
-  {
-   "idiom": "universal",
-   "scale": "2x",
-   "filename": "Goat.png"
-  },
-  {
-   "idiom": "universal",
-   "scale": "3x",
-   "filename": "Goat.png"
-  }
- ]
+ }
 }

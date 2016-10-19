@@ -27,7 +27,7 @@ export class DeploymentComponent implements OnInit {
 
   getItems(){
 
-    this.flashcardService.getItems(-1, CardStatus.Deployed)
+    this.flashcardService.getItems(-1, CardStatus.PreDeploy)
       .subscribe(
         items => this.items = items,
         error => this.errorMessage = <any>error

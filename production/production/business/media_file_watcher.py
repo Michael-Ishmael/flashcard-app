@@ -65,8 +65,13 @@ class MediaFileWatcher:
         stats = os.stat(file_name_path)
         trimmed_path = file_name_path.replace(root_path, "")
         width_to_height_ratio = 1
+        is_speech = False
+        if "speech" in dir_path:
+            is_speech = True
         if file_name.endswith("jpg") or file_name.endswith("png"):
             img = Image.open(file_name_path)
             w, h = img.size
             width_to_height_ratio = round(w / h, 4)
-        return File(name=file_name, path=trimmed_path, size=stats.st_size, relative_path=None, width_to_height_ratio=width_to_height_ratio)
+        file = File(name=file_name, path=trimmed_path, size=stats.st_size, relative_path=None, width_to_height_ratio=width_to_height_ratio)
+        file.is_speech = is_speech
+        return file

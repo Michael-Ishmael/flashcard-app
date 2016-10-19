@@ -28,6 +28,7 @@ class File(object):
         self.size = size
         self.relative_path = relative_path
         self.width_to_height_ratio = width_to_height_ratio
+        self.is_speech = False
 
 
 class CardCropCollection(object):

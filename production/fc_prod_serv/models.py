@@ -40,6 +40,8 @@ class Card(models.Model):
     sound = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True,
                               related_name="sound_id")
     status = models.IntegerField(null=False, default=False)
+    voice = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True,
+                              related_name="voice_id")
 
     def __str__(self):
         return self.name

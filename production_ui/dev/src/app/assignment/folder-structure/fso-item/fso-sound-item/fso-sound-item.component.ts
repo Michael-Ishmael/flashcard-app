@@ -52,7 +52,7 @@ export class FsoSoundItemComponent implements OnInit {
     }
     if(this.playing){
       this.playing =false;
-      this.audio.pause()
+      this.audio.pause();
       this.audio.currentTime = 0;
     } else {
       this.playing = true;

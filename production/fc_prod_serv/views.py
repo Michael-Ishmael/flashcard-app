@@ -112,11 +112,6 @@ class DeckViewSet(viewsets.ModelViewSet):
     #     return Response(serializer.data)
 
 
-class SetViewSet(viewsets.ModelViewSet):
-    queryset = Set.objects.all()
-    serializer_class = SetSerializer
-
-
 class AspectRatioViewSet(viewsets.ModelViewSet):
     queryset = AspectRatio.objects.all()
     serializer_class = AspectRatioSerializer
@@ -510,7 +505,10 @@ class FolderView(APIView):
                     mf.media_file_type = self.media_file_types[1]
                     mf.path = file.path
                     mf.size = file.size
-                    mf.media_file_type_id = 3 if file.name.endswith(".mp3") else 1 if file.name.endswith(".jpg") else 2
+                    if file.name.endswith(".mp3"):
+                        mf.media_file_type_id = 4 if file.is_speech else 3
+                    else:
+                        mf.media_file_type_id = 1 if file.name.endswith(".jpg") else 2
                 has_rel_path = mf.relative_path is not None and len(mf.relative_path) != 0
                 if has_rel_path:
                     has_rel_path = os.path.exists(join_paths(root_path, mf.relative_path.replace('media', '')))

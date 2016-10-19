@@ -1,8 +1,10 @@
 <div class="row">
     <div class="col-sm-6">
-        <button (click)="selectPreviewViewMode(1)">Crops</button>
+        <button *ngIf="model.status < 3" (click)="selectPreviewViewMode(1)">Crops</button>
         <button (click)="selectPreviewViewMode(3)"><- Edit</button>
-        <button *ngIf="!deploying" (click)="hardDeployCard()" class="btn btn-danger">Deploy</button>
+        <button *ngIf="!deploying" (click)="hardDeployCard()" class="btn" [class.btn-danger]="model.status <3">
+            {{ model.status > 2 ? "Re-Deploy" : "Deploy" }}
+        </button>
         <img *ngIf="deploying" class="loader" src="img/ajax-loader.gif">
     </div>
     <div class="col-sm-6">

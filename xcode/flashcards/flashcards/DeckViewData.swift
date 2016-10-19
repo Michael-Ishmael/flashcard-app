@@ -17,7 +17,7 @@ class DataLoader{
         
         do {
             //let dbPath = Bundle.main.url(forResource: "flashcards", withExtension: "db")
-            let dbQueue = try DatabaseQueue(path: "/Users/michaelishmael/Dev/Projects/flashcard-app/xcode/flashcards/flashcards/flashcards.db" ) //  (dbPath?.absoluteString)!) //"/Users/michaelishmael/Dev/Projects/flashcard-app/xcode/flashcards/flashcards/flashcards.db")
+            let dbQueue = try DatabaseQueue(path: "/Users/scorpio/Dev/Projects/flashcard-app/xcode/flashcards/flashcards/flashcards.db" ) //  (dbPath?.absoluteString)!) //"/Users/michaelishmael/Dev/Projects/flashcard-app/xcode/flashcards/flashcards/flashcards.db")
             
             dbQueue.inDatabase {db in
                 let sets = DbFcSet.fetchAll(db, "Select s.set_id, s.name, mf.xcasset as icon, s.display_order " +

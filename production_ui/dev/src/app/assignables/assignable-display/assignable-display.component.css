@@ -18,7 +18,8 @@
 :host-context(.assignable-list) .list-thumbnail {
   width: 60px;
   height: 60px;
-  object-fit: contain; }
+  object-fit: contain;
+  vertical-align: top; }
 
 :host-context(.assignable-list-compact) .list-thumbnail {
   width: 40px;
@@ -30,11 +31,11 @@
   display: none; }
 
 :host app-sound-control {
-  padding: 10px 30px;
-  font-size: 40px;
-  line-height: 60px; }
+  padding: 10px 10px;
+  font-size: 20px;
+  line-height: 30px; }
   :host app-sound-control .sound-control {
     vertical-align: middle;
-    line-height: 60px; }
+    line-height: 30px; }
 
 /*# sourceMappingURL=assignable-display.component.css.map */

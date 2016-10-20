@@ -1,6 +1,6 @@
 
-<fso-img-item *ngIf="model && isFile && model.media_file_type != 3" [model]="model" (onSelected)="childSelected($event)" ></fso-img-item>
-<fso-sound-item *ngIf="model && isFile && model.media_file_type == 3" [model]="model" (onSelected)="childSelected($event)" ></fso-sound-item>
+<fso-img-item *ngIf="model && isFile && model.media_file_type < 3" [model]="model" (onSelected)="childSelected($event)" ></fso-img-item>
+<fso-sound-item *ngIf="model && isFile && model.media_file_type >= 3" [model]="model" (onSelected)="childSelected($event)" ></fso-sound-item>
 <div  *ngIf="model && isFolder" class="folder-title fso" (click)="toggleExpanded()"><i class="fa fa-folder" ></i>{{ model.name }}</div>
 <ul *ngIf="model && isFolder" class="folder" [class.collapsed]="!model.expanded">
 

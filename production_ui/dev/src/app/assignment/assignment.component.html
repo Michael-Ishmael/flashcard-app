@@ -1,30 +1,28 @@
-
 <div id="assignment" class="row">
   <h2 (click)="debug()">Assignment</h2>
 
- <div id="fcHierarchy" class="deck-set-col col-md-4">
+  <div id="fcHierarchy" class="deck-set-col col-md-4">
     <div id="sets">
       <h3>Sets</h3>
-      <app-deck-sets [filterId]="-1" (onItemSelected)="onSetSelected($event)" (onItemEditing)="onSetEditing($event)"></app-deck-sets>
+      <app-deck-sets [filterId]="-1" (onItemSelected)="onSetSelected($event)"
+                     (onItemEditing)="onSetEditing($event)"></app-deck-sets>
     </div>
     <div id="decks" *ngIf="selectedSet">
       <h3>Decks</h3>
-      <app-deck-sets [filterId]="selectedSet.id" (onItemEditing)="onDeckEditing($event)" (onItemSelected)="onDeckSelected($event)"></app-deck-sets>
+      <app-deck-sets [filterId]="selectedSet.id" (onItemEditing)="onDeckEditing($event)"
+                     (onItemSelected)="onDeckSelected($event)"></app-deck-sets>
     </div>
   </div>
 
+  <div id="cards" class="col-md-4" *ngIf="selectedDeck">
+    <h3>Cards</h3>
+    <card-list [filterId]="selectedDeck.id" (onItemEditing)="onItemEditing($event)"
+               (onItemSelected)="onCardSelected($event)"></card-list>
+  </div>
 
-    <div id="cards" class="col-md-4" *ngIf="selectedDeck">
-      <h3>Cards</h3>
-      <card-list [filterId]="selectedDeck.id" (onItemEditing)="onItemEditing($event)" (onItemSelected)="onCardSelected($event)"></card-list>
-    </div>
-
-
-
-    <div id="files" class="col-md-4">
-      <folder-structure (onItemSelected)="onImageSelected($event)" [model]="folderStructure" ></folder-structure>
-    </div>
-
+  <div id="files" class="col-md-4">
+    <folder-structure (onItemSelected)="onImageSelected($event)" [model]="folderStructure"></folder-structure>
+  </div>
 
 
 </div>

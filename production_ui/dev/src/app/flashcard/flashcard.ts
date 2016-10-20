@@ -12,13 +12,15 @@ export class Flashcard implements IAssignable{
       public image:string,
       public sound:string,
       public displayOrder:number,
-      public status:CardStatus
+      public status:CardStatus,
+      public speech:string,
+      public label:string
   ){
     this.type = AssignableType.Flashcard;
   }
 
   isComplete(){
-    return this.deckId > 0 && this.name && this.image && this.sound;
+    return this.deckId > 0 && this.name && this.image && this.sound && this.speech && this.label;
   }
 }
 

@@ -3,9 +3,14 @@
 
   <div *ngIf="!model.image" class="icon-place-holder list-thumbnail">*</div>
   <img *ngIf="model.image" class="list-thumbnail" src="{{ model.image }}" title="{{ model.name }}">
-  <span class="list-title">{{ model.name }}</span>
+  <div style="display: inline-block;">
+    <span class="list-title">{{ model.name }}</span>
+    <br>
+    <span style="font-style: italic" class="list-title">{{ model.label }}</span></div>
+
   <div class="controls pull-right">
     <app-sound-control [src]="model.sound"></app-sound-control>
+    <app-sound-control [src]="model.speech" [isSpeech]="true"></app-sound-control>
     <span class="badge pull-right ">{{ model.displayOrder }}</span>
     <button type="button" class="btn btn-default btn-xs" (click)="editItem()">Edit</button>
   </div>

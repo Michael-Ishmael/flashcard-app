@@ -99,12 +99,14 @@ export class AssignmentComponent implements OnInit {
     }
     if(this.assignmentMode == AssignmentMode.Card && this.selectedCard != null){
       var update = false;
-      if(file.media_file_type == MediaFileType.Sound ){
+      if(file.media_file_type == MediaFileType.Sound ) {
         this.selectedCard.sound = file.relativePath;
-        if(this.selectedCard.isComplete() && this.selectedCard.status < 1){
+        if (this.selectedCard.isComplete() && this.selectedCard.status < 1) {
           update = true;
           this.selectedCard.status = 1;
         }
+      } else if(file.media_file_type == MediaFileType.Speech) {
+
       } else {
         this.selectedCard.image = file.relativePath;
         this.selectedCard.status = 1;

@@ -9,6 +9,7 @@ import {Component, OnInit, Input} from '@angular/core';
 export class SoundControlComponent implements OnInit {
 
   @Input() src:string;
+  @Input() isSpeech:boolean;
   audio:HTMLAudioElement;
   playing: boolean;
 

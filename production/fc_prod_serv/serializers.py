@@ -122,13 +122,13 @@ class CardSerializer(serializers.HyperlinkedModelSerializer):
                                          queryset=MediaFile.objects.filter(media_file_type=3),
                                          slug_field="relative_path")
     status = serializers.IntegerField()
-    voice = serializers.SlugRelatedField(many=False,
+    speech = serializers.SlugRelatedField(many=False,
                                          queryset=MediaFile.objects.filter(media_file_type=4),
                                          slug_field="relative_path")
 
     class Meta:
         model = Card
-        fields = ('id', 'name', 'deckId', 'displayOrder', 'sound', 'image', 'status', 'voice')
+        fields = ('id', 'name', 'deckId', 'displayOrder', 'sound', 'image', 'status', 'label', 'speech')
 
 
 class CropSerializer(serializers.HyperlinkedModelSerializer):

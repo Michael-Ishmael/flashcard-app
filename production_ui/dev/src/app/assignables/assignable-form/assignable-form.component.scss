@@ -17,14 +17,14 @@
   span.no-sound {
     font-size: 10px;
     font-style: italic;
-    display: inline-block;
     height: 29px;
+    color: grey;
   }
 }
 
 :host app-sound-control {
-  padding: 10px 30px;
-  font-size: 30px;
+  padding: 5px 5px;
+  font-size: 20px;
 
   .sound-control {
     vertical-align: middle;

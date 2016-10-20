@@ -17,5 +17,6 @@ export class Fso {
 export enum MediaFileType{
     Image = 1,
     Icon = 2,
-    Sound = 3
+    Sound = 3,
+    Speech = 4
 }

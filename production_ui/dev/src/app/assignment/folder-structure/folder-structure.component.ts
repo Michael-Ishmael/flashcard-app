@@ -13,7 +13,22 @@ import {FolderStructure} from "./folder-structure";
 })
 export class FolderStructureComponent implements OnInit {
 
+
   @Input() model:FolderStructure;
+
+  private _filter:string;
+
+  get filter():string {
+    return this._filter;
+  }
+
+  @Input() set filter(value:string){
+    this._filter = value;
+    if(this._filter) this.getRoot();
+  };
+
+  @Input() setFilter:string;
+
   @Output() onItemSelected = new EventEmitter<Fso>();
   root:Fso;
 
@@ -30,7 +45,7 @@ export class FolderStructureComponent implements OnInit {
   }
 
   getRoot() {
-    this.folderService.getFolderRoot()
+    this.folderService.getFolderRoot(this.filter, this.setFilter)
       .subscribe(root => this.root = root);
   }
 

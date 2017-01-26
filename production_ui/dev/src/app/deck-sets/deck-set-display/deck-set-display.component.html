@@ -3,8 +3,13 @@
     <div *ngIf="!model.icon" class="icon-place-holder list-thumbnail">*</div>
     <img *ngIf="model.icon" class="list-thumbnail" src="{{ model.icon }}">
     <span class="list-title">{{ model.name }}</span>
+
+
+    <app-sound-control *ngIf="model.speech" src="{{ model.speech }}" [isSpeech]="true"></app-sound-control>
+
+
     <div class="pull-right">
-        <span class="badge pull-right ">{{ model.displayOrder }}</span>
+        <span class="badge pull-right " [class.bg-danger]="model.completeCount < 5">{{ model.incompleteCount }}</span>
         <br><br>
         <button type="button" class="btn btn-default btn-xs" (click)="editItem()">Edit</button>
     </div>

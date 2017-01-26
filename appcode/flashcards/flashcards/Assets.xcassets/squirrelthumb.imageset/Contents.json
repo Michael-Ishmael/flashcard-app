@@ -1,0 +1,23 @@
+{
+ "images": [
+  {
+   "filename": "Squirrel.png",
+   "idiom": "universal",
+   "scale": "1x"
+  },
+  {
+   "filename": "Squirrel.png",
+   "idiom": "universal",
+   "scale": "2x"
+  },
+  {
+   "filename": "Squirrel.png",
+   "idiom": "universal",
+   "scale": "3x"
+  }
+ ],
+ "info": {
+  "version": 1,
+  "author": "xcode"
+ }
+}

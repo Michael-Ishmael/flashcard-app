@@ -7,7 +7,7 @@ from production.business.models import Folder, File
 
 
 class MediaFileWatcher:
-    def load_files(self, root_folder_path: str, exts: [str]) -> Folder:
+    def load_files(self, root_folder_path: str, exts: [str], filter: str = None, set_filter: str = None) -> Folder:
 
         if not os.path.exists(root_folder_path):
             return None
@@ -37,15 +37,21 @@ class MediaFileWatcher:
                     folder.files.append(mw)
 
 
-        return self.clone_with_only_found_files(root_folder)
+        return self.clone_with_only_found_files(root_folder, filter, set_filter)
 
-    def clone_with_only_found_files(self, folder:Folder):
+    def clone_with_only_found_files(self, folder:Folder, filter: str = None, set_filter: str = None):
         clone = Folder(folder.name, folder.parent)
         if folder.files is not None:
             clone.files = folder.files
         for child_folder in folder.child_folders:
-            if child_folder.contains_files():
+            if child_folder.name == "deckthumbs":
                 child = self.clone_with_only_found_files(child_folder)
+                clone.child_folders.append(child)
+            if child_folder.name == "speech":
+                child = self.clone_with_only_found_files(child_folder, set_filter)
+                clone.child_folders.append(child)
+            elif child_folder.contains_files(filter):
+                child = self.clone_with_only_found_files(child_folder, filter)
                 clone.child_folders.append(child)
         return clone
 
@@ -68,7 +74,7 @@ class MediaFileWatcher:
         is_speech = False
         if "speech" in dir_path:
             is_speech = True
-        if file_name.endswith("jpg") or file_name.endswith("png"):
+        if file_name.endswith("jpg") or file_name.endswith("jpeg") or file_name.endswith("png"):
             img = Image.open(file_name_path)
             w, h = img.size
             width_to_height_ratio = round(w / h, 4)

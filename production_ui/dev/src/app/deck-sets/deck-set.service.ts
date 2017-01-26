@@ -11,7 +11,10 @@ interface IApiSet {
   set_id: number,
   name: string,
   icon?: string,
-  display_order: number
+  display_order: number,
+  speech?: string,
+  complete_count?: number,
+  incomplete_count?: number
 }
 
 @Injectable()
@@ -32,11 +35,13 @@ export class DeckSetService {
     var url: string, type: AssignableType;
     if (setId > -1) {
       url = `${this.decksUrl}?set_id=${setId}`;
-      type = AssignableType.Set;
+      type = AssignableType.Deck;
+
     } else {
       url = this.setsUrl;
-      type = AssignableType.Deck;
+      type = AssignableType.Set;
     }
+
     return this.http.get(url)
       .map( res => this.extractData(res, type))
       .catch(this.handleError);
@@ -121,6 +126,9 @@ export class DeckSetService {
   private static apiSetToDeckSet(r: IApiSet, type:AssignableType): DeckSet {
     var dSet = new DeckSet(r.deck_id ? r.deck_id : r.set_id, r.deck_id ? r.set_id : null, r.name, r.icon, r.display_order);
     dSet.type = type;
+    dSet.speech = r.speech;
+    dSet.completeCount = r.complete_count;
+    dSet.incompleteCount = r.incomplete_count;
     return dSet;
   }
 
@@ -129,7 +137,8 @@ export class DeckSetService {
       set_id: d.setId ? d.setId : d.id,
       name: d.name,
       display_order: d.displayOrder,
-      deck_id: d.setId ? d.id : null
+      deck_id: d.setId ? d.id : null,
+      speech: d.speech ? d.speech : null
     } as IApiSet;
     if (d.icon) apiSet.icon = d.icon;
     return apiSet;

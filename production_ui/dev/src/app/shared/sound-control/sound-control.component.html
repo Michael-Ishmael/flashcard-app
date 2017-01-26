@@ -1,4 +1,4 @@
 <div class="sound-control">
   <i *ngIf="!src" class="fa fa-chain-broken"></i>
-  <i  class="fa" [class.fa-audio-description]="!playing && isSpeech" [class.fa-play]="!playing && !isSpeech" [class.fa-stop]="playing" (click)="togglePlaySound()"></i>
+  <i *ngIf="src"  class="fa" [class.fa-audio-description]="!playing && isSpeech" [class.fa-play]="!playing && !isSpeech" [class.fa-stop]="playing" (click)="togglePlaySound()"></i>
 </div>

@@ -36,6 +36,7 @@ export class BacklogComponent implements OnInit {
   onCropComplete(flashcard:Flashcard){
     if(flashcard && flashcard.status < 2){
       flashcard.status = 2;
+      var match = this.items.find(f => f.id == flashcard.id);
       var matching = this.items.findIndex(f => f.id == flashcard.id);
       if(matching > -1){
         this.items.splice(matching, 1)

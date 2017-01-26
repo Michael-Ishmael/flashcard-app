@@ -14,6 +14,19 @@ export enum CardStatus{
   Deployed = 3
 }
 
+interface IApiCard
+{
+  id: number;
+  name: string;
+  deckId: number;
+  displayOrder: number;
+  sound: string;
+  image: string;
+  status: number;
+  label: string;
+  speech: string;
+}
+
 @Injectable()
 export class FlashcardService extends  AssignableService<Flashcard>{
 
@@ -26,9 +39,10 @@ export class FlashcardService extends  AssignableService<Flashcard>{
 
   getItem(id:number){
     var url = `${this.flashcardsUrl}${id}`;
+    var self = this;
     return this.http.get(url)
         .map(function(res){
-          return res.json() as Flashcard;
+          return self.convertApiCard(res.json() as IApiCard);
         })
         .catch(this.handleError);
   }
@@ -41,34 +55,44 @@ export class FlashcardService extends  AssignableService<Flashcard>{
       url += filterId > -1 ? '&' : '?';
       url += `status=${status}`;
     }
-
+    var self = this;
     return this.http.get(url)
-        .map(this.extractData)
+        .map(d => this.extractData(d, self))
         .catch(this.handleError);
   }
 
   getFlashcards(deckId:number = -1): Observable<Flashcard[]> {
     var url:string;
     url = `${this.flashcardsUrl}?deck_id=${deckId}`;
+    var self = this;
     return this.http.get(url)
-        .map(this.extractData)
+        .map(d => this.extractData(d, self))
         .catch(this.handleError);
   }
 
-  private extractData(res: Response):Flashcard[] {
-    let body = res.json() as Flashcard[] ;
-    body.forEach(function (card:Flashcard) {
-      card.type = AssignableType.Flashcard;
-    });
-    return body;
+
+  private extractData(res: Response, self:FlashcardService):Flashcard[] {
+    let body = res.json() as IApiCard[] ;
+    return body.map(c => self.convertApiCard(c));
   }
 
+  private convertApiCard(apiCard:IApiCard):Flashcard{
+    return new Flashcard(apiCard.id, apiCard.deckId, apiCard.name, apiCard.image, apiCard.sound,
+      apiCard.displayOrder, apiCard.status, apiCard.speech, apiCard.label);
+  }
 
   save(flashcard: Flashcard, asNew:boolean = false): Observable<Flashcard>  {
+    this.setCardStatus(flashcard);
     if (asNew) {
       return this.post(flashcard);
     }
     return this.put(flashcard);
+  }
+
+  setCardStatus(flashcard: Flashcard){
+    if(flashcard.isComplete() && flashcard.status < CardStatus.PreCrop){
+      flashcard.status = CardStatus.PreCrop;
+    }
   }
 
   delete(flashcard: Flashcard): Observable<Flashcard> {

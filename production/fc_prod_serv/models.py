@@ -42,7 +42,7 @@ class Card(models.Model):
     status = models.IntegerField(null=False, default=False)
     label = models.CharField(max_length=50)
     speech = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True,
-                              related_name="voice_id")
+                              related_name="speech_id")
 
     def __str__(self):
         return self.name
@@ -132,6 +132,8 @@ class Deck(models.Model):
     name = models.CharField(max_length=20)
     icon = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True, default=1)
     display_order = models.IntegerField()
+    speech = models.ForeignKey('MediaFile', models.DO_NOTHING, blank=True, null=True,
+                              related_name="deck_speech_id")
 
     def __str__(self):
         return self.name
@@ -139,6 +141,21 @@ class Deck(models.Model):
     class Meta:
         managed = False
         db_table = 'deck'
+
+
+class DeckAssignmentStatus(models.Model):
+    deck_id = models.IntegerField(primary_key=True)
+    set = models.ForeignKey('Set', models.DO_NOTHING)
+    name = models.CharField(max_length=20)
+    complete = models.IntegerField()
+    incomplete = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        managed = False
+        db_table = 'deck_assignment_status'
 
 
 class MediaFile(models.Model):

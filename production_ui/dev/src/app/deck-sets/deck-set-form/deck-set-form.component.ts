@@ -1,12 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {DeckSet} from "../deck-set";
+import {SoundControlComponent} from "../../shared/sound-control/sound-control.component";
 
 
 @Component({
   moduleId: module.id,
   selector: 'deck-set-form',
   templateUrl: 'deck-set-form.component.html',
-  styleUrls: ['deck-set-form.component.css']
+  styleUrls: ['deck-set-form.component.css'],
+  directives: [SoundControlComponent]
 })
 export class DeckSetFormComponent implements OnInit {
   @Input() model:DeckSet;

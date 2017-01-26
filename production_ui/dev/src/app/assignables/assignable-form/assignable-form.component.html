@@ -16,7 +16,7 @@
       <span *ngIf="!model.sound" class="no-sound">sound not set</span>
       <app-sound-control *ngIf="model.sound" src="{{ model.sound }}"></app-sound-control>
       <span *ngIf="!model.speech" class="no-sound">speech not set</span>
-      <app-sound-control *ngIf="model.speech" src="{{ model.sound }}" [isSpeech]="true"></app-sound-control>
+      <app-sound-control *ngIf="model.speech" src="{{ model.speech }}" [isSpeech]="true"></app-sound-control>
     </div>
 
     <div class="form-group flashcard-order col-md-6">

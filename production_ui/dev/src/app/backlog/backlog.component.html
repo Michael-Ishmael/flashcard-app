@@ -3,11 +3,7 @@
 
   <div id="backlog-list" class="deck-set-col col-md-3">
 
-
-
-      <card-accordian *ngIf="items" [cardList]="items" (cardSelected)="selectBacklogItem($event)"></card-accordian>
-
-
+      <card-accordian *ngIf="items" [cardList]="items" [cardCount]="items.length"  (cardSelected)="selectBacklogItem($event)"></card-accordian>
 
   </div>
 

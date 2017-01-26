@@ -66,7 +66,7 @@ export class FsoItemComponent implements OnInit {
 
   private setFileStatus() {
 
-    if(this.model.size && this.model.size < 100000){
+    if(this.model.size && this.model.size < 226000){
       this.showIcon = true;
       if(!this.model.id){
         this.showUpload = true;

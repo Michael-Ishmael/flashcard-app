@@ -36,6 +36,7 @@ export abstract class AssignableComponent<T extends IAssignable> {
     this.onItemSelected.emit(item)
   }
 
+
   addNewItem(){
     if(this.creating) return;
     this.selectedItem = this.createItem();

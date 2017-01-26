@@ -21,7 +21,7 @@
   </div>
 
   <div id="files" class="col-md-4">
-    <folder-structure (onItemSelected)="onImageSelected($event)" [model]="folderStructure"></folder-structure>
+    <folder-structure (onItemSelected)="onImageSelected($event)" [model]="folderStructure" [filter]="deckNameFilter" [setFilter]="setNameFilter" ></folder-structure>
   </div>
 
 

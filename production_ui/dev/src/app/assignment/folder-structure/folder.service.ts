@@ -21,8 +21,17 @@ export class FolderService {
         this.headers = appSettings.apiHeaders;
     }
 
-    getFolderRoot(): Observable<Fso> {
-        return this.http.get(this.foldersUrl)
+    getFolderRoot(filter:string, setFilter:string): Observable<Fso> {
+
+        var url:string = this.foldersUrl;
+        if(filter){
+          url += "?filter=" + filter.toLowerCase();
+          if(setFilter){
+            url += "&setFilter=" + setFilter.toLowerCase();
+          }
+        }
+
+        return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);
     }

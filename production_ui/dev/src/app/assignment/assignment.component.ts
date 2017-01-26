@@ -37,11 +37,26 @@ export class AssignmentComponent implements OnInit {
   ngOnInit() {
   }
 
+  get setNameFilter():string{
+    if(this.selectedSet){
+      return this.selectedSet.name;
+    }
+    return null;
+  }
+
+  get deckNameFilter():string{
+    if(this.selectedDeck){
+      return this.selectedDeck.name;
+    }
+    return null;
+  }
+
   onSetSelected(selectedSet:DeckSet){
     if(selectedSet){
       this.selectedSet = selectedSet;
       this.assignmentMode = AssignmentMode.Set;
-
+      this.selectedDeck = null;
+      this.selectedCard = null;
     }
 
   }
@@ -49,6 +64,8 @@ export class AssignmentComponent implements OnInit {
   onSetEditing(selectedSet:DeckSet){
     if(selectedSet){
       this.selectedSet = selectedSet;
+      this.selectedDeck = null;
+      this.selectedCard = null;
       this.assignmentMode = AssignmentMode.Set;
       this.folderStructure.canSelectMultipleFiles = false;
       this.folderStructure.enabled = true;
@@ -59,6 +76,7 @@ export class AssignmentComponent implements OnInit {
   onDeckSelected(selectedDeck:DeckSet){
     if(selectedDeck){
       this.selectedDeck = selectedDeck;
+      this.selectedCard = null;
       this.assignmentMode = AssignmentMode.Deck;
     }
   }
@@ -66,6 +84,7 @@ export class AssignmentComponent implements OnInit {
   onDeckEditing(selectedDeck:DeckSet){
     if(selectedDeck){
       this.selectedDeck = selectedDeck;
+      this.selectedCard = null;
       this.assignmentMode = AssignmentMode.Deck;
       this.folderStructure.canSelectMultipleFiles = false;
       this.folderStructure.enabled = true;
@@ -91,11 +110,16 @@ export class AssignmentComponent implements OnInit {
   }
 
   onImageSelected(file:Fso){
-    if(this.assignmentMode == AssignmentMode.Set && this.selectedSet != null){
+    if(this.assignmentMode == AssignmentMode.Set && this.selectedSet != null && (file.media_file_type == MediaFileType.Icon || file.media_file_type == MediaFileType.Image)  ){
       this.selectedSet.icon = file.relativePath;
     }
     if(this.assignmentMode == AssignmentMode.Deck && this.selectedDeck != null){
-      this.selectedDeck.icon = file.relativePath;
+      if(file.media_file_type == MediaFileType.Icon || file.media_file_type == MediaFileType.Image){
+        this.selectedDeck.icon = file.relativePath;
+      } else if(file.media_file_type == MediaFileType.Speech) {
+        this.selectedDeck.speech = file.relativePath;
+      }
+
     }
     if(this.assignmentMode == AssignmentMode.Card && this.selectedCard != null){
       var update = false;
@@ -106,7 +130,11 @@ export class AssignmentComponent implements OnInit {
           this.selectedCard.status = 1;
         }
       } else if(file.media_file_type == MediaFileType.Speech) {
-
+        this.selectedCard.speech = file.relativePath;
+        if (this.selectedCard.isComplete() && this.selectedCard.status < 1) {
+          update = true;
+          this.selectedCard.status = 1;
+        }
       } else {
         this.selectedCard.image = file.relativePath;
         this.selectedCard.status = 1;

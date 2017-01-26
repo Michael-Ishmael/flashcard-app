@@ -19,8 +19,8 @@ export class Flashcard implements IAssignable{
     this.type = AssignableType.Flashcard;
   }
 
-  isComplete(){
-    return this.deckId > 0 && this.name && this.image && this.sound && this.speech && this.label;
+  isComplete():boolean{
+    return (this.deckId > 0 && this.name != null && this.image != null && this.sound != null && this.label != null);
   }
 }
 

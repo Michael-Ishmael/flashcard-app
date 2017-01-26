@@ -18,6 +18,7 @@ import {AccordianNode, CardAccordian} from "./card-accordian";
 export class CardAccordianComponent implements OnInit, OnChanges {
 
   @Input() cardList:Flashcard[];
+  @Input() cardCount:number = 0;
   @Output() cardSelected = new EventEmitter<Flashcard>();
 
   model:CardAccordian;
@@ -50,7 +51,7 @@ export class CardAccordianComponent implements OnInit, OnChanges {
 
 
   ngOnChanges(changes:{[propName:string]:SimpleChange}) {
-    if(changes.hasOwnProperty("cardList")){
+    if(changes.hasOwnProperty("cardCount")){
       this.reload();
     }
   }

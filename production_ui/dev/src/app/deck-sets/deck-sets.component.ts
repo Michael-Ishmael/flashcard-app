@@ -4,6 +4,7 @@ import {DeckSet} from "./deck-set";
 import {BUTTON_DIRECTIVES} from 'ng2-bootstrap';
 import {DeckSetFormComponent} from "./deck-set-form/deck-set-form.component";
 import {DeckSetDisplayComponent} from "./deck-set-display/deck-set-display.component";
+import {Observable} from "rxjs";
 
 @Component({
   moduleId: module.id,

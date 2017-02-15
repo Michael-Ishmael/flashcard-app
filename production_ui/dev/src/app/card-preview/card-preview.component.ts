@@ -3,6 +3,7 @@ import {Flashcard} from "../flashcard/flashcard";
 import {CropsPreviewComponent} from "./crops-preview/crops-preview.component";
 import {TargetDevicePreviewComponent} from "./target-device-preview/target-device-preview.component";
 import {DeployCardService, DeploymentResult} from "./deploy-card.service";
+import {CardStatus} from "../flashcard/flashcard.service";
 
 export enum PreviewViewMode{
   Crop=1,
@@ -21,6 +22,7 @@ export class CardPreviewComponent implements OnInit {
 
   @Input() model:Flashcard;
   @Output() public onCropViewSelected = new EventEmitter<boolean>();
+  @Output() public onCardDeployed = new EventEmitter<Flashcard>();
   deploying:boolean = false;
 
   previewViewMode:PreviewViewMode;
@@ -43,7 +45,11 @@ export class CardPreviewComponent implements OnInit {
     if(this.model){
       this.deploying = true;
       this.deploymentService.hardDeployCard(this.model.id)
-        .subscribe((m:any) => this.deploying = false, e => {
+        .subscribe((r:DeploymentResult) => {
+            this.deploying = false;
+            if(r.deployed) this.model.status = CardStatus.Deployed;
+            this.onCardDeployed.emit(this.model);
+      }, e => {
           this.deploying = false;
           alert(e);
       });

@@ -54,6 +54,7 @@ public struct DbFcDeck : RowConvertible {
     public var name:String = ""
     public var icon:String? = ""
     public var displayOrder:Int = 0
+    public var speechFile:String? = nil
     
     public init(row: Row) {
         
@@ -62,6 +63,7 @@ public struct DbFcDeck : RowConvertible {
         self.name = row.value(named: "name")
         self.icon = row.value(named: "icon")
         self.displayOrder = row.value(named: "display_order")
+        self.speechFile = row.value(named: "speech")
     }
     
 }
@@ -74,7 +76,8 @@ public struct DbFcCard : RowConvertible {
     public var sound:String? = ""
     public var displayOrder:Int = 0
     public var label:String = ""
-    public var labelColour:String = ""
+    public var labelColour:String? = nil
+    public var speechFile:String? = nil
     
     public init(row: Row) {
         
@@ -84,7 +87,7 @@ public struct DbFcCard : RowConvertible {
         self.sound = row.value(named: "sound")
         self.displayOrder = row.value(named: "display_order")
         self.label = row.value(named: "label")
-        //self.labelColour = row.value(named: "label_colour")
+        self.speechFile = row.value(named: "speech")
 
     }
     

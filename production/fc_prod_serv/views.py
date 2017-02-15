@@ -403,18 +403,29 @@ class FullCardDeploymentView(APIView):
 				else:
 					SoundDeployer.deploy_sound_for_card(card_id)
 
+		if result.deployed:
+			card = Card.objects.get(card_id = card_id)
+			card.status = 3
+			card.save()
+
 		serializer = DeploymentResultSerializer(result)
 		response = Response(serializer.data, status=status.HTTP_200_OK)
 		return response
 
-	def deploy_for_card(self, card_id: int, xcasset_only: bool = False):
+	def deploy_for_card(self, card_id: int, xcasset_only: bool = False) -> DeploymentResult:
 		if xcasset_only is None:
 			xcasset_only = False
 		builder = XcassetBuilder()
 		cropper = ImageCropper()
 
 		if builder.create_xcassets(card_id) and not xcasset_only:
-			cropper.crop_and_create_images(card_id)
+			crop_result = cropper.crop_and_create_images(card_id)
+			if not crop_result.deployed:
+				return crop_result
+
+		result = DeploymentResult()
+		result.deployed = True
+		return result
 
 	def get_deployment_result(self, card_id: int) -> DeploymentResult:
 		card = Card.objects.get(card_id=card_id)

@@ -100,7 +100,7 @@ class FlashCardViewController: UIViewController, AVAudioPlayerDelegate {
     
     func addLabel(){
         
-        var textColour:String = "000000"
+        var textColour:String = "ffffff"
         if let testColour = _flashCard?.textLabelColour {
             textColour = testColour
         }
@@ -139,15 +139,34 @@ class FlashCardViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     func playVoice(playSoundAfterWards: Bool){
-        if let deckName = _flashCard?.parentDeck?.name {
-            if let path = Bundle.main.path(forResource: deckName.lowercased(), ofType: "mp3", inDirectory: "voices/domestic") {
-                playSoundAtPath(path: path, includeDelegate: playSoundAfterWards)
-                return
+        
+        var speechFile:String?
+        if _flashCard?.speechFile  != nil {
+            speechFile = _flashCard!.speechFile
+        } else if(_flashCard?.parentDeck?.speechFile != nil){
+            speechFile = _flashCard!.parentDeck!.speechFile
+        }
+
+        if(speechFile == nil) {
+            if(playSoundAfterWards){
+                playAnimalSound()
+            }
+            return
+        }
+//, inDirectory: "voices/domestic"
+        let path = Bundle.main.resourcePath! + "/" + speechFile!
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: path) {
+            playSoundAtPath(path: path, includeDelegate: playSoundAfterWards)
+        } else {
+            if(playSoundAfterWards){
+                playAnimalSound()
             }
         }
-        if(playSoundAfterWards){
-            playAnimalSound()
-        }
+        
+
+        
+
     }
     
     func playAnimalSound(){

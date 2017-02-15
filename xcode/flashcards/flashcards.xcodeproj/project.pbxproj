@@ -24,6 +24,7 @@
 		8117EB931DA4FD62009D7D9D /* voices in Resources */ = {isa = PBXBuildFile; fileRef = 8117EB921DA4FD62009D7D9D /* voices */; };
 		8117EBA51DA5097A009D7D9D /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 8117EBA41DA5097A009D7D9D /* sounds */; };
 		8117EBA71DA50B41009D7D9D /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8117EBA61DA50B41009D7D9D /* AppSettings.swift */; };
+		819065221E54FE8F007C8591 /* speech in Resources */ = {isa = PBXBuildFile; fileRef = 819065211E54FE8F007C8591 /* speech */; };
 		819402801D94639100EE35A0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8194027F1D94639100EE35A0 /* DataManager.swift */; };
 		819402871D94682900EE35A0 /* appdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 819402821D94682900EE35A0 /* appdata.json */; };
 		81A46AEB1D9D326F008CD086 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A46AEA1D9D326F008CD086 /* SettingsTableViewController.swift */; };
@@ -63,6 +64,7 @@
 		8117EB921DA4FD62009D7D9D /* voices */ = {isa = PBXFileReference; lastKnownFileType = folder; path = voices; sourceTree = "<group>"; };
 		8117EBA41DA5097A009D7D9D /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		8117EBA61DA50B41009D7D9D /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		819065211E54FE8F007C8591 /* speech */ = {isa = PBXFileReference; lastKnownFileType = folder; path = speech; sourceTree = "<group>"; };
 		8194027F1D94639100EE35A0 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		819402821D94682900EE35A0 /* appdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = appdata.json; sourceTree = "<group>"; };
 		81A46AEA1D9D326F008CD086 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		819402811D94682900EE35A0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				819065211E54FE8F007C8591 /* speech */,
 				8117EBA41DA5097A009D7D9D /* sounds */,
 				8117EB921DA4FD62009D7D9D /* voices */,
 				819402821D94682900EE35A0 /* appdata.json */,
@@ -254,6 +257,7 @@
 				984B0DE41D1D5B4100533A06 /* LaunchScreen.storyboard in Resources */,
 				8117EBA51DA5097A009D7D9D /* sounds in Resources */,
 				81A46AED1D9D3BA2008CD086 /* flashcards.db in Resources */,
+				819065221E54FE8F007C8591 /* speech in Resources */,
 				8117EB931DA4FD62009D7D9D /* voices in Resources */,
 				819402871D94682900EE35A0 /* appdata.json in Resources */,
 				984B0DE11D1D5B4100533A06 /* Assets.xcassets in Resources */,

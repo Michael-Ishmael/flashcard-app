@@ -28,9 +28,10 @@ class DataLoader{
                     
                     var fcSet = FlashCardSet(dbSet: set)
                     
-                    let deck_query = "select d.deck_id, d.set_id, d.name, mf.xcasset as icon, d.display_order " +
+                    let deck_query = "select d.deck_id, d.set_id, d.name, mf.xcasset as icon, d.display_order, mfs.path as  speech " +
                         "from deck d " +
                         "join media_file mf on d.icon_id = mf.media_file_id " +
+                        "left outer join media_file mfs on d.speech_id = mfs.media_file_id " +
                         "where d.set_id = " + String(set.id) + " " +
                         "order by d.display_order ASC"
                     
@@ -39,9 +40,10 @@ class DataLoader{
                         
                         var fcDeck = FlashCardDeck(dbDeck: deck)
                         
-                        let card_query = "select  c.card_id, c.deck_id, c.name, mf.name as sound, c.display_order, c.label, c.label_colour " +
+                        let card_query = "select  c.card_id, c.deck_id, c.name, mf.name as sound, c.display_order, c.label, c.label_colour, mfs.path as speech " +
                             "from card c " +
                              "join media_file mf on c.sound_id = mf.media_file_id " +
+                             "left outer join media_file mfs on c.speech_id = mfs.media_file_id " +
                             "where c.deck_id = " + String(deck.id)
                         
                         let cards = DbFcCard.fetchAll(db, card_query)
@@ -183,6 +185,7 @@ public struct FlashCard
     var textLabel:String? = nil
     var textLabelColour:String? = nil
     var parentDeck:FlashCardDeck? = nil
+    var speechFile:String? = nil
     
     public init(dbCard: DbFcCard, parent:FlashCardDeck) {
         
@@ -191,6 +194,7 @@ public struct FlashCard
         self.sound = dbCard.sound
         self.textLabel = dbCard.label
         self.textLabelColour = dbCard.labelColour
+        self.speechFile = dbCard.speechFile
         self.parentDeck = parent
     }
 }
@@ -211,11 +215,13 @@ public struct FlashCardDeck  {
     var name:String = ""
     var thumb:String? = ""
     var cards:[FlashCard] = []
+    var speechFile:String? = nil
     
     public init(dbDeck:DbFcDeck){
         self.id = dbDeck.id
         self.name = dbDeck.name
         self.thumb = dbDeck.icon
+        self.speechFile = dbDeck.speechFile
     }
 
 }

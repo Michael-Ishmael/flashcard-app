@@ -254,6 +254,7 @@ production/.idea/production.iml
 production/.idea/dataSources.local.xml
 
 media/media/images
+xcode/flashcards/flashcards/Assets.xcassets
 production_ui/deploy/
 production_ui/dev/src/app.js
 
